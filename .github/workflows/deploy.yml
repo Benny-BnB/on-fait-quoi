@@ -1,0 +1,63 @@
+# Fabrique le site et le publie sur GitHub Pages à chaque modification de la branche "main".
+# Gratuit pour un dépôt public. Ne touche à aucune donnée privée : elles ne sont pas dans le dépôt.
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # permet aussi de relancer à la main depuis l'onglet Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  fabrication:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Installer les briques de code
+        run: npm ci
+        working-directory: app
+
+      - name: Fabriquer le site
+        run: npm run build
+        working-directory: app
+
+      - name: Contrôle de sécurité (aucun fichier privé dans le site publié)
+        run: |
+          trouves=$(find app/dist \( -iname '*donnees*' -o -iname '*.ics' -o -iname '*private*' -o -iname '.env*' \) -print)
+          if [ -n "$trouves" ]; then
+            echo "Fichiers suspects dans le site, publication annulée :"
+            echo "$trouves"
+            exit 1
+          fi
+          echo "Contrôle OK : aucun fichier privé dans le site."
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: app/dist
+
+  publication:
+    needs: fabrication
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

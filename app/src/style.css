@@ -1,0 +1,169 @@
+/* Couleurs : clair par défaut, sombre automatique selon le réglage de l'iPhone */
+:root {
+  --fond: #f2f5f5;
+  --carte: #ffffff;
+  --texte: #12181b;
+  --texte-doux: #4a5a60;
+  --bord: #d3dcdf;
+  --accent: #0e7c86; /* identique à vite.config.ts */
+  --sur-accent: #ffffff;
+  --ok: #17692f;
+  --attention: #8a4f00;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #0f1417; /* identique à vite.config.ts */
+    --carte: #182025;
+    --texte: #eef3f4;
+    --texte-doux: #a9b8bd;
+    --bord: #2a363c;
+    --ok: #5fd38a;
+    --attention: #f0b252;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Bandeau du haut : il passe sous l'heure de l'iPhone, le texte blanc reste lisible en clair et en sombre */
+.entete {
+  background: var(--accent);
+  color: var(--sur-accent);
+  padding: calc(env(safe-area-inset-top) + 20px) max(16px, env(safe-area-inset-right)) 20px
+    max(16px, env(safe-area-inset-left));
+}
+
+.entete h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.entete p {
+  margin: 4px 0 0;
+  font-size: 15px;
+  opacity: 0.92;
+}
+
+.contenu {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px max(16px, env(safe-area-inset-right)) calc(env(safe-area-inset-bottom) + 24px)
+    max(16px, env(safe-area-inset-left));
+  display: grid;
+  gap: 16px;
+}
+
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--bord);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.carte h2 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.lignes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ligne {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--bord);
+}
+
+.ligne:first-child {
+  border-top: 0;
+}
+
+.symbole {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  border: 2px solid currentColor;
+}
+
+.ligne.ok .symbole {
+  color: var(--ok);
+}
+
+.ligne.attention .symbole {
+  color: var(--attention);
+}
+
+.ligne.neutre .symbole {
+  color: var(--texte-doux);
+}
+
+.ligne-titre {
+  font-size: 14px;
+  color: var(--texte-doux);
+}
+
+.ligne-valeur {
+  font-weight: 600;
+}
+
+.ligne-aide {
+  margin-top: 4px;
+  font-size: 15px;
+  color: var(--texte-doux);
+}
+
+.maj p {
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+
+/* Gros bouton, utilisable d'une main */
+.bouton {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--sur-accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bouton:active {
+  filter: brightness(0.9);
+}
+
+.note {
+  margin: 0;
+  color: var(--texte-doux);
+  font-size: 15px;
+}
