@@ -1,6 +1,8 @@
 import type { Compteur, Donnees } from '../data/types.ts';
+import { creneauxDatables, resoudreCompteurComplet } from '../lib/creneaux.ts';
+import type { CreneauImpose } from '../lib/planning.ts';
 import type { CompteurResolu } from '../lib/vols.ts';
-import { instantDepart, resoudre } from '../lib/vols.ts';
+import { instantDepart } from '../lib/vols.ts';
 import { decomposer, formatDateHeureDansFuseau, formatDateIso, formatDureeMin, nomFuseau } from '../lib/temps.ts';
 
 const deux = (n: number): string => String(n).padStart(2, '0');
@@ -15,9 +17,19 @@ function Chiffre(props: { valeur: string; unite: string }) {
 }
 
 // Lignes sous le compteur : vol, trajet, heure locale, référence, terminal si connu
-function lignesDetail(c: Compteur, r: CompteurResolu): string[] {
+function lignesDetail(c: Compteur, r: CompteurResolu, donnees: Donnees, imposes: CreneauImpose[] | undefined): string[] {
   if (r.etat !== 'actif' && r.etat !== 'passe') return [];
   const lignes: string[] = [];
+  if (c.cible.type === 'creneau') {
+    const cle = c.cible.cle;
+    const creneau = creneauxDatables(donnees, imposes).find((x) => x.cle === cle);
+    if (creneau) {
+      lignes.push(creneau.titre);
+      lignes.push(`${formatDateHeureDansFuseau(creneau.debutMs, creneau.fuseau)}${creneau.zone !== '' ? ` (heure de ${creneau.zone})` : ''}`);
+      if (c.delaiMin > 0) lignes.push(`Compteur réglé ${formatDureeMin(c.delaiMin)} avant : ${formatDateHeureDansFuseau(r.cibleMs, creneau.fuseau)}`);
+    }
+    return lignes;
+  }
   if (r.vol) {
     const v = r.vol;
     const ville = v.depart.ville || nomFuseau(v.depart.fuseau);
@@ -37,11 +49,11 @@ function lignesDetail(c: Compteur, r: CompteurResolu): string[] {
   return lignes;
 }
 
-export function CarteCompteur(props: { compteur: Compteur; donnees: Donnees; maintenant: number; onMasquer?: () => void }) {
+export function CarteCompteur(props: { compteur: Compteur; donnees: Donnees; maintenant: number; imposes?: CreneauImpose[]; onMasquer?: () => void }) {
   const { compteur, donnees, maintenant } = props;
-  const r = resoudre(compteur, donnees, maintenant);
+  const r = resoudreCompteurComplet(compteur, donnees, maintenant, props.imposes);
   const d = r.etat === 'actif' ? decomposer(r.cibleMs - maintenant) : null;
-  const lignes = lignesDetail(compteur, r);
+  const lignes = lignesDetail(compteur, r, donnees, props.imposes);
 
   return (
     <section class="carte compteur" aria-label={compteur.libelle}>

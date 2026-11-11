@@ -1,9 +1,9 @@
 import { useMemo } from 'preact/hooks';
 import { basculerCompteur, useStore } from '../data/store.ts';
 import { useMaintenant } from '../lib/horloge.ts';
-import { creneauxImposes } from '../lib/planning.ts';
+import { creneauxImposes, plageJours } from '../lib/planning.ts';
 import { debutVoyage, progression } from '../lib/taches.ts';
-import { aujourdhuiIso, formatDateHeureDansFuseau } from '../lib/temps.ts';
+import { aujourdhuiIso, formatDateHeureDansFuseau, formatDateIso } from '../lib/temps.ts';
 import { CarteCompteur } from './CarteCompteur.tsx';
 import { Page } from './commun.tsx';
 
@@ -14,8 +14,11 @@ export function Accueil() {
   const creneaux = useMemo(() => creneauxImposes(donnees), [donnees]);
   // Le prochain créneau imposé dont l'heure est connue
   const prochain = creneaux.find((c) => c.debutMs !== null && c.debutMs > maintenant);
-  // Raccourci vers les check-lists : ce qu'il reste à faire, et ce qui est en retard
+  // Raccourci vers la journée : aujourd'hui si le voyage la couvre, sinon le prochain jour du planning
   const aujourdhui = aujourdhuiIso();
+  const jours = plageJours(donnees, creneaux);
+  const jourCible = jours.includes(aujourdhui) ? aujourdhui : jours.find((j) => j > aujourdhui);
+  // Raccourci vers les check-lists : ce qu'il reste à faire, et ce qui est en retard
   const debut = debutVoyage(donnees);
   const aFaire = progression(donnees.taches.filter((t) => t.liste === 'reste-a-faire'), aujourdhui, debut);
   const valise = progression(donnees.taches.filter((t) => t.liste === 'a-emporter'), aujourdhui, debut);
@@ -43,9 +46,16 @@ export function Accueil() {
           compteur={c}
           donnees={donnees}
           maintenant={maintenant}
+          imposes={creneaux}
           onMasquer={() => void basculerCompteur(c.id)}
         />
       ))}
+
+      {jourCible && (
+        <a class="bouton" href={`#/jour/${jourCible}`}>
+          {jourCible === aujourdhui ? 'Ma journée' : `Voir le jour du ${formatDateIso(jourCible)}`}
+        </a>
+      )}
 
       {prochain && prochain.debutMs !== null && (
         <a class="carte carte-lien" href="#/planning">

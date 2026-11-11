@@ -6,7 +6,7 @@ import type { Donnees, Etape, Trajet, Vol } from '../data/types.ts';
 import { LIBELLES_MODE, LIBELLES_STATUT_LOGEMENT } from '../data/types.ts';
 import { etapesTriees, listeJours } from './sejour.ts';
 import { dateValide, formatDateIso, formatDureeMin, formatHeureDansFuseau, fuseauValide, instantLocal, nomFuseau, partiesDansFuseau } from './temps.ts';
-import { instantArrivee, instantDepart } from './vols.ts';
+import { dureeVolMin, instantArrivee, instantDepart } from './vols.ts';
 
 const deux = (n: number): string => String(n).padStart(2, '0');
 const nombreOuNull = (x: number): number | null => (Number.isNaN(x) ? null : x);
@@ -93,6 +93,8 @@ export type CreneauImpose = {
   zone: string; // nom du lieu pour afficher "heure de ..."
   titre: string;
   details: string[];
+  dureeMin: number | null; // durée connue (trajet, vol), sert aux totaux de temps
+  tri: number; // clé pour ranger les créneaux dans la journée (instant, ou juste avant le vol pour un trajet sans heure)
   genre: GenreSource; // d'où vient ce créneau (pour ouvrir le bon formulaire)
   id: string;
   secondaire: boolean; // vol d'une autre personne : affiché plus discrètement
@@ -100,7 +102,7 @@ export type CreneauImpose = {
 };
 
 export function creneauxImposes(d: Donnees): CreneauImpose[] {
-  const liste: CreneauImpose[] = [];
+  const liste: Omit<CreneauImpose, 'tri'>[] = [];
   // Clé de tri des trajets sans heure vers un aéroport : juste avant l'heure limite d'arrivée à l'aéroport
   const triSansHeure = new Map<string, number>();
 
@@ -130,6 +132,7 @@ export function creneauxImposes(d: Donnees): CreneauImpose[] {
       zone: v.depart.ville || v.depart.code,
       titre: `Décollage ${v.numero} · ${v.depart.code} → ${v.arrivee.code}${marque}`,
       details: detailsDepart,
+      dureeMin: nombreOuNull(dureeVolMin(v)),
       genre: 'vol',
       id: v.id,
       secondaire,
@@ -146,6 +149,7 @@ export function creneauxImposes(d: Donnees): CreneauImpose[] {
       zone: v.arrivee.ville || v.arrivee.code,
       titre: `Atterrissage ${v.numero} à ${v.arrivee.ville || v.arrivee.code}${marque}`,
       details: v.arrivee.terminal ? [`Terminal ${v.arrivee.terminal}`] : [],
+      dureeMin: null,
       genre: 'vol',
       id: v.id,
       secondaire,
@@ -183,6 +187,7 @@ export function creneauxImposes(d: Donnees): CreneauImpose[] {
       zone: c.vol ? (t.lienVol === 'vers' ? c.vol.depart.ville || c.vol.depart.code : c.vol.arrivee.ville || c.vol.arrivee.code) : nomFuseau(c.fuseau),
       titre: `${t.de} → ${t.a}`,
       details,
+      dureeMin: t.dureeMin,
       genre: 'trajet',
       id: t.id,
       secondaire: false,
@@ -211,6 +216,7 @@ export function creneauxImposes(d: Donnees): CreneauImpose[] {
         zone: etape?.nom ?? '',
         titre: `${quand === 'arrivee' ? 'Arrivée' : 'Départ'} : ${l.nom}`,
         details,
+        dureeMin: null,
         genre: 'logement',
         id: l.id,
         secondaire: false,
@@ -220,8 +226,9 @@ export function creneauxImposes(d: Donnees): CreneauImpose[] {
   }
 
   // Sans heure connue : après ceux qui ont une heure (sauf les trajets vers un aéroport, rangés avant leur vol)
-  const cle = (c: CreneauImpose): number => c.debutMs ?? triSansHeure.get(c.cle) ?? Infinity;
-  return liste.sort((a, b) => {
+  const cle = (c: Omit<CreneauImpose, 'tri'>): number => c.debutMs ?? triSansHeure.get(c.cle) ?? Infinity;
+  const avecTri: CreneauImpose[] = liste.map((c) => ({ ...c, tri: cle(c) }));
+  return avecTri.sort((a, b) => {
     if (a.jour !== b.jour) return a.jour.localeCompare(b.jour);
     const ca = cle(a);
     const cb = cle(b);
@@ -233,6 +240,7 @@ export function creneauxImposes(d: Donnees): CreneauImpose[] {
 // Tous les jours à afficher : du premier au dernier jour du voyage (créneaux et étapes confondus)
 export function plageJours(d: Donnees, creneaux: CreneauImpose[]): string[] {
   const dates = creneaux.map((c) => c.jour).filter(dateValide);
+  for (const c of d.creneaux) if (dateValide(c.jour)) dates.push(c.jour);
   for (const e of d.etapes) {
     if (dateValide(e.debut)) dates.push(e.debut);
     if (dateValide(e.fin)) dates.push(e.fin);
@@ -248,7 +256,7 @@ export function etapesDuJour(jour: string, etapes: Etape[]): Etape[] {
 
 // ---------- Alertes ----------
 
-export type Alerte = { cle: string; message: string; genre?: GenreSource; id?: string };
+export type Alerte = { cle: string; message: string; genre?: GenreSource | 'creneau'; id?: string; jour?: string };
 
 // Un vol qui part de l'aéroport où l'on vient d'atterrir peu avant : pas besoin de trajet (correspondance)
 export function estCorrespondance(v: Vol, vols: Vol[]): boolean {

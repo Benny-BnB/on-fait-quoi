@@ -235,6 +235,74 @@ test('tâches invalides : titre manquant, liste inconnue, dates impossibles, sou
   assert.equal(validerImport(fichierTaches({ taches: [tacheValide, tacheValide] })).ok, false, 'identifiants en double');
 });
 
+const personneValide = { id: 'p1', prenom: 'Personne test', notes: 'Une note' };
+const creneauValide = { id: 'c1', jour: '2027-03-10', periode: 'matin', fuseau: 'Europe/Brussels', titre: 'Créneau test', participants: ['p1'], budgetEstime: 40, devise: 'eur' };
+const fichierPlanning = (extra: Record<string, unknown> = {}) => ({ format: 'on-fait-quoi', version: 1, personnes: [personneValide], creneaux: [creneauValide], ...extra });
+
+test('personnes et créneaux valides : acceptés, valeurs par défaut, devise en majuscules', () => {
+  const r = validerImport(fichierPlanning({ joursPlan: [{ jour: '2027-03-10', participants: ['p1'] }] }));
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    const c = r.donnees.creneaux?.[0];
+    assert.equal(c?.statut, 'prevu');
+    assert.equal(c?.humeur, '');
+    assert.equal(c?.devise, 'EUR');
+    assert.equal(c?.planBDe, '');
+    assert.equal(c?.fixe, false);
+    assert.equal(r.donnees.personnes?.[0].prenom, 'Personne test');
+    assert.deepEqual(r.donnees.joursPlan, [{ jour: '2027-03-10', participants: ['p1'] }]);
+    assert.equal(r.donnees.vols, undefined);
+  }
+});
+
+test('créneaux invalides : heures incohérentes, période inconnue, fuseau, budget sans devise : refusés', () => {
+  const mauvais = { ...creneauValide, debut: '10:00', fin: '09:00', periode: 'goûter', fuseau: 'Pays/Inconnu', devise: '', jour: '2027-02-30' };
+  const r = validerImport(fichierPlanning({ creneaux: [mauvais] }));
+  assert.equal(r.ok, false);
+  if (!r.ok) {
+    const tout = r.erreurs.join(' | ');
+    assert.match(tout, /la fin doit être après le début/);
+    assert.match(tout, /période invalide/);
+    assert.match(tout, /fuseau horaire inconnu/);
+    assert.match(tout, /devise manquante/);
+    assert.match(tout, /jour invalide/);
+  }
+  const finSansDebut = validerImport(fichierPlanning({ creneaux: [{ ...creneauValide, fin: '10:00' }] }));
+  assert.equal(finSansDebut.ok, false);
+  if (!finSansDebut.ok) assert.match(finSansDebut.erreurs.join(' '), /heure de fin demande une heure de début/);
+});
+
+test('créneaux : un participant inconnu est refusé quand les personnes sont dans le fichier', () => {
+  const r = validerImport(fichierPlanning({ creneaux: [{ ...creneauValide, participants: ['inconnu'] }] }));
+  assert.equal(r.ok, false);
+  if (!r.ok) assert.match(r.erreurs.join(' '), /la personne « inconnu » n'existe pas/);
+  const sansPersonnes = validerImport({ format: 'on-fait-quoi', version: 1, creneaux: [{ ...creneauValide, participants: ['inconnu'] }] });
+  assert.equal(sansPersonnes.ok, true, 'sans les personnes dans le fichier, on ne peut pas vérifier');
+});
+
+test('plans B : le principal doit exister, et un plan B ne peut pas avoir de plan B', () => {
+  const ok = validerImport(fichierPlanning({ creneaux: [creneauValide, { ...creneauValide, id: 'c2', titre: 'Plan B', planBDe: 'c1' }] }));
+  assert.equal(ok.ok, true);
+  const orphelin = validerImport(fichierPlanning({ creneaux: [{ ...creneauValide, planBDe: 'absent' }] }));
+  assert.equal(orphelin.ok, false);
+  const chaine = validerImport(fichierPlanning({ creneaux: [creneauValide, { ...creneauValide, id: 'c2', planBDe: 'c1' }, { ...creneauValide, id: 'c3', planBDe: 'c2' }] }));
+  assert.equal(chaine.ok, false);
+  if (!chaine.ok) assert.match(chaine.erreurs.join(' '), /ne peut pas avoir lui-même un plan B/);
+});
+
+test('personnes et jours invalides : prénom manquant, identifiant en double, jour impossible', () => {
+  assert.equal(validerImport(fichierPlanning({ personnes: [{ id: 'p1', prenom: '' }] })).ok, false);
+  assert.equal(validerImport(fichierPlanning({ personnes: [personneValide, personneValide] })).ok, false);
+  assert.equal(validerImport(fichierPlanning({ joursPlan: [{ jour: '2027-13-01', participants: [] }] })).ok, false);
+});
+
+test('compteur sur un créneau du planning : accepté avec sa clé, refusé sans', () => {
+  const ok = validerImport({ format: 'on-fait-quoi', version: 1, compteurs: [{ id: 'k', libelle: 'Test', cible: { type: 'creneau', cle: 'creneau:c1' } }] });
+  assert.equal(ok.ok, true);
+  const sansCle = validerImport({ format: 'on-fait-quoi', version: 1, compteurs: [{ id: 'k', libelle: 'Test', cible: { type: 'creneau' } }] });
+  assert.equal(sansCle.ok, false);
+});
+
 test('texte collé : JSON coupé ou invalide donne un message clair', () => {
   const r = lireTexteImport('{"format": "on-fait-quoi", "vols": [');
   assert.equal(r.ok, false);

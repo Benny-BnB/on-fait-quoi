@@ -2,8 +2,9 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Donnees, Etape, Logement, Reglages, Tache, Trajet, Vol } from './types.ts';
+import type { Compteur, Creneau, Donnees, Etape, Logement, Personne, Reglages, Tache, Trajet, Vol } from './types.ts';
 import { aujourdhuiIso } from '../lib/temps.ts';
+import { echanger, promouvoirPlanB, suivrePlace } from '../lib/creneaux.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
 import { REGLAGES_PAR_DEFAUT, compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
 import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
@@ -51,7 +52,10 @@ function normaliser(brut: Partial<Donnees> | undefined): Donnees {
   const logements = brut && Array.isArray(brut.logements) ? brut.logements : [];
   const trajets = brut && Array.isArray(brut.trajets) ? brut.trajets : [];
   const taches = brut && Array.isArray(brut.taches) ? brut.taches : [];
-  return { vols, compteurs, reglages, etapes, logements, trajets, taches };
+  const personnes = brut && Array.isArray(brut.personnes) ? brut.personnes : [];
+  const creneaux = brut && Array.isArray(brut.creneaux) ? brut.creneaux : [];
+  const joursPlan = brut && Array.isArray(brut.joursPlan) ? brut.joursPlan : [];
+  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, creneaux, joursPlan };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -213,6 +217,90 @@ export function basculerTache(id: string): Promise<void> {
   }));
 }
 
+// ---------- Personnes ----------
+
+export function enregistrerPersonne(personne: Personne): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    personnes: d.personnes.some((p) => p.id === personne.id) ? d.personnes.map((p) => (p.id === personne.id ? personne : p)) : [...d.personnes, personne],
+  }));
+}
+
+// Supprimer une personne la retire aussi des participants des créneaux et des jours
+export function supprimerPersonne(id: string): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    personnes: d.personnes.filter((p) => p.id !== id),
+    creneaux: d.creneaux.map((c) => (c.participants.includes(id) ? { ...c, participants: c.participants.filter((x) => x !== id) } : c)),
+    joursPlan: d.joursPlan.map((j) => ({ ...j, participants: j.participants.filter((x) => x !== id) })),
+  }));
+}
+
+// ---------- Créneaux du planning ----------
+
+// Ajoute ou modifie un créneau. Quand un créneau principal change de place, son plan B le suit.
+export function enregistrerCreneau(creneau: Creneau): Promise<void> {
+  return modifier((d) => {
+    let creneaux = d.creneaux.some((c) => c.id === creneau.id) ? d.creneaux.map((c) => (c.id === creneau.id ? creneau : c)) : [...d.creneaux, creneau];
+    if (creneau.planBDe === '') creneaux = creneaux.map((c) => (c.planBDe === creneau.id ? suivrePlace(c, creneau) : c));
+    return { ...d, creneaux };
+  });
+}
+
+// Supprimer un créneau principal : son plan B devient un créneau normal. Les compteurs qui le visaient disparaissent.
+export function supprimerCreneau(id: string): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    creneaux: d.creneaux.filter((c) => c.id !== id).map((c) => (c.planBDe === id ? { ...c, planBDe: '' } : c)),
+    compteurs: d.compteurs.filter((c) => !(c.cible.type === 'creneau' && c.cible.cle === `creneau:${id}`)),
+  }));
+}
+
+// Échange les places de deux créneaux (leurs plans B suivent)
+export function echangerCreneaux(idA: string, idB: string): Promise<void> {
+  return modifier((d) => {
+    const a = d.creneaux.find((c) => c.id === idA);
+    const b = d.creneaux.find((c) => c.id === idB);
+    if (!a || !b) return d;
+    const [a2, b2] = echanger(a, b);
+    const creneaux = d.creneaux.map((c) => {
+      if (c.id === idA) return a2;
+      if (c.id === idB) return b2;
+      if (c.planBDe === idA) return suivrePlace(c, a2);
+      if (c.planBDe === idB) return suivrePlace(c, b2);
+      return c;
+    });
+    return { ...d, creneaux };
+  });
+}
+
+// Le plan B prend la place du principal ; l'ancien principal devient son plan B
+export function passerAuPlanB(idAlternatif: string): Promise<void> {
+  return modifier((d) => {
+    const alternatif = d.creneaux.find((c) => c.id === idAlternatif);
+    const principal = alternatif ? d.creneaux.find((c) => c.id === alternatif.planBDe) : undefined;
+    if (!alternatif || !principal) return d;
+    const [ancien, nouveau] = promouvoirPlanB(principal, alternatif);
+    return { ...d, creneaux: d.creneaux.map((c) => (c.id === principal.id ? ancien : c.id === alternatif.id ? nouveau : c)) };
+  });
+}
+
+// Cocher / décocher "fait" : un créneau fait passe dans l'historique
+export function basculerCreneauFait(id: string): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    creneaux: d.creneaux.map((c) => (c.id === id ? { ...c, statut: c.statut === 'fait' ? 'prevu' : 'fait' } : c)),
+  }));
+}
+
+// Qui est là ce jour-là ? null = tout le monde (pas de réglage particulier)
+export function definirParticipantsJour(jour: string, participants: string[] | null): Promise<void> {
+  return modifier((d) => {
+    const autres = d.joursPlan.filter((j) => j.jour !== jour);
+    return { ...d, joursPlan: participants === null ? autres : [...autres, { jour, participants }] };
+  });
+}
+
 // ---------- Import, export, suppression ----------
 
 // Compteurs après un import de vols sans compteurs : on garde ceux de l'utilisateur
@@ -241,7 +329,12 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
       const ids = new Set(etapes.map((e) => e.id));
       logements = logements.filter((l) => ids.has(l.etapeId));
     }
-    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements, trajets: partiel.trajets ?? d.trajets, taches: partiel.taches ?? d.taches });
+    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements, trajets: partiel.trajets ?? d.trajets,
+      taches: partiel.taches ?? d.taches,
+      personnes: partiel.personnes ?? d.personnes,
+      creneaux: partiel.creneaux ?? d.creneaux,
+      joursPlan: partiel.joursPlan ?? d.joursPlan,
+    });
   });
 }
 

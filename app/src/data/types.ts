@@ -46,7 +46,8 @@ export type Vol = {
 export type CibleCompteur =
   | { type: 'prochain-vol' } // le prochain vol à venir, change tout seul après le décollage
   | { type: 'vol'; volId: string }
-  | { type: 'libre'; date: string; heure: string; fuseau: string };
+  | { type: 'libre'; date: string; heure: string; fuseau: string }
+  | { type: 'creneau'; cle: string }; // un créneau du planning (imposé ou libre), par sa clé stable
 
 export type Compteur = {
   id: string;
@@ -162,6 +163,81 @@ export type Tache = {
   lien: string; // lien utile (http ou https), vide si aucun
 };
 
+// Une personne du voyage (le détail : âge, alimentation, mobilité… viendra à l'étape 8)
+export type Personne = {
+  id: string;
+  prenom: string; // le prénom, ou un libellé comme « Ami »
+  notes: string;
+};
+
+export const PERIODES = ['matin', 'midi', 'apres-midi', 'soir', 'nuit'] as const;
+export type Periode = (typeof PERIODES)[number];
+
+export const LIBELLES_PERIODE: Record<Periode, string> = {
+  matin: 'Matin',
+  midi: 'Midi',
+  'apres-midi': 'Après-midi',
+  soir: 'Soir',
+  nuit: 'Nuit',
+};
+
+export const STATUTS_CRENEAU = ['idee', 'prevu', 'reserve', 'fait', 'annule'] as const;
+export type StatutCreneau = (typeof STATUTS_CRENEAU)[number];
+
+export const LIBELLES_STATUT_CRENEAU: Record<StatutCreneau, string> = {
+  idee: 'Idée',
+  prevu: 'Prévu',
+  reserve: 'Réservé',
+  fait: 'Fait',
+  annule: 'Annulé',
+};
+
+export const HUMEURS = ['calme', 'actif', 'gourmand', 'festif'] as const;
+export type Humeur = (typeof HUMEURS)[number];
+
+export const LIBELLES_HUMEUR: Record<Humeur, string> = {
+  calme: 'Calme',
+  actif: 'Actif',
+  gourmand: 'Gourmand',
+  festif: 'Festif',
+};
+
+export const TYPES_EVENEMENT = ['festival', 'repas', 'fete', 'anniversaire'] as const;
+export type TypeEvenement = (typeof TYPES_EVENEMENT)[number];
+
+export const LIBELLES_TYPE_EVENEMENT: Record<TypeEvenement, string> = {
+  festival: 'Festival',
+  repas: 'Repas',
+  fete: 'Fête',
+  anniversaire: 'Anniversaire',
+};
+
+// Un créneau du planning que l'utilisateur remplit lui-même (activité, repas, repos, note…)
+// ou un événement fixe (fixe = true), qui est imposé et ne se déplace pas à la légère.
+export type Creneau = {
+  id: string;
+  jour: string; // AAAA-MM-JJ
+  periode: Periode | ''; // '' = pas de période choisie
+  debut: string; // HH:MM, '' si pas d'heure précise
+  fin: string; // HH:MM, '' si pas d'heure de fin (jamais avant "debut", même jour)
+  fuseau: string; // fuseau dans lequel "debut" et "fin" sont exprimés
+  titre: string;
+  note: string;
+  statut: StatutCreneau;
+  humeur: Humeur | '';
+  participants: string[]; // ids de personnes ; [] = comme la journée
+  budgetEstime: number | null; // montant total pour les participants, dans "devise"
+  budgetReel: number | null;
+  devise: string; // '' si aucun budget
+  dureeMin: number | null; // durée connue quand il n'y a pas d'heure de fin
+  planBDe: string; // '' = créneau principal ; sinon id du créneau principal dont celui-ci est le plan B
+  fixe: boolean; // événement fixe (imposé)
+  typeEvenement: TypeEvenement | ''; // pour un événement fixe
+};
+
+// Qui est là un jour donné. Sans entrée pour un jour, tout le monde est là.
+export type JourPlan = { jour: string; participants: string[] };
+
 export type Donnees = {
   vols: Vol[];
   compteurs: Compteur[];
@@ -170,6 +246,9 @@ export type Donnees = {
   logements: Logement[];
   trajets: Trajet[];
   taches: Tache[];
+  personnes: Personne[];
+  creneaux: Creneau[];
+  joursPlan: JourPlan[];
 };
 
 export const ID_PROCHAIN_VOL = 'prochain-vol';

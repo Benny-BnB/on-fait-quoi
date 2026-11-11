@@ -3,7 +3,8 @@ import { nouvelId } from '../data/defauts.ts';
 import { enregistrerCompteur, supprimerCompteur, useStore } from '../data/store.ts';
 import type { CibleCompteur, Compteur } from '../data/types.ts';
 import { ID_PROCHAIN_VOL } from '../data/types.ts';
-import { dateValide, formatDateIso, formatDureeMin, fuseauTelephone, fuseauValide, heureValide, listeFuseaux } from '../lib/temps.ts';
+import { creneauxDatables } from '../lib/creneaux.ts';
+import { dateValide, formatDateHeureDansFuseau, formatDateIso, formatDureeMin, fuseauTelephone, fuseauValide, heureValide, listeFuseaux } from '../lib/temps.ts';
 import { libelleVol, volsTries } from '../lib/vols.ts';
 import { BoutonConfirme, Champ, ListeErreurs, Page } from './commun.tsx';
 import { aller } from './routeur.ts';
@@ -20,12 +21,19 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
   const cible = compteur.cible;
   const maj = (partiel: Partial<Compteur>) => definirCompteur((c) => ({ ...c, ...partiel }));
 
-  function choisirType(type: 'vol' | 'libre') {
+  function choisirType(type: 'vol' | 'libre' | 'creneau') {
     const nouvelle: CibleCompteur =
       type === 'vol'
         ? { type: 'vol', volId: vols[0]?.id ?? '' }
-        : { type: 'libre', date: '', heure: '', fuseau: fuseauTelephone() };
+        : type === 'creneau'
+          ? { type: 'creneau', cle: '' }
+          : { type: 'libre', date: '', heure: '', fuseau: fuseauTelephone() };
     maj({ cible: nouvelle });
+  }
+
+  function choisirCreneau(cle: string) {
+    const c = datables.find((x) => x.cle === cle);
+    maj({ cible: { type: 'creneau', cle }, libelle: compteur.libelle || (c ? c.titre : '') });
   }
 
   function choisirVol(volId: string) {
@@ -39,12 +47,17 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
   }
 
   const volChoisi = cible.type === 'vol' ? donnees.vols.find((v) => v.id === cible.volId) : undefined;
+  // Les créneaux du planning qui ont une heure (imposés ou libres), à venir ou déjà choisis
+  const datables = creneauxDatables(donnees);
+  const creneauChoisi = cible.type === 'creneau' ? datables.find((x) => x.cle === cible.cle) : undefined;
+  const creneauxProposes = datables.filter((x) => x.debutMs > Date.now() - 24 * 3600 * 1000 || x.cle === (cible.type === 'creneau' ? cible.cle : ''));
 
   const problemes: string[] = [];
   const delaiMin = (Number.parseInt(heures || '0', 10) || 0) * 60 + (Number.parseInt(minutes || '0', 10) || 0);
   if (!compteur.libelle.trim()) problemes.push('Donne un nom au compteur.');
   if (delaiMin < 0 || delaiMin > 7 * 24 * 60) problemes.push('Le délai doit être entre 0 et 7 jours.');
   if (cible.type === 'vol' && !volChoisi) problemes.push('Choisis un vol.');
+  if (cible.type === 'creneau' && !creneauChoisi) problemes.push('Choisis un créneau.');
   if (cible.type === 'libre') {
     if (!dateValide(cible.date)) problemes.push('Date manquante ou invalide.');
     if (!heureValide(cible.heure)) problemes.push('Heure manquante ou invalide.');
@@ -78,6 +91,10 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
               <input type="radio" name="type" checked={cible.type === 'libre'} onChange={() => choisirType('libre')} />
               <span>Une date et une heure à choisir</span>
             </label>
+            <label class="choix">
+              <input type="radio" name="type" checked={cible.type === 'creneau'} onChange={() => choisirType('creneau')} />
+              <span>Un créneau du planning</span>
+            </label>
           </fieldset>
         )}
 
@@ -89,6 +106,20 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
               {vols.map((v) => (
                 <option key={v.id} value={v.id}>
                   {libelleVol(v)} · {formatDateIso(v.depart.date)}
+                </option>
+              ))}
+            </select>
+          </Champ>
+        )}
+
+        {cible.type === 'creneau' && (
+          <Champ etiquette="Créneau" aide="Seuls les créneaux qui ont une heure précise peuvent avoir un compteur.">
+            <select value={cible.cle} onChange={(e) => choisirCreneau(e.currentTarget.value)}>
+              <option value="">Choisir un créneau</option>
+              {cible.cle !== '' && !creneauChoisi && <option value={cible.cle}>Créneau introuvable</option>}
+              {creneauxProposes.map((x) => (
+                <option key={x.cle} value={x.cle}>
+                  {formatDateHeureDansFuseau(x.debutMs, x.fuseau)} · {x.titre}
                 </option>
               ))}
             </select>
@@ -183,7 +214,7 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
   );
 }
 
-export function FormulaireCompteur(props: { id: string }) {
+export function FormulaireCompteur(props: { id: string; cle?: string }) {
   const { donnees } = useStore();
   const nouveau = props.id === 'nouveau';
   const existant = nouveau ? undefined : donnees.compteurs.find((c) => c.id === props.id);
@@ -196,12 +227,14 @@ export function FormulaireCompteur(props: { id: string }) {
       </Page>
     );
   }
+  // Lancé depuis la fiche d'un créneau : le compteur vise déjà ce créneau
+  const creneauVise = props.cle ? creneauxDatables(donnees).find((x) => x.cle === props.cle) : undefined;
   const vide: Compteur = {
     id: nouvelId('compteur'),
-    libelle: '',
-    cible: { type: 'vol', volId: volsTries(donnees.vols)[0]?.id ?? '' },
+    libelle: creneauVise ? creneauVise.titre : '',
+    cible: props.cle ? { type: 'creneau', cle: props.cle } : { type: 'vol', volId: volsTries(donnees.vols)[0]?.id ?? '' },
     visible: true,
     delaiMin: 0,
   };
-  return <Editeur key={props.id} initial={existant ?? vide} nouveau={nouveau} />;
+  return <Editeur key={`${props.id}-${props.cle ?? ''}`} initial={existant ?? vide} nouveau={nouveau} />;
 }

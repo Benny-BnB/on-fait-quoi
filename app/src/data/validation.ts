@@ -1,8 +1,8 @@
 // Contrôle d'un fichier d'import avant de toucher aux données : un fichier erroné
 // est refusé avec un message clair, il n'abîme jamais les données déjà enregistrées.
 
-import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Donnees, Etape, Logement, MomentLogement, Tache, Trajet, Vol } from './types.ts';
-import { LISTES_TACHE, MODES_TRAJET, PORTEES, STATUTS_LOGEMENT, STATUTS_VOL } from './types.ts';
+import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Creneau, Donnees, Etape, JourPlan, Logement, MomentLogement, Personne, Tache, Trajet, Vol } from './types.ts';
+import { HUMEURS, LISTES_TACHE, MODES_TRAJET, PERIODES, PORTEES, STATUTS_CRENEAU, STATUTS_LOGEMENT, STATUTS_VOL, TYPES_EVENEMENT } from './types.ts';
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
 import { lienSur } from '../lib/sejour.ts';
 
@@ -10,7 +10,7 @@ export const FORMAT_FICHIER = 'on-fait-quoi';
 // Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -138,6 +138,10 @@ function lireCompteur(brut: unknown, index: number, erreurs: string[], ids: Set<
     if (!volId) erreurs.push(`${nom} : « volId » manquant.`);
     else if (idsVols && !idsVols.has(volId)) erreurs.push(`${nom} : le vol « ${volId} » n'existe pas dans le fichier.`);
     else cible = { type: 'vol', volId };
+  } else if (c.type === 'creneau') {
+    const cle = texte(c, 'cle');
+    if (!cle) erreurs.push(`${nom} : « cle » du créneau manquante.`);
+    else cible = { type: 'creneau', cle };
   } else if (c.type === 'libre') {
     const date = texte(c, 'date');
     const heure = texte(c, 'heure');
@@ -402,6 +406,113 @@ function lireTache(brut: unknown, index: number, erreurs: string[], ids: Set<str
   };
 }
 
+function lirePersonne(brut: unknown, index: number, erreurs: string[], ids: Set<string>): Personne | null {
+  const nom = `Personne n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas une personne valide.`);
+    return null;
+  }
+  const prenom = texte(brut, 'prenom');
+  const avant = erreurs.length;
+  if (!prenom) erreurs.push(`${nom} : prénom manquant.`);
+  const id = texte(brut, 'id') || `personne-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${nom} (${prenom}) : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+  if (erreurs.length > avant) return null;
+  return { id, prenom, notes: texte(brut, 'notes') };
+}
+
+function lireListeIds(brut: unknown, qui: string, erreurs: string[], idsPersonnes: Set<string> | null): string[] {
+  if (brut === undefined) return [];
+  if (!Array.isArray(brut) || brut.some((x) => typeof x !== 'string')) {
+    erreurs.push(`${qui} : « participants » doit être une liste d'identifiants de personnes.`);
+    return [];
+  }
+  const ids = brut as string[];
+  if (idsPersonnes) for (const id of ids) if (!idsPersonnes.has(id)) erreurs.push(`${qui} : la personne « ${id} » n'existe pas dans le fichier.`);
+  return ids;
+}
+
+function lireCreneau(brut: unknown, index: number, erreurs: string[], ids: Set<string>, idsPersonnes: Set<string> | null): Creneau | null {
+  const nom = `Créneau n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas un créneau valide.`);
+    return null;
+  }
+  const titre = texte(brut, 'titre');
+  const qui = titre ? `${nom} (${titre.slice(0, 40)})` : nom;
+  const avant = erreurs.length;
+
+  if (!titre) erreurs.push(`${qui} : titre manquant.`);
+  const id = texte(brut, 'id') || `creneau-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+
+  const jour = texte(brut, 'jour');
+  if (!dateValide(jour)) erreurs.push(`${qui} : jour invalide « ${jour} » (format AAAA-MM-JJ attendu).`);
+  const periode = brut.periode ?? '';
+  if (periode !== '' && !PERIODES.some((p) => p === periode)) erreurs.push(`${qui} : période invalide « ${String(periode)} » (${PERIODES.join(', ')}).`);
+  const debut = texte(brut, 'debut');
+  const fin = texte(brut, 'fin');
+  if (debut !== '' && !heureValide(debut)) erreurs.push(`${qui} : heure de début invalide « ${debut} » (HH:MM).`);
+  if (fin !== '' && !heureValide(fin)) erreurs.push(`${qui} : heure de fin invalide « ${fin} » (HH:MM).`);
+  if (fin !== '' && debut === '') erreurs.push(`${qui} : une heure de fin demande une heure de début.`);
+  if (heureValide(debut) && heureValide(fin) && fin <= debut) erreurs.push(`${qui} : la fin doit être après le début (même jour).`);
+  const fuseau = texte(brut, 'fuseau');
+  if (!fuseauValide(fuseau)) erreurs.push(`${qui} : fuseau horaire inconnu « ${fuseau} » (exemple : Asia/Bangkok).`);
+
+  const statutBrut = brut.statut ?? 'prevu';
+  if (!STATUTS_CRENEAU.some((s) => s === statutBrut)) erreurs.push(`${qui} : statut invalide « ${String(statutBrut)} » (${STATUTS_CRENEAU.join(', ')}).`);
+  const humeur = brut.humeur ?? '';
+  if (humeur !== '' && !HUMEURS.some((h) => h === humeur)) erreurs.push(`${qui} : humeur invalide « ${String(humeur)} » (${HUMEURS.join(', ')}).`);
+  const typeEvenement = brut.typeEvenement ?? '';
+  if (typeEvenement !== '' && !TYPES_EVENEMENT.some((t) => t === typeEvenement)) erreurs.push(`${qui} : type d'événement invalide « ${String(typeEvenement)} » (${TYPES_EVENEMENT.join(', ')}).`);
+  if (brut.fixe !== undefined && typeof brut.fixe !== 'boolean') erreurs.push(`${qui} : « fixe » doit valoir true ou false.`);
+
+  const participants = lireListeIds(brut.participants, qui, erreurs, idsPersonnes);
+  const budgetEstime = lireNombre(brut, 'budgetEstime', 10000000, qui, erreurs);
+  const budgetReel = lireNombre(brut, 'budgetReel', 10000000, qui, erreurs);
+  const devise = texte(brut, 'devise').toUpperCase();
+  if ((budgetEstime !== null || budgetReel !== null) && !/^[A-Z]{3}$/.test(devise)) erreurs.push(`${qui} : devise manquante ou invalide pour le budget (3 lettres, exemple : THB).`);
+  const dureeMin = lireNombre(brut, 'dureeMin', 1440, qui, erreurs);
+
+  if (erreurs.length > avant) return null;
+  const aBudget = budgetEstime !== null || budgetReel !== null;
+  return {
+    id,
+    jour,
+    periode: periode as Creneau['periode'],
+    debut,
+    fin,
+    fuseau,
+    titre,
+    note: texte(brut, 'note'),
+    statut: statutBrut as Creneau['statut'],
+    humeur: humeur as Creneau['humeur'],
+    participants,
+    budgetEstime,
+    budgetReel,
+    devise: aBudget ? devise : '',
+    dureeMin,
+    planBDe: texte(brut, 'planBDe'),
+    fixe: brut.fixe === true,
+    typeEvenement: typeEvenement as Creneau['typeEvenement'],
+  };
+}
+
+function lireJourPlan(brut: unknown, index: number, erreurs: string[], idsPersonnes: Set<string> | null): JourPlan | null {
+  const nom = `Jour n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas un jour valide.`);
+    return null;
+  }
+  const avant = erreurs.length;
+  const jour = texte(brut, 'jour');
+  if (!dateValide(jour)) erreurs.push(`${nom} : jour invalide « ${jour} » (format AAAA-MM-JJ attendu).`);
+  const participants = lireListeIds(brut.participants, nom, erreurs, idsPersonnes);
+  return erreurs.length > avant ? null : { jour, participants };
+}
+
 export function validerImport(brut: unknown): ResultatImport {
   if (!estObjet(brut)) return { ok: false, erreurs: ['Le fichier ne contient pas de données reconnaissables.'] };
   if (brut.format !== FORMAT_FICHIER) {
@@ -497,9 +608,48 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  let idsPersonnes: Set<string> | null = null;
+  if (brut.personnes !== undefined) {
+    if (!Array.isArray(brut.personnes)) {
+      erreurs.push('« personnes » doit être une liste.');
+    } else {
+      const ids = new Set<string>();
+      const personnes = brut.personnes.map((p, i) => lirePersonne(p, i, erreurs, ids));
+      idsPersonnes = ids;
+      donnees.personnes = personnes.filter((p): p is Personne => p !== null);
+    }
+  }
+
+  if (brut.creneaux !== undefined) {
+    if (!Array.isArray(brut.creneaux)) {
+      erreurs.push('« creneaux » doit être une liste.');
+    } else {
+      const ids = new Set<string>();
+      const lus = brut.creneaux.map((c, i) => lireCreneau(c, i, erreurs, ids, idsPersonnes));
+      const creneaux = lus.filter((c): c is Creneau => c !== null);
+      // Un plan B doit dépendre d'un créneau principal qui existe (et qui n'est pas lui-même un plan B)
+      for (const c of creneaux) {
+        if (c.planBDe === '') continue;
+        const principal = creneaux.find((x) => x.id === c.planBDe);
+        if (!principal) erreurs.push(`Créneau « ${c.titre} » : son principal « ${c.planBDe} » n'existe pas dans le fichier.`);
+        else if (principal.planBDe !== '') erreurs.push(`Créneau « ${c.titre} » : un plan B ne peut pas avoir lui-même un plan B.`);
+      }
+      donnees.creneaux = creneaux;
+    }
+  }
+
+  if (brut.joursPlan !== undefined) {
+    if (!Array.isArray(brut.joursPlan)) {
+      erreurs.push('« joursPlan » doit être une liste.');
+    } else {
+      const jours = brut.joursPlan.map((j, i) => lireJourPlan(j, i, erreurs, idsPersonnes));
+      donnees.joursPlan = jours.filter((j): j is JourPlan => j !== null);
+    }
+  }
+
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.creneaux && !donnees.joursPlan) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni créneaux.'] };
   }
   return { ok: true, donnees, avertissements };
 }

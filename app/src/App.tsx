@@ -5,6 +5,9 @@ import { Accueil } from './ui/Accueil.tsx';
 import { Page } from './ui/commun.tsx';
 import { Compteurs } from './ui/Compteurs.tsx';
 import { FormulaireCompteur } from './ui/FormulaireCompteur.tsx';
+import { FormulaireCreneau } from './ui/FormulaireCreneau.tsx';
+import { Jour } from './ui/Jour.tsx';
+import { Personnes } from './ui/Personnes.tsx';
 import { FormulaireEtape } from './ui/FormulaireEtape.tsx';
 import { FormulaireLogement } from './ui/FormulaireLogement.tsx';
 import { FormulaireTache } from './ui/FormulaireTache.tsx';
@@ -47,7 +50,7 @@ export function App() {
         page = <Compteurs />;
         break;
       case 'compteur':
-        page = <FormulaireCompteur id={route.id} />;
+        page = <FormulaireCompteur id={route.id} cle={route.cle} />;
         break;
       case 'taches':
         page = <Taches liste="reste-a-faire" />;
@@ -60,6 +63,15 @@ export function App() {
         break;
       case 'planning':
         page = <Planning />;
+        break;
+      case 'jour':
+        page = <Jour jour={route.jour} />;
+        break;
+      case 'creneau':
+        page = <FormulaireCreneau id={route.id} mode={route.mode} reference={route.ref} periode={route.periode} />;
+        break;
+      case 'personnes':
+        page = <Personnes />;
         break;
       case 'trajets':
         page = <Trajets />;

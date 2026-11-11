@@ -62,12 +62,19 @@ function Verification() {
 export function Reglages() {
   return (
     <Page titre="Réglages">
+      <section class="carte">
+        <h2>Personnes du voyage</h2>
+        <p class="discret">Elles servent à choisir qui participe à chaque créneau du planning.</p>
+        <a class="bouton secondaire" href="#/personnes">
+          Gérer les personnes
+        </a>
+      </section>
       <DelaisAeroport />
       <ImportExport />
       <Verification />
       <EtatApp />
       <p class="note">
-        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning des créneaux imposés et les check-lists. Les activités libres et les fiches de lieux ne sont pas encore là : ils arrivent étape par étape.
+        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning (créneaux imposés et libres) et les check-lists. Les propositions de lieux et les fiches de lieux ne sont pas encore là : ils arrivent étape par étape.
       </p>
     </Page>
   );

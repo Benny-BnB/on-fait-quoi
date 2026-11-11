@@ -95,7 +95,7 @@ test('textes de délai', () => {
 });
 
 function donnees(partiel: Partial<Donnees>): Donnees {
-  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], ...partiel };
+  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], personnes: [], creneaux: [], joursPlan: [], ...partiel };
 }
 
 const volTest = (id: string, date: string, extra: Record<string, unknown> = {}) => ({

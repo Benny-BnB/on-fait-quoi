@@ -42,6 +42,9 @@ export function donneesVides(): Donnees {
     logements: [],
     trajets: [],
     taches: [],
+    personnes: [],
+    creneaux: [],
+    joursPlan: [],
   };
 }
 

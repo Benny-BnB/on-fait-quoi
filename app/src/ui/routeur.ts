@@ -6,7 +6,10 @@ export type Route =
   | { nom: 'vols' }
   | { nom: 'vol'; id: string }
   | { nom: 'compteurs' }
-  | { nom: 'compteur'; id: string }
+  | { nom: 'compteur'; id: string; cle?: string }
+  | { nom: 'jour'; jour: string }
+  | { nom: 'creneau'; id: string; mode?: 'jour' | 'planb' | 'copie'; ref?: string; periode?: string }
+  | { nom: 'personnes' }
   | { nom: 'taches' }
   | { nom: 'emporter' }
   | { nom: 'tache'; id: string; liste?: string }
@@ -39,7 +42,14 @@ export function lireRoute(hash: string): Route {
   if (a === 'planning') return { nom: 'planning' };
   if (a === 'trajets') return b ? { nom: 'trajet', id: b, volId: c } : { nom: 'trajets' };
   if (a === 'vols') return b ? { nom: 'vol', id: b } : { nom: 'vols' };
-  if (a === 'compteurs') return b ? { nom: 'compteur', id: b } : { nom: 'compteurs' };
+  if (a === 'compteurs') return b ? { nom: 'compteur', id: b, cle: c } : { nom: 'compteurs' };
+  if (a === 'jour' && b) return { nom: 'jour', jour: b };
+  if (a === 'personnes') return { nom: 'personnes' };
+  if (a === 'creneau' && b) {
+    if (b !== 'nouveau') return { nom: 'creneau', id: b };
+    if (c === 'planb' || c === 'copie') return { nom: 'creneau', id: b, mode: c, ref: d };
+    return { nom: 'creneau', id: b, mode: 'jour', ref: c, periode: d };
+  }
   if (a === 'reglages') return { nom: 'reglages' };
   return { nom: 'accueil' };
 }
@@ -70,8 +80,13 @@ export const lienTrajet =(id: string): string => `#/trajets/${encodeURIComponent
 // Nouveau trajet, éventuellement déjà rattaché à un vol (pour aller à l'aéroport)
 export const lienNouveauTrajet = (volId?: string): string => `#/trajets/nouveau${volId ? `/${encodeURIComponent(volId)}` : ''}`;
 // Ouvre l'élément (vol, trajet ou logement) à l'origine d'un créneau ou d'une alerte
-export const lienSource = (genre: 'vol' | 'trajet' | 'logement', id: string): string =>
-  genre === 'vol' ? lienVol(id) : genre === 'trajet' ? lienTrajet(id) : lienLogement(id);
+export const lienSource = (genre: 'vol' | 'trajet' | 'logement' | 'creneau', id: string): string =>
+  genre === 'vol' ? lienVol(id) : genre === 'trajet' ? lienTrajet(id) : genre === 'creneau' ? lienCreneau(id) : lienLogement(id);
+export const lienJour = (jour: string): string => `#/jour/${jour}`;
+export const lienCreneau = (id: string): string => `#/creneau/${encodeURIComponent(id)}`;
+export const lienNouveauCreneau = (jour: string, periode?: string): string => `#/creneau/nouveau/${jour}${periode ? `/${periode}` : ''}`;
+export const lienPlanB = (id: string): string => `#/creneau/nouveau/planb/${encodeURIComponent(id)}`;
+export const lienCopie = (id: string): string => `#/creneau/nouveau/copie/${encodeURIComponent(id)}`;
 export const lienEtape =(id: string): string => `#/sejour/etape/${encodeURIComponent(id)}`;
 export const lienLogement = (id: string): string => `#/sejour/logement/${encodeURIComponent(id)}`;
 export const lienNouveauLogement = (etapeId: string): string => `#/sejour/logement/nouveau/${encodeURIComponent(etapeId)}`;

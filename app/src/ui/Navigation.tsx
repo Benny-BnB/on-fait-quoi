@@ -87,6 +87,8 @@ const ONGLETS: { cle: Onglet; href: string; libelle: string; icone: ComponentChi
 function ongletActif(route: Route): Onglet {
   if (route.nom === 'vols' || route.nom === 'vol' || route.nom === 'trajets' || route.nom === 'trajet') return 'transports';
   if (route.nom === 'etape' || route.nom === 'logement') return 'sejour';
+  if (route.nom === 'jour' || route.nom === 'creneau') return 'planning';
+  if (route.nom === 'personnes') return 'reglages';
   if (route.nom === 'taches' || route.nom === 'emporter' || route.nom === 'tache') return 'taches';
   if (route.nom === 'compteurs' || route.nom === 'compteur') return 'accueil'; // les compteurs se règlent depuis l'accueil
   return route.nom;

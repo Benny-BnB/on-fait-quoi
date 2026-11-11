@@ -1,6 +1,7 @@
 import { basculerCompteur, useStore } from '../data/store.ts';
 import type { Compteur, Donnees } from '../data/types.ts';
 import { formatDateIso, formatDureeMin, nomFuseau } from '../lib/temps.ts';
+import { creneauxDatables } from '../lib/creneaux.ts';
 import { libelleVol } from '../lib/vols.ts';
 import { Page } from './commun.tsx';
 import { lienCompteur } from './routeur.ts';
@@ -13,6 +14,10 @@ function resume(c: Compteur, donnees: Donnees): string {
     const volId = c.cible.volId;
     const v = donnees.vols.find((x) => x.id === volId);
     base = v ? `${libelleVol(v)} · ${formatDateIso(v.depart.date)}` : 'Vol introuvable';
+  } else if (c.cible.type === 'creneau') {
+    const cle = c.cible.cle;
+    const creneau = creneauxDatables(donnees).find((x) => x.cle === cle);
+    base = creneau ? `Créneau : ${creneau.titre}` : 'Créneau introuvable';
   } else {
     base = `${formatDateIso(c.cible.date)} à ${c.cible.heure} (heure de ${nomFuseau(c.cible.fuseau)})`;
   }

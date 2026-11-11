@@ -1,41 +1,21 @@
 import { useMemo } from 'preact/hooks';
 import { useStore } from '../data/store.ts';
-import type { CreneauImpose } from '../lib/planning.ts';
+import { alertesCreneaux, elementsDuJour, historique, totauxJour, totauxSejour } from '../lib/creneaux.ts';
 import { alertesPlanning, creneauxImposes, etapesDuJour, plageJours } from '../lib/planning.ts';
 import { jourSemaine } from '../lib/sejour.ts';
 import { aujourdhuiIso, formatDateIso } from '../lib/temps.ts';
 import { Page } from './commun.tsx';
-import { lienSource } from './routeur.ts';
-
-function LigneCreneau(props: { c: CreneauImpose }) {
-  const c = props.c;
-  return (
-    <a class={`creneau${c.secondaire ? ' estompee' : ''}`} href={lienSource(c.genre, c.id)}>
-      <div class="creneau-heure">
-        <strong>{c.heure !== '' ? c.heure : '—'}</strong>
-        {c.zone !== '' && <span class="discret">{c.zone}</span>}
-      </div>
-      <div class="creneau-corps">
-        <strong>{c.titre}</strong>
-        {c.heure === '' && !c.details.some((d) => d.includes('définir')) && <span class="discret">Heure à définir</span>}
-        {c.details.map((d) => (
-          <span key={d} class={d === 'À trouver' || d === 'À vérifier' ? 'attention-texte' : 'discret'}>
-            {d}
-          </span>
-        ))}
-      </div>
-    </a>
-  );
-}
+import { LigneImpose, LigneLibre, ResumeTotaux, montant } from './LignesPlanning.tsx';
+import { lienCreneau, lienJour, lienNouveauCreneau, lienSource } from './routeur.ts';
 
 export function Planning() {
   const { donnees } = useStore();
-  const creneaux = useMemo(() => creneauxImposes(donnees), [donnees]);
-  const alertes = useMemo(() => alertesPlanning(donnees), [donnees]);
-  const jours = plageJours(donnees, creneaux);
+  const imposes = useMemo(() => creneauxImposes(donnees), [donnees]);
+  const alertes = useMemo(() => [...alertesPlanning(donnees), ...alertesCreneaux(donnees)], [donnees]);
+  const jours = plageJours(donnees, imposes);
   const aujourdhui = aujourdhuiIso();
-  const parJour = new Map<string, CreneauImpose[]>();
-  for (const c of creneaux) parJour.set(c.jour, [...(parJour.get(c.jour) ?? []), c]);
+  const totaux = totauxSejour(donnees, imposes);
+  const faits = historique(donnees);
 
   // Aujourd'hui si le voyage le couvre, sinon le prochain jour à venir
   const jourCible = jours.includes(aujourdhui) ? aujourdhui : jours.find((j) => j > aujourdhui);
@@ -61,45 +41,90 @@ export function Planning() {
         </section>
       )}
 
+      {jours.length > 0 && (
+        <section class="carte">
+          <h2>Tout le séjour</h2>
+          <ResumeTotaux totaux={totaux} />
+        </section>
+      )}
+
       {jourCible && (
-        <button
-          type="button"
-          class="bouton secondaire"
-          onClick={() => document.getElementById(`jour-${jourCible}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-        >
-          {jourCible === aujourdhui ? "Aller à aujourd'hui" : `Aller au prochain jour (${formatDateIso(jourCible)})`}
-        </button>
+        <div class="rangee">
+          <a class="bouton" href={lienJour(jourCible)}>
+            {jourCible === aujourdhui ? 'Ma journée' : `Jour du ${formatDateIso(jourCible)}`}
+          </a>
+          <button
+            type="button"
+            class="bouton secondaire"
+            onClick={() => document.getElementById(`jour-${jourCible}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          >
+            {jourCible === aujourdhui ? "Aller à aujourd'hui" : 'Aller à ce jour'}
+          </button>
+        </div>
       )}
 
       {jours.length === 0 && (
         <section class="carte">
           <p>Aucun créneau pour l'instant. Importe ton fichier de voyage dans Réglages, ou ajoute des vols, des logements et des trajets.</p>
+          <a class="bouton" href={lienNouveauCreneau(aujourdhui)}>
+            Ajouter un créneau
+          </a>
         </section>
       )}
 
       {jours.map((jour) => {
         const etapes = etapesDuJour(jour, donnees.etapes);
-        const liste = parJour.get(jour) ?? [];
+        const elements = elementsDuJour(donnees, jour, imposes).filter((e) => !('libre' in e) || e.libre.statut !== 'fait');
+        const t = totauxJour(donnees, jour, imposes);
+        const budget = t.budgets.filter((b) => b.estime > 0).map((b) => montant(b.estime, b.devise));
         return (
           <section class="carte jour" id={`jour-${jour}`} key={jour}>
-            <div class="vol-entete">
-              <h2>
-                {jourSemaine(jour)} {formatDateIso(jour)}
-              </h2>
-              {jour === aujourdhui && (
-                <span class="etiquettes">
-                  <span class="etiquette">Aujourd'hui</span>
-                </span>
-              )}
-            </div>
-            {etapes.length > 0 && <p class="discret">{etapes.map((e) => e.nom).join(' → ')}</p>}
-            {liste.length === 0 ? <p class="discret">Rien d'imposé ce jour.</p> : liste.map((c) => <LigneCreneau key={c.cle} c={c} />)}
+            <a class="entete-jour" href={lienJour(jour)}>
+              <div class="vol-entete">
+                <h2>
+                  {jourSemaine(jour)} {formatDateIso(jour)}
+                </h2>
+                {jour === aujourdhui && (
+                  <span class="etiquettes">
+                    <span class="etiquette">Aujourd'hui</span>
+                  </span>
+                )}
+              </div>
+              {etapes.length > 0 && <p class="discret">{etapes.map((e) => e.nom).join(' → ')}</p>}
+              {budget.length > 0 && <p class="discret">Budget estimé : {budget.join(' · ')}</p>}
+            </a>
+            {elements.length === 0 ? (
+              <p class="discret">Rien de prévu ce jour.</p>
+            ) : (
+              elements.map((e) =>
+                'impose' in e ? <LigneImpose key={e.cle} c={e.impose} /> : <LigneLibre key={e.cle} c={e.libre} alternatif={e.alternatif} donnees={donnees} />,
+              )
+            )}
+            <a class="bouton secondaire petit" href={lienJour(jour)}>
+              Ouvrir la journée ›
+            </a>
           </section>
         );
       })}
 
+      {faits.length > 0 && (
+        <details class="carte details-faites">
+          <summary>Historique ({faits.length})</summary>
+          {faits.map((c) => (
+            <a class="sous-carte" key={c.id} href={lienCreneau(c.id)}>
+              <strong>{c.titre}</strong>
+              <span class="discret">
+                {jourSemaine(c.jour)} {formatDateIso(c.jour)}
+                {c.debut !== '' && ` à ${c.debut}`}
+              </span>
+              {c.budgetReel !== null && <span class="discret">Dépensé {montant(c.budgetReel, c.devise)}</span>}
+            </a>
+          ))}
+        </details>
+      )}
+
       <p class="note">
-        Le planning montre pour l'instant les créneaux imposés : vols, trajets, arrivées et départs de logement. Les activités libres ne sont pas encore là. Les heures sont celles du lieu concerné.
+        Le planning réunit les créneaux imposés (vols, trajets, arrivées et départs de logement, événements fixes) et tes créneaux libres. Les heures sont celles du lieu concerné. Les propositions de lieux arrivent à l'étape suivante.
       </p>
     </Page>
   );

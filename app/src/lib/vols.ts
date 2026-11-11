@@ -78,6 +78,10 @@ export function resoudre(c: Compteur, donnees: Donnees, maintenantMs: number): C
     const cibleMs = depart - decalage;
     return { etat: cibleMs > maintenantMs ? 'actif' : 'passe', cibleMs, vol: v };
   }
+  if (cible.type === 'creneau') {
+    // Les compteurs sur un créneau du planning se calculent dans lib/creneaux.ts (resoudreCompteurComplet)
+    return { etat: 'invalide', raison: 'Créneau introuvable.' };
+  }
   const instant = instantLocal(cible.date, cible.heure, cible.fuseau);
   if (Number.isNaN(instant)) return { etat: 'invalide', raison: 'Date, heure ou fuseau invalide.' };
   const cibleMs = instant - decalage;

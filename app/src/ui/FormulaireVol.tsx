@@ -128,6 +128,7 @@ function ChampsAeroport(props: {
 function Editeur(props: { initial: Vol; nouveau: boolean }) {
   const [vol, definirVol] = useState<Vol>(props.initial);
   const [tentative, definirTentative] = useState(false); // vrai après un premier essai d'enregistrement
+  const [confirme, definirConfirme] = useState(false);
   const [fuseaux] = useState<string[]>(listeFuseaux);
 
   const maj = (partiel: Partial<Vol>) => definirVol((v) => ({ ...v, ...partiel }));
@@ -154,10 +155,22 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
   const problemes = erreursVol(propre);
   const apercuOk = problemes.length === 0;
 
+  // Les heures d'un billet sont imposées : on ne les change qu'après confirmation (retard, changement d'heure)
+  const initial = props.initial;
+  const horairesChanges =
+    !props.nouveau &&
+    (['depart', 'arrivee'] as const).some(
+      (q) => initial[q].date !== propre[q].date || initial[q].heure !== propre[q].heure || initial[q].fuseau !== propre[q].fuseau,
+    );
+  const tousProblemes = [
+    ...problemes,
+    ...(horairesChanges && !confirme ? ['Les heures de ce vol sont imposées par ton billet. Coche la case pour confirmer le changement (retard, changement d\'heure).'] : []),
+  ];
+
   async function enregistrer(e: Event) {
     e.preventDefault();
     definirTentative(true);
-    if (problemes.length > 0) {
+    if (tousProblemes.length > 0) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -168,7 +181,7 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
   return (
     <Page titre={props.nouveau ? 'Nouveau vol' : `Vol ${props.initial.numero}`} retour={{ href: '#/vols', libelle: 'Transports' }}>
       <form class="formulaire" onSubmit={enregistrer} noValidate>
-        <ListeErreurs erreurs={tentative ? problemes : []} />
+        <ListeErreurs erreurs={tentative ? tousProblemes : []} />
 
         <Champ etiquette="Numéro de vol">
           <input type="text" value={vol.numero} placeholder="XX123" autocomplete="off" spellcheck={false} onInput={(e) => maj({ numero: e.currentTarget.value })} />
@@ -195,6 +208,12 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
           </div>
         )}
 
+        {horairesChanges && (
+          <label class="interrupteur">
+            <input type="checkbox" checked={confirme} onChange={(e) => definirConfirme(e.currentTarget.checked)} />
+            <span>Je confirme que les heures de ce vol ont changé (retard, changement d'heure). Le planning et les compteurs suivront.</span>
+          </label>
+        )}
         <Champ etiquette="Type de vol" aide="Sert à choisir le délai d'arrivée à l'aéroport (Réglages).">
           <select value={vol.portee} onChange={(e) => maj({ portee: e.currentTarget.value as Vol['portee'] })}>
             {PORTEES.map((p) => (

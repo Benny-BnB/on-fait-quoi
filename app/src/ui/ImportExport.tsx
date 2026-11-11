@@ -13,6 +13,9 @@ function resume(d: Partial<Donnees>): string {
   if (d.logements) parties.push(`${d.logements.length} logement${d.logements.length > 1 ? 's' : ''}`);
   if (d.trajets) parties.push(`${d.trajets.length} trajet${d.trajets.length > 1 ? 's' : ''}`);
   if (d.taches) parties.push(`${d.taches.length} tâche${d.taches.length > 1 ? 's' : ''}`);
+  if (d.personnes) parties.push(`${d.personnes.length} personne${d.personnes.length > 1 ? 's' : ''}`);
+  if (d.creneaux) parties.push(`${d.creneaux.length} créneau${d.creneaux.length > 1 ? 'x' : ''}`);
+  if (d.joursPlan) parties.push(`${d.joursPlan.length} réglage${d.joursPlan.length > 1 ? 's' : ''} de jour`);
   if (d.compteurs) parties.push(`${d.compteurs.length} compteur${d.compteurs.length > 1 ? 's' : ''}`);
   if (d.reglages) parties.push('les réglages');
   return parties.join(', ');
@@ -26,6 +29,9 @@ function remplacees(d: Partial<Donnees>, actuel: Donnees): string {
   if (d.logements) parties.push(`logements (aujourd'hui ${actuel.logements.length})`);
   if (d.trajets) parties.push(`trajets (aujourd'hui ${actuel.trajets.length})`);
   if (d.taches) parties.push(`tâches (aujourd'hui ${actuel.taches.length})`);
+  if (d.personnes) parties.push(`personnes (aujourd'hui ${actuel.personnes.length})`);
+  if (d.creneaux) parties.push(`créneaux (aujourd'hui ${actuel.creneaux.length})`);
+  if (d.joursPlan) parties.push(`réglages de jour (aujourd'hui ${actuel.joursPlan.length})`);
   if (d.compteurs) parties.push(`compteurs (aujourd'hui ${actuel.compteurs.length})`);
   if (d.reglages) parties.push('réglages');
   return parties.join(', ');
