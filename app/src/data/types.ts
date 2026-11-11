@@ -212,6 +212,91 @@ export const LIBELLES_TYPE_EVENEMENT: Record<TypeEvenement, string> = {
   anniversaire: 'Anniversaire',
 };
 
+// ---------- Fiches de lieux (base publique : aucune donnée personnelle) ----------
+
+export const CATEGORIES = [
+  'incontournables',
+  'culture',
+  'nature',
+  'plages',
+  'promenades',
+  'sport',
+  'nourriture',
+  'nocturne',
+  'marches',
+  'bien-etre',
+  'spots',
+  'famille',
+] as const;
+export type Categorie = (typeof CATEGORIES)[number];
+
+export const LIBELLES_CATEGORIE: Record<Categorie, string> = {
+  incontournables: 'Incontournables',
+  culture: 'Culture et histoire',
+  nature: 'Nature et paysages',
+  plages: 'Plages et îles',
+  promenades: 'Promenades et randonnées',
+  sport: 'Sport et aventure',
+  nourriture: 'Nourriture',
+  nocturne: 'Bars et vie nocturne',
+  marches: 'Marchés et shopping',
+  'bien-etre': 'Bien-être',
+  spots: 'Spots et photo',
+  famille: 'En famille et événements',
+};
+
+// D'où vient une information. Sans source, l'information n'existe pas : elle est « à vérifier ».
+export type SourceLieu = {
+  lien: string; // https://…
+  libelle: string; // nom de la source
+  consulteLe: string; // AAAA-MM-JJ : jour où la page a été lue
+  officielle: boolean; // vrai = site officiel du lieu, de l'opérateur ou d'un organisme officiel ; faux = guide, annuaire, blog (source secondaire)
+};
+
+export const JOURS_SEMAINE = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'] as const;
+export type JourSemaine = (typeof JOURS_SEMAINE)[number];
+
+// "ferme" plus petit que "ouvre" = fermeture après minuit ("24:00" = minuit)
+export type PlageHoraire = { ouvre: string; ferme: string };
+
+export type HorairesLieu = {
+  // "ouverture" = heures d'ouverture ; "animation" = heures où le lieu est animé (rue, marché de nuit) : en dehors, on ne dit jamais "fermé"
+  nature: 'ouverture' | 'animation';
+  jours: Partial<Record<JourSemaine, PlageHoraire[] | 'ferme'>>; // un jour absent = inconnu
+  fermetures: { du: string; au: string; motif: string }[]; // dates précises (AAAA-MM-JJ)
+  derniereEntree: string; // HH:MM, '' si inconnue : après cette heure on n'entre plus, même si le lieu est encore ouvert
+  note: string;
+  source: SourceLieu;
+};
+
+export type Lieu = {
+  id: string;
+  nom: string;
+  zone: string; // ville ou région de la fiche, ex. « Bangkok » (rapprochée du nom d'une étape)
+  fuseau: string; // fuseau IANA du lieu
+  quartier: string;
+  adresse: string;
+  gps: { lat: number; lng: number; source: SourceLieu } | null;
+  categories: Categorie[];
+  etiquettes: string[];
+  incontournable: { raison: string; source: SourceLieu } | null; // seulement si une source citée le dit
+  description: string; // une ou deux phrases factuelles
+  duree: { minMin: number; maxMin: number; estimee: boolean; base: string; source: SourceLieu } | null;
+  prix: { min: number; max: number; devise: string; note: string; source: SourceLieu } | null; // par personne
+  horaires: HorairesLieu | null;
+  reservation: { necessaire: boolean | null; lien: string; note: string; source: SourceLieu } | null;
+  tenue: { texte: string; source: SourceLieu } | null;
+  interieur: '' | 'interieur' | 'exterieur' | 'mixte';
+  public: { texte: string; source: SourceLieu } | null; // enfants, seniors, accessibilité, alimentation
+  lienOfficiel: string;
+  verifieLe: string; // AAAA-MM-JJ : dernière vérification de la fiche, '' si jamais
+  notes: string;
+};
+
+// Suivi personnel d'un lieu : reste sur le téléphone
+export type SouhaitLieu = '' | 'souhait' | 'prioritaire';
+export type SuiviLieu = { lieuId: string; souhait: SouhaitLieu; favori: boolean; fait: boolean; note: string };
+
 // Un créneau du planning que l'utilisateur remplit lui-même (activité, repas, repos, note…)
 // ou un événement fixe (fixe = true), qui est imposé et ne se déplace pas à la légère.
 export type Creneau = {
@@ -231,6 +316,7 @@ export type Creneau = {
   devise: string; // '' si aucun budget
   dureeMin: number | null; // durée connue quand il n'y a pas d'heure de fin
   planBDe: string; // '' = créneau principal ; sinon id du créneau principal dont celui-ci est le plan B
+  lieuId: string; // fiche de lieu liée ('' = aucune)
   fixe: boolean; // événement fixe (imposé)
   typeEvenement: TypeEvenement | ''; // pour un événement fixe
 };
@@ -249,6 +335,8 @@ export type Donnees = {
   personnes: Personne[];
   creneaux: Creneau[];
   joursPlan: JourPlan[];
+  lieuxPerso: Lieu[]; // lieux ajoutés par l'utilisateur (souhaits) : jamais publiés
+  suiviLieux: SuiviLieu[];
 };
 
 export const ID_PROCHAIN_VOL = 'prochain-vol';

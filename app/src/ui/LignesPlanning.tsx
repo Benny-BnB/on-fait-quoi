@@ -7,7 +7,8 @@ import { libelleHoraire, participantsEffectifs, periodeEffective } from '../lib/
 import { formatMontant, formatNombre } from '../lib/format.ts';
 import type { CreneauImpose } from '../lib/planning.ts';
 import { formatDureeMin, nomFuseau } from '../lib/temps.ts';
-import { lienCreneau, lienSource } from './routeur.ts';
+import { trouverLieu } from '../data/lieux-publics.ts';
+import { lienAutreIdee, lienCreneau, lienLieu, lienSource } from './routeur.ts';
 
 export const montant = (n: number, devise: string): string => (devise !== '' ? formatMontant(n, devise) : formatNombre(n));
 
@@ -51,6 +52,8 @@ export function LigneLibre(props: { c: Creneau; donnees: Donnees; alternatif?: C
   const annule = c.statut === 'annule';
   const budget = c.budgetEstime !== null ? `Budget ${montant(c.budgetEstime, c.devise)}` : null;
   const reel = c.budgetReel !== null ? `dépensé ${montant(c.budgetReel, c.devise)}` : null;
+  const lieu = c.lieuId !== '' ? trouverLieu(donnees, c.lieuId) : undefined;
+  const peutChangerIdee = props.onFait !== undefined && !c.fixe && c.planBDe === '' && c.statut !== 'fait' && c.statut !== 'annule';
 
   return (
     <div class={`creneau creneau-libre${props.onFait ? ' avec-case' : ''}${annule ? ' estompee' : ''}`}>
@@ -84,6 +87,16 @@ export function LigneLibre(props: { c: Creneau; donnees: Donnees; alternatif?: C
         {participants && <span class="discret">Avec : {participants}</span>}
         {(budget || reel) && <span class="discret">{[budget, reel].filter(Boolean).join(' · ')}</span>}
         {c.note !== '' && <span class="discret apercu-note">{c.note}</span>}
+        {c.lieuId !== '' && (
+          <a class="discret" href={lieu ? lienLieu(lieu.id) : undefined}>
+            {lieu ? `Fiche du lieu : ${lieu.nom} ›` : 'Fiche du lieu introuvable'}
+          </a>
+        )}
+        {peutChangerIdee && (
+          <a class="discret" href={lienAutreIdee(c.jour, periode, c.id)}>
+            Autre idée ›
+          </a>
+        )}
         {props.alternatif && (
           <a class="plan-b" href={lienCreneau(props.alternatif.id)}>
             Plan B : {props.alternatif.titre || 'à définir'}

@@ -1,17 +1,19 @@
 import { useMemo } from 'preact/hooks';
 import { useStore } from '../data/store.ts';
+import { tousLesLieux } from '../data/lieux-publics.ts';
 import { alertesCreneaux, elementsDuJour, historique, totauxJour, totauxSejour } from '../lib/creneaux.ts';
+import { alertesLieux } from '../lib/lieux.ts';
 import { alertesPlanning, creneauxImposes, etapesDuJour, plageJours } from '../lib/planning.ts';
 import { jourSemaine } from '../lib/sejour.ts';
 import { aujourdhuiIso, formatDateIso } from '../lib/temps.ts';
 import { Page } from './commun.tsx';
 import { LigneImpose, LigneLibre, ResumeTotaux, montant } from './LignesPlanning.tsx';
-import { lienCreneau, lienJour, lienNouveauCreneau, lienSource } from './routeur.ts';
+import { lienCreneau, lienJour, lienNouveauCreneau, lienQuoiFaire, lienSource } from './routeur.ts';
 
 export function Planning() {
   const { donnees } = useStore();
   const imposes = useMemo(() => creneauxImposes(donnees), [donnees]);
-  const alertes = useMemo(() => [...alertesPlanning(donnees), ...alertesCreneaux(donnees)], [donnees]);
+  const alertes = useMemo(() => [...alertesPlanning(donnees), ...alertesCreneaux(donnees), ...alertesLieux(donnees, tousLesLieux(donnees))], [donnees]);
   const jours = plageJours(donnees, imposes);
   const aujourdhui = aujourdhuiIso();
   const totaux = totauxSejour(donnees, imposes);
@@ -62,6 +64,10 @@ export function Planning() {
           </button>
         </div>
       )}
+
+      <a class="bouton secondaire" href={lienQuoiFaire()}>
+        Quoi faire, quand ? Des idées de lieux
+      </a>
 
       {jours.length === 0 && (
         <section class="carte">

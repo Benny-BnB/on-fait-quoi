@@ -74,7 +74,7 @@ export function Reglages() {
       <Verification />
       <EtatApp />
       <p class="note">
-        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning (créneaux imposés et libres) et les check-lists. Les propositions de lieux et les fiches de lieux ne sont pas encore là : ils arrivent étape par étape.
+        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning (créneaux imposés et libres), les check-lists et les fiches de lieux avec « Quoi faire, quand ? » (base de Bangkok pour l'instant). Les profils détaillés, les groupes et le taux de change arrivent à l'étape suivante.
       </p>
     </Page>
   );

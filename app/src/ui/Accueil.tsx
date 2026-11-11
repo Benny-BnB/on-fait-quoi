@@ -1,11 +1,14 @@
 import { useMemo } from 'preact/hooks';
+import { tousLesLieux } from '../data/lieux-publics.ts';
 import { basculerCompteur, useStore } from '../data/store.ts';
+import { elementsACompleter } from '../lib/completer.ts';
 import { useMaintenant } from '../lib/horloge.ts';
 import { creneauxImposes, plageJours } from '../lib/planning.ts';
 import { debutVoyage, progression } from '../lib/taches.ts';
 import { aujourdhuiIso, formatDateHeureDansFuseau, formatDateIso } from '../lib/temps.ts';
 import { CarteCompteur } from './CarteCompteur.tsx';
 import { Page } from './commun.tsx';
+import { lienACompleter, lienLieu, lienQuoiFaire } from './routeur.ts';
 
 export function Accueil() {
   const { donnees } = useStore();
@@ -22,6 +25,13 @@ export function Accueil() {
   const debut = debutVoyage(donnees);
   const aFaire = progression(donnees.taches.filter((t) => t.liste === 'reste-a-faire'), aujourdhui, debut);
   const valise = progression(donnees.taches.filter((t) => t.liste === 'a-emporter'), aujourdhui, debut);
+
+  // Ce qui manque encore, et les envies à ne pas oublier (elles viennent du téléphone, jamais du dépôt public)
+  const aCompleter = elementsACompleter(donnees, tousLesLieux(donnees), aujourdhui);
+  const envies = donnees.suiviLieux
+    .filter((s) => s.souhait === 'prioritaire' && !s.fait)
+    .map((s) => tousLesLieux(donnees).find((l) => l.id === s.lieuId))
+    .filter((l) => l !== undefined);
 
   return (
     <Page titre="On fait quoi ?">
@@ -71,6 +81,36 @@ export function Accueil() {
             </div>
           ))}
           <span class="discret">Voir le planning ›</span>
+        </a>
+      )}
+
+      <section class="carte">
+        <h2>Quoi faire ?</h2>
+        {envies.length > 0 && (
+          <>
+            <p class="discret">Tes envies prioritaires :</p>
+            <ul class="vol-lignes">
+              {envies.map((l) => (
+                <li key={l.id}>
+                  <a href={lienLieu(l.id)}>★ {l.nom}</a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        <a class="bouton secondaire" href={lienQuoiFaire()}>
+          Quoi faire, quand ?
+        </a>
+      </section>
+
+      {aCompleter.length > 0 && (
+        <a class="carte carte-lien" href={lienACompleter()}>
+          <h2>À compléter</h2>
+          <strong>
+            {aCompleter.length} chose{aCompleter.length > 1 ? 's' : ''} à renseigner
+          </strong>
+          <div class="discret">Logements, heures, durées, fiches à vérifier…</div>
+          <span class="discret">Voir la liste ›</span>
         </a>
       )}
 

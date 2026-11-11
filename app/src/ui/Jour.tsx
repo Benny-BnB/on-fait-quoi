@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { nouvelId } from '../data/defauts.ts';
+import { tousLesLieux } from '../data/lieux-publics.ts';
 import { basculerCreneauFait, definirParticipantsJour, enregistrerCreneau, useStore } from '../data/store.ts';
 import type { Creneau, Periode } from '../data/types.ts';
 import { LIBELLES_PERIODE } from '../data/types.ts';
@@ -8,12 +9,13 @@ import { alertesCreneaux, deviseDuJour, elementsDuJour, estPrincipal, HEURE_PERI
 import { useMaintenant } from '../lib/horloge.ts';
 import type { Alerte } from '../lib/planning.ts';
 import { alertesPlanning, creneauxImposes, etapesDuJour } from '../lib/planning.ts';
+import { alertesLieux } from '../lib/lieux.ts';
 import { ajouterJours, jourSemaine } from '../lib/sejour.ts';
 import { aujourdhuiIso, dateValide, formatDateHeureDansFuseau, formatDateIso, fuseauTelephone, instantLocal } from '../lib/temps.ts';
 import { ChoixParticipants } from './ChoixParticipants.tsx';
 import { Page } from './commun.tsx';
 import { LigneImpose, LigneLibre, ResumeTotaux } from './LignesPlanning.tsx';
-import { lienJour, lienNouveauCreneau, lienSource } from './routeur.ts';
+import { lienJour, lienNouveauCreneau, lienQuoiFaire, lienSource } from './routeur.ts';
 
 const PERIODES_RAPIDES: Periode[] = ['matin', 'midi', 'apres-midi', 'soir'];
 const IDEES = ['Petit-déjeuner', 'Déjeuner', 'Dîner', 'Plage', 'Piscine', 'Marché', 'Visite', 'Balade', 'Shopping', 'Spa', 'Repos', 'Soirée'];
@@ -47,6 +49,7 @@ function AjoutRapide(props: { jour: string; periode: Periode; zone: string; devi
       planBDe: '',
       fixe: false,
       typeEvenement: '',
+      lieuId: '',
     };
     await enregistrerCreneau(creneau);
     props.onFini();
@@ -70,6 +73,9 @@ function AjoutRapide(props: { jour: string; periode: Periode; zone: string; devi
           Annuler
         </button>
       </div>
+      <a class="bouton secondaire petit" href={lienQuoiFaire(props.jour, props.periode)}>
+        Que faire ? Des idées de lieux ›
+      </a>
       <a class="discret" href={lienNouveauCreneau(props.jour, props.periode)}>
         Plus de détails (heure, participants, budget…) ›
       </a>
@@ -85,7 +91,7 @@ export function Jour(props: { jour: string }) {
   const [ouvert, definirOuvert] = useState<Periode | null>(null);
   const jour = props.jour;
   const imposes = useMemo(() => creneauxImposes(donnees), [donnees]);
-  const alertes = useMemo<Alerte[]>(() => [...alertesPlanning(donnees), ...alertesCreneaux(donnees)], [donnees]);
+  const alertes = useMemo<Alerte[]>(() => [...alertesPlanning(donnees), ...alertesCreneaux(donnees), ...alertesLieux(donnees, tousLesLieux(donnees))], [donnees]);
 
   if (!dateValide(jour)) {
     return (

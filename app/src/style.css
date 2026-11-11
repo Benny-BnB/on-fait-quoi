@@ -779,3 +779,100 @@ fieldset.groupe legend {
   font-size: 15px;
   color: var(--texte-doux);
 }
+
+/* ---------- Fiches de lieux ---------- */
+.fait {
+  display: grid;
+  gap: 4px;
+  padding: 10px 0;
+  border-top: 1px solid var(--bord);
+}
+
+.fait:first-of-type {
+  border-top: 0;
+}
+
+.fait-titre {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texte-doux);
+}
+
+.fait-valeur {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.source {
+  font-size: 13px;
+  color: var(--texte-doux);
+}
+
+.source a {
+  color: var(--accent-texte);
+}
+
+.horaires {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.horaires th {
+  text-align: left;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 3px 12px 3px 0;
+  width: 1%;
+  white-space: nowrap;
+}
+
+.horaires td {
+  padding: 3px 0;
+}
+
+.horaires tr.jour-choisi {
+  font-weight: 700;
+}
+
+.etiquette.ok {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.etiquette.alerte {
+  border-color: var(--alerte);
+  color: var(--alerte);
+}
+
+.ouverture {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.proposition {
+  display: grid;
+  gap: 8px;
+}
+
+.proposition h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.proposition .titre-ligne {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.souhait-etoile {
+  color: var(--attention);
+  font-weight: 700;
+}

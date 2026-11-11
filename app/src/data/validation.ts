@@ -5,12 +5,13 @@ import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Creneau, Donnees, 
 import { HUMEURS, LISTES_TACHE, MODES_TRAJET, PERIODES, PORTEES, STATUTS_CRENEAU, STATUTS_LOGEMENT, STATUTS_VOL, TYPES_EVENEMENT } from './types.ts';
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
 import { lienSur } from '../lib/sejour.ts';
+import { lireLieux, lireSuivis } from '../lib/lieux.ts';
 
 export const FORMAT_FICHIER = 'on-fait-quoi';
 // Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan', 'lieuxPerso', 'suiviLieux'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -497,6 +498,7 @@ function lireCreneau(brut: unknown, index: number, erreurs: string[], ids: Set<s
     planBDe: texte(brut, 'planBDe'),
     fixe: brut.fixe === true,
     typeEvenement: typeEvenement as Creneau['typeEvenement'],
+    lieuId: texte(brut, 'lieuId'),
   };
 }
 
@@ -647,9 +649,26 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  // Lieux ajoutés par l'utilisateur : mêmes règles que la base publique (source obligatoire pour chaque fait chiffré)
+  if (brut.lieuxPerso !== undefined) {
+    if (!Array.isArray(brut.lieuxPerso)) {
+      erreurs.push('« lieuxPerso » doit être une liste.');
+    } else {
+      donnees.lieuxPerso = lireLieux(brut.lieuxPerso, erreurs);
+    }
+  }
+
+  if (brut.suiviLieux !== undefined) {
+    if (!Array.isArray(brut.suiviLieux)) {
+      erreurs.push('« suiviLieux » doit être une liste.');
+    } else {
+      donnees.suiviLieux = lireSuivis(brut.suiviLieux, erreurs);
+    }
+  }
+
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.creneaux && !donnees.joursPlan) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni créneaux.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.creneaux && !donnees.joursPlan && !donnees.lieuxPerso && !donnees.suiviLieux) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni créneaux, ni lieux.'] };
   }
   return { ok: true, donnees, avertissements };
 }

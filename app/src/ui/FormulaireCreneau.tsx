@@ -8,7 +8,8 @@ import { ajouterJours } from '../lib/sejour.ts';
 import { aujourdhuiIso, dateValide, formatDateIso, fuseauTelephone, fuseauValide, heureValide, listeFuseaux } from '../lib/temps.ts';
 import { BoutonConfirme, Champ, ListeErreurs, Page } from './commun.tsx';
 import { ChoixParticipants } from './ChoixParticipants.tsx';
-import { aller, lienCopie, lienCreneau, lienJour, lienPlanB } from './routeur.ts';
+import { trouverLieu } from '../data/lieux-publics.ts';
+import { aller, lienCopie, lienCreneau, lienJour, lienLieu, lienPlanB, lienQuoiFaire } from './routeur.ts';
 
 const IDEES = ['Petit-déjeuner', 'Déjeuner', 'Dîner', 'Plage', 'Piscine', 'Marché', 'Visite', 'Balade', 'Shopping', 'Spa', 'Repos', 'Soirée'];
 
@@ -139,6 +140,26 @@ function Editeur(props: { initial: Creneau; nouveau: boolean }) {
               </button>
             ))}
           </div>
+        )}
+
+        {saisie.lieuId !== '' && (
+          <div class="message info">
+            {trouverLieu(donnees, saisie.lieuId) ? (
+              <span>
+                Fiche liée : <a href={lienLieu(saisie.lieuId)}>{trouverLieu(donnees, saisie.lieuId)?.nom} ›</a>
+              </span>
+            ) : (
+              <span>La fiche liée n'existe plus.</span>
+            )}
+            <button type="button" class="bouton secondaire petit" onClick={() => maj({ lieuId: '' })}>
+              Détacher la fiche
+            </button>
+          </div>
+        )}
+        {saisie.lieuId === '' && (
+          <a class="bouton secondaire petit" href={lienQuoiFaire(saisie.jour, saisie.periode)}>
+            Chercher une idée de lieu pour ce moment ›
+          </a>
         )}
 
         <fieldset class="groupe">
@@ -404,6 +425,7 @@ export function FormulaireCreneau(props: { id: string; mode?: 'jour' | 'planb' |
       planBDe: '',
       fixe: false,
       typeEvenement: '',
+      lieuId: '',
     };
   }
   return <Editeur key={`${props.id}-${props.mode ?? ''}-${props.reference ?? ''}-${props.periode ?? ''}`} initial={initial} nouveau />;

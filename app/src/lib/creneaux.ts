@@ -10,14 +10,8 @@ import { fuseauValide, heureValide, instantLocal, nomFuseau } from './temps.ts';
 import type { CompteurResolu } from './vols.ts';
 import { instantArrivee, instantDepart, resoudre } from './vols.ts';
 
-// Heures "de rangement" des périodes : elles servent UNIQUEMENT à ordonner la journée, on ne les affiche jamais comme des heures
-export const HEURE_PERIODE: Record<Periode, string> = {
-  matin: '09:00',
-  midi: '12:30',
-  'apres-midi': '15:00',
-  soir: '19:00',
-  nuit: '22:30',
-};
+import { HEURE_PERIODE } from './periodes.ts';
+export { HEURE_PERIODE };
 
 // ---------- Fuseau d'un jour ----------
 
@@ -289,6 +283,7 @@ export function creerAlternative(c: Creneau, nouvelId: string): Creneau {
     planBDe: c.id,
     fixe: false,
     typeEvenement: '',
+    lieuId: '',
   };
 }
 

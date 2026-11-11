@@ -16,6 +16,8 @@ function resume(d: Partial<Donnees>): string {
   if (d.personnes) parties.push(`${d.personnes.length} personne${d.personnes.length > 1 ? 's' : ''}`);
   if (d.creneaux) parties.push(`${d.creneaux.length} créneau${d.creneaux.length > 1 ? 'x' : ''}`);
   if (d.joursPlan) parties.push(`${d.joursPlan.length} réglage${d.joursPlan.length > 1 ? 's' : ''} de jour`);
+  if (d.lieuxPerso) parties.push(`${d.lieuxPerso.length} lieu${d.lieuxPerso.length > 1 ? 'x' : ''} ajouté${d.lieuxPerso.length > 1 ? 's' : ''}`);
+  if (d.suiviLieux) parties.push(`${d.suiviLieux.length} envie${d.suiviLieux.length > 1 ? 's' : ''} ou note${d.suiviLieux.length > 1 ? 's' : ''} sur des lieux`);
   if (d.compteurs) parties.push(`${d.compteurs.length} compteur${d.compteurs.length > 1 ? 's' : ''}`);
   if (d.reglages) parties.push('les réglages');
   return parties.join(', ');
@@ -32,6 +34,8 @@ function remplacees(d: Partial<Donnees>, actuel: Donnees): string {
   if (d.personnes) parties.push(`personnes (aujourd'hui ${actuel.personnes.length})`);
   if (d.creneaux) parties.push(`créneaux (aujourd'hui ${actuel.creneaux.length})`);
   if (d.joursPlan) parties.push(`réglages de jour (aujourd'hui ${actuel.joursPlan.length})`);
+  if (d.lieuxPerso) parties.push(`lieux ajoutés (aujourd'hui ${actuel.lieuxPerso.length})`);
+  if (d.suiviLieux) parties.push(`envies sur les lieux (aujourd'hui ${actuel.suiviLieux.length})`);
   if (d.compteurs) parties.push(`compteurs (aujourd'hui ${actuel.compteurs.length})`);
   if (d.reglages) parties.push('réglages');
   return parties.join(', ');

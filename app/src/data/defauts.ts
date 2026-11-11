@@ -45,6 +45,8 @@ export function donneesVides(): Donnees {
     personnes: [],
     creneaux: [],
     joursPlan: [],
+    lieuxPerso: [],
+    suiviLieux: [],
   };
 }
 

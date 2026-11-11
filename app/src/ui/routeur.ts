@@ -19,6 +19,10 @@ export type Route =
   | { nom: 'sejour' }
   | { nom: 'etape'; id: string }
   | { nom: 'logement'; id: string; etapeId?: string }
+  | { nom: 'quoi-faire'; jour?: string; periode?: string; planbDe?: string }
+  | { nom: 'lieu'; id: string }
+  | { nom: 'lieu-form'; id: string }
+  | { nom: 'a-completer' }
   | { nom: 'reglages' };
 
 function decoder(morceau: string): string {
@@ -31,7 +35,7 @@ function decoder(morceau: string): string {
 
 export function lireRoute(hash: string): Route {
   const morceaux = hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decoder);
-  const [a, b, c, d] = morceaux;
+  const [a, b, c, d, e] = morceaux;
   if (a === 'sejour') {
     if (b === 'etape' && c) return { nom: 'etape', id: c };
     if (b === 'logement' && c) return { nom: 'logement', id: c, etapeId: d };
@@ -50,6 +54,13 @@ export function lireRoute(hash: string): Route {
     if (c === 'planb' || c === 'copie') return { nom: 'creneau', id: b, mode: c, ref: d };
     return { nom: 'creneau', id: b, mode: 'jour', ref: c, periode: d };
   }
+  if (a === 'quoi-faire') return { nom: 'quoi-faire', jour: b, periode: c && c !== '-' ? c : undefined, planbDe: d === 'planb' ? e : undefined };
+  if (a === 'lieu' && b) return { nom: 'lieu', id: b };
+  if (a === 'lieux') {
+    if (b === 'nouveau') return { nom: 'lieu-form', id: 'nouveau' };
+    if (b === 'modifier' && c) return { nom: 'lieu-form', id: c };
+  }
+  if (a === 'a-completer') return { nom: 'a-completer' };
   if (a === 'reglages') return { nom: 'reglages' };
   return { nom: 'accueil' };
 }
@@ -90,3 +101,12 @@ export const lienCopie = (id: string): string => `#/creneau/nouveau/copie/${enco
 export const lienEtape =(id: string): string => `#/sejour/etape/${encodeURIComponent(id)}`;
 export const lienLogement = (id: string): string => `#/sejour/logement/${encodeURIComponent(id)}`;
 export const lienNouveauLogement = (etapeId: string): string => `#/sejour/logement/nouveau/${encodeURIComponent(etapeId)}`;
+
+// Quoi faire, quand ? (avec éventuellement le jour et le moment déjà choisis)
+export const lienQuoiFaire = (jour?: string, periode?: string): string => `#/quoi-faire${jour ? `/${jour}${periode ? `/${periode}` : ''}` : ''}`;
+// « Autre idée » pour un créneau : le choix devient son plan B
+export const lienAutreIdee = (jour: string, periode: string, creneauId: string): string => `#/quoi-faire/${jour}/${periode || '-'}/planb/${encodeURIComponent(creneauId)}`;
+export const lienLieu = (id: string): string => `#/lieu/${encodeURIComponent(id)}`;
+export const lienNouveauLieu = (): string => '#/lieux/nouveau';
+export const lienModifierLieu = (id: string): string => `#/lieux/modifier/${encodeURIComponent(id)}`;
+export const lienACompleter = (): string => '#/a-completer';

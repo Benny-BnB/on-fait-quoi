@@ -2,7 +2,7 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Creneau, Donnees, Etape, Logement, Personne, Reglages, Tache, Trajet, Vol } from './types.ts';
+import type { Compteur, Creneau, Donnees, Etape, Lieu, Logement, Personne, Reglages, SuiviLieu, Tache, Trajet, Vol } from './types.ts';
 import { aujourdhuiIso } from '../lib/temps.ts';
 import { echanger, promouvoirPlanB, suivrePlace } from '../lib/creneaux.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
@@ -10,6 +10,7 @@ import { REGLAGES_PAR_DEFAUT, compteurPourVol, compteurProchainVol, donneesVides
 import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
 import { FORMAT_FICHIER, VERSION_FORMAT } from './validation.ts';
 import { libelleVol } from '../lib/vols.ts';
+import { mettreAJourSuivi } from '../lib/lieux.ts';
 
 type Etat = { charge: boolean; donnees: Donnees; erreurStockage: string | null };
 
@@ -53,9 +54,12 @@ function normaliser(brut: Partial<Donnees> | undefined): Donnees {
   const trajets = brut && Array.isArray(brut.trajets) ? brut.trajets : [];
   const taches = brut && Array.isArray(brut.taches) ? brut.taches : [];
   const personnes = brut && Array.isArray(brut.personnes) ? brut.personnes : [];
-  const creneaux = brut && Array.isArray(brut.creneaux) ? brut.creneaux : [];
+  // Les créneaux enregistrés avant l'étape 7 n'ont pas de fiche de lieu liée : on met "aucune"
+  const creneaux = (brut && Array.isArray(brut.creneaux) ? brut.creneaux : []).map((c) => ({ ...c, lieuId: typeof c.lieuId === 'string' ? c.lieuId : '' }));
   const joursPlan = brut && Array.isArray(brut.joursPlan) ? brut.joursPlan : [];
-  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, creneaux, joursPlan };
+  const lieuxPerso = brut && Array.isArray(brut.lieuxPerso) ? brut.lieuxPerso : [];
+  const suiviLieux = brut && Array.isArray(brut.suiviLieux) ? brut.suiviLieux : [];
+  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, creneaux, joursPlan, lieuxPerso, suiviLieux };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -316,6 +320,31 @@ function reconstruireCompteurs(anciens: Compteur[], vols: Vol[]): Compteur[] {
 }
 
 // Remplace les sections présentes dans le fichier (vols, compteurs, réglages)
+// ---------- Lieux ----------
+
+// Souhait, favori, "déjà fait" et note personnelle sur une fiche (publique ou perso). Reste sur le téléphone.
+export function modifierSuiviLieu(lieuId: string, changement: Partial<Omit<SuiviLieu, 'lieuId'>>): Promise<void> {
+  return modifier((d) => ({ ...d, suiviLieux: mettreAJourSuivi(d.suiviLieux, lieuId, changement) }));
+}
+
+export function enregistrerLieuPerso(lieu: Lieu): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    lieuxPerso: d.lieuxPerso.some((l) => l.id === lieu.id) ? d.lieuxPerso.map((l) => (l.id === lieu.id ? lieu : l)) : [...d.lieuxPerso, lieu],
+  }));
+}
+
+// "fichePubliqueRestante" : une fiche publique de même identifiant reprend la place, donc les envies et les liens avec le planning restent
+export function supprimerLieuPerso(id: string, fichePubliqueRestante: boolean): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    lieuxPerso: d.lieuxPerso.filter((l) => l.id !== id),
+    suiviLieux: fichePubliqueRestante ? d.suiviLieux : d.suiviLieux.filter((s) => s.lieuId !== id),
+    // Les créneaux gardent leur titre, ils perdent seulement le lien vers la fiche
+    creneaux: fichePubliqueRestante ? d.creneaux : d.creneaux.map((c) => (c.lieuId === id ? { ...c, lieuId: '' } : c)),
+  }));
+}
+
 export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
   return modifier((d) => {
     const vols = partiel.vols ?? d.vols;
@@ -334,6 +363,8 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
       personnes: partiel.personnes ?? d.personnes,
       creneaux: partiel.creneaux ?? d.creneaux,
       joursPlan: partiel.joursPlan ?? d.joursPlan,
+      lieuxPerso: partiel.lieuxPerso ?? d.lieuxPerso,
+      suiviLieux: partiel.suiviLieux ?? d.suiviLieux,
     });
   });
 }

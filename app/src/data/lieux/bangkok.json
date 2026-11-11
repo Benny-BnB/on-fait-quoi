@@ -1,0 +1,1152 @@
+{
+  "format": "on-fait-quoi-lieux",
+  "version": 1,
+  "lieux": [
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phra Nakhon (Rattanakosin)",
+      "adresse": "Na Phra Lan Road, Phranakorn (Rattanakosin), Bangkok",
+      "gps": {
+        "lat": 13.7493514,
+        "lng": 100.4918643,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/23482754",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "temple",
+        "palais"
+      ],
+      "incontournable": {
+        "raison": "Cité parmi les « Top Sights » du guide (« Wat Phra Kaew & Grand Palace », p. 32).",
+        "source": {
+          "lien": "https://media.lonelyplanet.com/shop/pdfs/pocket-bangkok-6-preview.pdf",
+          "libelle": "Lonely Planet, Pocket Bangkok (aperçu PDF)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "description": "Temple du Bouddha d'Émeraude et cour centrale du Grand Palace, dans le quartier de Rattanakosin.",
+      "duree": null,
+      "prix": {
+        "min": 500,
+        "max": 500,
+        "devise": "THB",
+        "note": "Le site officiel indique « cost 500 baht » sans préciser pour qui ni qui est exonéré.",
+        "source": {
+          "lien": "https://www.royalgrandpalace.th/en/home",
+          "libelle": "Site officiel du Grand Palace (royalgrandpalace.th)",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:30",
+              "ferme": "16:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "15:30",
+        "note": "Site officiel : « Daily 8:30 AM - 4:30 PM ». Billets vendus de 08:30 à 15:30 : arriver avant. Fermetures exceptionnelles (cérémonies) non indiquées.",
+        "source": {
+          "lien": "https://www.royalgrandpalace.th/en/home",
+          "libelle": "Site officiel du Grand Palace (royalgrandpalace.th)",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "reservation": null,
+      "tenue": {
+        "texte": "Hommes : pantalon long et vêtement à manches, pas de débardeur ; avec des sandales, des chaussettes. Femmes : tenue décente, ni transparent ni épaules nues. Un stand près de l'entrée prête des vêtements en échange d'un passeport ou d'une carte bancaire en dépôt.",
+        "source": {
+          "lien": "https://bangkokforvisitors.com/ratanakosin/grand-palace/",
+          "libelle": "Bangkok for Visitors (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "https://www.royalgrandpalace.th/en/home",
+      "verifieLe": "2026-11-11",
+      "notes": "Durée de visite, réservation en ligne et tenue : non indiquées par le site officiel (à vérifier). Un guide parle de « la majeure partie d'une journée ».",
+      "id": "bkk-grand-palace",
+      "nom": "Grand Palace (Wat Phra Kaew)"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phra Nakhon (Tha Tien)",
+      "adresse": "2 Sanam Chai Road, Phra Borom Maha Ratchawang, Phra Nakhon, Bangkok 10200",
+      "gps": {
+        "lat": 13.7463456,
+        "lng": 100.4927381,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/11169995",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "temple",
+        "bouddha couché"
+      ],
+      "incontournable": {
+        "raison": "Cité parmi les « Top Sights » du guide (« Wat Pho — Bangkok's biggest reclining Buddha », p. 36).",
+        "source": {
+          "lien": "https://media.lonelyplanet.com/shop/pdfs/pocket-bangkok-6-preview.pdf",
+          "libelle": "Lonely Planet, Pocket Bangkok (aperçu PDF)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "description": "Temple connu pour son grand Bouddha couché.",
+      "duree": null,
+      "prix": {
+        "min": 300,
+        "max": 300,
+        "devise": "THB",
+        "note": "300 THB par personne pour les visiteurs étrangers, d'après un guide. Aucune source officielle obtenue : à vérifier.",
+        "source": {
+          "lien": "https://www.lovethailand.org/travel/en/17-Bangkok/917-Wat-Pho.html",
+          "libelle": "lovethailand.org (guide, éditeur non indiqué)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": null,
+      "reservation": null,
+      "tenue": {
+        "texte": "S'habiller de façon décente : éviter les shorts au-dessus du genou, surtout pour les femmes. Chaussures à retirer dans les zones sacrées.",
+        "source": {
+          "lien": "https://www.lovethailand.org/travel/en/17-Bangkok/917-Wat-Pho.html",
+          "libelle": "lovethailand.org (guide, éditeur non indiqué)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "https://www.watpho.com/en",
+      "verifieLe": "2026-11-11",
+      "notes": "Horaires non retenus : le site officiel n'indique pas les horaires habituels et les guides divergent (fermeture à 18:30 ou à 19:30). À vérifier avant d'y aller.",
+      "id": "bkk-wat-pho",
+      "nom": "Wat Pho (temple du Bouddha couché)"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Bangkok Yai (rive de Thonburi)",
+      "adresse": "158 Thanon Wang Doem, Wat Arun, Bangkok Yai, Bangkok 10600",
+      "gps": {
+        "lat": 13.7438976,
+        "lng": 100.4885137,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/23481741",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "temple",
+        "bord du fleuve"
+      ],
+      "incontournable": {
+        "raison": "Cité parmi les « Top Sights » du guide (« Wat Arun — The capital's most famous riverside temple », p. 40).",
+        "source": {
+          "lien": "https://media.lonelyplanet.com/shop/pdfs/pocket-bangkok-6-preview.pdf",
+          "libelle": "Lonely Planet, Pocket Bangkok (aperçu PDF)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "description": "Temple au bord du fleuve Chao Phraya.",
+      "duree": {
+        "minMin": 60,
+        "maxMin": 120,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-arun/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 200,
+        "max": 200,
+        "devise": "THB",
+        "note": "200 THB pour les étrangers, gratuit pour les Thaïlandais et les petits enfants, d'après un guide (mis à jour en novembre 2026). Aucune source officielle obtenue : à vérifier.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-arun/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "17:30",
+        "note": "Guide : « open daily 08:00 to 18:00 (last entry 17:30) ». Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-arun/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": {
+        "texte": "Épaules et genoux couverts. Chaussures à retirer avant la salle d'ordination.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-arun/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Le site officiel du tourisme thaïlandais n'a pas pu être consulté (accès refusé) : prix et horaires restent à confirmer.",
+      "id": "bkk-wat-arun",
+      "nom": "Wat Arun"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Tha Tien",
+      "adresse": "",
+      "gps": null,
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant"
+      ],
+      "incontournable": null,
+      "description": "Restaurant « Supanniga Eating Room », succursale de Tha Tien. Le site officiel ne dit rien du panorama depuis la salle.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": {
+        "necessaire": null,
+        "lien": "https://bookv5.chope.co/booking?rid=supannigathatien2202bkk&source=rest_website.supannigathatien&smart=1",
+        "note": "Le site officiel propose une réservation en ligne pour la succursale Tha Tien. Il ne dit pas si elle est obligatoire.",
+        "source": {
+          "lien": "https://www.supannigaeatingroom.com/",
+          "libelle": "Site officiel de Supanniga Eating Room",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "tenue": null,
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "https://www.supannigaeatingroom.com/",
+      "verifieLe": "2026-11-11",
+      "notes": "Adresse, horaires, prix et emplacement GPS de la succursale Tha Tien : non indiqués sur la page lue (page de contact et menu PDF non lus). À vérifier sur le site officiel.",
+      "id": "bkk-supanniga-tha-tien",
+      "nom": "Supanniga Eating Room (Tha Tien)"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phra Nakhon (Tha Tien)",
+      "adresse": "87-89 Phrabarommaharachawang, Phranakorn, Bangkok 10200",
+      "gps": {
+        "lat": 13.7449383,
+        "lng": 100.4911625,
+        "source": {
+          "lien": "https://www.openstreetmap.org/node/11039642612",
+          "libelle": "OpenStreetMap (point « Arun View », à confirmer)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture",
+        "spots"
+      ],
+      "etiquettes": [
+        "vue sur Wat Arun",
+        "vue sur le fleuve",
+        "restaurant",
+        "bar"
+      ],
+      "incontournable": null,
+      "description": "Restaurant-bar avec vue panoramique sur le fleuve Chao Phraya et sur Wat Arun, d'après l'annuaire.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "12:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Annuaire : « 12:00 - 22:00 » tous les jours. Un autre guide donne une heure différente le vendredi et le samedi (probablement une coquille) : à confirmer.",
+        "source": {
+          "lien": "https://hopsa.io/en/attractions/view-arun-restaurant-bar-c5fe167083",
+          "libelle": "hopsa.io (annuaire)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": {
+        "necessaire": null,
+        "lien": "",
+        "note": "L'annuaire indique « Reservable », sans détail de réservation.",
+        "source": {
+          "lien": "https://hopsa.io/en/attractions/view-arun-restaurant-bar-c5fe167083",
+          "libelle": "hopsa.io (annuaire)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "tenue": null,
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Téléphone indiqué par l'annuaire : +6622215651. Site officiel non trouvé ; prix, durée et tenue : à vérifier.",
+      "id": "bkk-view-arun",
+      "nom": "View ARUN Restaurant & Bar"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Chinatown (Samphanthawong)",
+      "adresse": "",
+      "gps": {
+        "lat": 13.7411515,
+        "lng": 100.5083113,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/832948770",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture",
+        "nocturne",
+        "promenades"
+      ],
+      "etiquettes": [
+        "street food",
+        "marché de nuit",
+        "néons"
+      ],
+      "incontournable": null,
+      "description": "Rue principale de Chinatown : restaurants chinois, stands de street food, rues éclairées au néon, sanctuaires et temples à proximité.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "17:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : l'ambiance de marché de nuit est la plus animée vers 17:00 – 24:00 ; chaque boutique fixe ses horaires. Foule maximale entre 19:00 et 23:00 selon la FAQ du guide.",
+        "source": {
+          "lien": "https://www.lovethailand.org/travel/en/17-Bangkok/833-China-Town.html",
+          "libelle": "lovethailand.org (guide, éditeur non indiqué)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Station de métro la plus proche indiquée : Wat Mangkon (BL29). Le guide recommande le métro car les routes sont embouteillées en début de soirée. Prix et durée : à vérifier.",
+      "id": "bkk-yaowarat",
+      "nom": "Yaowarat Road (Chinatown)"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Banglamphu",
+      "adresse": "Talat Yot, Phra Nakhon, Bangkok 10200",
+      "gps": {
+        "lat": 13.7589052,
+        "lng": 100.4972746,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/1516377328",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nocturne",
+        "nourriture",
+        "marches"
+      ],
+      "etiquettes": [
+        "bars",
+        "street food"
+      ],
+      "incontournable": null,
+      "description": "Rue de 410 mètres à Banglamphu : bars, pensions, stands de street food, tailleurs et étals.",
+      "duree": {
+        "minMin": 60,
+        "maxMin": 180,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/khao-san-road/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre, d'après un guide.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/khao-san-road/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "15:00",
+              "ferme": "02:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « Daily 15:00-02:00 (busiest 20:00-01:00) ».",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/khao-san-road/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Mises en garde du guide : pickpockets après 21:00, bruit jusqu'à 02:00 (déconseillé pour dormir), certains menus affichent des prix plus élevés en anglais qu'en thaï.",
+      "id": "bkk-khaosan",
+      "nom": "Khaosan Road"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Bang Rak (Silom)",
+      "adresse": "64th Floor, State Tower, 1055 Silom Road, Bangrak, Bangkok 10500",
+      "gps": {
+        "lat": 13.7215136,
+        "lng": 100.516885,
+        "source": {
+          "lien": "https://www.openstreetmap.org/node/257066461",
+          "libelle": "OpenStreetMap (lebua at State Tower)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nocturne",
+        "spots"
+      ],
+      "etiquettes": [
+        "rooftop",
+        "bar"
+      ],
+      "incontournable": null,
+      "description": "Bar au 64e étage de la State Tower.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": {
+        "necessaire": false,
+        "lien": "",
+        "note": "Site officiel : « Sky Bar and all other bars welcome walk-in only. No reservations are required. »",
+        "source": {
+          "lien": "https://lebua.com/sky-bar/",
+          "libelle": "Site officiel de lebua (Sky Bar)",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "tenue": {
+        "texte": "« Strict Smart Casual » : pas de tenue de sport, pas de jean déchiré, pas de tongs. Hommes : pantalon long et chaussures fermées.",
+        "source": {
+          "lien": "https://www.therooftopguide.com/features/bangkok-dress-code.html",
+          "libelle": "The Rooftop Guide (guide, publié le 27/03/2026)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "https://lebua.com/sky-bar/",
+      "verifieLe": "2026-11-11",
+      "notes": "Horaires, prix et règle d'âge : non indiqués par la page officielle lue (la carte des boissons est en PDF, non lue). Le guide « Rooftop Guide » précise que le restaurant Sirocco, lui, se réserve des semaines à l'avance. Cité dans « Best Rooftop Bars » (Lonely Planet, Pocket Bangkok, aperçu p. 15).",
+      "id": "bkk-sky-bar-lebua",
+      "nom": "Sky Bar at lebua"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Khlong Tan Nuea (Sukhumvit)",
+      "adresse": "Bangkok Marriott Hotel Sukhumvit, 2 Soi Sukhumvit 57, Khlong Tan Nuea, Watthana, Bangkok 10110 (étages 45 à 49)",
+      "gps": {
+        "lat": 13.7233708,
+        "lng": 100.5805155,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/208693103",
+          "libelle": "OpenStreetMap (Bangkok Marriott Hotel Sukhumvit)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nocturne",
+        "spots"
+      ],
+      "etiquettes": [
+        "rooftop",
+        "bar"
+      ],
+      "incontournable": null,
+      "description": "Bar sur le toit du Bangkok Marriott Hotel Sukhumvit, étages 45 à 49.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": {
+        "necessaire": null,
+        "lien": "",
+        "note": "Un guide indique que l'étage du haut (49e) est généralement sans réservation (walk-in).",
+        "source": {
+          "lien": "https://www.therooftopguide.com/features/bangkok-dress-code.html",
+          "libelle": "The Rooftop Guide (guide, publié le 27/03/2026)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "tenue": {
+        "texte": "« Casual chic » : pour les hommes, pas de tenue de sport, de tongs ni de débardeur.",
+        "source": {
+          "lien": "https://www.timeout.com/bangkok/bars/octave",
+          "libelle": "Time Out Bangkok (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Horaires non retenus : les guides s'accordent sur une ouverture à 17:00 mais divergent sur la fermeture (00:00, 01:00 ou 02:00). Téléphone indiqué par Time Out : 02-797-0000. Prix et site officiel : à vérifier.",
+      "id": "bkk-octave",
+      "nom": "Octave Rooftop Lounge & Bar"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Sathon (Suan Phlu)",
+      "adresse": "Banyan Tree Bangkok, 21 Soi Suan Phlu 6, Sathon, Bangkok 10120",
+      "gps": {
+        "lat": 13.7235907,
+        "lng": 100.5397921,
+        "source": {
+          "lien": "https://www.openstreetmap.org/node/4420339595",
+          "libelle": "OpenStreetMap (Banyan Tree Bangkok)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nocturne",
+        "spots"
+      ],
+      "etiquettes": [
+        "rooftop",
+        "bar"
+      ],
+      "incontournable": null,
+      "description": "Restaurant et bar sur le toit du Banyan Tree Bangkok.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": {
+        "necessaire": null,
+        "lien": "",
+        "note": "Un guide conseille d'essayer de réserver vers 17:30 pour une place d'angle au coucher du soleil sans réserver de dîner. Il note que le lieu est petit et peut être serré.",
+        "source": {
+          "lien": "https://www.therooftopguide.com/features/bangkok-dress-code.html",
+          "libelle": "The Rooftop Guide (guide, publié le 27/03/2026)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "tenue": {
+        "texte": "« Smart Casual » : pour les hommes, pas de chemise sans manches ni de sandales ouvertes.",
+        "source": {
+          "lien": "https://www.therooftopguide.com/features/bangkok-dress-code.html",
+          "libelle": "The Rooftop Guide (guide, publié le 27/03/2026)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "https://www.banyantree.com/thailand/bangkok/dining/vertigo-and-moon-bar",
+      "verifieLe": "2026-11-11",
+      "notes": "La page officielle n'a pas pu être lue (accès refusé) : horaires, prix et règles de pluie restent à vérifier. Cité dans « Best Rooftop Bars » sous le nom « Moon Bar » (Lonely Planet, Pocket Bangkok, aperçu p. 15).",
+      "id": "bkk-vertigo-moon-bar",
+      "nom": "Vertigo and Moon Bar"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Bang Kho Laem",
+      "adresse": "2194 Charoenkrung Road, Wat Phrayakrai, Bang Kho Laem, Bangkok 10120",
+      "gps": {
+        "lat": 13.7041568,
+        "lng": 100.5027137,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/196107455",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "spots"
+      ],
+      "etiquettes": [],
+      "incontournable": null,
+      "description": "Site en bord de fleuve, ouvert tous les jours. Ce que l'on peut y faire n'est pas détaillé sur la page officielle lue.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Site officiel : « Every day from 11:00 - 00:00 hrs ». Pas d'horaires séparés pour les boutiques, les restaurants ou la grande roue.",
+        "source": {
+          "lien": "https://www.asiatiquethailand.com/",
+          "libelle": "Site officiel d'Asiatique The Riverfront",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "https://www.asiatiquethailand.com/",
+      "verifieLe": "2026-11-11",
+      "notes": "Prix, navette fluviale gratuite et fermetures éventuelles : non indiqués sur la page lue (à vérifier).",
+      "id": "bkk-asiatique",
+      "nom": "Asiatique The Riverfront"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Chatuchak",
+      "adresse": "Kamphaeng Phet 2 Rd, Chatuchak, Bangkok 10900",
+      "gps": {
+        "lat": 13.8002651,
+        "lng": 100.5511228,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/37911198",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches",
+        "nourriture"
+      ],
+      "etiquettes": [
+        "marché",
+        "street food"
+      ],
+      "incontournable": {
+        "raison": "Cité parmi les « Top Sights » du guide (p. 160) ; la rubrique « Best Markets » le décrit comme « a must-do Bangkok experience ».",
+        "source": {
+          "lien": "https://media.lonelyplanet.com/shop/pdfs/pocket-bangkok-6-preview.pdf",
+          "libelle": "Lonely Planet, Pocket Bangkok (aperçu PDF)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "description": "Grand marché du week-end : vêtements, artisanat, mobilier, plantes, antiquités, livres, street food.",
+      "duree": {
+        "minMin": 180,
+        "maxMin": 240,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/chatuchak-weekend-market/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre, d'après un guide.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/chatuchak-weekend-market/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": "ferme",
+          "mardi": "ferme",
+          "vendredi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "18:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "09:00",
+              "ferme": "18:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : marché complet « Sat-Sun 09:00-18:00 » ; vendredi soir « 18:00-24:00 » (vente en gros). Mercredi et jeudi, seule la zone des plantes ouvre en journée : jours laissés à vérifier.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/chatuchak-weekend-market/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Mises en garde du guide : chaleur (midi à 14:00 le plus dur), foule dans les allées vers midi, petits vendeurs payables en espèces seulement. Métro : MRT Kamphaeng Phet (sortie 2), MRT Chatuchak Park (sortie 1), BTS Mo Chit (sortie 1, environ 400 m).",
+      "id": "bkk-chatuchak",
+      "nom": "Chatuchak Weekend Market"
+    },
+    {
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan",
+      "adresse": "6 Soi Kasem San 2, Rama 1 Road, Wang Mai, Pathum Wan, Bangkok 10330",
+      "gps": {
+        "lat": 13.7492268,
+        "lng": 100.5282811,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/341577338",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "musée",
+        "visite guidée"
+      ],
+      "incontournable": {
+        "raison": "Cité parmi les « Top Sights » du guide (« Bangkok's most famous residence », p. 96).",
+        "source": {
+          "lien": "https://media.lonelyplanet.com/shop/pdfs/pocket-bangkok-6-preview.pdf",
+          "libelle": "Lonely Planet, Pocket Bangkok (aperçu PDF)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "description": "Musée dans l'ancienne maison de Jim Thompson. La visite guidée est obligatoire et comprise dans l'entrée.",
+      "duree": {
+        "minMin": 60,
+        "maxMin": 90,
+        "estimee": false,
+        "base": "Le guide indique 60 à 90 minutes pour la maison, le jardin et la boutique ; la visite guidée seule dure environ 30 minutes.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/jim-thompson-house/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 250,
+        "max": 250,
+        "devise": "THB",
+        "note": "Adulte : 250 THB. 10 à 21 ans : 150 THB avec pièce d'identité. Moins de 10 ans : gratuit avec un adulte payant. Le prix inclut la visite guidée (d'après un guide). Aucune source officielle obtenue : à vérifier.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/jim-thompson-house/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « Daily 10:00-17:00 » ; la dernière visite guidée part à 17:00. Horaires synchronisés depuis Google Maps le 07/10/2026 selon la page. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/jim-thompson-house/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "",
+      "public": null,
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Le site officiel n'a pas pu être consulté (certificat invalide lors de la vérification) : prix, horaires et tenue restent à confirmer.",
+      "id": "bkk-jim-thompson-house",
+      "nom": "Jim Thompson House"
+    }
+  ]
+}
