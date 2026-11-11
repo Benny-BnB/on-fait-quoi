@@ -1,14 +1,16 @@
 // Contrôle d'un fichier d'import avant de toucher aux données : un fichier erroné
 // est refusé avec un message clair, il n'abîme jamais les données déjà enregistrées.
 
-import type { Aeroport, Compteur, CibleCompteur, Donnees, Vol } from './types.ts';
-import { PORTEES, STATUTS_VOL } from './types.ts';
+import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Donnees, Etape, Logement, MomentLogement, Vol } from './types.ts';
+import { PORTEES, STATUTS_LOGEMENT, STATUTS_VOL } from './types.ts';
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
+import { lienSur } from '../lib/sejour.ts';
 
 export const FORMAT_FICHIER = 'on-fait-quoi';
+// Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -153,6 +155,119 @@ function lireCompteur(brut: unknown, index: number, erreurs: string[], ids: Set<
   return { id, libelle, cible, visible: brut.visible === true, delaiMin: delai as number };
 }
 
+function lireEtape(brut: unknown, index: number, erreurs: string[], ids: Set<string>): Etape | null {
+  const nom = `Étape n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas une étape valide.`);
+    return null;
+  }
+  const libelle = texte(brut, 'nom');
+  const qui = libelle ? `${nom} (${libelle})` : nom;
+  const avant = erreurs.length;
+
+  if (!libelle) erreurs.push(`${qui} : nom manquant.`);
+  const id = texte(brut, 'id') || `etape-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+
+  const devise = texte(brut, 'devise').toUpperCase();
+  if (devise !== '' && !/^[A-Z]{3}$/.test(devise)) erreurs.push(`${qui} : devise invalide « ${devise} » (3 lettres attendues, exemple : THB).`);
+  const fuseau = texte(brut, 'fuseau');
+  if (!fuseauValide(fuseau)) erreurs.push(`${qui} : fuseau horaire inconnu « ${fuseau} » (exemple : Asia/Bangkok).`);
+  const debut = texte(brut, 'debut');
+  const fin = texte(brut, 'fin');
+  if (!dateValide(debut)) erreurs.push(`${qui} : date de début invalide « ${debut} » (format AAAA-MM-JJ attendu).`);
+  if (!dateValide(fin)) erreurs.push(`${qui} : date de fin invalide « ${fin} » (format AAAA-MM-JJ attendu).`);
+  if (dateValide(debut) && dateValide(fin) && fin < debut) erreurs.push(`${qui} : la fin est avant le début.`);
+
+  if (erreurs.length > avant) return null;
+  return { id, nom: libelle, pays: texte(brut, 'pays'), devise, fuseau, debut, fin };
+}
+
+function lireMoment(brut: unknown, qui: string, erreurs: string[]): MomentLogement | null {
+  if (!estObjet(brut)) {
+    erreurs.push(`${qui} : section manquante.`);
+    return null;
+  }
+  const date = texte(brut, 'date');
+  const heure = texte(brut, 'heure');
+  let ok = true;
+  if (!dateValide(date)) {
+    erreurs.push(`${qui} : date invalide « ${date} » (format AAAA-MM-JJ attendu).`);
+    ok = false;
+  }
+  if (heure !== '' && !heureValide(heure)) {
+    erreurs.push(`${qui} : heure invalide « ${heure} » (format HH:MM, ou vide si elle n'est pas connue).`);
+    ok = false;
+  }
+  return ok ? { date, heure } : null;
+}
+
+function lireGps(brut: unknown, qui: string, erreurs: string[]): Coordonnees | null {
+  if (brut === undefined || brut === null) return null;
+  if (
+    !estObjet(brut) ||
+    typeof brut.lat !== 'number' ||
+    typeof brut.lng !== 'number' ||
+    !(brut.lat >= -90 && brut.lat <= 90) ||
+    !(brut.lng >= -180 && brut.lng <= 180)
+  ) {
+    erreurs.push(`${qui} : coordonnées GPS invalides (latitude entre -90 et 90, longitude entre -180 et 180).`);
+    return null;
+  }
+  return { lat: brut.lat, lng: brut.lng };
+}
+
+function lireLogement(brut: unknown, index: number, erreurs: string[], ids: Set<string>, idsEtapes: Set<string>): Logement | null {
+  const nom = `Logement n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas un logement valide.`);
+    return null;
+  }
+  const libelle = texte(brut, 'nom');
+  const qui = libelle ? `${nom} (${libelle})` : nom;
+  const avant = erreurs.length;
+
+  if (!libelle) erreurs.push(`${qui} : nom manquant.`);
+  const id = texte(brut, 'id') || `logement-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+
+  const etapeId = texte(brut, 'etapeId');
+  if (!etapeId) erreurs.push(`${qui} : « etapeId » manquant.`);
+  else if (!idsEtapes.has(etapeId)) erreurs.push(`${qui} : l'étape « ${etapeId} » n'existe pas dans le fichier.`);
+
+  const statutBrut = brut.statut ?? 'a-verifier';
+  if (!STATUTS_LOGEMENT.some((s) => s === statutBrut)) {
+    erreurs.push(`${qui} : statut invalide « ${String(statutBrut)} » (a-trouver, a-verifier, reserve ou confirme).`);
+  }
+
+  const lien = texte(brut, 'lien');
+  if (lien !== '' && lienSur(lien) === null) erreurs.push(`${qui} : le lien doit commencer par https:// ou http://.`);
+
+  const gps = lireGps(brut.gps, qui, erreurs);
+  const arrivee = lireMoment(brut.arrivee, `${qui}, arrivée`, erreurs);
+  const depart = lireMoment(brut.depart, `${qui}, départ`, erreurs);
+  if (arrivee && depart && !(depart.date > arrivee.date)) {
+    erreurs.push(`${qui} : le départ doit être après l'arrivée (au moins une nuit).`);
+  }
+
+  if (erreurs.length > avant || !arrivee || !depart) return null;
+  return {
+    id,
+    etapeId,
+    nom: libelle,
+    statut: statutBrut as Logement['statut'],
+    lien,
+    adresse: texte(brut, 'adresse'),
+    gps,
+    arrivee,
+    depart,
+    reference: texte(brut, 'reference'),
+    notes: texte(brut, 'notes'),
+  };
+}
+
 export function validerImport(brut: unknown): ResultatImport {
   if (!estObjet(brut)) return { ok: false, erreurs: ['Le fichier ne contient pas de données reconnaissables.'] };
   if (brut.format !== FORMAT_FICHIER) {
@@ -203,9 +318,33 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  let idsEtapes: Set<string> | null = null;
+  if (brut.etapes !== undefined) {
+    if (!Array.isArray(brut.etapes)) {
+      erreurs.push('« etapes » doit être une liste.');
+    } else {
+      const ids = new Set<string>();
+      const etapes = brut.etapes.map((e, i) => lireEtape(e, i, erreurs, ids));
+      idsEtapes = ids;
+      donnees.etapes = etapes.filter((e): e is Etape => e !== null);
+    }
+  }
+
+  if (brut.logements !== undefined) {
+    if (!Array.isArray(brut.logements)) {
+      erreurs.push('« logements » doit être une liste.');
+    } else if (!idsEtapes) {
+      erreurs.push('Les logements ont besoin des étapes : ajoute la section « etapes » dans le même fichier.');
+    } else {
+      const ids = new Set<string>();
+      const logements = brut.logements.map((l, i) => lireLogement(l, i, erreurs, ids, idsEtapes));
+      donnees.logements = logements.filter((l): l is Logement => l !== null);
+    }
+  }
+
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements.'] };
   }
   return { ok: true, donnees, avertissements };
 }

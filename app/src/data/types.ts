@@ -61,10 +61,52 @@ export type Reglages = {
   delaiAeroportMin: { international: number; interieur: number };
 };
 
+// Une étape du voyage (une ville ou une région où l'on séjourne)
+export type Etape = {
+  id: string;
+  nom: string;
+  pays: string;
+  devise: string; // code à 3 lettres, ex. THB
+  fuseau: string; // nom IANA, ex. Asia/Bangkok
+  debut: string; // AAAA-MM-JJ : jour d'arrivée (première nuit)
+  fin: string; // AAAA-MM-JJ : jour de départ (la nuit de ce jour n'est pas comptée)
+};
+
+export const STATUTS_LOGEMENT = ['a-trouver', 'a-verifier', 'reserve', 'confirme'] as const;
+export type StatutLogement = (typeof STATUTS_LOGEMENT)[number];
+
+export const LIBELLES_STATUT_LOGEMENT: Record<StatutLogement, string> = {
+  'a-trouver': 'À trouver',
+  'a-verifier': 'À vérifier',
+  reserve: 'Réservé',
+  confirme: 'Confirmé',
+};
+
+// Arrivée ou départ d'un logement : la date est obligatoire, l'heure peut rester vide
+export type MomentLogement = { date: string; heure: string };
+
+export type Coordonnees = { lat: number; lng: number };
+
+export type Logement = {
+  id: string;
+  etapeId: string; // l'étape à laquelle il appartient (changer cette valeur = le déplacer)
+  nom: string;
+  statut: StatutLogement;
+  lien: string; // annonce ou réservation, vide si aucun
+  adresse: string;
+  gps: Coordonnees | null;
+  arrivee: MomentLogement;
+  depart: MomentLogement;
+  reference: string; // référence de réservation (jamais de numéro de carte)
+  notes: string;
+};
+
 export type Donnees = {
   vols: Vol[];
   compteurs: Compteur[];
   reglages: Reglages;
+  etapes: Etape[];
+  logements: Logement[];
 };
 
 export const ID_PROCHAIN_VOL = 'prochain-vol';

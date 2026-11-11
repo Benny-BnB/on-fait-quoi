@@ -2,7 +2,7 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Donnees, Reglages, Vol } from './types.ts';
+import type { Compteur, Donnees, Etape, Logement, Reglages, Vol } from './types.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
 import { REGLAGES_PAR_DEFAUT, compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
 import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
@@ -46,7 +46,9 @@ function normaliser(brut: Partial<Donnees> | undefined): Donnees {
       interieur: d?.interieur ?? REGLAGES_PAR_DEFAUT.delaiAeroportMin.interieur,
     },
   };
-  return { vols, compteurs, reglages };
+  const etapes = brut && Array.isArray(brut.etapes) ? brut.etapes : [];
+  const logements = brut && Array.isArray(brut.logements) ? brut.logements : [];
+  return { vols, compteurs, reglages, etapes, logements };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -132,6 +134,38 @@ export function enregistrerReglages(reglages: Reglages): Promise<void> {
   return modifier((d) => ({ ...d, reglages }));
 }
 
+// ---------- Étapes et logements ----------
+
+export function enregistrerEtape(etape: Etape): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    etapes: d.etapes.some((e) => e.id === etape.id) ? d.etapes.map((e) => (e.id === etape.id ? etape : e)) : [...d.etapes, etape],
+  }));
+}
+
+// Supprimer une étape supprime aussi ses logements
+export function supprimerEtape(id: string): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    etapes: d.etapes.filter((e) => e.id !== id),
+    logements: d.logements.filter((l) => l.etapeId !== id),
+  }));
+}
+
+// Ajoute ou modifie un logement. Changer son "etapeId" le déplace vers une autre étape.
+export function enregistrerLogement(logement: Logement): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    logements: d.logements.some((l) => l.id === logement.id)
+      ? d.logements.map((l) => (l.id === logement.id ? logement : l))
+      : [...d.logements, logement],
+  }));
+}
+
+export function supprimerLogement(id: string): Promise<void> {
+  return modifier((d) => ({ ...d, logements: d.logements.filter((l) => l.id !== id) }));
+}
+
 // ---------- Import, export, suppression ----------
 
 // Compteurs après un import de vols sans compteurs : on garde ceux de l'utilisateur
@@ -153,7 +187,14 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
     let compteurs = d.compteurs;
     if (partiel.compteurs) compteurs = partiel.compteurs;
     else if (partiel.vols) compteurs = reconstruireCompteurs(d.compteurs, partiel.vols);
-    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages });
+    const etapes = partiel.etapes ?? d.etapes;
+    let logements = partiel.logements ?? d.logements;
+    if (partiel.etapes && !partiel.logements) {
+      // Étapes remplacées sans nouveaux logements : on ne garde pas de logement rattaché à une étape disparue
+      const ids = new Set(etapes.map((e) => e.id));
+      logements = logements.filter((l) => ids.has(l.etapeId));
+    }
+    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements });
   });
 }
 

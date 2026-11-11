@@ -38,6 +38,8 @@ export function donneesVides(): Donnees {
     vols: [],
     compteurs: [compteurProchainVol()],
     reglages: structuredClone(REGLAGES_PAR_DEFAUT),
+    etapes: [],
+    logements: [],
   };
 }
 

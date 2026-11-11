@@ -9,8 +9,21 @@ type Apercu = { donnees: Partial<Donnees>; avertissements: string[] };
 function resume(d: Partial<Donnees>): string {
   const parties: string[] = [];
   if (d.vols) parties.push(`${d.vols.length} vol${d.vols.length > 1 ? 's' : ''}`);
+  if (d.etapes) parties.push(`${d.etapes.length} étape${d.etapes.length > 1 ? 's' : ''}`);
+  if (d.logements) parties.push(`${d.logements.length} logement${d.logements.length > 1 ? 's' : ''}`);
   if (d.compteurs) parties.push(`${d.compteurs.length} compteur${d.compteurs.length > 1 ? 's' : ''}`);
   if (d.reglages) parties.push('les réglages');
+  return parties.join(', ');
+}
+
+// Ce que l'import va remplacer, avec ce qu'il y a aujourd'hui dans le téléphone
+function remplacees(d: Partial<Donnees>, actuel: Donnees): string {
+  const parties: string[] = [];
+  if (d.vols) parties.push(`vols (aujourd'hui ${actuel.vols.length})`);
+  if (d.etapes) parties.push(`étapes (aujourd'hui ${actuel.etapes.length})`);
+  if (d.logements) parties.push(`logements (aujourd'hui ${actuel.logements.length})`);
+  if (d.compteurs) parties.push(`compteurs (aujourd'hui ${actuel.compteurs.length})`);
+  if (d.reglages) parties.push('réglages');
   return parties.join(', ');
 }
 
@@ -136,11 +149,7 @@ export function ImportExport() {
           <p>
             <strong>Fichier valide.</strong> Il contient : {resume(apercu.donnees)}.
           </p>
-          {apercu.donnees.vols && (
-            <p>
-              L'import remplace tes {donnees.vols.length} vol{donnees.vols.length > 1 ? 's' : ''} actuel{donnees.vols.length > 1 ? 's' : ''} par ceux du fichier.
-            </p>
-          )}
+          <p>Ces sections seront remplacées par celles du fichier : {remplacees(apercu.donnees, donnees)}. Le reste de tes données n'est pas touché.</p>
           {apercu.avertissements.length > 0 && (
             <ul>
               {apercu.avertissements.map((a) => (

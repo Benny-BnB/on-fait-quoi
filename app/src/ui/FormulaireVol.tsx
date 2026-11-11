@@ -126,7 +126,7 @@ function ChampsAeroport(props: {
 
 function Editeur(props: { initial: Vol; nouveau: boolean }) {
   const [vol, definirVol] = useState<Vol>(props.initial);
-  const [erreurs, definirErreurs] = useState<string[]>([]);
+  const [tentative, definirTentative] = useState(false); // vrai après un premier essai d'enregistrement
   const [fuseaux] = useState<string[]>(listeFuseaux);
 
   const maj = (partiel: Partial<Vol>) => definirVol((v) => ({ ...v, ...partiel }));
@@ -149,11 +149,13 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
     });
   }
 
+  const propre = nettoyer(vol);
+  const problemes = erreursVol(propre);
+  const apercuOk = problemes.length === 0;
+
   async function enregistrer(e: Event) {
     e.preventDefault();
-    const propre = nettoyer(vol);
-    const problemes = erreursVol(propre);
-    definirErreurs(problemes);
+    definirTentative(true);
     if (problemes.length > 0) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -162,13 +164,10 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
     aller('#/vols');
   }
 
-  const propre = nettoyer(vol);
-  const apercuOk = erreursVol(propre).length === 0;
-
   return (
     <Page titre={props.nouveau ? 'Nouveau vol' : `Vol ${props.initial.numero}`} retour={{ href: '#/vols', libelle: 'Vols' }}>
       <form class="formulaire" onSubmit={enregistrer} noValidate>
-        <ListeErreurs erreurs={erreurs} />
+        <ListeErreurs erreurs={tentative ? problemes : []} />
 
         <Champ etiquette="Numéro de vol">
           <input type="text" value={vol.numero} placeholder="XX123" autocomplete="off" spellcheck={false} onInput={(e) => maj({ numero: e.currentTarget.value })} />

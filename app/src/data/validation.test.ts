@@ -77,9 +77,69 @@ test('réglages : délais invalides refusés', () => {
 });
 
 test('une section inconnue est signalée mais n\'empêche pas l\'import', () => {
-  const r = validerImport(fichier({ logements: [] }));
+  const r = validerImport(fichier({ trajets: [] }));
   assert.equal(r.ok, true);
-  if (r.ok) assert.match(r.avertissements.join(' '), /logements/);
+  if (r.ok) assert.match(r.avertissements.join(' '), /trajets/);
+});
+
+const etapeValide = { id: 'e1', nom: 'Étape test', pays: 'Pays', devise: 'eur', fuseau: 'Europe/Brussels', debut: '2027-03-01', fin: '2027-03-05' };
+const logementValide = {
+  id: 'l1',
+  etapeId: 'e1',
+  nom: 'Logement test',
+  statut: 'reserve',
+  lien: 'https://exemple.org/annonce',
+  adresse: '12 rue de Test',
+  gps: { lat: 1.5, lng: 2.5 },
+  arrivee: { date: '2027-03-01', heure: '15:00' },
+  depart: { date: '2027-03-05', heure: '' },
+};
+const fichierSejour = (extra: Record<string, unknown> = {}) => ({ format: 'on-fait-quoi', version: 1, etapes: [etapeValide], logements: [logementValide], ...extra });
+
+test('étapes et logements valides : acceptés, devise en majuscules, heure vide permise', () => {
+  const r = validerImport(fichierSejour());
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    assert.equal(r.donnees.etapes?.[0].devise, 'EUR');
+    assert.equal(r.donnees.logements?.[0].depart.heure, '');
+    assert.equal(r.donnees.vols, undefined); // un fichier sans vols ne touche pas aux vols
+  }
+});
+
+test('logement rattaché à une étape inconnue : refusé', () => {
+  const r = validerImport(fichierSejour({ logements: [{ ...logementValide, etapeId: 'absente' }] }));
+  assert.equal(r.ok, false);
+  if (!r.ok) assert.match(r.erreurs.join(' '), /n'existe pas dans le fichier/);
+});
+
+test('logements sans la section étapes : refusé avec explication', () => {
+  const r = validerImport({ format: 'on-fait-quoi', version: 1, logements: [logementValide] });
+  assert.equal(r.ok, false);
+  if (!r.ok) assert.match(r.erreurs.join(' '), /ont besoin des étapes/);
+});
+
+test('lien dangereux ou départ avant arrivée : refusé', () => {
+  const dangereux = validerImport(fichierSejour({ logements: [{ ...logementValide, lien: 'javascript:alert(1)' }] }));
+  assert.equal(dangereux.ok, false);
+  const inverse = validerImport(fichierSejour({ logements: [{ ...logementValide, depart: { date: '2027-03-01', heure: '' } }] }));
+  assert.equal(inverse.ok, false);
+  if (!inverse.ok) assert.match(inverse.erreurs.join(' '), /après l'arrivée/);
+});
+
+test('étape : fin avant début, fuseau inconnu, devise invalide : refusé', () => {
+  const r = validerImport(fichierSejour({ etapes: [{ ...etapeValide, debut: '2027-03-05', fin: '2027-03-01', fuseau: 'Pays/Inconnu', devise: 'EURO' }], logements: undefined }));
+  assert.equal(r.ok, false);
+  if (!r.ok) {
+    const tout = r.erreurs.join(' | ');
+    assert.match(tout, /fin est avant le début/);
+    assert.match(tout, /fuseau horaire inconnu/);
+    assert.match(tout, /devise invalide/);
+  }
+});
+
+test('GPS hors limites, heure impossible : refusé', () => {
+  assert.equal(validerImport(fichierSejour({ logements: [{ ...logementValide, gps: { lat: 95, lng: 0 } }] })).ok, false);
+  assert.equal(validerImport(fichierSejour({ logements: [{ ...logementValide, arrivee: { date: '2027-03-01', heure: '25:00' } }] })).ok, false);
 });
 
 test('texte collé : JSON coupé ou invalide donne un message clair', () => {

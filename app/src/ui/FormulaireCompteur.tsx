@@ -13,7 +13,7 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
   const [compteur, definirCompteur] = useState<Compteur>(props.initial);
   const [heures, definirHeures] = useState<string>(String(Math.floor(props.initial.delaiMin / 60)));
   const [minutes, definirMinutes] = useState<string>(String(props.initial.delaiMin % 60));
-  const [erreurs, definirErreurs] = useState<string[]>([]);
+  const [tentative, definirTentative] = useState(false); // vrai après un premier essai d'enregistrement
   const [fuseaux] = useState<string[]>(listeFuseaux);
 
   const vols = volsTries(donnees.vols);
@@ -40,19 +40,20 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
 
   const volChoisi = cible.type === 'vol' ? donnees.vols.find((v) => v.id === cible.volId) : undefined;
 
+  const problemes: string[] = [];
+  const delaiMin = (Number.parseInt(heures || '0', 10) || 0) * 60 + (Number.parseInt(minutes || '0', 10) || 0);
+  if (!compteur.libelle.trim()) problemes.push('Donne un nom au compteur.');
+  if (delaiMin < 0 || delaiMin > 7 * 24 * 60) problemes.push('Le délai doit être entre 0 et 7 jours.');
+  if (cible.type === 'vol' && !volChoisi) problemes.push('Choisis un vol.');
+  if (cible.type === 'libre') {
+    if (!dateValide(cible.date)) problemes.push('Date manquante ou invalide.');
+    if (!heureValide(cible.heure)) problemes.push('Heure manquante ou invalide.');
+    if (!fuseauValide(cible.fuseau)) problemes.push('Fuseau horaire inconnu (exemple : Europe/Brussels).');
+  }
+
   async function enregistrer(e: Event) {
     e.preventDefault();
-    const problemes: string[] = [];
-    const delaiMin = (Number.parseInt(heures || '0', 10) || 0) * 60 + (Number.parseInt(minutes || '0', 10) || 0);
-    if (!compteur.libelle.trim()) problemes.push('Donne un nom au compteur.');
-    if (delaiMin < 0 || delaiMin > 7 * 24 * 60) problemes.push('Le délai doit être entre 0 et 7 jours.');
-    if (cible.type === 'vol' && !volChoisi) problemes.push('Choisis un vol.');
-    if (cible.type === 'libre') {
-      if (!dateValide(cible.date)) problemes.push('Date manquante ou invalide.');
-      if (!heureValide(cible.heure)) problemes.push('Heure manquante ou invalide.');
-      if (!fuseauValide(cible.fuseau)) problemes.push('Fuseau horaire inconnu (exemple : Europe/Brussels).');
-    }
-    definirErreurs(problemes);
+    definirTentative(true);
     if (problemes.length > 0) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -64,7 +65,7 @@ function Editeur(props: { initial: Compteur; nouveau: boolean }) {
   return (
     <Page titre={props.nouveau ? 'Nouveau compteur' : 'Modifier le compteur'} retour={{ href: '#/compteurs', libelle: 'Compteurs' }}>
       <form class="formulaire" onSubmit={enregistrer} noValidate>
-        <ListeErreurs erreurs={erreurs} />
+        <ListeErreurs erreurs={tentative ? problemes : []} />
 
         {props.nouveau && (
           <fieldset class="groupe">

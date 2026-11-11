@@ -5,10 +5,13 @@ import { Accueil } from './ui/Accueil.tsx';
 import { Page } from './ui/commun.tsx';
 import { Compteurs } from './ui/Compteurs.tsx';
 import { FormulaireCompteur } from './ui/FormulaireCompteur.tsx';
+import { FormulaireEtape } from './ui/FormulaireEtape.tsx';
+import { FormulaireLogement } from './ui/FormulaireLogement.tsx';
 import { FormulaireVol } from './ui/FormulaireVol.tsx';
 import { Navigation } from './ui/Navigation.tsx';
 import { Reglages } from './ui/Reglages.tsx';
 import { useRoute } from './ui/routeur.ts';
+import { Sejour } from './ui/Sejour.tsx';
 import { Vols } from './ui/Vols.tsx';
 
 export function App() {
@@ -40,6 +43,15 @@ export function App() {
         break;
       case 'compteur':
         page = <FormulaireCompteur id={route.id} />;
+        break;
+      case 'sejour':
+        page = <Sejour />;
+        break;
+      case 'etape':
+        page = <FormulaireEtape id={route.id} />;
+        break;
+      case 'logement':
+        page = <FormulaireLogement id={route.id} etapeId={route.etapeId} />;
         break;
       case 'reglages':
         page = <Reglages />;

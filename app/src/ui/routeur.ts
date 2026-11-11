@@ -7,6 +7,9 @@ export type Route =
   | { nom: 'vol'; id: string }
   | { nom: 'compteurs' }
   | { nom: 'compteur'; id: string }
+  | { nom: 'sejour' }
+  | { nom: 'etape'; id: string }
+  | { nom: 'logement'; id: string; etapeId?: string }
   | { nom: 'reglages' };
 
 function decoder(morceau: string): string {
@@ -19,7 +22,12 @@ function decoder(morceau: string): string {
 
 export function lireRoute(hash: string): Route {
   const morceaux = hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decoder);
-  const [a, b] = morceaux;
+  const [a, b, c, d] = morceaux;
+  if (a === 'sejour') {
+    if (b === 'etape' && c) return { nom: 'etape', id: c };
+    if (b === 'logement' && c) return { nom: 'logement', id: c, etapeId: d };
+    return { nom: 'sejour' };
+  }
   if (a === 'vols') return b ? { nom: 'vol', id: b } : { nom: 'vols' };
   if (a === 'compteurs') return b ? { nom: 'compteur', id: b } : { nom: 'compteurs' };
   if (a === 'reglages') return { nom: 'reglages' };
@@ -45,3 +53,6 @@ export function aller(chemin: string): void {
 
 export const lienVol = (id: string): string => `#/vols/${encodeURIComponent(id)}`;
 export const lienCompteur = (id: string): string => `#/compteurs/${encodeURIComponent(id)}`;
+export const lienEtape = (id: string): string => `#/sejour/etape/${encodeURIComponent(id)}`;
+export const lienLogement = (id: string): string => `#/sejour/logement/${encodeURIComponent(id)}`;
+export const lienNouveauLogement = (etapeId: string): string => `#/sejour/logement/nouveau/${encodeURIComponent(etapeId)}`;

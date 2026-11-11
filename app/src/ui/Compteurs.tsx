@@ -22,7 +22,7 @@ function resume(c: Compteur, donnees: Donnees): string {
 export function Compteurs() {
   const { donnees } = useStore();
   return (
-    <Page titre="Compteurs">
+    <Page titre="Compteurs" retour={{ href: '#/', libelle: 'Accueil' }}>
       <a class="bouton" href="#/compteurs/nouveau">
         Ajouter un compteur
       </a>
