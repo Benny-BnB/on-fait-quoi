@@ -143,6 +143,12 @@ export function formatDureeMin(minutes: number): string {
   return reste === 0 ? `${h} h` : `${h} h ${deux(reste)}`;
 }
 
+// Date du jour (AAAA-MM-JJ) dans le fuseau du téléphone
+export function aujourdhuiIso(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${deux(d.getMonth() + 1)}-${deux(d.getDate())}`;
+}
+
 export function fuseauTelephone(): string {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }

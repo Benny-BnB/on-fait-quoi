@@ -1,8 +1,8 @@
 // Contrôle d'un fichier d'import avant de toucher aux données : un fichier erroné
 // est refusé avec un message clair, il n'abîme jamais les données déjà enregistrées.
 
-import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Donnees, Etape, Logement, MomentLogement, Vol } from './types.ts';
-import { PORTEES, STATUTS_LOGEMENT, STATUTS_VOL } from './types.ts';
+import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Donnees, Etape, Logement, MomentLogement, Trajet, Vol } from './types.ts';
+import { MODES_TRAJET, PORTEES, STATUTS_LOGEMENT, STATUTS_VOL } from './types.ts';
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
 import { lienSur } from '../lib/sejour.ts';
 
@@ -10,7 +10,7 @@ export const FORMAT_FICHIER = 'on-fait-quoi';
 // Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -268,6 +268,93 @@ function lireLogement(brut: unknown, index: number, erreurs: string[], ids: Set<
   };
 }
 
+function lireNombre(o: Objet, cle: string, max: number, qui: string, erreurs: string[]): number | null {
+  const v = o[cle];
+  if (v === undefined || v === null) return null;
+  if (typeof v !== 'number' || !Number.isFinite(v) || v < 0 || v > max) {
+    erreurs.push(`${qui} : « ${cle} » doit être un nombre entre 0 et ${max}.`);
+    return null;
+  }
+  return v;
+}
+
+function lireTrajet(
+  brut: unknown,
+  index: number,
+  erreurs: string[],
+  ids: Set<string>,
+  idsVols: Set<string> | null,
+  idsLogements: Set<string> | null,
+): Trajet | null {
+  const nom = `Trajet n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas un trajet valide.`);
+    return null;
+  }
+  const de = texte(brut, 'de');
+  const a = texte(brut, 'a');
+  const qui = de && a ? `${nom} (${de} → ${a})` : nom;
+  const avant = erreurs.length;
+
+  if (!de) erreurs.push(`${qui} : lieu de départ manquant.`);
+  if (!a) erreurs.push(`${qui} : lieu d'arrivée manquant.`);
+  const id = texte(brut, 'id') || `trajet-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+
+  const modeBrut = brut.mode ?? '';
+  if (modeBrut !== '' && !MODES_TRAJET.some((m) => m === modeBrut)) {
+    erreurs.push(`${qui} : mode invalide « ${String(modeBrut)} » (${MODES_TRAJET.join(', ')}, ou vide si pas encore choisi).`);
+  }
+  const date = texte(brut, 'date');
+  if (!dateValide(date)) erreurs.push(`${qui} : date invalide « ${date} » (format AAAA-MM-JJ attendu).`);
+  const heure = texte(brut, 'heure');
+  if (heure !== '' && !heureValide(heure)) erreurs.push(`${qui} : heure invalide « ${heure} » (format HH:MM, ou vide si elle n'est pas fixée).`);
+  const fuseau = texte(brut, 'fuseau');
+  if (!fuseauValide(fuseau)) erreurs.push(`${qui} : fuseau horaire inconnu « ${fuseau} » (exemple : Asia/Bangkok).`);
+
+  const dureeMin = lireNombre(brut, 'dureeMin', 10080, qui, erreurs);
+  const prixMin = lireNombre(brut, 'prixMin', 10000000, qui, erreurs);
+  const prixMax = lireNombre(brut, 'prixMax', 10000000, qui, erreurs);
+  if ((prixMin === null) !== (prixMax === null)) erreurs.push(`${qui} : « prixMin » et « prixMax » vont ensemble.`);
+  else if (prixMin !== null && prixMax !== null && prixMin > prixMax) erreurs.push(`${qui} : le prix minimum dépasse le prix maximum.`);
+  const devise = texte(brut, 'devise').toUpperCase();
+  if (prixMin !== null && !/^[A-Z]{3}$/.test(devise)) erreurs.push(`${qui} : devise manquante ou invalide pour le prix (3 lettres, exemple : THB).`);
+  if (brut.dureeEstimee !== undefined && typeof brut.dureeEstimee !== 'boolean') erreurs.push(`${qui} : « dureeEstimee » doit valoir true ou false.`);
+
+  const consulteLe = texte(brut, 'consulteLe');
+  if (consulteLe !== '' && !dateValide(consulteLe)) erreurs.push(`${qui} : date de consultation invalide « ${consulteLe} » (format AAAA-MM-JJ attendu).`);
+
+  const volId = texte(brut, 'volId');
+  if (volId !== '' && idsVols && !idsVols.has(volId)) erreurs.push(`${qui} : le vol « ${volId} » n'existe pas dans le fichier.`);
+  const lienVol = brut.lienVol ?? 'vers';
+  if (lienVol !== 'vers' && lienVol !== 'depuis') erreurs.push(`${qui} : « lienVol » doit valoir vers ou depuis.`);
+  const logementId = texte(brut, 'logementId');
+  if (logementId !== '' && idsLogements && !idsLogements.has(logementId)) erreurs.push(`${qui} : le logement « ${logementId} » n'existe pas dans le fichier.`);
+
+  if (erreurs.length > avant) return null;
+  return {
+    id,
+    de,
+    a,
+    mode: modeBrut as Trajet['mode'],
+    date,
+    heure,
+    fuseau,
+    dureeMin,
+    dureeEstimee: brut.dureeEstimee === true,
+    prixMin,
+    prixMax,
+    devise: prixMin !== null ? devise : '',
+    source: texte(brut, 'source'),
+    consulteLe,
+    volId,
+    lienVol: lienVol as Trajet['lienVol'],
+    logementId,
+    notes: texte(brut, 'notes'),
+  };
+}
+
 export function validerImport(brut: unknown): ResultatImport {
   if (!estObjet(brut)) return { ok: false, erreurs: ['Le fichier ne contient pas de données reconnaissables.'] };
   if (brut.format !== FORMAT_FICHIER) {
@@ -342,9 +429,20 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  if (brut.trajets !== undefined) {
+    if (!Array.isArray(brut.trajets)) {
+      erreurs.push('« trajets » doit être une liste.');
+    } else {
+      const ids = new Set<string>();
+      const idsLogements = donnees.logements ? new Set(donnees.logements.map((l) => l.id)) : null;
+      const trajets = brut.trajets.map((t, i) => lireTrajet(t, i, erreurs, ids, idsVols, idsLogements));
+      donnees.trajets = trajets.filter((t): t is Trajet => t !== null);
+    }
+  }
+
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets.'] };
   }
   return { ok: true, donnees, avertissements };
 }

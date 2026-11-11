@@ -40,6 +40,7 @@ export function donneesVides(): Donnees {
     reglages: structuredClone(REGLAGES_PAR_DEFAUT),
     etapes: [],
     logements: [],
+    trajets: [],
   };
 }
 

@@ -133,7 +133,7 @@ p {
   bottom: 0;
   z-index: 10;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background: var(--carte);
   border-top: 1px solid var(--bord);
   padding-bottom: env(safe-area-inset-bottom);
@@ -435,6 +435,79 @@ fieldset.groupe legend {
 
 .message.attention {
   border-color: var(--attention);
+}
+
+.attention-texte {
+  color: var(--attention);
+  font-weight: 600;
+}
+
+/* Bascule Vols / Trajets */
+.segments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid var(--accent-texte);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.segments a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  color: var(--accent-texte);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.segments a.actif {
+  background: var(--accent);
+  color: var(--sur-accent);
+}
+
+/* Planning : un jour et ses créneaux imposés */
+.creneau {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--bord);
+  color: inherit;
+  text-decoration: none;
+}
+
+.creneau-heure {
+  display: grid;
+  align-content: start;
+  gap: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.creneau-heure strong {
+  font-size: 19px;
+}
+
+.creneau-heure .discret {
+  font-size: 13px;
+}
+
+.creneau-corps {
+  display: grid;
+  gap: 2px;
+  font-size: 16px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.creneau-corps .discret,
+.creneau-corps .attention-texte {
+  font-size: 14px;
+}
+
+.vol-lignes li,
+.discret {
+  overflow-wrap: anywhere;
 }
 
 /* Un logement affiché à l'intérieur d'une étape */

@@ -1,5 +1,8 @@
+import { useMemo } from 'preact/hooks';
 import { basculerCompteur, useStore } from '../data/store.ts';
 import { useMaintenant } from '../lib/horloge.ts';
+import { creneauxImposes } from '../lib/planning.ts';
+import { formatDateHeureDansFuseau } from '../lib/temps.ts';
 import { CarteCompteur } from './CarteCompteur.tsx';
 import { Page } from './commun.tsx';
 
@@ -7,6 +10,9 @@ export function Accueil() {
   const { donnees } = useStore();
   const maintenant = useMaintenant();
   const visibles = donnees.compteurs.filter((c) => c.visible);
+  const creneaux = useMemo(() => creneauxImposes(donnees), [donnees]);
+  // Le prochain créneau imposé dont l'heure est connue
+  const prochain = creneaux.find((c) => c.debutMs !== null && c.debutMs > maintenant);
 
   return (
     <Page titre="On fait quoi ?">
@@ -34,6 +40,23 @@ export function Accueil() {
           onMasquer={() => void basculerCompteur(c.id)}
         />
       ))}
+
+      {prochain && prochain.debutMs !== null && (
+        <a class="carte carte-lien" href="#/planning">
+          <h2>Prochain créneau imposé</h2>
+          <strong>{prochain.titre}</strong>
+          <div>
+            {formatDateHeureDansFuseau(prochain.debutMs, prochain.fuseau)}
+            {prochain.zone !== '' && ` (heure de ${prochain.zone})`}
+          </div>
+          {prochain.details.slice(0, 2).map((d) => (
+            <div key={d} class="discret">
+              {d}
+            </div>
+          ))}
+          <span class="discret">Voir le planning ›</span>
+        </a>
+      )}
 
       {visibles.length === 0 && donnees.vols.length > 0 && (
         <section class="carte">

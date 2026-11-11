@@ -6,7 +6,9 @@ Le cahier des charges complet est dans [CAHIER-DES-CHARGES.md](CAHIER-DES-CHARGE
 
 ## Où en est l'app
 
-Étape 3 sur 10. L'app s'installe, fonctionne hors ligne, gère les vols et affiche des compteurs justes à la seconde. Chaque vol garde l'heure locale de sa ville et le nom de son fuseau horaire : l'instant exact se calcule à partir de là, donc le fuseau du téléphone ne change rien. Elle gère aussi les étapes du voyage et leurs logements (statut « à trouver », « à vérifier », « réservé » ou « confirmé »), signale les nuits sans logement, et permet d'ajouter, modifier, déplacer ou supprimer un logement sans toucher au code. Les trajets, le planning, les check-lists et les fiches de lieux arrivent étape par étape.
+Étape 4 sur 10. L'app s'installe, fonctionne hors ligne, gère les vols et affiche des compteurs justes à la seconde. Chaque vol garde l'heure locale de sa ville et le nom de son fuseau horaire : l'instant exact se calcule à partir de là, donc le fuseau du téléphone ne change rien. Elle gère aussi les étapes du voyage et leurs logements (statut « à trouver », « à vérifier », « réservé » ou « confirmé »), signale les nuits sans logement, et permet d'ajouter, modifier, déplacer ou supprimer un logement sans toucher au code.
+
+Les trajets (mode, durée, prix par personne, source et date de consultation) peuvent être liés à un vol : l'app calcule alors l'heure de départ conseillée (décollage moins le délai d'arrivée à l'aéroport moins la durée du trajet). Aucune durée ni aucun prix n'est inventé : sans source, ils s'affichent « à vérifier ». L'onglet Planning montre, jour par jour, les créneaux imposés (vols, trajets, arrivées et départs de logement) et signale les trajets manquants, les chevauchements et les départs trop tardifs. Les activités libres, les check-lists et les fiches de lieux arrivent étape par étape.
 
 ## Installer sur iPhone
 

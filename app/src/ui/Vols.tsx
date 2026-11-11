@@ -1,10 +1,45 @@
 import { useStore } from '../data/store.ts';
 import type { Donnees, Vol } from '../data/types.ts';
 import { LIBELLES_STATUT } from '../data/types.ts';
+import { calculerTrajet, estCorrespondance, heureAvecJour, jourDans, trajetsVersVol } from '../lib/planning.ts';
 import { dureeVolMin, instantArriveeAeroport, instantDepart, volsTries } from '../lib/vols.ts';
-import { formatDateHeureDansFuseau, formatDateIso, formatDureeMin, formatUtc } from '../lib/temps.ts';
+import { formatDateHeureDansFuseau, formatDateIso, formatDureeMin, formatUtc, fuseauValide } from '../lib/temps.ts';
 import { Page } from './commun.tsx';
 import { lienVol } from './routeur.ts';
+import { SousOnglets } from './SousOnglets.tsx';
+
+// Trajets prévus pour aller à l'aéroport, et heure de départ conseillée quand la durée est connue
+function LignesTrajets(props: { vol: Vol; donnees: Donnees }) {
+  const { vol: v, donnees: d } = props;
+  const vers = trajetsVersVol(d, v.id);
+  if (vers.length === 0) {
+    return estCorrespondance(v, d.vols) ? (
+      <li class="discret">Correspondance : pas de trajet à prévoir</li>
+    ) : (
+      <li class="attention-texte">Aucun trajet prévu vers l'aéroport</li>
+    );
+  }
+  const f = v.depart.fuseau;
+  return (
+    <>
+      {vers.map((t) => {
+        const c = calculerTrajet(t, d);
+        if (c.conseilleMs !== null && c.aeroportAvantMs !== null && fuseauValide(f)) {
+          return (
+            <li key={t.id}>
+              <strong>Partir de « {t.de} » à {heureAvecJour(c.conseilleMs, f, jourDans(c.aeroportAvantMs, f))}</strong> (trajet {formatDureeMin(t.dureeMin ?? 0)})
+            </li>
+          );
+        }
+        return (
+          <li key={t.id} class="discret">
+            Trajet « {t.de} → {t.a} » : durée à renseigner pour calculer l'heure de départ
+          </li>
+        );
+      })}
+    </>
+  );
+}
 
 function CarteVol(props: { vol: Vol; donnees: Donnees; maintenant: number }) {
   const v = props.vol;
@@ -50,6 +85,7 @@ function CarteVol(props: { vol: Vol; donnees: Donnees; maintenant: number }) {
             {formatDureeMin(props.donnees.reglages.delaiAeroportMin[v.portee])} avant le décollage)
           </li>
         )}
+        {actif && v.pourMoi && <LignesTrajets vol={v} donnees={props.donnees} />}
         {valide && <li class="discret">Départ exact : {formatUtc(depart)}</li>}
       </ul>
     </a>
@@ -62,7 +98,8 @@ export function Vols() {
   const vols = volsTries(donnees.vols);
 
   return (
-    <Page titre="Vols">
+    <Page titre="Transports">
+      <SousOnglets actif="vols" />
       <a class="bouton" href="#/vols/nouveau">
         Ajouter un vol
       </a>

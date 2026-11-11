@@ -67,7 +67,7 @@ export function Reglages() {
       <Verification />
       <EtatApp />
       <p class="note">
-        Cette version contient les vols, les compteurs, les étapes et les logements. Les trajets, le planning, les check-lists et les fiches de lieux ne sont pas encore là : ils arrivent étape par étape.
+        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets et le planning des créneaux imposés. Les activités libres, les check-lists et les fiches de lieux ne sont pas encore là : ils arrivent étape par étape.
       </p>
     </Page>
   );

@@ -2,7 +2,7 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Donnees, Etape, Logement, Reglages, Vol } from './types.ts';
+import type { Compteur, Donnees, Etape, Logement, Reglages, Trajet, Vol } from './types.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
 import { REGLAGES_PAR_DEFAUT, compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
 import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
@@ -48,7 +48,8 @@ function normaliser(brut: Partial<Donnees> | undefined): Donnees {
   };
   const etapes = brut && Array.isArray(brut.etapes) ? brut.etapes : [];
   const logements = brut && Array.isArray(brut.logements) ? brut.logements : [];
-  return { vols, compteurs, reglages, etapes, logements };
+  const trajets = brut && Array.isArray(brut.trajets) ? brut.trajets : [];
+  return { vols, compteurs, reglages, etapes, logements, trajets };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -102,6 +103,8 @@ export function supprimerVol(id: string): Promise<void> {
     ...d,
     vols: d.vols.filter((v) => v.id !== id),
     compteurs: d.compteurs.filter((c) => !(c.cible.type === 'vol' && c.cible.volId === id)),
+    // Les trajets liés à ce vol restent, mais ne sont plus rattachés à lui
+    trajets: d.trajets.map((t) => (t.volId === id ? { ...t, volId: '' } : t)),
   }));
 }
 
@@ -143,13 +146,17 @@ export function enregistrerEtape(etape: Etape): Promise<void> {
   }));
 }
 
-// Supprimer une étape supprime aussi ses logements
+// Supprimer une étape supprime aussi ses logements (les trajets qui y étaient liés restent, détachés)
 export function supprimerEtape(id: string): Promise<void> {
-  return modifier((d) => ({
-    ...d,
-    etapes: d.etapes.filter((e) => e.id !== id),
-    logements: d.logements.filter((l) => l.etapeId !== id),
-  }));
+  return modifier((d) => {
+    const partis = new Set(d.logements.filter((l) => l.etapeId === id).map((l) => l.id));
+    return {
+      ...d,
+      etapes: d.etapes.filter((e) => e.id !== id),
+      logements: d.logements.filter((l) => l.etapeId !== id),
+      trajets: d.trajets.map((t) => (partis.has(t.logementId) ? { ...t, logementId: '' } : t)),
+    };
+  });
 }
 
 // Ajoute ou modifie un logement. Changer son "etapeId" le déplace vers une autre étape.
@@ -163,7 +170,24 @@ export function enregistrerLogement(logement: Logement): Promise<void> {
 }
 
 export function supprimerLogement(id: string): Promise<void> {
-  return modifier((d) => ({ ...d, logements: d.logements.filter((l) => l.id !== id) }));
+  return modifier((d) => ({
+    ...d,
+    logements: d.logements.filter((l) => l.id !== id),
+    trajets: d.trajets.map((t) => (t.logementId === id ? { ...t, logementId: '' } : t)),
+  }));
+}
+
+// ---------- Trajets ----------
+
+export function enregistrerTrajet(trajet: Trajet): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    trajets: d.trajets.some((t) => t.id === trajet.id) ? d.trajets.map((t) => (t.id === trajet.id ? trajet : t)) : [...d.trajets, trajet],
+  }));
+}
+
+export function supprimerTrajet(id: string): Promise<void> {
+  return modifier((d) => ({ ...d, trajets: d.trajets.filter((t) => t.id !== id) }));
 }
 
 // ---------- Import, export, suppression ----------
@@ -194,7 +218,7 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
       const ids = new Set(etapes.map((e) => e.id));
       logements = logements.filter((l) => ids.has(l.etapeId));
     }
-    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements });
+    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements, trajets: partiel.trajets ?? d.trajets });
   });
 }
 

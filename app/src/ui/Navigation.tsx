@@ -1,7 +1,7 @@
 import type { ComponentChildren } from 'preact';
 import type { Route } from './routeur.ts';
 
-type Onglet = 'accueil' | 'sejour' | 'vols' | 'reglages';
+type Onglet = 'accueil' | 'planning' | 'sejour' | 'transports' | 'reglages';
 
 function Icone(props: { children: ComponentChildren }) {
   return (
@@ -19,6 +19,19 @@ const ONGLETS: { cle: Onglet; href: string; libelle: string; icone: ComponentChi
     icone: <path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" />,
   },
   {
+    cle: 'planning',
+    href: '#/planning',
+    libelle: 'Planning',
+    icone: (
+      <>
+        <rect x="3" y="4" width="18" height="18" rx="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </>
+    ),
+  },
+  {
     cle: 'sejour',
     href: '#/sejour',
     libelle: 'Séjour',
@@ -30,9 +43,9 @@ const ONGLETS: { cle: Onglet; href: string; libelle: string; icone: ComponentChi
     ),
   },
   {
-    cle: 'vols',
+    cle: 'transports',
     href: '#/vols',
-    libelle: 'Vols',
+    libelle: 'Transports',
     icone: (
       <>
         <line x1="22" y1="2" x2="11" y2="13" />
@@ -61,7 +74,7 @@ const ONGLETS: { cle: Onglet; href: string; libelle: string; icone: ComponentChi
 ];
 
 function ongletActif(route: Route): Onglet {
-  if (route.nom === 'vol') return 'vols';
+  if (route.nom === 'vols' || route.nom === 'vol' || route.nom === 'trajets' || route.nom === 'trajet') return 'transports';
   if (route.nom === 'etape' || route.nom === 'logement') return 'sejour';
   if (route.nom === 'compteurs' || route.nom === 'compteur') return 'accueil'; // les compteurs se règlent depuis l'accueil
   return route.nom;

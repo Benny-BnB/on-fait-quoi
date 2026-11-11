@@ -11,6 +11,7 @@ function resume(d: Partial<Donnees>): string {
   if (d.vols) parties.push(`${d.vols.length} vol${d.vols.length > 1 ? 's' : ''}`);
   if (d.etapes) parties.push(`${d.etapes.length} étape${d.etapes.length > 1 ? 's' : ''}`);
   if (d.logements) parties.push(`${d.logements.length} logement${d.logements.length > 1 ? 's' : ''}`);
+  if (d.trajets) parties.push(`${d.trajets.length} trajet${d.trajets.length > 1 ? 's' : ''}`);
   if (d.compteurs) parties.push(`${d.compteurs.length} compteur${d.compteurs.length > 1 ? 's' : ''}`);
   if (d.reglages) parties.push('les réglages');
   return parties.join(', ');
@@ -22,6 +23,7 @@ function remplacees(d: Partial<Donnees>, actuel: Donnees): string {
   if (d.vols) parties.push(`vols (aujourd'hui ${actuel.vols.length})`);
   if (d.etapes) parties.push(`étapes (aujourd'hui ${actuel.etapes.length})`);
   if (d.logements) parties.push(`logements (aujourd'hui ${actuel.logements.length})`);
+  if (d.trajets) parties.push(`trajets (aujourd'hui ${actuel.trajets.length})`);
   if (d.compteurs) parties.push(`compteurs (aujourd'hui ${actuel.compteurs.length})`);
   if (d.reglages) parties.push('réglages');
   return parties.join(', ');

@@ -15,6 +15,18 @@ export function formatDateHeure(d: Date): string {
   return `${formatDate(d)} à ${formatHeure(d)}`;
 }
 
+// 1234.5 -> "1.234,50" ; 39 -> "39" (milliers avec un point, décimales avec une virgule)
+export function formatNombre(n: number): string {
+  const [entier, decimales] = Math.abs(n).toFixed(2).split('.');
+  const groupe = entier.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return `${n < 0 ? '-' : ''}${groupe}${decimales === '00' ? '' : `,${decimales}`}`;
+}
+
+// Euro : 1.234,56€ ; autre devise : 1.234 THB (le code de la monnaie locale reste affiché)
+export function formatMontant(n: number, devise: string): string {
+  return devise === 'EUR' ? `${formatNombre(n)}€` : `${formatNombre(n)} ${devise}`;
+}
+
 // Heure avec secondes, vue dans le fuseau du téléphone
 export function formatHeureSecondes(d: Date): string {
   return `${deuxChiffres(d.getHours())}:${deuxChiffres(d.getMinutes())}:${deuxChiffres(d.getSeconds())}`;

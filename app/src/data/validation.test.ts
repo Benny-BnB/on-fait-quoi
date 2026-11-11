@@ -77,9 +77,9 @@ test('réglages : délais invalides refusés', () => {
 });
 
 test('une section inconnue est signalée mais n\'empêche pas l\'import', () => {
-  const r = validerImport(fichier({ trajets: [] }));
+  const r = validerImport(fichier({ evenements: [] }));
   assert.equal(r.ok, true);
-  if (r.ok) assert.match(r.avertissements.join(' '), /trajets/);
+  if (r.ok) assert.match(r.avertissements.join(' '), /evenements/);
 });
 
 const etapeValide = { id: 'e1', nom: 'Étape test', pays: 'Pays', devise: 'eur', fuseau: 'Europe/Brussels', debut: '2027-03-01', fin: '2027-03-05' };
@@ -140,6 +140,63 @@ test('étape : fin avant début, fuseau inconnu, devise invalide : refusé', () 
 test('GPS hors limites, heure impossible : refusé', () => {
   assert.equal(validerImport(fichierSejour({ logements: [{ ...logementValide, gps: { lat: 95, lng: 0 } }] })).ok, false);
   assert.equal(validerImport(fichierSejour({ logements: [{ ...logementValide, arrivee: { date: '2027-03-01', heure: '25:00' } }] })).ok, false);
+});
+
+const trajetValide = {
+  id: 't1',
+  de: 'Lieu A',
+  a: 'Lieu B',
+  mode: 'train',
+  date: '2027-03-04',
+  heure: '',
+  fuseau: 'Europe/Brussels',
+  dureeMin: 57,
+  prixMin: 10,
+  prixMax: 20,
+  devise: 'eur',
+  source: 'Journal fictif, 01/01/2027 : https://exemple.org/article',
+  consulteLe: '2027-01-02',
+};
+const fichierTrajets = (extra: Record<string, unknown> = {}) => ({ format: 'on-fait-quoi', version: 1, trajets: [trajetValide], ...extra });
+
+test('trajets valides : acceptés, mode vide permis, valeurs par défaut', () => {
+  const r = validerImport(fichierTrajets({ trajets: [trajetValide, { id: 't2', de: 'X', a: 'Y', date: '2027-03-05', fuseau: 'Asia/Dubai' }] }));
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    const [t1, t2] = r.donnees.trajets ?? [];
+    assert.equal(t1.devise, 'EUR');
+    assert.equal(t1.dureeEstimee, false);
+    assert.equal(t2.mode, '');
+    assert.equal(t2.dureeMin, null);
+    assert.equal(t2.prixMin, null);
+    assert.equal(t2.lienVol, 'vers');
+    assert.equal(r.donnees.vols, undefined);
+  }
+});
+
+test('trajets : mode inconnu, prix incohérents, devise manquante, date de source invalide : refusés', () => {
+  const r = validerImport(fichierTrajets({ trajets: [{ ...trajetValide, mode: 'fusée', prixMin: 30, devise: '', consulteLe: '2027-13-01', heure: '25:00' }] }));
+  assert.equal(r.ok, false);
+  if (!r.ok) {
+    const tout = r.erreurs.join(' | ');
+    assert.match(tout, /mode invalide/);
+    assert.match(tout, /dépasse le prix maximum/);
+    assert.match(tout, /devise manquante/);
+    assert.match(tout, /date de consultation invalide/);
+    assert.match(tout, /heure invalide/);
+  }
+  assert.equal(validerImport(fichierTrajets({ trajets: [{ ...trajetValide, prixMax: undefined }] })).ok, false, 'un seul des deux prix');
+  assert.equal(validerImport(fichierTrajets({ trajets: [{ ...trajetValide, dureeMin: -5 }] })).ok, false);
+});
+
+test('trajets liés à un vol ou un logement : vérifiés seulement si la section est dans le même fichier', () => {
+  const lie = { ...trajetValide, volId: 'absent', logementId: 'absent' };
+  assert.equal(validerImport(fichierTrajets({ trajets: [lie] })).ok, true, 'sans les vols dans le fichier, on ne peut pas vérifier');
+  const avecVols = validerImport(fichierTrajets({ trajets: [lie], vols: [volValide] }));
+  assert.equal(avecVols.ok, false);
+  if (!avecVols.ok) assert.match(avecVols.erreurs.join(' '), /le vol « absent » n'existe pas/);
+  const bon = validerImport(fichierTrajets({ trajets: [{ ...trajetValide, volId: 'vol-1', lienVol: 'depuis' }], vols: [volValide] }));
+  assert.equal(bon.ok, true);
 });
 
 test('texte collé : JSON coupé ou invalide donne un message clair', () => {

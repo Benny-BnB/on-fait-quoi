@@ -8,6 +8,7 @@ import { dateValide, formatDureeMin, formatUtc, fuseauValide, heureValide, liste
 import { dureeVolMin, instantDepart } from '../lib/vols.ts';
 import { BoutonConfirme, Champ, ListeErreurs, Page } from './commun.tsx';
 import { aller } from './routeur.ts';
+import { TrajetsDuVol } from './TrajetsDuVol.tsx';
 
 function aeroportVide(): Aeroport {
   return { code: '', ville: '', date: '', heure: '', fuseau: '', terminal: '' };
@@ -165,7 +166,7 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
   }
 
   return (
-    <Page titre={props.nouveau ? 'Nouveau vol' : `Vol ${props.initial.numero}`} retour={{ href: '#/vols', libelle: 'Vols' }}>
+    <Page titre={props.nouveau ? 'Nouveau vol' : `Vol ${props.initial.numero}`} retour={{ href: '#/vols', libelle: 'Transports' }}>
       <form class="formulaire" onSubmit={enregistrer} noValidate>
         <ListeErreurs erreurs={tentative ? problemes : []} />
 
@@ -222,6 +223,7 @@ function Editeur(props: { initial: Vol; nouveau: boolean }) {
         <Champ etiquette="Notes (facultatif)">
           <textarea rows={3} value={vol.notes} onInput={(e) => maj({ notes: e.currentTarget.value })} />
         </Champ>
+        {!props.nouveau && <TrajetsDuVol volId={props.initial.id} />}
 
         <button type="submit" class="bouton">
           Enregistrer

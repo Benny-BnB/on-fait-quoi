@@ -26,6 +26,34 @@ export function nbNuits(debut: string, fin: string): number {
   return numeroJour(fin) - numeroJour(debut);
 }
 
+const JOURS_SEMAINE = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+
+// "2026-12-05" -> "sam."
+export function jourSemaine(dateIso: string): string {
+  return JOURS_SEMAINE[new Date(numeroJour(dateIso) * MS_PAR_JOUR).getUTCDay()];
+}
+
+// Tous les jours de "du" à "au" inclus (avec une limite de sécurité)
+export function listeJours(du: string, au: string, max = 400): string[] {
+  const premier = numeroJour(du);
+  const dernier = Math.min(numeroJour(au), premier + max - 1);
+  const jours: string[] = [];
+  for (let n = premier; n <= dernier; n++) jours.push(dateDepuisNumero(n));
+  return jours;
+}
+
+// Nombre de jours entre deux dates (positif si "au" est après "du")
+export function joursEntre(du: string, au: string): number {
+  return numeroJour(au) - numeroJour(du);
+}
+
+// Premier lien http(s) trouvé dans un texte libre (par exemple le champ "source"), sinon null
+export function premierLien(texte: string): string | null {
+  const m = /https?:\/\/[^\s<>"]+/.exec(texte);
+  if (!m) return null;
+  return lienSur(m[0].replace(/[.,;:)\]]+$/, ''));
+}
+
 export function etapesTriees(etapes: Etape[]): Etape[] {
   return [...etapes].sort((a, b) => a.debut.localeCompare(b.debut) || a.fin.localeCompare(b.fin) || a.nom.localeCompare(b.nom, 'fr'));
 }

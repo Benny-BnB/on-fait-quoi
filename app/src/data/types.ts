@@ -101,12 +101,53 @@ export type Logement = {
   notes: string;
 };
 
+export const MODES_TRAJET = ['train', 'taxi', 'vtc', 'bateau', 'bus', 'metro', 'voiture', 'scooter', 'a-pied'] as const;
+export type ModeTrajet = (typeof MODES_TRAJET)[number];
+
+export const LIBELLES_MODE: Record<ModeTrajet, string> = {
+  train: 'Train',
+  taxi: 'Taxi',
+  vtc: 'Appli de VTC',
+  bateau: 'Bateau',
+  bus: 'Bus',
+  metro: 'Métro',
+  voiture: 'Voiture',
+  scooter: 'Scooter',
+  'a-pied': 'À pied',
+};
+
+// "vers" = pour attraper ce vol (l'arrivée à l'aéroport est contrainte par le décollage)
+// "depuis" = après l'arrivée de ce vol (le trajet commence à l'atterrissage)
+export type LienVol = 'vers' | 'depuis';
+
+export type Trajet = {
+  id: string;
+  de: string;
+  a: string;
+  mode: ModeTrajet | ''; // '' = mode pas encore choisi
+  date: string; // AAAA-MM-JJ : jour prévu du trajet
+  heure: string; // HH:MM, heure locale de départ dans "fuseau" ; '' = pas fixée
+  fuseau: string; // nom IANA du lieu de départ
+  dureeMin: number | null; // null = durée inconnue
+  dureeEstimee: boolean; // vrai = durée estimée (pas publiée par une source)
+  prixMin: number | null; // prix par personne, null = inconnu
+  prixMax: number | null;
+  devise: string; // devise du prix, ex. THB
+  source: string; // où on a lu la durée ou le prix (texte ou lien)
+  consulteLe: string; // AAAA-MM-JJ, date de consultation de la source, '' si inconnue
+  volId: string; // '' = aucun vol lié
+  lienVol: LienVol;
+  logementId: string; // '' = aucun logement lié
+  notes: string;
+};
+
 export type Donnees = {
   vols: Vol[];
   compteurs: Compteur[];
   reglages: Reglages;
   etapes: Etape[];
   logements: Logement[];
+  trajets: Trajet[];
 };
 
 export const ID_PROCHAIN_VOL = 'prochain-vol';

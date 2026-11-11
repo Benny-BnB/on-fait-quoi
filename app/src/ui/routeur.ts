@@ -7,6 +7,9 @@ export type Route =
   | { nom: 'vol'; id: string }
   | { nom: 'compteurs' }
   | { nom: 'compteur'; id: string }
+  | { nom: 'planning' }
+  | { nom: 'trajets' }
+  | { nom: 'trajet'; id: string; volId?: string }
   | { nom: 'sejour' }
   | { nom: 'etape'; id: string }
   | { nom: 'logement'; id: string; etapeId?: string }
@@ -28,6 +31,8 @@ export function lireRoute(hash: string): Route {
     if (b === 'logement' && c) return { nom: 'logement', id: c, etapeId: d };
     return { nom: 'sejour' };
   }
+  if (a === 'planning') return { nom: 'planning' };
+  if (a === 'trajets') return b ? { nom: 'trajet', id: b, volId: c } : { nom: 'trajets' };
   if (a === 'vols') return b ? { nom: 'vol', id: b } : { nom: 'vols' };
   if (a === 'compteurs') return b ? { nom: 'compteur', id: b } : { nom: 'compteurs' };
   if (a === 'reglages') return { nom: 'reglages' };
@@ -53,6 +58,12 @@ export function aller(chemin: string): void {
 
 export const lienVol = (id: string): string => `#/vols/${encodeURIComponent(id)}`;
 export const lienCompteur = (id: string): string => `#/compteurs/${encodeURIComponent(id)}`;
-export const lienEtape = (id: string): string => `#/sejour/etape/${encodeURIComponent(id)}`;
+export const lienTrajet = (id: string): string => `#/trajets/${encodeURIComponent(id)}`;
+// Nouveau trajet, éventuellement déjà rattaché à un vol (pour aller à l'aéroport)
+export const lienNouveauTrajet = (volId?: string): string => `#/trajets/nouveau${volId ? `/${encodeURIComponent(volId)}` : ''}`;
+// Ouvre l'élément (vol, trajet ou logement) à l'origine d'un créneau ou d'une alerte
+export const lienSource = (genre: 'vol' | 'trajet' | 'logement', id: string): string =>
+  genre === 'vol' ? lienVol(id) : genre === 'trajet' ? lienTrajet(id) : lienLogement(id);
+export const lienEtape =(id: string): string => `#/sejour/etape/${encodeURIComponent(id)}`;
 export const lienLogement = (id: string): string => `#/sejour/logement/${encodeURIComponent(id)}`;
 export const lienNouveauLogement = (etapeId: string): string => `#/sejour/logement/nouveau/${encodeURIComponent(etapeId)}`;
