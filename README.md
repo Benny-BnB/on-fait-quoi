@@ -6,7 +6,7 @@ Le cahier des charges complet est dans [CAHIER-DES-CHARGES.md](CAHIER-DES-CHARGE
 
 ## Où en est l'app
 
-Étape 1 sur 10 : les fondations. Pour l'instant l'app ne fait que s'installer et fonctionner hors ligne. Les vols, les compteurs, le planning, les check-lists et les fiches de lieux arrivent étape par étape.
+Étape 2 sur 10. L'app s'installe, fonctionne hors ligne, gère les vols et affiche des compteurs justes à la seconde. Chaque vol garde l'heure locale de sa ville et le nom de son fuseau horaire : l'instant exact se calcule à partir de là, donc le fuseau du téléphone ne change rien. Les logements, les trajets, le planning, les check-lists et les fiches de lieux arrivent étape par étape.
 
 ## Installer sur iPhone
 
@@ -23,7 +23,9 @@ Ne jamais saisir dans l'app ni dans le dépôt : numéro de passeport, numéro d
 
 ## Sauvegarde
 
-Les données de l'app sont dans le navigateur du téléphone, qui peut les effacer. Export, import et sauvegarde seront ajoutés dans une étape suivante : ils n'existent pas encore.
+Les données de l'app sont dans le navigateur du téléphone, qui peut les effacer. Dans **Réglages > Mes données**, on peut importer un fichier de voyage (fichier ou texte collé), copier ses données ou les enregistrer dans un fichier. Un rappel automatique de sauvegarde n'existe pas encore.
+
+Le format du fichier d'import est décrit et contrôlé dans `app/src/data/validation.ts` : un fichier erroné est refusé avec un message clair et ne modifie rien.
 
 ## Pour développer
 
@@ -33,7 +35,8 @@ Il faut [Node.js](https://nodejs.org) (version 20.19 ou plus récente).
 cd app
 npm install        # télécharge les briques de code (une seule fois)
 npm run dev        # lance l'app en local pour la regarder
-npm run build      # vérifie le code et fabrique le site dans app/dist
+npm test           # lance les tests automatiques (heures, fuseaux, import)
+npm run build      # vérifie le code et les tests, puis fabrique le site dans app/dist
 ```
 
 Choix techniques : Vite (fabrication d'un site statique), Preact (affichage), TypeScript (détection d'erreurs), vite-plugin-pwa (installation et hors ligne).

@@ -14,3 +14,13 @@ export function formatHeure(d: Date): string {
 export function formatDateHeure(d: Date): string {
   return `${formatDate(d)} à ${formatHeure(d)}`;
 }
+
+// Heure avec secondes, vue dans le fuseau du téléphone
+export function formatHeureSecondes(d: Date): string {
+  return `${deuxChiffres(d.getHours())}:${deuxChiffres(d.getMinutes())}:${deuxChiffres(d.getSeconds())}`;
+}
+
+// Heure avec secondes en UTC (indépendante de tout fuseau)
+export function formatHeureUtcSecondes(d: Date): string {
+  return `${deuxChiffres(d.getUTCHours())}:${deuxChiffres(d.getUTCMinutes())}:${deuxChiffres(d.getUTCSeconds())}`;
+}
