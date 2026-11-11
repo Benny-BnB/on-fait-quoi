@@ -7,6 +7,9 @@ export type Route =
   | { nom: 'vol'; id: string }
   | { nom: 'compteurs' }
   | { nom: 'compteur'; id: string }
+  | { nom: 'taches' }
+  | { nom: 'emporter' }
+  | { nom: 'tache'; id: string; liste?: string }
   | { nom: 'planning' }
   | { nom: 'trajets' }
   | { nom: 'trajet'; id: string; volId?: string }
@@ -31,6 +34,8 @@ export function lireRoute(hash: string): Route {
     if (b === 'logement' && c) return { nom: 'logement', id: c, etapeId: d };
     return { nom: 'sejour' };
   }
+  if (a === 'taches') return b === 'emporter' ? { nom: 'emporter' } : { nom: 'taches' };
+  if (a === 'tache' && b) return { nom: 'tache', id: b, liste: c };
   if (a === 'planning') return { nom: 'planning' };
   if (a === 'trajets') return b ? { nom: 'trajet', id: b, volId: c } : { nom: 'trajets' };
   if (a === 'vols') return b ? { nom: 'vol', id: b } : { nom: 'vols' };
@@ -58,7 +63,10 @@ export function aller(chemin: string): void {
 
 export const lienVol = (id: string): string => `#/vols/${encodeURIComponent(id)}`;
 export const lienCompteur = (id: string): string => `#/compteurs/${encodeURIComponent(id)}`;
-export const lienTrajet = (id: string): string => `#/trajets/${encodeURIComponent(id)}`;
+export const lienTache = (id: string): string => `#/tache/${encodeURIComponent(id)}`;
+export const lienNouvelleTache = (liste: 'reste-a-faire' | 'a-emporter'): string => `#/tache/nouveau/${liste}`;
+export const lienListe = (liste: 'reste-a-faire' | 'a-emporter'): string => (liste === 'a-emporter' ? '#/taches/emporter' : '#/taches');
+export const lienTrajet =(id: string): string => `#/trajets/${encodeURIComponent(id)}`;
 // Nouveau trajet, éventuellement déjà rattaché à un vol (pour aller à l'aéroport)
 export const lienNouveauTrajet = (volId?: string): string => `#/trajets/nouveau${volId ? `/${encodeURIComponent(volId)}` : ''}`;
 // Ouvre l'élément (vol, trajet ou logement) à l'origine d'un créneau ou d'une alerte

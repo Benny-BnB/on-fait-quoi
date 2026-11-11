@@ -2,7 +2,8 @@ import { useMemo } from 'preact/hooks';
 import { basculerCompteur, useStore } from '../data/store.ts';
 import { useMaintenant } from '../lib/horloge.ts';
 import { creneauxImposes } from '../lib/planning.ts';
-import { formatDateHeureDansFuseau } from '../lib/temps.ts';
+import { debutVoyage, progression } from '../lib/taches.ts';
+import { aujourdhuiIso, formatDateHeureDansFuseau } from '../lib/temps.ts';
 import { CarteCompteur } from './CarteCompteur.tsx';
 import { Page } from './commun.tsx';
 
@@ -13,6 +14,11 @@ export function Accueil() {
   const creneaux = useMemo(() => creneauxImposes(donnees), [donnees]);
   // Le prochain créneau imposé dont l'heure est connue
   const prochain = creneaux.find((c) => c.debutMs !== null && c.debutMs > maintenant);
+  // Raccourci vers les check-lists : ce qu'il reste à faire, et ce qui est en retard
+  const aujourdhui = aujourdhuiIso();
+  const debut = debutVoyage(donnees);
+  const aFaire = progression(donnees.taches.filter((t) => t.liste === 'reste-a-faire'), aujourdhui, debut);
+  const valise = progression(donnees.taches.filter((t) => t.liste === 'a-emporter'), aujourdhui, debut);
 
   return (
     <Page titre="On fait quoi ?">
@@ -55,6 +61,25 @@ export function Accueil() {
             </div>
           ))}
           <span class="discret">Voir le planning ›</span>
+        </a>
+      )}
+
+      {donnees.taches.length > 0 && (
+        <a class="carte carte-lien" href="#/taches">
+          <h2>Check-lists</h2>
+          <div>
+            <strong>
+              {aFaire.restantes} tâche{aFaire.restantes > 1 ? 's' : ''} à faire
+            </strong>
+            {aFaire.enRetard > 0 && <span class="alerte-texte"> · {aFaire.enRetard} en retard</span>}
+            {aFaire.aujourdhui > 0 && ` · ${aFaire.aujourdhui} pour aujourd'hui`}
+          </div>
+          {valise.total > 0 && (
+            <div class="discret">
+              Valise : {valise.faites} sur {valise.total}
+            </div>
+          )}
+          <span class="discret">Voir les check-lists ›</span>
         </a>
       )}
 

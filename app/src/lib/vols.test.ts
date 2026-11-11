@@ -66,7 +66,7 @@ function compteur(cible: Compteur['cible'], delaiMin = 0): Compteur {
   return { id: 'c', libelle: 'test', cible, visible: true, delaiMin };
 }
 
-const donnees: Donnees = { vols: [aller, nuit, interieur], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [] };
+const donnees: Donnees = { vols: [aller, nuit, interieur], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [] };
 
 test('compteur du prochain vol et compteur avec délai', () => {
   const t0 = instantDepart(aller) - 10 * 3600 * 1000; // 10 h avant le premier vol

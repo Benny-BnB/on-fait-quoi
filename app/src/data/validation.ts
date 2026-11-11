@@ -1,8 +1,8 @@
 // Contrôle d'un fichier d'import avant de toucher aux données : un fichier erroné
 // est refusé avec un message clair, il n'abîme jamais les données déjà enregistrées.
 
-import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Donnees, Etape, Logement, MomentLogement, Trajet, Vol } from './types.ts';
-import { MODES_TRAJET, PORTEES, STATUTS_LOGEMENT, STATUTS_VOL } from './types.ts';
+import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Donnees, Etape, Logement, MomentLogement, Tache, Trajet, Vol } from './types.ts';
+import { LISTES_TACHE, MODES_TRAJET, PORTEES, STATUTS_LOGEMENT, STATUTS_VOL } from './types.ts';
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
 import { lienSur } from '../lib/sejour.ts';
 
@@ -10,7 +10,7 @@ export const FORMAT_FICHIER = 'on-fait-quoi';
 // Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -355,6 +355,53 @@ function lireTrajet(
   };
 }
 
+function lireTache(brut: unknown, index: number, erreurs: string[], ids: Set<string>): Tache | null {
+  const nom = `Tâche n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas une tâche valide.`);
+    return null;
+  }
+  const titre = texte(brut, 'titre');
+  const qui = titre ? `${nom} (${titre.slice(0, 40)})` : nom;
+  const avant = erreurs.length;
+
+  if (!titre) erreurs.push(`${qui} : titre manquant.`);
+  const id = texte(brut, 'id') || `tache-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+
+  const listeBrute = brut.liste ?? 'reste-a-faire';
+  if (!LISTES_TACHE.some((l) => l === listeBrute)) {
+    erreurs.push(`${qui} : liste invalide « ${String(listeBrute)} » (${LISTES_TACHE.join(' ou ')}).`);
+  }
+  const dateSouhaitee = texte(brut, 'dateSouhaitee');
+  if (dateSouhaitee !== '' && !dateValide(dateSouhaitee)) erreurs.push(`${qui} : date souhaitée invalide « ${dateSouhaitee} » (format AAAA-MM-JJ attendu).`);
+  const echeance = texte(brut, 'echeance');
+  if (echeance !== '' && !dateValide(echeance)) erreurs.push(`${qui} : échéance invalide « ${echeance} » (format AAAA-MM-JJ attendu).`);
+  if (dateValide(dateSouhaitee) && dateValide(echeance) && dateSouhaitee > echeance) {
+    erreurs.push(`${qui} : la date souhaitée est après l'échéance.`);
+  }
+  if (brut.fait !== undefined && typeof brut.fait !== 'boolean') erreurs.push(`${qui} : « fait » doit valoir true ou false.`);
+  const faitLe = texte(brut, 'faitLe');
+  if (faitLe !== '' && !dateValide(faitLe)) erreurs.push(`${qui} : date « faitLe » invalide « ${faitLe} » (format AAAA-MM-JJ attendu).`);
+  const lien = texte(brut, 'lien');
+  if (lien !== '' && lienSur(lien) === null) erreurs.push(`${qui} : le lien doit commencer par https:// ou http://.`);
+
+  if (erreurs.length > avant) return null;
+  const fait = brut.fait === true;
+  return {
+    id,
+    titre,
+    liste: listeBrute as Tache['liste'],
+    dateSouhaitee,
+    echeance,
+    fait,
+    faitLe: fait ? faitLe : '',
+    note: texte(brut, 'note'),
+    lien,
+  };
+}
+
 export function validerImport(brut: unknown): ResultatImport {
   if (!estObjet(brut)) return { ok: false, erreurs: ['Le fichier ne contient pas de données reconnaissables.'] };
   if (brut.format !== FORMAT_FICHIER) {
@@ -440,9 +487,19 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  if (brut.taches !== undefined) {
+    if (!Array.isArray(brut.taches)) {
+      erreurs.push('« taches » doit être une liste.');
+    } else {
+      const ids = new Set<string>();
+      const taches = brut.taches.map((t, i) => lireTache(t, i, erreurs, ids));
+      donnees.taches = taches.filter((t): t is Tache => t !== null);
+    }
+  }
+
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches.'] };
   }
   return { ok: true, donnees, avertissements };
 }

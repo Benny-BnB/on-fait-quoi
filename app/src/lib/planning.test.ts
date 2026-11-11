@@ -50,7 +50,7 @@ function creerTrajet(id: string, extra: Partial<Trajet> = {}): Trajet {
 }
 
 function creerDonnees(partiel: Partial<Donnees> = {}): Donnees {
-  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], ...partiel };
+  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], ...partiel };
 }
 
 const xx100 = creerVol('v1', 'XX100', ['2027-01-15', '08:00', 'Europe/Brussels', 'AAA'], ['2027-01-15', '17:30', 'Asia/Dubai', 'BBB']);

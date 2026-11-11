@@ -41,6 +41,7 @@ export function donneesVides(): Donnees {
     etapes: [],
     logements: [],
     trajets: [],
+    taches: [],
   };
 }
 

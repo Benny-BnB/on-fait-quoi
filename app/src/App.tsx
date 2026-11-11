@@ -7,6 +7,7 @@ import { Compteurs } from './ui/Compteurs.tsx';
 import { FormulaireCompteur } from './ui/FormulaireCompteur.tsx';
 import { FormulaireEtape } from './ui/FormulaireEtape.tsx';
 import { FormulaireLogement } from './ui/FormulaireLogement.tsx';
+import { FormulaireTache } from './ui/FormulaireTache.tsx';
 import { FormulaireTrajet } from './ui/FormulaireTrajet.tsx';
 import { FormulaireVol } from './ui/FormulaireVol.tsx';
 import { Navigation } from './ui/Navigation.tsx';
@@ -14,6 +15,7 @@ import { Planning } from './ui/Planning.tsx';
 import { Reglages } from './ui/Reglages.tsx';
 import { useRoute } from './ui/routeur.ts';
 import { Sejour } from './ui/Sejour.tsx';
+import { Taches } from './ui/Taches.tsx';
 import { Trajets } from './ui/Trajets.tsx';
 import { Vols } from './ui/Vols.tsx';
 
@@ -46,6 +48,15 @@ export function App() {
         break;
       case 'compteur':
         page = <FormulaireCompteur id={route.id} />;
+        break;
+      case 'taches':
+        page = <Taches liste="reste-a-faire" />;
+        break;
+      case 'emporter':
+        page = <Taches liste="a-emporter" />;
+        break;
+      case 'tache':
+        page = <FormulaireTache id={route.id} liste={route.liste} />;
         break;
       case 'planning':
         page = <Planning />;

@@ -133,7 +133,7 @@ p {
   bottom: 0;
   z-index: 10;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   background: var(--carte);
   border-top: 1px solid var(--bord);
   padding-bottom: env(safe-area-inset-bottom);
@@ -149,7 +149,8 @@ p {
   padding: 6px 2px;
   color: var(--texte-doux);
   text-decoration: none;
-  font-size: 12px;
+  font-size: 10px;
+  white-space: nowrap;
 }
 
 .navigation a.actif {
@@ -464,6 +465,97 @@ fieldset.groupe legend {
 .segments a.actif {
   background: var(--accent);
   color: var(--sur-accent);
+}
+
+/* Check-lists */
+.tache {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 8px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid var(--bord);
+}
+
+.tache.faite .tache-corps strong {
+  text-decoration: line-through;
+  color: var(--texte-doux);
+}
+
+.case {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 2px solid var(--accent-texte);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--sur-accent);
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.case[aria-checked='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.tache-corps {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.apercu-note {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.etiquette.alerte {
+  justify-self: start;
+  border-color: var(--alerte);
+  color: var(--alerte);
+  font-weight: 600;
+}
+
+.alerte-texte {
+  color: var(--alerte);
+  font-weight: 700;
+}
+
+.titre-retard {
+  color: var(--alerte);
+}
+
+.barre {
+  height: 14px;
+  border-radius: 999px;
+  background: var(--bord);
+  overflow: hidden;
+}
+
+.barre span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.details-faites summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 /* Planning : un jour et ses créneaux imposés */

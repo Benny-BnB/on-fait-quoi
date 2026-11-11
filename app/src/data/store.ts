@@ -2,7 +2,8 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Donnees, Etape, Logement, Reglages, Trajet, Vol } from './types.ts';
+import type { Compteur, Donnees, Etape, Logement, Reglages, Tache, Trajet, Vol } from './types.ts';
+import { aujourdhuiIso } from '../lib/temps.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
 import { REGLAGES_PAR_DEFAUT, compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
 import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
@@ -49,7 +50,8 @@ function normaliser(brut: Partial<Donnees> | undefined): Donnees {
   const etapes = brut && Array.isArray(brut.etapes) ? brut.etapes : [];
   const logements = brut && Array.isArray(brut.logements) ? brut.logements : [];
   const trajets = brut && Array.isArray(brut.trajets) ? brut.trajets : [];
-  return { vols, compteurs, reglages, etapes, logements, trajets };
+  const taches = brut && Array.isArray(brut.taches) ? brut.taches : [];
+  return { vols, compteurs, reglages, etapes, logements, trajets, taches };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -190,6 +192,27 @@ export function supprimerTrajet(id: string): Promise<void> {
   return modifier((d) => ({ ...d, trajets: d.trajets.filter((t) => t.id !== id) }));
 }
 
+// ---------- Tâches (check-lists) ----------
+
+export function enregistrerTache(tache: Tache): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    taches: d.taches.some((t) => t.id === tache.id) ? d.taches.map((t) => (t.id === tache.id ? tache : t)) : [...d.taches, tache],
+  }));
+}
+
+export function supprimerTache(id: string): Promise<void> {
+  return modifier((d) => ({ ...d, taches: d.taches.filter((t) => t.id !== id) }));
+}
+
+// Cocher / décocher : on garde le jour où la tâche a été faite
+export function basculerTache(id: string): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    taches: d.taches.map((t) => (t.id === id ? { ...t, fait: !t.fait, faitLe: t.fait ? '' : aujourdhuiIso() } : t)),
+  }));
+}
+
 // ---------- Import, export, suppression ----------
 
 // Compteurs après un import de vols sans compteurs : on garde ceux de l'utilisateur
@@ -218,7 +241,7 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
       const ids = new Set(etapes.map((e) => e.id));
       logements = logements.filter((l) => ids.has(l.etapeId));
     }
-    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements, trajets: partiel.trajets ?? d.trajets });
+    return normaliser({ vols, compteurs, reglages: partiel.reglages ?? d.reglages, etapes, logements, trajets: partiel.trajets ?? d.trajets, taches: partiel.taches ?? d.taches });
   });
 }
 

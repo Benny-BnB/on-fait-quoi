@@ -199,6 +199,42 @@ test('trajets liés à un vol ou un logement : vérifiés seulement si la sectio
   assert.equal(bon.ok, true);
 });
 
+const tacheValide = { id: 'k1', titre: 'Tâche test', liste: 'reste-a-faire', dateSouhaitee: '2027-03-01', echeance: '2027-03-05', lien: 'https://exemple.org' };
+const fichierTaches = (extra: Record<string, unknown> = {}) => ({ format: 'on-fait-quoi', version: 1, taches: [tacheValide], ...extra });
+
+test('tâches valides : acceptées, valeurs par défaut, "faitLe" ignoré tant que la tâche n\'est pas faite', () => {
+  const r = validerImport(fichierTaches({ taches: [tacheValide, { titre: 'Sans dates', faitLe: '2027-03-02' }, { ...tacheValide, id: 'k3', fait: true, faitLe: '2027-03-02' }] }));
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    const [a, b, c] = r.donnees.taches ?? [];
+    assert.equal(a.fait, false);
+    assert.equal(b.liste, 'reste-a-faire');
+    assert.equal(b.dateSouhaitee, '');
+    assert.equal(b.faitLe, '');
+    assert.equal(c.fait, true);
+    assert.equal(c.faitLe, '2027-03-02');
+    assert.equal(r.donnees.vols, undefined);
+  }
+});
+
+test('tâches invalides : titre manquant, liste inconnue, dates impossibles, souhaitée après échéance, lien dangereux', () => {
+  const r = validerImport(fichierTaches({ taches: [{ titre: '', liste: 'autre', dateSouhaitee: '2027-02-30', echeance: 'demain', lien: 'javascript:alert(1)', fait: 'oui' }] }));
+  assert.equal(r.ok, false);
+  if (!r.ok) {
+    const tout = r.erreurs.join(' | ');
+    assert.match(tout, /titre manquant/);
+    assert.match(tout, /liste invalide/);
+    assert.match(tout, /date souhaitée invalide/);
+    assert.match(tout, /échéance invalide/);
+    assert.match(tout, /https:\/\//);
+    assert.match(tout, /« fait » doit valoir/);
+  }
+  const inverse = validerImport(fichierTaches({ taches: [{ ...tacheValide, dateSouhaitee: '2027-03-10', echeance: '2027-03-05' }] }));
+  assert.equal(inverse.ok, false);
+  if (!inverse.ok) assert.match(inverse.erreurs.join(' '), /souhaitée est après l'échéance/);
+  assert.equal(validerImport(fichierTaches({ taches: [tacheValide, tacheValide] })).ok, false, 'identifiants en double');
+});
+
 test('texte collé : JSON coupé ou invalide donne un message clair', () => {
   const r = lireTexteImport('{"format": "on-fait-quoi", "vols": [');
   assert.equal(r.ok, false);

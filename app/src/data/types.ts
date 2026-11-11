@@ -141,6 +141,27 @@ export type Trajet = {
   notes: string;
 };
 
+export const LISTES_TACHE = ['reste-a-faire', 'a-emporter'] as const;
+export type ListeTache = (typeof LISTES_TACHE)[number];
+
+export const LIBELLES_LISTE: Record<ListeTache, string> = {
+  'reste-a-faire': 'Reste à faire',
+  'a-emporter': 'À emporter',
+};
+
+// Une tâche de check-list. "Fait" = cochée : elle quitte la liste active et ne compte plus dans ce qui reste.
+export type Tache = {
+  id: string;
+  titre: string;
+  liste: ListeTache;
+  dateSouhaitee: string; // AAAA-MM-JJ, '' si aucune : le plus tôt possible vaut mieux que le plus tard
+  echeance: string; // AAAA-MM-JJ, '' si aucune : la limite à ne pas dépasser
+  fait: boolean;
+  faitLe: string; // AAAA-MM-JJ, '' tant que la tâche n'est pas faite
+  note: string;
+  lien: string; // lien utile (http ou https), vide si aucun
+};
+
 export type Donnees = {
   vols: Vol[];
   compteurs: Compteur[];
@@ -148,6 +169,7 @@ export type Donnees = {
   etapes: Etape[];
   logements: Logement[];
   trajets: Trajet[];
+  taches: Tache[];
 };
 
 export const ID_PROCHAIN_VOL = 'prochain-vol';

@@ -1,7 +1,7 @@
 import type { ComponentChildren } from 'preact';
 import type { Route } from './routeur.ts';
 
-type Onglet = 'accueil' | 'planning' | 'sejour' | 'transports' | 'reglages';
+type Onglet = 'accueil' | 'planning' | 'sejour' | 'transports' | 'taches' | 'reglages';
 
 function Icone(props: { children: ComponentChildren }) {
   return (
@@ -54,6 +54,17 @@ const ONGLETS: { cle: Onglet; href: string; libelle: string; icone: ComponentChi
     ),
   },
   {
+    cle: 'taches',
+    href: '#/taches',
+    libelle: 'Check-lists',
+    icone: (
+      <>
+        <polyline points="9 11 12 14 22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </>
+    ),
+  },
+  {
     cle: 'reglages',
     href: '#/reglages',
     libelle: 'Réglages',
@@ -76,6 +87,7 @@ const ONGLETS: { cle: Onglet; href: string; libelle: string; icone: ComponentChi
 function ongletActif(route: Route): Onglet {
   if (route.nom === 'vols' || route.nom === 'vol' || route.nom === 'trajets' || route.nom === 'trajet') return 'transports';
   if (route.nom === 'etape' || route.nom === 'logement') return 'sejour';
+  if (route.nom === 'taches' || route.nom === 'emporter' || route.nom === 'tache') return 'taches';
   if (route.nom === 'compteurs' || route.nom === 'compteur') return 'accueil'; // les compteurs se règlent depuis l'accueil
   return route.nom;
 }
