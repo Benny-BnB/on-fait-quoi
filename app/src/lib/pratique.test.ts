@@ -137,7 +137,7 @@ test("une fiche concerne une étape par le nom de l'étape ou par son pays, sans
   assert.equal(ficheConcerneEtape(f('e', ''), etapes[1]), false);
 });
 
-test("le regroupement suit l'ordre des dates, une fiche n'apparaît qu'une fois, les autres vont dans « Autres fiches »", () => {
+test("le regroupement suit l'ordre des dates, une fiche rattachée par le pays n'apparaît qu'une fois, les autres vont dans « Autres fiches »", () => {
   const groupes = grouperPratique([f('pays-th', 'Thaïlande'), f('ville-a', 'Ville A'), f('ville-b', 'Ville B'), f('ailleurs', 'Lune')], etapes);
   assert.deepEqual(groupes.map((g) => [g.titre, g.fiches.map((x) => x.id)]), [
     ['Ville A (centre)', ['pays-th', 'ville-a']],
@@ -146,17 +146,92 @@ test("le regroupement suit l'ordre des dates, une fiche n'apparaît qu'une fois,
   ]);
 });
 
+test("une fiche rattachée par le nom de la ville apparaît sous chaque étape qui porte ce nom (« Ville A » et « Ville A, près de l'aéroport »)", () => {
+  const deux: Etape[] = [etape('e1', 'Ville A', 'Pays X', '2027-03-01'), etape('e2', 'Ville B', 'Pays X', '2027-03-05'), etape('e3', "Ville A, près de l'aéroport", 'Pays X', '2027-03-09')];
+  const groupes = grouperPratique([f('pays-x', 'Pays X'), f('ville-a', 'Ville A')], deux);
+  assert.deepEqual(groupes.map((g) => [g.titre, g.fiches.map((x) => x.id)]), [
+    ['Ville A', ['pays-x', 'ville-a']],
+    ['Ville B', []],
+    ["Ville A, près de l'aéroport", ['ville-a']], // la fiche du pays reste sous la première étape seulement
+  ]);
+});
+
 test('sans aucune étape, toutes les fiches vont dans « Autres fiches » ; une étape sans fiche est quand même listée', () => {
   assert.deepEqual(grouperPratique([f('x', 'Lune')], []).map((g) => g.titre), ['Autres fiches']);
   assert.deepEqual(grouperPratique([], etapes).map((g) => [g.titre, g.fiches.length]), [['Ville A (centre)', 0], ['Ville B', 0]]);
 });
 
-test("la base publique couvre les étapes du voyage par le nom ou le pays : Thaïlande, Dubaï, Émirats", () => {
-  const nomsEtapes: Etape[] = [etape('e1', 'Bangkok', 'Thaïlande', '2027-03-01'), etape('e2', 'Dubaï', 'Émirats arabes unis', '2027-03-10')];
+test("la base publique couvre des étapes par le nom ou le pays : Thaïlande, villes thaïlandaises, Dubaï, Émirats", () => {
+  const nomsEtapes: Etape[] = [
+    etape('e1', 'Dubaï', 'Émirats arabes unis', '2027-03-01'),
+    etape('e2', 'Krabi', 'Thaïlande', '2027-03-05'),
+    etape('e3', 'Bangkok', 'Thaïlande', '2027-03-08'),
+    etape('e4', 'Railay', 'Thaïlande', '2027-03-11'),
+    etape('e5', 'Pattaya', 'Thaïlande', '2027-03-14'),
+  ];
   const groupes = grouperPratique(base, nomsEtapes);
-  assert.deepEqual(groupes.map((g) => g.titre), ['Bangkok', 'Dubaï']);
-  assert.equal(groupes[0].fiches.length, 6);
-  assert.equal(groupes[1].fiches.length, 7);
+  assert.deepEqual(groupes.map((g) => g.titre), ['Dubaï', 'Krabi', 'Bangkok', 'Railay', 'Pattaya']);
+  // les fiches « Thaïlande » (6) sont sous la première étape du pays, ici Krabi ; chaque ville a sa fiche de transfert
+  assert.deepEqual(groupes.map((g) => g.fiches.length), [7, 7, 1, 1, 1]);
+});
+
+// ---------- Transferts thaïlandais (étape 10) ----------
+
+test("les transferts thaïlandais ont leurs 4 fiches : aéroport de Bangkok, Pattaya, aéroport de Krabi, bateau de Railay", () => {
+  for (const [id, zone] of [['th-bkk-aeroport', 'Bangkok'], ['th-bkk-pattaya', 'Pattaya'], ['th-krabi-aeroport', 'Krabi'], ['th-railay-bateau', 'Railay']]) {
+    const f = fiche(id);
+    assert.equal(f.zone, zone);
+    assert.equal(f.rubrique, 'trajets');
+    assert.ok(f.aVerifier.length >= 3, `${id} : ce qui reste à vérifier est dit`);
+    assert.ok(f.liens.length >= 3, `${id} : renvois vers les sources`);
+  }
+  assert.match(fiche('th-transport').aVerifier.join(' '), /ont leurs propres fiches/);
+});
+
+test("aéroport Suvarnabhumi : les tarifs viennent de la page officielle d'AOT, avec la prise en charge et les suppléments du taxi", () => {
+  const f = fiche('th-bkk-aeroport');
+  const taxis = f.faits.find((x) => x.libelle === 'Taxis');
+  assert.ok(taxis);
+  assert.match(taxis.valeur, /35 ou 40 THB/);
+  assert.match(taxis.valeur, /supplément aéroport de 50 THB/);
+  assert.match(taxis.valeur, /ticket de file d'attente est obligatoire/);
+  assert.equal(taxis.source.officielle, true);
+  assert.match(taxis.source.lien, /^https:\/\/suvarnabhumi\.airportthai\.co\.th\//);
+  const rail = f.faits.find((x) => x.libelle === 'Airport Rail Link');
+  assert.match(rail?.valeur ?? '', /05:30 à 24:00/);
+  // la page ne donne pas de tarif par destination ni de durée : c'est dit
+  assert.ok(f.aVerifier.some((x) => /pas de tarif par destination/.test(x)));
+  assert.ok(f.aVerifier.some((x) => /aucune/.test(x) && /durées/i.test(x)));
+});
+
+test("Bangkok ↔ Pattaya : le tarif de l'autocar vient d'AOT, le sens retour et la durée restent « à vérifier »", () => {
+  const f = fiche('th-bkk-pattaya');
+  const bks = f.faits.find((x) => x.libelle === 'Autocar Bor Khor Sor');
+  assert.ok(bks);
+  assert.match(bks.valeur, /06:30 à 21:00/);
+  assert.match(bks.valeur, /140 à 190 THB/);
+  assert.match(bks.valeur, /ne dit pas si la ligne circule aussi dans l'autre sens/);
+  assert.equal(bks.source.officielle, true);
+  assert.ok(f.aVerifier.some((x) => /Sens Pattaya → aéroport/.test(x)));
+  assert.ok(f.aVerifier.some((x) => /Durée du trajet/.test(x) && /estimées/.test(x)));
+  // le train : aucune heure ni aucun tarif retenu (la page n'est pas lisible de façon fiable)
+  const train = f.faits.find((x) => x.libelle === 'Train (SRT)');
+  assert.ok(train);
+  assert.ok(!/\d{2}:\d{2}|THB/.test(train.valeur.replace('1690', '')));
+});
+
+test("aéroport de Krabi et bateau de Railay : aucune source officielle sur les prix ni les horaires, donc aucun prix retenu", () => {
+  for (const id of ['th-krabi-aeroport', 'th-railay-bateau']) {
+    const f = fiche(id);
+    for (const x of f.faits) {
+      assert.ok(!/\bTHB\b|baht|฿/i.test(x.valeur), `${id} : « ${x.libelle} » ne doit contenir aucun prix`);
+      // seul l'avis de sécurité du SPF est une source officielle ici
+      if (x.source.officielle) assert.match(x.source.lien, /diplomatie\.belgium\.be/);
+    }
+  }
+  assert.ok(fiche('th-railay-bateau').aVerifier.some((x) => /Tarif d'une traversée/.test(x)));
+  assert.ok(fiche('th-railay-bateau').aVerifier.some((x) => /dernier bateau/.test(x) && /vol en soirée/.test(x)));
+  assert.ok(fiche('th-krabi-aeroport').aVerifier.some((x) => /Prix et durée/.test(x)));
 });
 
 test('fraîcheur : « vérifié il y a N jours » ou « à vérifier »', () => {

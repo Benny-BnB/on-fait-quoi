@@ -107,14 +107,22 @@ export function ficheConcerneEtape(f: FichePratique, e: Pick<Etape, 'nom' | 'pay
 
 export type GroupePratique = { titre: string; etapeId: string; fiches: FichePratique[] };
 
+// Le nom de la zone de la fiche se trouve dans le nom de l'étape (et pas seulement dans son pays)
+function ficheNommeEtape(f: FichePratique, e: Pick<Etape, 'nom'>): boolean {
+  const zone = normaliserTexte(f.zone);
+  return zone !== '' && normaliserTexte(e.nom).includes(zone);
+}
+
 // Les fiches classées par étape du voyage (dans l'ordre des dates), puis « Autres fiches ».
-// Une fiche n'apparaît qu'une seule fois, sous la première étape qu'elle concerne (une fiche « Thaïlande » est donc sous la première étape de ce pays).
+// Une fiche rattachée par le PAYS (une fiche « Thaïlande ») n'apparaît qu'une fois, sous la première étape de ce pays.
+// Une fiche rattachée par le NOM de la ville (« Bangkok ») apparaît sous chaque étape qui porte ce nom
+// (par exemple « Ville A » et « Ville A, près de l'aéroport »).
 export function grouperPratique(fiches: FichePratique[], etapes: Etape[]): GroupePratique[] {
   const triees = [...etapes].sort((a, b) => a.debut.localeCompare(b.debut));
   const dejaPlacees = new Set<string>();
   const groupes: GroupePratique[] = [];
   for (const e of triees) {
-    const siennes = fiches.filter((f) => !dejaPlacees.has(f.id) && ficheConcerneEtape(f, e));
+    const siennes = fiches.filter((f) => ficheNommeEtape(f, e) || (!dejaPlacees.has(f.id) && ficheConcerneEtape(f, e)));
     siennes.forEach((f) => dejaPlacees.add(f.id));
     groupes.push({ titre: e.nom, etapeId: e.id, fiches: siennes });
   }

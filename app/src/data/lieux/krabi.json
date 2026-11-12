@@ -1,0 +1,783 @@
+{
+  "format": "on-fait-quoi-lieux",
+  "version": 1,
+  "lieux": [
+    {
+      "zone": "Railay",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Presqu'île de Railay (Railay Ouest et Railay Est)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0114135,
+        "lng": 98.8365261,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/19741813",
+          "libelle": "OpenStreetMap (baie de Railay Ouest)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "nature"
+      ],
+      "etiquettes": [
+        "plage",
+        "coucher de soleil",
+        "escalade",
+        "kayak"
+      ],
+      "incontournable": null,
+      "description": "Presqu'île sans route ni véhicule. Railay Ouest est la plage du coucher de soleil, avec les hôtels haut de gamme. Railay Est est la plage d'arrivée des bateaux : à marée basse, la plage disparaît et des vasières apparaissent. Phra Nang est à quelques minutes à pied, Tonsai est la quatrième plage. Le guide cite aussi l'escalade et le kayak parmi les activités.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Chemins de rochers et de terrain irrégulier entre les plages : chaussures adaptées recommandées. Éclairage minimal le soir entre les plages (lampe frontale suggérée). La marche la plus longue entre deux plages prend environ 15 à 20 minutes.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "Longtail uniquement. Depuis Ao Nang, traversée d'environ 15 minutes ; des bateaux partent aussi d'Ao Nam Mao ; depuis le ponton de Krabi Town, c'est plus long et plus cher. Les bateaux circulent dans la journée et s'arrêtent vers le coucher du soleil. De mai à octobre, la mer est agitée : traversées « risquées et parfois suspendues ». Aucun tarif donné par la source.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Saison : novembre à février = mer calme et longtails fiables ; mars et avril = encore bons ; mai à octobre = mer agitée. Aucun droit d'entrée cité pour la plage (seuls des prix d'excursions sont donnés). Source secondaire : à confirmer.",
+      "id": "krb-railay-beach",
+      "nom": "Railay Beach (Hat Rai Le)"
+    },
+    {
+      "zone": "Railay",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Railay (sud de la presqu'île)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.005943,
+        "lng": 98.8376609,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/19741816",
+          "libelle": "OpenStreetMap (Ao Phra Nang)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "spots"
+      ],
+      "etiquettes": [
+        "plage",
+        "grotte",
+        "sanctuaire",
+        "escalade"
+      ],
+      "incontournable": null,
+      "description": "Plage à courte distance à pied de Railay, avec le sanctuaire de la grotte de la Princesse (Princess Cave) et des parois d'escalade qui s'élèvent du sable.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "a-pied"
+          ],
+          "texte": "À pied depuis Railay (courte marche) ; la marche la plus longue entre deux plages de la presqu'île prend environ 15 à 20 minutes, par des chemins de jungle et des passages sur la plage.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/railay-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "La source lue ne donne ni droit d'entrée ni consigne de tenue pour le sanctuaire : à vérifier sur place. Source secondaire.",
+      "id": "krb-phra-nang-beach",
+      "nom": "Phra Nang Cave Beach (Tham Phra Nang)"
+    },
+    {
+      "zone": "Railay",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Railay",
+      "adresse": "",
+      "gps": null,
+      "categories": [
+        "promenades",
+        "spots"
+      ],
+      "etiquettes": [
+        "randonnée",
+        "point de vue",
+        "lagon"
+      ],
+      "incontournable": null,
+      "description": "Courte randonnée vers un point de vue sur la lagune.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Le guide décrit des passages à escalader sur les rochers et des sections avec cordes, et recommande des chaussures adaptées. Durée et niveau de difficulté non indiqués par la source (à vérifier).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Position non retenue : aucun point précis du sentier n'a été lu. Source secondaire : à confirmer avant d'y aller avec des enfants ou des personnes à mobilité réduite.",
+      "id": "krb-railay-lagoon-viewpoint",
+      "nom": "Railay Lagoon Viewpoint (randonnée)"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Krabi Noi (au nord de Krabi Town)",
+      "adresse": "35 Krabi Noi, Mueang Krabi District, Krabi 81000",
+      "gps": {
+        "lat": 8.1251461,
+        "lng": 98.9259093,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/680305089",
+          "libelle": "OpenStreetMap (Wat Tham Suea)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture",
+        "sport"
+      ],
+      "etiquettes": [
+        "temple",
+        "escalier",
+        "point de vue"
+      ],
+      "incontournable": null,
+      "description": "Temple bouddhiste dont un escalier de 1 260 marches mène au sommet (l'ancien panneau en annonçait 1 237, avant l'allongement de l'escalier lors d'une rénovation).",
+      "duree": {
+        "minMin": 120,
+        "maxMin": 180,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée gratuite pour les visiteurs thaïlandais et étrangers ; dons bienvenus aux sanctuaires (d'après un guide).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "06:00",
+              "ferme": "18:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « daily 06:00-18:00 », avec des terrains ouverts dès 06:00 (certains visiteurs disent environ 05:00). Redescendre avant la nuit (vers 17:00-18:00). Montée : 30 à 60 minutes ; descente : 20 à 40 minutes. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": {
+        "texte": "Épaules et genoux couverts. Chaussures retirées avant d'entrer dans un bâtiment du temple. Les tongs ne conviennent pas pour l'escalier.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Mains courantes sur toute la montée et paliers de repos environ tous les cent marches. La descente est plus dure pour les genoux que la montée, surtout dans la partie basse, étroite et plus raide.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "chaleur",
+          "texte": "l'escalier est au soleil à partir de la moitié de la montée ; à midi la chaleur devient très pénible : partir tôt (vers 06:00), emporter au moins 1 litre d'eau, ne pas commencer après 14:00",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [
+        {
+          "modes": [
+            "taxi",
+            "scooter"
+          ],
+          "texte": "À 9 km de Krabi Town (15 à 20 minutes en taxi ou à scooter) et à environ 22 km d'Ao Nang. Depuis Ao Nang, un songthaew coûte environ 150 THB et dépose sur la route principale, à 10 ou 15 minutes de marche de l'entrée.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/wat-tham-suea-tiger-cave-temple/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en octobre 2026, horaires synchronisés le 01/11/2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Des singes sur l'escalier cherchent à prendre la nourriture et les bouteilles ouvertes : fermer les sacs. Aucun site officiel lu : horaires, entrée et nombre de marches viennent d'un guide.",
+      "id": "krb-tiger-cave-temple",
+      "nom": "Tiger Cave Temple (Wat Tham Suea)"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Khlong Thom (réserve de faune de Khao Phra-Bang Khram)",
+      "adresse": "Khlong Thom Nuea, Khlong Thom, Krabi 81120",
+      "gps": {
+        "lat": 7.92424,
+        "lng": 99.26079,
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sa-morakot-emerald-pool/",
+          "libelle": "Thai Holiday Guide (coordonnées données par la page)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nature",
+        "bien-etre"
+      ],
+      "etiquettes": [
+        "piscine naturelle",
+        "source chaude",
+        "baignade"
+      ],
+      "incontournable": null,
+      "description": "Complexe de trois bassins reliés dans la réserve de faune de Khao Phra-Bang Khram, alimentés par des sources souterraines de 30 à 50 °C. Seul Sa Morakot est ouvert à la baignade ; Sa Kaeo et Sa Namphut se regardent seulement.",
+      "duree": null,
+      "prix": {
+        "min": 400,
+        "max": 400,
+        "devise": "THB",
+        "note": "Adulte étranger : 400 THB ; enfant étranger : 200 THB. Billets à la grille, en espèces seulement. Les Thaïlandais paient moins (montant non indiqué par cette page).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sa-morakot-emerald-pool/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:30",
+              "ferme": "17:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « daily 08:30-17:00 » ; d'autres guides donnent 16:30 comme heure de fermeture. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sa-morakot-emerald-pool/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Environ 800 m de passerelle depuis le parking ; le sol des bassins est irrégulier. Le sentier entre les bassins mesure environ 1 400 m, avec une boucle facultative de 2,7 km. Chaussures d'eau conseillées.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sa-morakot-emerald-pool/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "chaleur",
+          "texte": "peu d'ombre au-dessus de l'eau à Sa Kaeo : prévoir de la crème solaire",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/sa-morakot-emerald-pool/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [
+        {
+          "modes": [
+            "voiture",
+            "taxi"
+          ],
+          "texte": "Environ 45 minutes en voiture depuis Krabi Town ; pas de transport public régulier.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/sa-morakot-emerald-pool/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Durée de visite non indiquée par la source. Prévoir de l'argent liquide et un change de vêtements si l'on se baigne. Aucun site officiel lu : tarifs et horaires viennent d'un guide.",
+      "id": "krb-sa-morakot",
+      "nom": "Sa Morakot (Emerald Pool)"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Ao Luek (au nord de Krabi Town, baie de Phang Nga)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.1119615,
+        "lng": 98.6769011,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/3283184",
+          "libelle": "OpenStreetMap (centre approximatif du parc national)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nature",
+        "plages"
+      ],
+      "etiquettes": [
+        "lagon",
+        "île",
+        "bateau",
+        "grottes"
+      ],
+      "incontournable": null,
+      "description": "Parc national en deux parties : sur la terre, un jardin botanique et des bassins émeraude reliés par une passerelle ; en mer, les grottes Tham Lot et Tham Phi Hua To et Koh Hong, une île-lagon entourée de falaises calcaires.",
+      "duree": null,
+      "prix": {
+        "min": 300,
+        "max": 300,
+        "devise": "THB",
+        "note": "Droit d'entrée du parc : adulte étranger 300 THB, enfant étranger 150 THB ; adulte thaïlandais 60 THB, enfant 30 THB (barème de juin 2022 ou de juin 2023 selon l'endroit de la page). Le bateau est en plus, à régler au ponton : demander au batelier quels sites sont inclus.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/than-bok-khorani-national-park/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026, horaires de Google Maps du 07/10/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "16:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « daily 08:00-16:30 » (horaires de Google Maps du 07/10/2026, d'après la page). Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/than-bok-khorani-national-park/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026, horaires de Google Maps du 07/10/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau",
+            "voiture"
+          ],
+          "texte": "Longtails depuis les pontons autour d'Ao Luek, en location à la demi-journée ou à la journée. Environ 45 minutes en voiture depuis Krabi Town ; des songthaews partent d'Ao Nang. Durée exacte de la sortie en bateau non indiquée.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/than-bok-khorani-national-park/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026, horaires de Google Maps du 07/10/2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Meilleure saison selon le guide : de novembre à avril (mer plus calme). Aucun site officiel lu : barème et horaires viennent d'un guide, à confirmer auprès du parc.",
+      "id": "krb-hong-islands",
+      "nom": "Îles Hong (parc national Than Bok Khorani)"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Susan Hoi (à environ 15 minutes d'Ao Nam Mao)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0241235,
+        "lng": 98.8846507,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/19742905",
+          "libelle": "OpenStreetMap (Susan Hoi)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nature",
+        "spots"
+      ],
+      "etiquettes": [
+        "plage",
+        "coquillages",
+        "rochers"
+      ],
+      "incontournable": null,
+      "description": "Site de Susan Hoi, appelé « cimetière de coquillages », à environ 15 minutes d'Ao Nam Mao.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « open daily 08:00-17:00 ». La même page dit que l'entrée est gratuite dans son texte, mais parle d'un « petit droit d'entrée » dans la fiche de l'attraction : prix non retenu. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Les rochers sont glissants quand ils sont mouillés : chaussures qui accrochent, et y aller plutôt le matin (conseil du guide).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Aucun site officiel lu. Prix d'entrée : sources contradictoires sur la même page, à vérifier sur place.",
+      "id": "krb-shell-cemetery",
+      "nom": "Cimetière de coquillages (Susan Hoi)"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Ao Nam Mao",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0308565,
+        "lng": 98.8628942,
+        "source": {
+          "lien": "https://www.openstreetmap.org/node/12311415015",
+          "libelle": "OpenStreetMap (village d'Ao Nam Mao)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "nature"
+      ],
+      "etiquettes": [
+        "plage",
+        "mangrove",
+        "calme"
+      ],
+      "incontournable": null,
+      "description": "Baie tranquille à environ 20 minutes à l'est d'Ao Nang, avec une plage bordée de mangrove et quelques hôtels de catégorie moyenne. La page la décrit comme étroite et soumise aux marées. Le ponton sert surtout de point de départ aux excursions en bateau.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "Des longtails pour Railay partent toute la journée du ponton d'Ao Nam Mao (saison sèche de novembre à février). La page dit que les tarifs y sont plus négociables qu'à Ao Nang, sans en donner aucun, ni les horaires.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Saison des pluies (mai à octobre) : déchets rejetés par les vagues et orages fréquents l'après-midi selon la page. Aucune information de baignade lue. Source secondaire.",
+      "id": "krb-ao-nam-mao",
+      "nom": "Plage d'Ao Nam Mao"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Krabi Town",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0639739,
+        "lng": 98.9161781,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/1106284467",
+          "libelle": "OpenStreetMap (Krabi Walking Street)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches",
+        "nourriture"
+      ],
+      "etiquettes": [
+        "marché",
+        "rue piétonne"
+      ],
+      "incontournable": null,
+      "description": "Marché de rue du week-end de Krabi Town.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Le guide dit que le marché a lieu les vendredi, samedi et dimanche soirs. Les heures ne sont pas indiquées : à vérifier. Source secondaire.",
+      "id": "krb-town-walking-street",
+      "nom": "Krabi Walking Street (marché du week-end)"
+    }
+  ]
+}

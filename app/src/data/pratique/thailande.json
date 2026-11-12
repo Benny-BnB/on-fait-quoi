@@ -281,7 +281,7 @@
     }
    ],
    "aVerifier": [
-    "Prix, durées et horaires des transferts (aéroports, entre les villes, bateaux) : pas encore sourcés dans l'app. Ajoute-les dans « Trajets » avec leur source."
+    "Les transferts du voyage ont leurs propres fiches (aéroport de Bangkok, Pattaya, aéroport de Krabi, bateau de Railay), avec ce qui n'a pas pu être lu. Pour les autres trajets, ajoute prix et durées dans « Trajets » avec leur source."
    ],
    "liens": [
     {
@@ -349,6 +349,364 @@
     {
      "lien": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
      "libelle": "True et dtac : conditions de la carte SIM touriste en Thaïlande",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-bkk-aeroport",
+   "zone": "Bangkok",
+   "rubrique": "trajets",
+   "titre": "Aéroport de Bangkok (Suvarnabhumi) : rejoindre la ville",
+   "resume": "Ce que la page officielle d'Airports of Thailand (AOT) indique pour l'aéroport Suvarnabhumi. Elle donne des tarifs de départ, pas de prix par destination.",
+   "faits": [
+    {
+     "libelle": "Airport Rail Link",
+     "valeur": "Station au niveau B1 du terminal principal, ouverte de 05:30 à 24:00. Renseignements : centre d'appels Era One, +66 2 091 1595.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+      "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Taxis",
+     "valeur": "Niveau 1 du terminal principal, entre les portes 4 et 7, 24 h sur 24. Un ticket de file d'attente est obligatoire avant de monter. Prise en charge de 35 ou 40 THB plus le compteur, au tarif fixé par le Département des transports terrestres ; supplément aéroport de 50 THB payé au chauffeur ; des frais de bagages peuvent s'ajouter. Comptoir des taxis : +66 2 132 0360.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+      "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Taxis VIP électriques",
+     "valeur": "EV Society Taxi VIP (niveau 1, portes 4 et 7) : à partir de 150 THB plus le compteur. CABBY Electric VIP (niveau 1, porte 3) : à partir de 150 THB plus le compteur, plus 100 THB de frais de service payés au chauffeur. 24 h sur 24.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+      "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "AOT Limousine",
+     "valeur": "Comptoirs au niveau 2 du terminal principal, 24 h sur 24, réservation au comptoir seulement. Tarifs de départ : berline éco (3 passagers) 550 THB ; SUV (3 passagers) 650 THB ; berline standard (3 passagers) 750 THB ; van standard (8 passagers) 850 THB. Les berlines et vans premium sont plus chers. Renseignements : +66 63 237 0000.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+      "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Bus publics",
+     "valeur": "Niveau 1, porte 7 : ligne S1 vers Khao San Road (Sanam Luang), de 06:00 à 20:00. D'autres lignes vont vers Rangsit, Krung Thep Aphiwat et Central Rama 2. Renseignements : +66 2 132 9509.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+      "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Navettes autour de l'aéroport",
+     "valeur": "Six lignes (A, B, C, D, Express, F) partent du centre de transport public. La page ne donne ni horaires, ni fréquence, ni tarif, et ne parle pas d'hôtels. Comptoir des navettes : 08 6327 8503.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/way-to-airport/detail/shuttle_bus_services_around_Suvarnabhumi_airport",
+      "libelle": "Airports of Thailand (AOT) : navettes autour de l'aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Centre d'appels AOT",
+     "valeur": "1722.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/transportation",
+      "libelle": "Airports of Thailand (AOT) : transports de l'aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Prix d'une course vers un quartier précis ou vers ton hôtel : la page ne donne que la prise en charge et les suppléments, pas de tarif par destination.",
+    "Navette de ton hôtel près de l'aéroport (horaires, gratuité) : à demander à l'hôtel ; la page des navettes de l'aéroport ne parle pas des hôtels.",
+    "Durées de trajet : la page n'en donne aucune. Les durées saisies dans « Trajets » doivent rester marquées « estimées » tant qu'elles ne sont pas sourcées.",
+    "La page n'est pas datée : confirme les tarifs et horaires au centre d'appels de l'AOT (1722) avant de partir."
+   ],
+   "liens": [
+    {
+     "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+     "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://suvarnabhumi.airportthai.co.th/service/way-to-airport/detail/shuttle_bus_services_around_Suvarnabhumi_airport",
+     "libelle": "Airports of Thailand (AOT) : navettes autour de l'aéroport Suvarnabhumi (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://suvarnabhumi.airportthai.co.th/service/transportation",
+     "libelle": "Airports of Thailand (AOT) : transports de l'aéroport Suvarnabhumi (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": "Valable aussi pour les étapes « près de l'aéroport » : la fiche est classée avec Bangkok."
+  },
+  {
+   "id": "th-bkk-pattaya",
+   "zone": "Pattaya",
+   "rubrique": "trajets",
+   "titre": "Bangkok et aéroport Suvarnabhumi ↔ Pattaya",
+   "resume": "Autocars, navette et train : ce que les pages officielles lues indiquent, et ce qui reste à vérifier. Aucune ne donne la durée du trajet.",
+   "faits": [
+    {
+     "libelle": "Autocars au départ de l'aéroport",
+     "valeur": "Les autocars vers Pattaya partent du niveau 1 du terminal principal, porte 8 (bord intérieur) : +66 66 114 3291. Horaires au comptoir d'information du centre de transport public : +66 2 132 9509.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+      "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Autocar Bor Khor Sor",
+     "valeur": "Ligne « Aéroport Suvarnabhumi – Pattaya » de 06:30 à 21:00, tarif d'environ 140 à 190 THB (la page précise que les tarifs peuvent changer). Téléphone indiqué : 089-991-6054. Lieu de départ non précisé ; la page ne dit pas si la ligne circule aussi dans l'autre sens.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/transportation/detail/316",
+      "libelle": "Airports of Thailand (AOT) : autocar Bor Khor Sor, Suvarnabhumi – Pattaya (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Navette Roong Reuang Coach",
+     "valeur": "Navette de l'aéroport vers Pattaya et Hua Hin. Bagages gratuits : une valise en soute de 20 kg au plus et un bagage à main. Pas de tarif spécial pour les enfants ni les seniors ; frais de changement : 30 THB par personne. La page ne donne ni tarif, ni horaire, ni point d'embarquement.",
+     "source": {
+      "lien": "https://suvarnabhumi.airportthai.co.th/service/transportation/detail/305",
+      "libelle": "Airports of Thailand (AOT) : Roong Reuang Coach, navette vers Pattaya et Hua Hin (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Train (SRT)",
+     "valeur": "La gare de Pattaya figure dans les horaires de la ligne de l'Est des chemins de fer thaïlandais. La page lue ne permet pas de lire de façon fiable l'heure d'un train donné, ni les tarifs. Centre d'appels de la SRT : 1690, 24 h sur 24 (d'après la page).",
+     "source": {
+      "lien": "https://ttsview.railway.co.th/SRT_Schedule2022.php?ln=en&line=3&trip=2",
+      "libelle": "Chemins de fer thaïlandais (SRT) : horaires de la ligne de l'Est, arrivées (page sans date)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Sens Pattaya → aéroport : aucune page officielle lue ne donne les horaires ni le tarif du retour (autocar ou navette). À demander ou à réserver à l'avance.",
+    "Durée du trajet entre Bangkok ou l'aéroport et Pattaya : non indiquée par les pages lues. Les durées saisies dans « Trajets » doivent rester marquées « estimées » tant qu'elles ne sont pas sourcées.",
+    "Taxi ou transfert privé : ni prix ni horaire lus.",
+    "Horaires et tarifs du train : à lire sur le site de la SRT ou à demander au 1690."
+   ],
+   "liens": [
+    {
+     "lien": "https://suvarnabhumi.airportthai.co.th/service/transportation/detail/316",
+     "libelle": "Airports of Thailand (AOT) : autocar Bor Khor Sor, Suvarnabhumi – Pattaya (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://suvarnabhumi.airportthai.co.th/service/transportation/detail/305",
+     "libelle": "Airports of Thailand (AOT) : Roong Reuang Coach, navette vers Pattaya et Hua Hin (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+     "libelle": "Airports of Thailand (AOT) : « Ways to transport », aéroport Suvarnabhumi (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://ttsview.railway.co.th/SRT_Schedule2022.php?ln=en&line=3&trip=2",
+     "libelle": "Chemins de fer thaïlandais (SRT) : horaires de la ligne de l'Est, arrivées (page sans date)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-krabi-aeroport",
+   "zone": "Krabi",
+   "rubrique": "trajets",
+   "titre": "Aéroport de Krabi (KBV) : rejoindre Ao Nam Mao, Ao Nang et Railay",
+   "resume": "Aucune page officielle sur les transports au sol de l'aéroport n'a pu être lue. Ce qui suit vient de guides (source secondaire) et ne contient ni prix ni durée confirmés.",
+   "faits": [
+    {
+     "libelle": "Exploitant et site officiel",
+     "valeur": "L'aéroport est exploité par le Department of Airports (d'après Wikipédia, qui indique l'adresse du site officiel). La page officielle n'a pas pu être ouverte.",
+     "source": {
+      "lien": "https://en.wikipedia.org/wiki/Krabi_International_Airport",
+      "libelle": "Wikipédia (anglais) : Krabi International Airport",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Ao Nam Mao",
+     "valeur": "Baie à environ 20 minutes au sud de Krabi Town en songthaew ou en taxi, selon le guide. Son ponton sert surtout de point de départ aux excursions en bateau, et des longtails pour Railay en partent.",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Railay",
+     "valeur": "Pas de route jusqu'à Railay : on y va en bateau longtail. Depuis l'aéroport, le guide compte au total environ 1 h 30 à 2 h (taxi jusqu'à Ao Nang d'environ 30 minutes, puis bateau).",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    }
+   ],
+   "aVerifier": [
+    "Prix et durée d'un taxi ou d'une navette de l'aéroport jusqu'à Ao Nam Mao : aucune source officielle lue. À demander à ton logement avant d'arriver ou au comptoir de l'aéroport.",
+    "Distance entre l'aéroport et le centre de Krabi Town : environ 7 km selon Wikipédia, 15 km selon un guide.",
+    "Dernier transport en soirée : si l'arrivée est tardive, vérifier qu'un taxi ou une navette circule encore et jusqu'à quelle heure."
+   ],
+   "liens": [
+    {
+     "lien": "https://minisite.airports.go.th/krabi/home",
+     "libelle": "Site de l'aéroport de Krabi (Department of Airports), adresse reprise de Wikipédia : page non lue (accès impossible)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://en.wikipedia.org/wiki/Krabi_International_Airport",
+     "libelle": "Wikipédia (anglais) : Krabi International Airport",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    },
+    {
+     "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+     "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    },
+    {
+     "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+     "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-railay-bateau",
+   "zone": "Railay",
+   "rubrique": "trajets",
+   "titre": "Bateau vers Railay (et retour)",
+   "resume": "Railay n'a pas de route : on y arrive en bateau longtail. Aucune source officielle sur les tarifs et les horaires n'a pu être lue ; les guides lus ne donnent aucun tarif.",
+   "faits": [
+    {
+     "libelle": "Accès",
+     "valeur": "Pas de route ni de véhicule à Railay : bateau longtail seulement. Départs depuis Ao Nang (traversée d'environ 15 minutes) et depuis Ao Nam Mao ; depuis le ponton de Krabi Town, la traversée est plus longue et plus chère.",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Horaires",
+     "valeur": "Les bateaux circulent régulièrement dans la journée mais s'arrêtent vers le coucher du soleil. Les traversées au coucher du soleil sont plus chères.",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Mer et saison",
+     "valeur": "De novembre à février : mer calme et longtails fiables. De mai à octobre : mer agitée, traversées depuis Ao Nang « risquées et parfois suspendues ».",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Ao Nam Mao",
+     "valeur": "Des longtails pour Railay partent toute la journée du ponton d'Ao Nam Mao (saison sèche, novembre à février). Les tarifs y sont plus négociables qu'à Ao Nang, selon la page.",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Espèces",
+     "valeur": "Prévoir des espèces : les distributeurs sont rares et ne fonctionnent pas toujours.",
+     "source": {
+      "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+      "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Sécurité des bateaux",
+     "valeur": "Vérifier que le bateau est en bon état et qu'il n'est pas surchargé.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Tarif d'une traversée : aucune source officielle lue, et les guides lus ne donnent aucun chiffre.",
+    "Heure du dernier bateau (le guide dit « vers le coucher du soleil »). Pour un vol en soirée, vérifier l'heure du dernier bateau régulier, ou prévoir un bateau privé, et la marge jusqu'à l'aéroport.",
+    "À marée basse, la plage de Railay Est disparaît selon le guide : demander au batelier où il dépose les passagers."
+   ],
+   "liens": [
+    {
+     "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+     "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    },
+    {
+     "lien": "https://www.thaiholidayguide.com/visit/ao-nam-mao/",
+     "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    },
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
      "consulteLe": "2026-11-12",
      "officielle": true
     }

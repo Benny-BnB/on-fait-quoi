@@ -129,6 +129,62 @@ test('Dubaï : Global Village ferme à 01:00 du jeudi au samedi et à minuit les
   assert.match(gv.horaires?.note ?? '', /mardi est réservé aux dames et aux familles/);
 });
 
+// ---------- Base de Krabi et Railay (étape 10) ----------
+
+test("Krabi et Railay : 9 fiches, Railay à part ; aucune source officielle lue (pages du tourisme thaïlandais refusées), donc rien n'est présenté comme vérifié", () => {
+  const krabi = base.filter((l) => l.id.startsWith('krb-'));
+  assert.equal(krabi.length, 9);
+  assert.deepEqual(krabi.filter((l) => l.zone === 'Railay').map((l) => l.id), ['krb-railay-beach', 'krb-phra-nang-beach', 'krb-railay-lagoon-viewpoint']);
+  assert.equal(krabi.filter((l) => l.zone === 'Krabi').length, 6);
+  for (const l of krabi) {
+    assert.equal(l.lienOfficiel, '', `${l.nom} : aucun site officiel lu`);
+    for (const s of [l.duree?.source, l.prix?.source, l.horaires?.source, l.public?.source, l.tenue?.source]) if (s) assert.equal(s.officielle, false, `${l.nom} : source secondaire`);
+  }
+  // « Krabi (étape) » ne ramène pas les lieux de Railay, et inversement
+  assert.equal(lieuxDeLaZone(base, 'Krabi').length, 6);
+  assert.equal(lieuxDeLaZone(base, 'Railay Beach').length, 3);
+});
+
+test("Tiger Cave Temple : entrée gratuite, 06:00-18:00, chaleur signalée ; on n'y monte pas à midi sans le savoir", () => {
+  const l = lieu('krb-tiger-cave-temple');
+  assert.equal(l.prix?.min, 0);
+  assert.equal(l.prix?.source.officielle, false);
+  assert.equal(ouvertA(l, '2027-03-10', '07:00').etat, 'oui');
+  assert.equal(ouvertA(l, '2027-03-10', '18:30').etat, 'non');
+  assert.ok(l.attention.some((a) => a.genre === 'chaleur' && /à midi/.test(a.texte)));
+  assert.match(l.tenue?.texte ?? '', /Épaules et genoux couverts/);
+  assert.match(l.description, /1 260 marches/);
+});
+
+test('Sa Morakot et les îles Hong : droits d\'entrée lus chez un guide (adulte et enfant), les horaires divergents sont dits', () => {
+  const e = lieu('krb-sa-morakot');
+  assert.equal(e.prix?.min, 400);
+  assert.match(e.prix?.note ?? '', /enfant étranger : 200 THB/);
+  assert.match(e.horaires?.note ?? '', /16:30/);
+  assert.equal(e.gps?.lat, 7.92424);
+  const h = lieu('krb-hong-islands');
+  assert.equal(h.prix?.min, 300);
+  assert.match(h.prix?.note ?? '', /enfant étranger 150 THB/);
+  assert.match(h.prix?.note ?? '', /Le bateau est en plus/);
+  assert.equal(ouvertA(h, '2027-03-10', '16:45').etat, 'non');
+});
+
+test("Railay : accès en bateau seulement, dit dans la fiche ; ce que la source ne dit pas (durée, tarif, position du point de vue) reste « à vérifier »", () => {
+  const r = lieu('krb-railay-beach');
+  assert.deepEqual(r.acces[0].modes, ['bateau']);
+  assert.match(r.acces[0].texte, /Longtail uniquement/);
+  assert.match(r.acces[0].texte, /s'arrêtent vers le coucher du soleil/);
+  assert.equal(r.prix, null);
+  assert.ok(faitsAVerifier(r).includes('prix'));
+  const point = lieu('krb-railay-lagoon-viewpoint');
+  assert.equal(point.gps, null);
+  assert.ok(faitsAVerifier(point).includes('emplacement GPS') && faitsAVerifier(point).includes('durée'));
+  // le cimetière de coquillages : la même page se contredit sur le prix, donc aucun prix
+  const coquillages = lieu('krb-shell-cemetery');
+  assert.equal(coquillages.prix, null);
+  assert.match(coquillages.horaires?.note ?? '', /prix non retenu/);
+});
+
 test('les tarifs par âge de Dubaï viennent de la page : enfant de 3 à 12 ans, gratuit avant 3 ans', () => {
   const mg = lieu('dxb-miracle-garden').prix;
   assert.deepEqual(mg?.tarifs, [{ libelle: 'Enfant de 3 à 12 ans', ageMin: 3, ageMax: 12, min: 84, max: 84 }]);
@@ -520,7 +576,7 @@ test('point de départ : le logement où l\'on dort, avec ses coordonnées ; rie
 });
 
 test('créneau depuis une fiche : statut idée, fuseau du lieu, durée de la fiche, aucun budget inventé', () => {
-  const c = creneauDepuisLieu(lieu('bkk-wat-arun'), 'c1', '2026-12-17', 'matin', '', 'THB');
+  const c = creneauDepuisLieu(lieu('bkk-wat-arun'), 'c1', '2027-03-10', 'matin', '', 'THB');
   assert.equal(c.titre, 'Wat Arun');
   assert.equal(c.lieuId, 'bkk-wat-arun');
   assert.equal(c.statut, 'idee');
@@ -528,9 +584,9 @@ test('créneau depuis une fiche : statut idée, fuseau du lieu, durée de la fic
   assert.equal(c.dureeMin, 120);
   assert.equal(c.budgetEstime, null);
   assert.equal(c.devise, 'THB');
-  const avecHeure = creneauDepuisLieu(lieu('bkk-wat-arun'), 'c2', '2026-12-17', '', '09:00', 'THB');
+  const avecHeure = creneauDepuisLieu(lieu('bkk-wat-arun'), 'c2', '2027-03-10', '', '09:00', 'THB');
   assert.equal(avecHeure.dureeMin, null, 'avec une heure précise, pas de durée posée d\'office');
-  assert.equal(creneauDepuisLieu(lieu('bkk-supanniga-tha-tien'), 'c3', '2026-12-17', 'soir', '', '').dureeMin, null);
+  assert.equal(creneauDepuisLieu(lieu('bkk-supanniga-tha-tien'), 'c3', '2027-03-10', 'soir', '', '').dureeMin, null);
 });
 
 test('alerte « lieu fermé » : seulement quand la fiche dit fermé, jamais sur un simple « à vérifier »', () => {

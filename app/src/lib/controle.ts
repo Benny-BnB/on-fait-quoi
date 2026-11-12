@@ -39,9 +39,12 @@ export function fichesARelire(d: Donnees, lieux: Lieu[], pratique: FichePratique
     const jours = age(l.verifieLe, aujourdhui);
     liste.push({ cle: `lieu:${l.id}`, genre: 'lieu', titre: l.nom, jours, ancienne: jours === null || jours > JOURS_FICHE_ANCIENNE, avisOfficiel: false });
   }
+  const dejaVues = new Set<string>(); // une fiche de ville apparaît sous plusieurs étapes : on ne la compte qu'une fois
   for (const g of grouperPratique(pratique, d.etapes)) {
     if (g.etapeId === '') continue; // « Autres fiches » : aucune étape du voyage ne les concerne
     for (const f of g.fiches) {
+      if (dejaVues.has(f.id)) continue;
+      dejaVues.add(f.id);
       const jours = age(f.verifieLe, aujourdhui);
       liste.push({ cle: `pratique:${f.id}`, genre: 'pratique', titre: f.titre, jours, ancienne: jours === null || jours > JOURS_FICHE_ANCIENNE, avisOfficiel: f.rubrique === 'formalites' });
     }

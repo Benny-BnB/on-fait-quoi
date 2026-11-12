@@ -121,7 +121,7 @@ export function Reglages() {
       <Verification />
       <EtatApp />
       <p class="note">
-        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning, les check-lists, les fiches de lieux avec « Quoi faire, quand ? » (Bangkok, Pattaya et Dubaï), la rubrique Pratique, les profils, les groupes, le budget, le rythme et le taux de change, ainsi que le partage, l'export d'agenda et le contrôle avant le départ.
+        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning, les check-lists, les fiches de lieux avec « Quoi faire, quand ? » (Bangkok, Pattaya, Krabi, Railay et Dubaï), la rubrique Pratique, les profils, les groupes, le budget, le rythme et le taux de change, ainsi que le partage, l'export d'agenda et le contrôle avant le départ.
       </p>
     </Page>
   );
