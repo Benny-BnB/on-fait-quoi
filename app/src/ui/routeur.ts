@@ -23,6 +23,9 @@ export type Route =
   | { nom: 'lieu'; id: string }
   | { nom: 'lieu-form'; id: string }
   | { nom: 'a-completer' }
+  | { nom: 'pratique'; etapeId?: string }
+  | { nom: 'pratique-fiche'; id: string }
+  | { nom: 'pratique-form'; id: string }
   | { nom: 'groupes' }
   | { nom: 'taux' }
   | { nom: 'budget' }
@@ -65,6 +68,12 @@ export function lireRoute(hash: string): Route {
     if (b === 'modifier' && c) return { nom: 'lieu-form', id: c };
   }
   if (a === 'a-completer') return { nom: 'a-completer' };
+  if (a === 'pratique') {
+    if (b === 'fiche' && c) return { nom: 'pratique-fiche', id: c };
+    if (b === 'nouveau') return { nom: 'pratique-form', id: 'nouveau' };
+    if (b === 'modifier' && c) return { nom: 'pratique-form', id: c };
+    return { nom: 'pratique', etapeId: b };
+  }
   if (a === 'groupes') return { nom: 'groupes' };
   if (a === 'taux') return { nom: 'taux' };
   if (a === 'budget') return { nom: 'budget' };
@@ -118,3 +127,9 @@ export const lienLieu = (id: string): string => `#/lieu/${encodeURIComponent(id)
 export const lienNouveauLieu = (): string => '#/lieux/nouveau';
 export const lienModifierLieu = (id: string): string => `#/lieux/modifier/${encodeURIComponent(id)}`;
 export const lienACompleter = (): string => '#/a-completer';
+
+// Rubrique Pratique : toutes les étapes, ou celle dont on donne l'identifiant
+export const lienPratique = (etapeId?: string): string => `#/pratique${etapeId ? `/${encodeURIComponent(etapeId)}` : ''}`;
+export const lienFichePratique = (id: string): string => `#/pratique/fiche/${encodeURIComponent(id)}`;
+export const lienNouvelleFichePratique = (): string => '#/pratique/nouveau';
+export const lienModifierFichePratique = (id: string): string => `#/pratique/modifier/${encodeURIComponent(id)}`;

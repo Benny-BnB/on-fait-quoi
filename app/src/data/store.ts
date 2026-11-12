@@ -2,7 +2,7 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Creneau, Donnees, Etape, Groupe, Lieu, Logement, Personne, Reglages, SuiviLieu, Tache, Trajet, Vol } from './types.ts';
+import type { Compteur, Creneau, Donnees, Etape, FichePratique, Groupe, Lieu, Logement, Personne, Reglages, SuiviLieu, Tache, Trajet, Vol } from './types.ts';
 import { aujourdhuiIso } from '../lib/temps.ts';
 import { echanger, promouvoirPlanB, suivrePlace } from '../lib/creneaux.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
@@ -56,7 +56,8 @@ export function normaliser(brut: Partial<Donnees> | undefined): Donnees {
   const joursPlan = brut && Array.isArray(brut.joursPlan) ? brut.joursPlan : [];
   const lieuxPerso = (brut && Array.isArray(brut.lieuxPerso) ? brut.lieuxPerso : []).map((l) => ({ ...l, attention: Array.isArray(l.attention) ? l.attention : [], acces: Array.isArray(l.acces) ? l.acces : [] }));
   const suiviLieux = brut && Array.isArray(brut.suiviLieux) ? brut.suiviLieux : [];
-  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, groupes, creneaux, joursPlan, lieuxPerso, suiviLieux };
+  const pratiquePerso = (brut && Array.isArray(brut.pratiquePerso) ? brut.pratiquePerso : []).map((f) => ({ ...f, faits: Array.isArray(f.faits) ? f.faits : [], aVerifier: Array.isArray(f.aVerifier) ? f.aVerifier : [], liens: Array.isArray(f.liens) ? f.liens : [] }));
+  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, groupes, creneaux, joursPlan, lieuxPerso, suiviLieux, pratiquePerso };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -356,6 +357,20 @@ export function supprimerLieuPerso(id: string, fichePubliqueRestante: boolean): 
   }));
 }
 
+// ---------- Rubrique Pratique ----------
+
+export function enregistrerPratiquePerso(fiche: FichePratique): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    pratiquePerso: d.pratiquePerso.some((f) => f.id === fiche.id) ? d.pratiquePerso.map((f) => (f.id === fiche.id ? fiche : f)) : [...d.pratiquePerso, fiche],
+  }));
+}
+
+// Une fiche publique de même identifiant reprend la place : l'utilisateur retrouve la version de base
+export function supprimerPratiquePerso(id: string): Promise<void> {
+  return modifier((d) => ({ ...d, pratiquePerso: d.pratiquePerso.filter((f) => f.id !== id) }));
+}
+
 export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
   return modifier((d) => {
     const vols = partiel.vols ?? d.vols;
@@ -377,6 +392,7 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
       joursPlan: partiel.joursPlan ?? d.joursPlan,
       lieuxPerso: partiel.lieuxPerso ?? d.lieuxPerso,
       suiviLieux: partiel.suiviLieux ?? d.suiviLieux,
+      pratiquePerso: partiel.pratiquePerso ?? d.pratiquePerso,
     });
   });
 }

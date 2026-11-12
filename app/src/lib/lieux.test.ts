@@ -68,7 +68,7 @@ test('chaque fait de la base a un lien https, une date de consultation et un sta
       assert.match(s.consulteLe, /^\d{4}-\d{2}-\d{2}$/);
       assert.equal(typeof s.officielle, 'boolean');
     }
-    assert.equal(l.verifieLe, '2026-11-11', `${l.nom} : date de vérification`);
+    assert.match(l.verifieLe, /^2026-11-1[12]$/, `${l.nom} : date de vérification`);
   }
 });
 
@@ -83,7 +83,59 @@ test("la base publique ne contient aucun souhait ni note personnelle (le dépôt
 
 test("un prix de source secondaire n'est jamais présenté comme confirmé : seuls les prix officiels sont marqués vérifiés", () => {
   const officiels = base.filter((l) => l.prix?.source.officielle).map((l) => l.id);
-  assert.deepEqual(officiels, ['bkk-grand-palace']);
+  assert.deepEqual(officiels, ['bkk-grand-palace', 'dxb-miracle-garden', 'dxb-safari-park', 'dxb-dubai-frame', 'dxb-burj-khalifa', 'dxb-legoland']);
+  // un guide, un blog ou un revendeur n'est jamais déclaré officiel
+  for (const l of base) if (l.prix?.source.officielle) assert.ok(!/guide|blog|revendeur/i.test(l.prix.source.libelle), `${l.nom} : source du prix`);
+});
+
+// ---------- Base de Dubaï (étape 9) ----------
+
+test('Dubaï : les fiches lues sont là, et ce qui n\'a pas pu être lu reste « à vérifier » (aucun prix ni horaire inventé)', () => {
+  const dubai = base.filter((l) => l.zone === 'Dubaï');
+  assert.equal(dubai.length, 10);
+  for (const id of ['dxb-miracle-garden', 'dxb-global-village', 'dxb-safari-park', 'dxb-dubai-frame', 'dxb-expo-city', 'dxb-burj-khalifa', 'dxb-aquarium', 'dxb-fountain', 'dxb-museum-future', 'dxb-legoland']) {
+    assert.ok(dubai.some((l) => l.id === id), `${id} manque`);
+  }
+  // sites officiels refusés (403) ou sans chiffres : rien n'est retenu
+  assert.equal(lieu('dxb-aquarium').prix, null);
+  assert.equal(lieu('dxb-aquarium').horaires, null);
+  assert.equal(lieu('dxb-expo-city').prix, null);
+  assert.equal(lieu('dxb-fountain').horaires, null);
+  // Global Village : la page n'écrit pas la devise, donc pas de prix
+  assert.equal(lieu('dxb-global-village').prix, null);
+  assert.ok(faitsAVerifier(lieu('dxb-global-village')).includes('prix'));
+});
+
+test('Dubaï : le Museum of the Future est fermé à la fin de 2026 (site officiel), les autres lieux restent ouverts', () => {
+  const musee = lieu('dxb-museum-future');
+  assert.equal(ouvertLe(musee, '2026-11-26').etat, 'non');
+  assert.match(ouvertLe(musee, '2026-11-26').detail, /réouverture annoncée en 2027/);
+  assert.equal(ouvertA(lieu('dxb-miracle-garden'), '2026-11-26', '10:00').etat, 'oui');
+  assert.equal(ouvertA(lieu('dxb-miracle-garden'), '2026-11-26', '21:30').etat, 'non');
+  assert.equal(ouvertA(lieu('dxb-safari-park'), '2026-11-26', '16:30').etat, 'oui');
+  // dernière entrée à 17:00 (site officiel) : à 17:30 le parc est encore ouvert mais on n'y entre plus
+  assert.equal(ouvertA(lieu('dxb-safari-park'), '2026-11-26', '17:30').etat, 'non');
+  assert.equal(ouvertA(lieu('dxb-safari-park'), '2026-11-26', '18:30').etat, 'non');
+});
+
+test('Dubaï : Global Village ferme à 01:00 du jeudi au samedi et à minuit les autres jours', () => {
+  const gv = lieu('dxb-global-village');
+  // 26/11/2026 = jeudi, 24/11/2026 = mardi
+  assert.equal(jourSemaineDe('2026-11-26'), 'jeudi');
+  assert.equal(ouvertA(gv, '2026-11-26', '00:30').etat, 'non', 'avant 16:00 : fermé (la plage de la veille est suivie à part)');
+  assert.equal(ouvertA(gv, '2026-11-26', '23:30').etat, 'oui');
+  assert.equal(ouvertA(gv, '2026-11-24', '23:30').etat, 'oui');
+  assert.equal(ouvertA(gv, '2026-11-24', '15:00').etat, 'non');
+  assert.match(gv.horaires?.note ?? '', /mardi est réservé aux dames et aux familles/);
+});
+
+test('les tarifs par âge de Dubaï viennent de la page : enfant de 3 à 12 ans, gratuit avant 3 ans', () => {
+  const mg = lieu('dxb-miracle-garden').prix;
+  assert.deepEqual(mg?.tarifs, [{ libelle: 'Enfant de 3 à 12 ans', ageMin: 3, ageMax: 12, min: 84, max: 84 }]);
+  assert.equal(mg?.min, 105);
+  const frame = lieu('dxb-dubai-frame').prix;
+  assert.equal(frame?.min, 50);
+  assert.equal(frame?.tarifs?.length, 2);
 });
 
 test("les faits non lus restent « à vérifier » : Supanniga Tha Tien n'a ni horaire, ni prix, ni GPS inventés", () => {

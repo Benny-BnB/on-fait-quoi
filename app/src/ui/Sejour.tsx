@@ -4,7 +4,7 @@ import { LIBELLES_STATUT_LOGEMENT } from '../data/types.ts';
 import { etapesTriees, logementsTries, nbNuits, nuitsSansLogement } from '../lib/sejour.ts';
 import { formatDateIso } from '../lib/temps.ts';
 import { Page } from './commun.tsx';
-import { lienEtape, lienLogement, lienNouveauLogement } from './routeur.ts';
+import { lienEtape, lienLogement, lienNouveauLogement, lienPratique } from './routeur.ts';
 
 const nuitsTexte = (n: number): string => `${n} nuit${n > 1 ? 's' : ''}`;
 
@@ -62,6 +62,9 @@ function CarteEtape(props: { etape: Etape; logements: Logement[] }) {
       <a class="bouton" href={lienNouveauLogement(e.id)}>
         Ajouter un logement
       </a>
+      <a class="bouton secondaire petit" href={lienPratique(e.id)}>
+        Pratique : trajets, argent, numéros utiles
+      </a>
       <a class="bouton secondaire petit" href={lienEtape(e.id)}>
         Modifier l'étape
       </a>
@@ -81,6 +84,9 @@ export function Sejour() {
     <Page titre="Séjour">
       <a class="bouton" href="#/sejour/etape/nouveau">
         Ajouter une étape
+      </a>
+      <a class="bouton secondaire" href={lienPratique()}>
+        Pratique : formalités, argent, téléphone, numéros utiles
       </a>
 
       {(aTrouver > 0 || aVerifier > 0) && (

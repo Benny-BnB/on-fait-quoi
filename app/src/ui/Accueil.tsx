@@ -8,7 +8,7 @@ import { debutVoyage, progression } from '../lib/taches.ts';
 import { aujourdhuiIso, formatDateHeureDansFuseau, formatDateIso } from '../lib/temps.ts';
 import { CarteCompteur } from './CarteCompteur.tsx';
 import { Page } from './commun.tsx';
-import { lienACompleter, lienLieu, lienQuoiFaire } from './routeur.ts';
+import { lienACompleter, lienLieu, lienPratique, lienQuoiFaire } from './routeur.ts';
 
 export function Accueil() {
   const { donnees } = useStore();
@@ -100,6 +100,14 @@ export function Accueil() {
         )}
         <a class="bouton secondaire" href={lienQuoiFaire()}>
           Quoi faire, quand ?
+        </a>
+      </section>
+
+      <section class="carte">
+        <h2>Pratique</h2>
+        <p class="discret">Formalités, argent, téléphone, numéros utiles et transports, par étape, chacun avec sa source.</p>
+        <a class="bouton secondaire" href={lienPratique()}>
+          Ouvrir la rubrique Pratique
         </a>
       </section>
 

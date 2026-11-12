@@ -1,10 +1,12 @@
 // Fiches de lieux : validation stricte, recherche, ouverture, distance, filtres.
 // Règle du cahier : une information sans source n'existe pas, elle est « à vérifier ».
 
-import type { AccesLieu, AEviter, AttentionLieu, Categorie, ModeTrajet, Personne, Creneau, Donnees, HorairesLieu, JourSemaine, Lieu, PlageHoraire, Periode, SouhaitLieu, SourceLieu, SuiviLieu } from '../data/types.ts';
+import type { AccesLieu, AEviter, AttentionLieu, Categorie, ModeTrajet, Personne, Creneau, TarifAge, TrancheAge, Donnees, HorairesLieu, JourSemaine, Lieu, PlageHoraire, Periode, SouhaitLieu, SourceLieu, SuiviLieu } from '../data/types.ts';
 import { CATEGORIES, JOURS_SEMAINE, LIBELLES_CATEGORIE, MODES_TRAJET } from '../data/types.ts';
 import { HEURE_PERIODE } from './periodes.ts';
+import { affinitesLieu } from './affinites.ts';
 import { accesLieu, aEviterLieu, contraintesLieu } from './contraintes.ts';
+import { trancheDe } from './profils.ts';
 import type { Signalement } from './contraintes.ts';
 import { normaliserTexte } from './texte.ts';
 import type { Alerte } from './planning.ts';
@@ -26,7 +28,7 @@ function heureHoraire(s: string): boolean {
   return heureValide(s) || s === '24:00';
 }
 
-function lireSource(brut: unknown, qui: string, erreurs: string[]): SourceLieu | null {
+export function lireSource(brut: unknown, qui: string, erreurs: string[]): SourceLieu | null {
   if (!estObjet(brut)) {
     erreurs.push(`${qui} : la source est obligatoire (lien, nom, date de consultation, officielle ou non).`);
     return null;
@@ -50,6 +52,49 @@ function nombre(o: Objet, cle: string, qui: string, erreurs: string[], max: numb
     return null;
   }
   return v;
+}
+
+// Tarifs selon l'âge : chacun a un libellé, des âges cohérents et un prix ; ils partagent la source du prix du lieu
+function lireTarifs(brut: unknown, qui: string, erreurs: string[]): TarifAge[] {
+  if (brut === undefined || brut === null) return [];
+  if (!Array.isArray(brut)) {
+    erreurs.push(`${qui} : « tarifs » doit être une liste.`);
+    return [];
+  }
+  const tarifs: TarifAge[] = [];
+  brut.forEach((t, i) => {
+    const nom = `${qui}, tarif n°${i + 1}`;
+    if (!estObjet(t) || !texte(t, 'libelle')) {
+      erreurs.push(`${nom} : un libellé est obligatoire (ex. « Enfant de 3 à 12 ans »).`);
+      return;
+    }
+    const age = (cle: string): number | null | undefined => {
+      const v = t[cle];
+      if (v === undefined || v === null) return null;
+      return typeof v === 'number' && Number.isInteger(v) && v >= 0 && v <= 130 ? v : undefined;
+    };
+    const ageMin = age('ageMin');
+    const ageMax = age('ageMax');
+    if (ageMin === undefined || ageMax === undefined) {
+      erreurs.push(`${nom} : les âges doivent être des nombres entiers d'années (ou absents).`);
+      return;
+    }
+    if (ageMin === null && ageMax === null) {
+      erreurs.push(`${nom} : indique au moins un âge (minimum ou maximum).`);
+      return;
+    }
+    if (ageMin !== null && ageMax !== null && ageMin > ageMax) {
+      erreurs.push(`${nom} : l'âge minimum dépasse l'âge maximum.`);
+      return;
+    }
+    const avant = erreurs.length;
+    const min = nombre(t, 'min', nom, erreurs, 10000000);
+    const max = nombre(t, 'max', nom, erreurs, 10000000);
+    if (min !== null && max !== null && min > max) erreurs.push(`${nom} : le minimum dépasse le maximum.`);
+    if (erreurs.length > avant || min === null || max === null) return;
+    tarifs.push({ libelle: texte(t, 'libelle'), ageMin, ageMax, min, max });
+  });
+  return tarifs;
 }
 
 function lireHoraires(brut: unknown, qui: string, erreurs: string[]): HorairesLieu | null {
@@ -183,8 +228,9 @@ function lireLieu(brut: unknown, index: number, erreurs: string[], ids: Set<stri
       if (min !== null && max !== null && min > max) erreurs.push(`${qui} (prix) : le minimum dépasse le maximum.`);
       const devise = texte(brut.prix, 'devise').toUpperCase();
       if (!/^[A-Z]{3}$/.test(devise)) erreurs.push(`${qui} (prix) : devise invalide (3 lettres, ex. THB).`);
+      const tarifs = lireTarifs(brut.prix.tarifs, `${qui} (prix)`, erreurs);
       const s = lireSource(brut.prix.source, `${qui} (prix)`, erreurs);
-      if (s && min !== null && max !== null && /^[A-Z]{3}$/.test(devise)) prix = { min, max, devise, note: texte(brut.prix, 'note'), source: s };
+      if (s && min !== null && max !== null && /^[A-Z]{3}$/.test(devise)) prix = { min, max, devise, note: texte(brut.prix, 'note'), ...(tarifs.length > 0 ? { tarifs } : {}), source: s };
     }
   }
   const horaires = brut.horaires !== undefined && brut.horaires !== null ? lireHoraires(brut.horaires, qui, erreurs) : null;
@@ -500,6 +546,8 @@ export type Proposition = {
   distanceKm: number | null;
   avertissements: string[];
   signalements: Signalement[]; // contraintes du groupe, « à éviter », accès : avec la raison
+  affinites: TrancheAge[]; // tranches d'âge du groupe dont les priorités (cahier, section 6) correspondent à ce lieu
+  pourTous: boolean; // groupe mélangé : lieu qui correspond aux priorités d'un groupe mélangé
   souhait: SouhaitLieu;
   favori: boolean;
   fait: boolean;
@@ -514,6 +562,7 @@ export function heureDeLaDemande(d: Demande): string {
 
 const rangOuvert = { oui: 0, 'a-verifier': 1, non: 2 } as const;
 const rangSouhait = { prioritaire: 0, souhait: 1, '': 2 } as const;
+const pointsAffinite = (p: Proposition): number => p.affinites.length + (p.pourTous ? 1 : 0);
 
 // Filtre et trie les lieux. Les règles du cahier :
 // - un lieu qui empêcherait d'attraper un vol est écarté ;
@@ -522,6 +571,7 @@ const rangSouhait = { prioritaire: 0, souhait: 1, '': 2 } as const;
 export function filtrerLieux(lieux: Lieu[], d: Demande, suivis: SuiviLieu[], vols: FenetreVol[]): Proposition[] {
   const heure = heureDeLaDemande(d);
   const resultat: Proposition[] = [];
+  const tranchesPresentes = [...new Set(d.personnes.map(trancheDe).filter((t): t is TrancheAge => t !== ''))];
   for (const lieu of lieuxDeLaZone(lieux, d.zone)) {
     if (d.categories.length > 0 && !d.categories.some((c) => aCategorie(lieu, c))) continue;
     if (!correspondAuxMots(lieu, d.mots)) continue;
@@ -551,12 +601,15 @@ export function filtrerLieux(lieux: Lieu[], d: Demande, suivis: SuiviLieu[], vol
       ...accesLieu(lieu, d.transports),
     ];
     if (d.masquerContraintes && signalements.some((x) => x.fort)) continue;
+    const affinites = affinitesLieu(lieu, tranchesPresentes);
     resultat.push({
       lieu,
       ouvert,
       distanceKm: km,
       avertissements,
       signalements,
+      affinites: affinites.tranches,
+      pourTous: affinites.pourTous,
       souhait: suivi?.souhait ?? '',
       favori: suivi?.favori ?? false,
       fait: suivi?.fait ?? false,
@@ -568,7 +621,7 @@ export function filtrerLieux(lieux: Lieu[], d: Demande, suivis: SuiviLieu[], vol
   return resultat.sort((a, b) => {
     let c = 0;
     if (d.tri === 'pertinence') {
-      c = rangSouhait[a.souhait] - rangSouhait[b.souhait] || rangOuvert[a.ouvert.etat] - rangOuvert[b.ouvert.etat] || infini(a.distanceKm) - infini(b.distanceKm);
+      c = rangSouhait[a.souhait] - rangSouhait[b.souhait] || rangOuvert[a.ouvert.etat] - rangOuvert[b.ouvert.etat] || pointsAffinite(b) - pointsAffinite(a) || infini(a.distanceKm) - infini(b.distanceKm);
     } else if (d.tri === 'distance') c = infini(a.distanceKm) - infini(b.distanceKm);
     else if (d.tri === 'prix') c = infini(a.lieu.prix?.min ?? null) - infini(b.lieu.prix?.min ?? null);
     else if (d.tri === 'duree') c = infini(a.lieu.duree?.minMin ?? null) - infini(b.lieu.duree?.minMin ?? null);

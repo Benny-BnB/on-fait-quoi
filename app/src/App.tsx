@@ -13,6 +13,8 @@ import { FormulaireCompteur } from './ui/FormulaireCompteur.tsx';
 import { FormulaireCreneau } from './ui/FormulaireCreneau.tsx';
 import { Jour } from './ui/Jour.tsx';
 import { Personnes } from './ui/Personnes.tsx';
+import { FichePratiqueEcran, Pratique } from './ui/Pratique.tsx';
+import { FormulairePratique } from './ui/FormulairePratique.tsx';
 import { FormulaireEtape } from './ui/FormulaireEtape.tsx';
 import { FicheLieu } from './ui/FicheLieu.tsx';
 import { FormulaireLieu } from './ui/FormulaireLieu.tsx';
@@ -107,6 +109,15 @@ export function App() {
         break;
       case 'a-completer':
         page = <ACompleter />;
+        break;
+      case 'pratique':
+        page = <Pratique etapeId={route.etapeId} />;
+        break;
+      case 'pratique-fiche':
+        page = <FichePratiqueEcran id={route.id} />;
+        break;
+      case 'pratique-form':
+        page = <FormulairePratique id={route.id} />;
         break;
       case 'groupes':
         page = <Groupes />;

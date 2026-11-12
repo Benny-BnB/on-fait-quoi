@@ -1,0 +1,338 @@
+{
+ "format": "on-fait-quoi-pratique",
+ "version": 1,
+ "fiches": [
+  {
+   "id": "ae-securite",
+   "zone": "Émirats arabes unis",
+   "rubrique": "formalites",
+   "titre": "Avis du SPF pour les Émirats : à lire avant de partir",
+   "resume": "Résumé de la page « Dernière mise à jour aux Émirats arabes unis » du SPF Affaires étrangères, datée du 05/08/2026.",
+   "faits": [
+    {
+     "libelle": "Consigne de voyage",
+     "valeur": "Le SPF déconseille, pour le moment, tous les voyages non essentiels vers les Émirats arabes unis.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/derniere-mise-jour-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour aux Émirats arabes unis », 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Situation",
+     "valeur": "Le SPF décrit les Émirats comme situés dans une région particulièrement instable : l'évolution reste incertaine et de nouvelles attaques ponctuelles sont possibles.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/derniere-mise-jour-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour aux Émirats arabes unis », 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Recommandations",
+     "valeur": "Suivre strictement les instructions des autorités locales. S'informer activement par des médias fiables. Éviter strictement les abords des installations et zones militaires et des installations énergétiques. Être préparé à une situation d'urgence.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/derniere-mise-jour-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour aux Émirats arabes unis », 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Images",
+     "valeur": "Prendre et diffuser des images relatives à la situation sécuritaire est une infraction pénale qui donne lieu à des poursuites judiciaires.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/derniere-mise-jour-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour aux Émirats arabes unis », 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Assurance",
+     "valeur": "Une assurance voyage adaptée, avec une limite de couverture suffisante, est nécessaire. L'assurance de la mutualité expire après 3 mois de séjour.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/informations-pratiques-pour-voyager-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour voyager aux Émirats arabes unis », mise à jour du 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Page datée du 05/08/2026 : relire la version à jour juste avant le départ."
+   ],
+   "liens": [
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/derniere-mise-jour-aux-emirats-arabes-unis",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour aux Émirats arabes unis », 05/08/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/informations-pratiques-pour-voyager-aux-emirats-arabes-unis",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour voyager aux Émirats arabes unis », mise à jour du 05/08/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": "L'app ne donne pas de conseil de voyage : la décision se prend avec la source officielle."
+  },
+  {
+   "id": "ae-formalites",
+   "zone": "Émirats arabes unis",
+   "rubrique": "formalites",
+   "titre": "Entrer aux Émirats : durée et passeport",
+   "resume": "Ce que dit l'ambassade des Émirats à Paris sur son site (lu le 12/11/2026).",
+   "faits": [
+    {
+     "libelle": "Durée maximale de séjour",
+     "valeur": "90 jours sur toute période de 180 jours.",
+     "source": {
+      "lien": "https://www.mofa.gov.ae/fr-FR/Missions/paris/UAE-Relationships/Visit-Country",
+      "libelle": "Ambassade des Émirats arabes unis à Paris : « Visiter le pays »",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Passeport",
+     "valeur": "Valable au moins six mois à compter de la date d'entrée, sous peine de refus d'entrée (trois mois pour un titulaire d'un permis de résidence).",
+     "source": {
+      "lien": "https://www.mofa.gov.ae/fr-FR/Missions/paris/UAE-Relationships/Visit-Country",
+      "libelle": "Ambassade des Émirats arabes unis à Paris : « Visiter le pays »",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Visa pour les citoyens belges : la page lue ne le dit pas. Voir la page « Documents de voyage » du SPF Affaires étrangères (renvoyée par sa page pratique).",
+    "Relire ces conditions juste avant le départ."
+   ],
+   "liens": [
+    {
+     "lien": "https://www.mofa.gov.ae/fr-FR/Missions/paris/UAE-Relationships/Visit-Country",
+     "libelle": "Ambassade des Émirats arabes unis à Paris : « Visiter le pays »",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/informations-pratiques-pour-voyager-aux-emirats-arabes-unis",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour voyager aux Émirats arabes unis », mise à jour du 05/08/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": "L'app ne donne pas de conseil juridique : les sources officielles font foi."
+  },
+  {
+   "id": "ae-urgences",
+   "zone": "Émirats arabes unis",
+   "rubrique": "urgences",
+   "titre": "Numéros utiles aux Émirats",
+   "resume": "Ce que donne le SPF Affaires étrangères sur sa page pratique (05/08/2026).",
+   "faits": [
+    {
+     "libelle": "Numéros d'urgence",
+     "valeur": "Police : 999. Pompiers : 997. Ambulance : 998.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/informations-pratiques-pour-voyager-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour voyager aux Émirats arabes unis », mise à jour du 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Ambassade de Belgique",
+     "valeur": "Établie à Abou Dabi (coordonnées : voir la page du SPF). Il n'y a pas de consulat honoraire belge aux Émirats.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/informations-pratiques-pour-voyager-aux-emirats-arabes-unis",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour voyager aux Émirats arabes unis », mise à jour du 05/08/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [],
+   "liens": [
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/emirats-arabes-unis/voyager-aux-emirats-arabes-unis-conseils-aux-voyageurs/informations-pratiques-pour-voyager-aux-emirats-arabes-unis",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour voyager aux Émirats arabes unis », mise à jour du 05/08/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "dxb-metro",
+   "zone": "Dubaï",
+   "rubrique": "transport-local",
+   "titre": "Métro et bus de Dubaï : tarifs Nol",
+   "resume": "Tarif d'un trajet selon le nombre de zones traversées, lu sur la page de la RTA (autorité des transports de Dubaï).",
+   "faits": [
+    {
+     "libelle": "Prix d'un trajet",
+     "valeur": "Carte Silver : 3 AED (1 zone), 5 AED (2 zones voisines), 7,50 AED (plus de 2 zones). Ticket Red (régulier) : 4 / 6 / 8,50 AED. Carte Gold : 6 / 10 / 15 AED.",
+     "source": {
+      "lien": "https://rta.ae/wps/portal/rta/ae/public-transport/Nol-Fares",
+      "libelle": "RTA Dubaï : tarifs Nol (métro et bus)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Prix de la carte et recharge minimale : non indiqués sur la page lue.",
+    "Nombre de zones de ton trajet : à lire sur le plan de la RTA."
+   ],
+   "liens": [
+    {
+     "lien": "https://rta.ae/wps/portal/rta/ae/public-transport/Nol-Fares",
+     "libelle": "RTA Dubaï : tarifs Nol (métro et bus)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "dxb-abra",
+   "zone": "Dubaï",
+   "rubrique": "transport-local",
+   "titre": "Traversée de la crique de Dubaï en abra",
+   "resume": "Ce que la page des lignes maritimes de la RTA indique pour les abras (bateaux traditionnels).",
+   "faits": [
+    {
+     "libelle": "Ligne CR1",
+     "valeur": "Bur Dubai Marine Station – Deira Old Souq Marine Station, indiquée « On Demand » (à la demande).",
+     "source": {
+      "lien": "https://rta.ae/links/timetables/en/timetables.html",
+      "libelle": "RTA Dubaï : lignes et horaires maritimes (abras)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Abra en location",
+     "valeur": "La page indique une location de 300 AED ou de 580 AED par heure (sans préciser à quels bateaux ces deux tarifs s'appliquent).",
+     "source": {
+      "lien": "https://rta.ae/links/timetables/en/timetables.html",
+      "libelle": "RTA Dubaï : lignes et horaires maritimes (abras)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Tarif et horaires de la traversée régulière : ils sont dans un document « Timing and Fare » de la RTA, non lu. Des guides donnent 1 ou 2 AED et se contredisent."
+   ],
+   "liens": [
+    {
+     "lien": "https://rta.ae/links/timetables/en/timetables.html",
+     "libelle": "RTA Dubaï : lignes et horaires maritimes (abras)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "ae-train",
+   "zone": "Dubaï",
+   "rubrique": "trajets",
+   "titre": "Train Abou Dabi – Dubaï (Etihad Rail)",
+   "resume": "Informations de la presse à la mise en service. Le site officiel n'a pas pu être lu : les prix et la durée restent à vérifier.",
+   "faits": [
+    {
+     "libelle": "Mise en service",
+     "valeur": "Le service voyageurs Abou Dabi–Dubaï a été lancé le 30/09/2026.",
+     "source": {
+      "lien": "https://gulfnews.com/uae/dubai/etihad-rail-officially-launches-passenger-services-between-abu-dhabi-and-dubai-1.500693061",
+      "libelle": "Gulf News : lancement du service voyageurs Abou Dabi–Dubaï, 30/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Gares",
+     "valeur": "Mohammed Bin Zayed City (Abou Dabi) et Al Yalayis (Dubaï).",
+     "source": {
+      "lien": "https://gulfnews.com/uae/dubai/etihad-rail-officially-launches-passenger-services-between-abu-dhabi-and-dubai-1.500693061",
+      "libelle": "Gulf News : lancement du service voyageurs Abou Dabi–Dubaï, 30/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Fréquence",
+     "valeur": "Dix services par jour entre Abou Dabi et Dubaï (au lancement).",
+     "source": {
+      "lien": "https://gulfnews.com/uae/dubai/etihad-rail-officially-launches-passenger-services-between-abu-dhabi-and-dubai-1.500693061",
+      "libelle": "Gulf News : lancement du service voyageurs Abou Dabi–Dubaï, 30/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    },
+    {
+     "libelle": "Réservation",
+     "valeur": "Par l'application ou le site d'Etihad Rail, ou aux distributeurs de billets en gare.",
+     "source": {
+      "lien": "https://gulfnews.com/uae/dubai/etihad-rail-officially-launches-passenger-services-between-abu-dhabi-and-dubai-1.500693061",
+      "libelle": "Gulf News : lancement du service voyageurs Abou Dabi–Dubaï, 30/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": false
+     }
+    }
+   ],
+   "aVerifier": [
+    "Prix et durée du trajet : les sources secondaires se contredisent (de 57 à 64 minutes ; prix de départ de 29 ou 39 AED). À lire sur le site ou l'application d'Etihad Rail.",
+    "Horaires du jour de ton trajet, dernier train, lien entre la gare d'Abou Dabi et l'aéroport : à vérifier."
+   ],
+   "liens": [
+    {
+     "lien": "https://www.etihadrail.com/",
+     "libelle": "Site officiel d'Etihad Rail (page non exploitable à la consultation)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://gulfnews.com/uae/dubai/etihad-rail-officially-launches-passenger-services-between-abu-dhabi-and-dubai-1.500693061",
+     "libelle": "Gulf News : lancement du service voyageurs Abou Dabi–Dubaï, 30/09/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "ae-esim",
+   "zone": "Émirats arabes unis",
+   "rubrique": "telephone",
+   "titre": "Carte SIM ou eSIM pour visiteurs aux Émirats",
+   "resume": "Aucun fait lu : les pages des opérateurs n'étaient pas exploitables à la consultation.",
+   "faits": [],
+   "aVerifier": [
+    "Offres pour visiteurs des opérateurs du pays (par exemple du et e&) : prix, quantité de données et durée à lire sur leurs sites officiels."
+   ],
+   "liens": [
+    {
+     "lien": "https://www.du.ae/touristesim",
+     "libelle": "Opérateur du : page « Tourist eSIM » (non exploitable à la consultation)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  }
+ ]
+}

@@ -2,8 +2,9 @@ import { useMemo, useState } from 'preact/hooks';
 import { nouvelId } from '../data/defauts.ts';
 import { ERREURS_BASE_LIEUX, tousLesLieux } from '../data/lieux-publics.ts';
 import { enregistrerCreneau, useStore } from '../data/store.ts';
-import type { AEviter, Categorie, ModeTrajet, Periode, TauxChange } from '../data/types.ts';
+import type { AEviter, Categorie, ModeTrajet, Periode, Personne, TauxChange } from '../data/types.ts';
 import { A_EVITER, CATEGORIES, LIBELLES_A_EVITER, LIBELLES_CATEGORIE, LIBELLES_MODE, LIBELLES_PERIODE, MODES_TRAJET, PERIODES } from '../data/types.ts';
+import { LIBELLES_PLURIEL } from '../lib/affinites.ts';
 import { libelleEuro } from '../lib/budget.ts';
 import { alternatifDe, creerAlternative, deviseDuJour, participantsEffectifs, periodeEffective } from '../lib/creneaux.ts';
 import { groupeComplet, idsPresentsLe, personnesDe } from '../lib/profils.ts';
@@ -11,7 +12,7 @@ import { activitesDuJour } from '../lib/rythme.ts';
 import type { Demande, Proposition, Tri } from '../lib/lieux.ts';
 import { creneauDepuisLieu, demandeVide, fenetresVols, filtrerLieux, formatDistance, heureDeLaDemande, lieuxDeLaZone, pointDeDepart } from '../lib/lieux.ts';
 import { dateValide, formatDateIso, heureValide } from '../lib/temps.ts';
-import { BadgeOuverture, libelleDuree, libellePrix, resumeSources } from './AffichageLieu.tsx';
+import { BadgeOuverture, libelleDuree, libellePrix, PrixGroupe, resumeSources } from './AffichageLieu.tsx';
 import { ChoixListe } from './ChoixListe.tsx';
 import { Champ, Page } from './commun.tsx';
 import { aller, lienJour, lienLieu, lienNouveauLieu } from './routeur.ts';
@@ -31,7 +32,7 @@ const nombreOuNull = (t: string): number | null => {
   return Number.isFinite(n) && n >= 0 ? n : null;
 };
 
-function CartePropositon(props: { p: Proposition; taux: TauxChange[]; action: string; actionActive: boolean; onAction: () => void; surprise?: boolean }) {
+function CartePropositon(props: { p: Proposition; taux: TauxChange[]; personnes: Personne[]; action: string; actionActive: boolean; onAction: () => void; surprise?: boolean }) {
   const { p } = props;
   const l = p.lieu;
   const sources = resumeSources(l);
@@ -57,6 +58,7 @@ function CartePropositon(props: { p: Proposition; taux: TauxChange[]; action: st
         {!l.prix && <span class="attention-texte">à vérifier</span>}
         {l.prix && !l.prix.source.officielle && <span class="attention-texte"> (à vérifier)</span>}
       </span>
+      {l.prix && props.personnes.length > 0 && <PrixGroupe prix={l.prix} personnes={props.personnes} taux={props.taux} />}
       <div>
         <span class="discret">Ouvert à ce moment ? </span>
         <BadgeOuverture o={p.ouvert} />
@@ -64,6 +66,8 @@ function CartePropositon(props: { p: Proposition; taux: TauxChange[]; action: st
       {p.distanceKm !== null && <span class="discret">À {formatDistance(p.distanceKm)} du logement (à vol d'oiseau)</span>}
       {l.incontournable && <span class="discret">Incontournable selon {l.incontournable.source.libelle}</span>}
       {l.public && <span class="discret">Pour qui : {l.public.texte}</span>}
+      {p.affinites.length > 0 && <span class="discret">Mis en avant pour les {p.affinites.map((t) => LIBELLES_PLURIEL[t]).join(', ')} (priorités par catégorie, pas un avis sur le lieu).</span>}
+      {p.pourTous && <span class="discret">Convient à un groupe mélangé (selon la catégorie du lieu).</span>}
       {p.avertissements.map((a) => (
         <span class="attention-texte" key={a}>
           {a}
@@ -408,7 +412,7 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
           </p>
         )}
         {filtreVols && masquesVol === 0 && <p class="discret">Les lieux qui t'empêcheraient d'attraper un de tes vols sont masqués ; aucun ne l'est pour ce moment.</p>}
-        <p class="discret">Prix en monnaie locale, par personne. L'équivalent en euros viendra avec le taux de change (étape 8).</p>
+        <p class="discret">Prix en monnaie locale, par personne ; pour le groupe choisi dans « Qui ? », chacun paie le tarif de son âge quand la source en donne un. L'équivalent en euros s'affiche quand un taux de change est enregistré (Réglages).</p>
 
         {affichees.length === 0 && (
           <section class="carte">
@@ -416,7 +420,7 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
           </section>
         )}
         {affichees.map((p) => (
-          <CartePropositon key={p.lieu.id} p={p} taux={reglages.tauxChange} action={actionLibelle} actionActive={actionActive} surprise={tirage !== undefined} onAction={() => void choisir(p)} />
+          <CartePropositon key={p.lieu.id} p={p} taux={reglages.tauxChange} personnes={personnesQui} action={actionLibelle} actionActive={actionActive} surprise={tirage !== undefined} onAction={() => void choisir(p)} />
         ))}
       </section>
 

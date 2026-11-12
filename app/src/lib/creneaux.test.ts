@@ -53,7 +53,7 @@ function creneau(id: string, extra: Partial<Creneau> = {}): Creneau {
 }
 
 function donnees(partiel: Partial<Donnees> = {}): Donnees {
-  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], personnes: [], creneaux: [], joursPlan: [], groupes: [], lieuxPerso: [], suiviLieux: [], ...partiel };
+  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], personnes: [], creneaux: [], joursPlan: [], groupes: [], lieuxPerso: [], suiviLieux: [], pratiquePerso: [], ...partiel };
 }
 
 // Vol fictif : Bruxelles 10:00 -> Bruxelles 12:00 le 10/03/2027 (mars : UTC+1), international (3 h d'avance : limite 07:00)

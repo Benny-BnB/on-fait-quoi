@@ -6,10 +6,11 @@ import type { Lieu, Periode, SouhaitLieu } from '../data/types.ts';
 import { LIBELLES_CATEGORIE, LIBELLES_MODE, LIBELLES_PERIODE, PERIODES } from '../data/types.ts';
 import { libelleEuro } from '../lib/budget.ts';
 import { deviseDuJour } from '../lib/creneaux.ts';
+import { personnesDe } from '../lib/profils.ts';
 import { creneauDepuisLieu, faitsAVerifier, fraicheurLieu, lieuxDeLaZone, ouvertA, ouvertLe } from '../lib/lieux.ts';
 import { liensCartes, lienSur } from '../lib/sejour.ts';
 import { aujourdhuiIso, dateValide, formatDateIso, heureValide } from '../lib/temps.ts';
-import { BadgeOuverture, Fait, libelleDuree, libellePrix, TableauHoraires } from './AffichageLieu.tsx';
+import { BadgeOuverture, Fait, libelleDuree, libellePrix, PrixGroupe, TableauHoraires } from './AffichageLieu.tsx';
 import { BoutonConfirme, Champ, Page } from './commun.tsx';
 import { aller, lienJour, lienModifierLieu, lienQuoiFaire } from './routeur.ts';
 
@@ -48,6 +49,30 @@ function MesEnvies(props: { lieuId: string }) {
       <Champ etiquette="Ma note (facultatif)" aide="Par exemple : y aller en fin d'après-midi, tenue à prévoir.">
         <textarea rows={3} value={note} onInput={(e) => definirNote(e.currentTarget.value)} onBlur={() => void modifierSuiviLieu(props.lieuId, { note })} />
       </Champ>
+    </section>
+  );
+}
+
+// Le prix pour un groupe de personnes (toutes, ou un groupe créé dans les Réglages)
+function PrixDuGroupe(props: { lieu: Lieu }) {
+  const { donnees } = useStore();
+  const [choix, definirChoix] = useState('tous');
+  if (!props.lieu.prix || donnees.personnes.length === 0) return null;
+  const personnes = choix === 'tous' ? donnees.personnes : personnesDe(donnees, [choix], []);
+  return (
+    <section class="carte formulaire">
+      <h2>Prix pour mon groupe</h2>
+      <Champ etiquette="Qui ?" aide="Chacun paie le tarif de son âge quand la source en donne un, sinon le prix standard.">
+        <select value={choix} onChange={(e) => definirChoix(e.currentTarget.value)}>
+          <option value="tous">Toutes les personnes ({donnees.personnes.length})</option>
+          {donnees.groupes.map((g) => (
+            <option key={g.id} value={g.id}>
+              {g.nom}
+            </option>
+          ))}
+        </select>
+      </Champ>
+      <PrixGroupe prix={props.lieu.prix} personnes={personnes} taux={donnees.reglages.tauxChange} detail />
     </section>
   );
 }
@@ -161,6 +186,7 @@ export function FicheLieu(props: { id: string }) {
 
       <MesEnvies key={l.id} lieuId={l.id} />
       <AjouterAuPlanning key={`plan-${l.id}`} lieu={l} />
+      <PrixDuGroupe key={`prix-${l.id}`} lieu={l} />
 
       <section class="carte">
         <h2>Les informations</h2>

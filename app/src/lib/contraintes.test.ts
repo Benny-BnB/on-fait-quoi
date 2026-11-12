@@ -66,6 +66,11 @@ test('poussette, fauteuil, escaliers : accessibilité à vérifier tant que la f
   assert.ok(cles(contraintesLieu(lieu('bkk-wat-arun'), [poussette])).includes('acces-pmr'));
   const avecPublic: Lieu = { ...lieu('bkk-wat-arun'), public: { texte: 'Accessible aux poussettes', source: lieu('bkk-wat-arun').duree!.source } };
   assert.ok(!cles(contraintesLieu(avecPublic, [poussette])).includes('acces-pmr'));
+  // un texte « Pour qui » qui parle d'autre chose (tarifs, âges) ne répond pas à la question : l'accessibilité reste à vérifier
+  const autreTexte: Lieu = { ...lieu('bkk-wat-arun'), public: { texte: 'Gratuit pour les moins de 3 ans', source: lieu('bkk-wat-arun').duree!.source } };
+  assert.ok(cles(contraintesLieu(autreTexte, [poussette])).includes('acces-pmr'));
+  const fauteuil: Lieu = { ...lieu('bkk-wat-arun'), public: { texte: 'Fauteuils roulants disponibles', source: lieu('bkk-wat-arun').duree!.source } };
+  assert.ok(!cles(contraintesLieu(fauteuil, [{ ...poussette, mobilite: ['fauteuil'] }])).includes('acces-pmr'));
 });
 
 test('alimentation : seulement pour les lieux où l\'on mange, et seulement si la fiche ne dit rien', () => {

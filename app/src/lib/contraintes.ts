@@ -12,6 +12,8 @@ export type Signalement = { cle: string; genre: 'contrainte' | 'a-eviter' | 'acc
 
 const prenoms = (ps: Personne[]): string => ps.map((p) => p.prenom).join(', ');
 
+const MOTS_ACCES = /fauteuil|wheelchair|poussette|stroller|accessib|ascenseur|\blift\b|elevator|escalier|stair|\bpmr\b/;
+
 const MOTS_REGIME: Record<string, string[]> = {
   vegetarien: ['vegetarien', 'vegetarian'],
   vegan: ['vegan'],
@@ -48,7 +50,10 @@ export function contraintesLieu(l: Lieu, personnes: Personne[]): Signalement[] {
     else if (!l.duree) s.push({ cle: 'marche-duree', genre: 'contrainte', texte: `${prenoms(marche)} (marche ou station debout limitée) : durée de la visite à vérifier.`, fort: false });
   }
   const accessibilite = personnes.filter((p) => p.mobilite.some((m) => m === 'poussette' || m === 'fauteuil' || m === 'escaliers'));
-  if (accessibilite.length > 0 && !l.public) {
+  // La fiche doit parler d'accessibilité (fauteuil, poussette, ascenseur, escaliers…) pour que le point ne soit plus « à vérifier » ;
+  // un texte « Pour qui » qui parle d'autre chose (tarifs, âges) ne répond pas à la question.
+  const parleAcces = l.public !== null && MOTS_ACCES.test(normaliserTexte(l.public.texte));
+  if (accessibilite.length > 0 && !parleAcces) {
     s.push({ cle: 'acces-pmr', genre: 'contrainte', texte: `${prenoms(accessibilite)} (poussette, fauteuil ou escaliers) : accessibilité à vérifier.`, fort: false });
   }
   // Une source qui parle d'escaliers : signalé pour ceux qui ne peuvent pas ou ne doivent pas en monter

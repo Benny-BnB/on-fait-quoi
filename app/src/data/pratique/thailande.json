@@ -1,0 +1,360 @@
+{
+ "format": "on-fait-quoi-pratique",
+ "version": 1,
+ "fiches": [
+  {
+   "id": "th-formalites",
+   "zone": "Thaïlande",
+   "rubrique": "formalites",
+   "titre": "Entrer en Thaïlande avec un passeport belge",
+   "resume": "Ce que disent les pages officielles lues le 12/11/2026. Les règles ont changé en 2026 : à relire juste avant le départ.",
+   "faits": [
+    {
+     "libelle": "Carte d'arrivée numérique (TDAC)",
+     "valeur": "Obligatoire pour tous les visiteurs étrangers depuis le 1er mai 2025, quel que soit le mode d'arrivée. Elle peut être remplie jusqu'à 3 jours avant l'arrivée et modifiée jusqu'au départ. Les personnes en transit qui ne passent pas par l'immigration n'y sont pas soumises.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "TDAC : prix et site",
+     "valeur": "Gratuite. Adresse du site officiel indiquée par l'ambassade de Thaïlande : tdac.immigration.go.th",
+     "source": {
+      "lien": "https://dubai.thaiembassy.org/en/content/thailand-digital-arrival-card-tdac",
+      "libelle": "Ambassade de Thaïlande à Dubaï : Thailand Digital Arrival Card (page mise à jour le 16/04/2025)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Passeport",
+     "valeur": "Valable au moins six mois à compter de la date d'entrée, ni déchiré ni endommagé.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Séjour sans visa (tourisme)",
+     "valeur": "30 jours à partir du 15/09/2026 (la règle précédente était de 60 jours). La Belgique figure dans la liste de 60 pays de la nouvelle règle, publiée au Journal royal le 31/08/2026. Aux frontières terrestres : en général deux entrées par année civile.",
+     "source": {
+      "lien": "https://www.tatnews.org/2026/09/thailand-introduces-new-30-day-and-15-day-visa-exemption-rules-from-15-september/",
+      "libelle": "Tourism Authority of Thailand (TAT) : article du 01/09/2026 sur les nouvelles règles d'exemption de visa",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Dépassement du séjour",
+     "valeur": "Amende de 500 THB par jour de dépassement, plafonnée à 20 000 THB. La date limite de séjour est notée par un tampon dans le passeport.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/legislation-locale-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Législation locale en Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "La page du SPF lue ne donne pas la durée de séjour sans visa : confirme-la sur une page officielle thaïlandaise avant le départ.",
+    "Relire ces conditions juste avant le départ."
+   ],
+   "liens": [
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://www.tatnews.org/2026/09/thailand-introduces-new-30-day-and-15-day-visa-exemption-rules-from-15-september/",
+     "libelle": "Tourism Authority of Thailand (TAT) : article du 01/09/2026 sur les nouvelles règles d'exemption de visa",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://dubai.thaiembassy.org/en/content/thailand-digital-arrival-card-tdac",
+     "libelle": "Ambassade de Thaïlande à Dubaï : Thailand Digital Arrival Card (page mise à jour le 16/04/2025)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": "L'app ne donne pas de conseil juridique : les sources officielles font foi."
+  },
+  {
+   "id": "th-securite",
+   "zone": "Thaïlande",
+   "rubrique": "formalites",
+   "titre": "Sécurité en Thaïlande : avis du SPF",
+   "resume": "Résumé de la page « Dernière mise à jour en Thaïlande » du SPF Affaires étrangères (04/09/2026).",
+   "faits": [
+    {
+     "libelle": "Situation",
+     "valeur": "Le SPF écrit que la situation sécuritaire s'est améliorée mais reste imprévisible, et que des incidents ponctuels peuvent se produire.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/derniere-mise-jour-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour en Thaïlande », 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Zones déconseillées",
+     "valeur": "Tout voyage est déconseillé dans les districts frontaliers avec le Cambodge (provinces de Ubon Ratchathani, Si Sa Ket, Surin, Buriram, Sa Kaeo, Chanthaburi et Trat). Voyages déconseillés, sauf s'ils sont indispensables, dans les provinces de Narathiwat, Yala et Pattani et dans les districts de Chana, Na Thawi, Thepa et Saba Yoi (Songkhla). La frontière avec le Myanmar est aussi mentionnée.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/derniere-mise-jour-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour en Thaïlande », 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Recommandations",
+     "valeur": "Respecter à tout moment les instructions de l'armée thaïlandaise. S'inscrire sur Travellers Online (« très fortement recommandé » aux Belges). Suivre les mises à jour du site et de la page Facebook de l'ambassade de Belgique à Bangkok. Consulter le site de la Tourism Authority of Thailand.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/derniere-mise-jour-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour en Thaïlande », 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Compare cette liste de provinces avec les lieux de ton voyage : l'app ne le fait pas pour toi.",
+    "Page du 04/09/2026 : relire la version à jour avant le départ."
+   ],
+   "liens": [
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/derniere-mise-jour-en-thailande",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Dernière mise à jour en Thaïlande », 04/09/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-urgences",
+   "zone": "Thaïlande",
+   "rubrique": "urgences",
+   "titre": "Numéros utiles en Thaïlande",
+   "resume": "Ce que donne le SPF Affaires étrangères sur sa page pratique (04/09/2026).",
+   "faits": [
+    {
+     "libelle": "Questions consulaires (ambassade de Belgique à Bangkok)",
+     "valeur": "consular.bangkok@diplobel.fed.be (adresse générale donnée par le SPF).",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Cartes bancaires ou de crédit belges perdues ou volées (Card Stop)",
+     "valeur": "00 32 78 170 170",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Application",
+     "valeur": "Le SPF mentionne l'application « Tourist Police I Lert U ».",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Numéros d'urgence thaïlandais (police touristique, police, ambulance) : le SPF ne les donne pas sur la page lue, et la page « numéros utiles » du portail du gouvernement thaïlandais n'a pas pu être lue. À vérifier."
+   ],
+   "liens": [
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/informations-pratiques-pour-la-thailande",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Informations pratiques pour la Thaïlande », mise à jour du 04/09/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    },
+    {
+     "lien": "https://www.thailand.go.th/issue-focus-detail/009_152",
+     "libelle": "Portail du gouvernement thaïlandais : numéros utiles pendant un séjour (page non exploitable à la consultation)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-argent",
+   "zone": "Thaïlande",
+   "rubrique": "argent",
+   "titre": "Retirer de l'argent en Thaïlande",
+   "resume": "Frais d'un distributeur pour une carte émise à l'étranger. Ce tarif n'est qu'un exemple : une autre banque peut facturer autre chose.",
+   "faits": [
+    {
+     "libelle": "Distributeur Krungsri, carte émise à l'étranger",
+     "valeur": "350 THB par opération avec une carte Mastercard ; 250 THB avec une carte Visa, UnionPay ou JCB. Ce sont les frais de la banque thaïlandaise, en vigueur depuis le 11/03/2026.",
+     "source": {
+      "lien": "https://www.krungsri.com/getmedia/546f2617-8522-47b8-9b06-6c2cb49f32d0/fee-withdrawal-via-atm-for-international-card-11032026-en",
+      "libelle": "Krungsri (Bank of Ayudhya) : tarif des services électroniques, en vigueur le 11/03/2026 (PDF)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Les frais de ta propre banque pour un retrait à l'étranger : à demander à ta banque.",
+    "Autres banques thaïlandaises : lis les frais affichés par le distributeur avant de valider.",
+    "Cours de change : voir Réglages, Taux de change (il est daté et sourcé)."
+   ],
+   "liens": [
+    {
+     "lien": "https://www.krungsri.com/getmedia/546f2617-8522-47b8-9b06-6c2cb49f32d0/fee-withdrawal-via-atm-for-international-card-11032026-en",
+     "libelle": "Krungsri (Bank of Ayudhya) : tarif des services électroniques, en vigueur le 11/03/2026 (PDF)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-transport",
+   "zone": "Thaïlande",
+   "rubrique": "transport-local",
+   "titre": "Se déplacer en Thaïlande : conseils du SPF",
+   "resume": "Conseils de la page « Transport en Thaïlande » du SPF Affaires étrangères (04/09/2026).",
+   "faits": [
+    {
+     "libelle": "Taxis",
+     "valeur": "En principe équipés d'un taximètre : demander de le mettre en marche. Les taxis officiels affichent à l'intérieur un numéro d'identification individuel bien visible.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Scooters et motos",
+     "valeur": "Conduire une moto ou un cyclomoteur est risqué. Les cyclomoteurs de location ne sont souvent pas assurés. Porter un bon casque bien ajusté. L'assurance peut être annulée en cas de conduite sans permis de conduire approprié.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Bateaux",
+     "valeur": "Vérifier que le bateau est en bon état et qu'il n'est pas surchargé.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Bus",
+     "valeur": "Il existe un réseau dense de bus et de minibus.",
+     "source": {
+      "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+      "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Prix, durées et horaires des transferts (aéroports, entre les villes, bateaux) : pas encore sourcés dans l'app. Ajoute-les dans « Trajets » avec leur source."
+   ],
+   "liens": [
+    {
+     "lien": "https://diplomatie.belgium.be/fr/pays/thailande/voyager-en-thailande-conseils-aux-voyageurs/transport-en-thailande",
+     "libelle": "SPF Affaires étrangères (Belgique) : « Transport en Thaïlande », mise à jour du 04/09/2026",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  },
+  {
+   "id": "th-esim",
+   "zone": "Thaïlande",
+   "rubrique": "telephone",
+   "titre": "Carte SIM touriste en Thaïlande",
+   "resume": "Règles de la carte SIM touriste de True et dtac, lues sur leur page de conditions.",
+   "faits": [
+    {
+     "libelle": "Validité",
+     "valeur": "Une carte SIM touriste ne peut pas dépasser 60 jours de validité, et elle ne se prolonge pas par une recharge après son expiration.",
+     "source": {
+      "lien": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+      "libelle": "True et dtac : conditions de la carte SIM touriste en Thaïlande",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Enregistrement",
+     "valeur": "Le numéro doit être enregistré avec un passeport valide. Maximum trois cartes SIM par personne et par marque.",
+     "source": {
+      "lien": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+      "libelle": "True et dtac : conditions de la carte SIM touriste en Thaïlande",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Tarifs hors forfait (hors TVA)",
+     "valeur": "Appels locaux : 5 THB par minute. Données locales : 2 THB par Mo. SMS local : 5 THB. Appels internationaux : à partir de 1 THB par minute. Crédit maximum : 5 000 THB par carte.",
+     "source": {
+      "lien": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+      "libelle": "True et dtac : conditions de la carte SIM touriste en Thaïlande",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    },
+    {
+     "libelle": "Offres",
+     "valeur": "La SIM touriste « Infinite » propose internet illimité à la vitesse maximale disponible ; la SIM touriste standard propose internet sans interruption, avec une politique d'usage raisonnable.",
+     "source": {
+      "lien": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+      "libelle": "True et dtac : conditions de la carte SIM touriste en Thaïlande",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "aVerifier": [
+    "Prix et durée des forfaits touristes (True, dtac, AIS) et offres eSIM : non indiqués sur la page lue."
+   ],
+   "liens": [
+    {
+     "lien": "https://www.true.th/en/promotion/prepaid/terms-tourist-infinite-sim",
+     "libelle": "True et dtac : conditions de la carte SIM touriste en Thaïlande",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   ],
+   "verifieLe": "2026-11-12",
+   "notes": ""
+  }
+ ]
+}

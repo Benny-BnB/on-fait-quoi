@@ -347,6 +347,10 @@ export type HorairesLieu = {
   source: SourceLieu;
 };
 
+// Prix particulier selon l'âge (enfant, senior, gratuit pour les petits…), lu dans la même source que le prix du lieu.
+// ageMin et ageMax sont inclus, en années ; null = pas de limite de ce côté.
+export type TarifAge = { libelle: string; ageMin: number | null; ageMax: number | null; min: number; max: number };
+
 export type Lieu = {
   id: string;
   nom: string;
@@ -360,7 +364,7 @@ export type Lieu = {
   incontournable: { raison: string; source: SourceLieu } | null; // seulement si une source citée le dit
   description: string; // une ou deux phrases factuelles
   duree: { minMin: number; maxMin: number; estimee: boolean; base: string; source: SourceLieu } | null;
-  prix: { min: number; max: number; devise: string; note: string; source: SourceLieu } | null; // par personne
+  prix: { min: number; max: number; devise: string; note: string; tarifs?: TarifAge[]; source: SourceLieu } | null; // par personne ; tarifs = prix particuliers selon l'âge, de la même source
   horaires: HorairesLieu | null;
   reservation: { necessaire: boolean | null; lien: string; note: string; source: SourceLieu } | null;
   tenue: { texte: string; source: SourceLieu } | null;
@@ -370,6 +374,36 @@ export type Lieu = {
   acces: AccesLieu[]; // [] = accès non renseigné
   lienOfficiel: string;
   verifieLe: string; // AAAA-MM-JJ : dernière vérification de la fiche, '' si jamais
+  notes: string;
+};
+
+// ---------- Rubrique Pratique (base publique : aucune donnée personnelle) ----------
+
+export const RUBRIQUES_PRATIQUE = ['trajets', 'transport-local', 'argent', 'telephone', 'urgences', 'formalites'] as const;
+export type RubriquePratique = (typeof RUBRIQUES_PRATIQUE)[number];
+
+export const LIBELLES_RUBRIQUE_PRATIQUE: Record<RubriquePratique, string> = {
+  trajets: 'Trajets et transferts',
+  'transport-local': 'Se déplacer sur place',
+  argent: 'Argent',
+  telephone: 'Téléphone et internet',
+  urgences: 'Numéros utiles',
+  formalites: 'Formalités et sécurité',
+};
+
+// Un fait de la rubrique Pratique : jamais sans source
+export type FaitPratique = { libelle: string; valeur: string; source: SourceLieu };
+
+export type FichePratique = {
+  id: string;
+  zone: string; // ville, région ou pays de la fiche, ex. « Bangkok » (rapprochée du nom d'une étape ou de son pays)
+  rubrique: RubriquePratique;
+  titre: string;
+  resume: string; // une ou deux phrases factuelles
+  faits: FaitPratique[];
+  aVerifier: string[]; // ce que la fiche ne sait pas : affiché « à vérifier »
+  liens: SourceLieu[]; // renvois vers les sites officiels (ou autres sources)
+  verifieLe: string; // AAAA-MM-JJ, '' si jamais
   notes: string;
 };
 
@@ -418,6 +452,7 @@ export type Donnees = {
   joursPlan: JourPlan[];
   lieuxPerso: Lieu[]; // lieux ajoutés par l'utilisateur (souhaits) : jamais publiés
   suiviLieux: SuiviLieu[];
+  pratiquePerso: FichePratique[]; // fiches Pratique ajoutées ou corrigées par l'utilisateur : jamais publiées
 };
 
 export const ID_PROCHAIN_VOL = 'prochain-vol';

@@ -1,0 +1,866 @@
+{
+ "format": "on-fait-quoi-lieux",
+ "version": 1,
+ "lieux": [
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Al Barsha South 3",
+   "adresse": "",
+   "gps": {
+    "lat": 25.0597235,
+    "lng": 55.2445979,
+    "source": {
+     "lien": "https://www.openstreetmap.org/way/309488164",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "nature",
+    "spots",
+    "famille"
+   ],
+   "etiquettes": [
+    "jardin",
+    "fleurs",
+    "photo",
+    "saison"
+   ],
+   "incontournable": null,
+   "description": "Jardin de fleurs en plein air de 72 000 m², ouvert en saison (saison 15 : du 08/10/2026 au 31/05/2027). Un jardin des papillons est proposé en supplément, à entrée séparée.",
+   "duree": null,
+   "prix": {
+    "min": 105,
+    "max": 105,
+    "devise": "AED",
+    "note": "Adulte : 105 AED ; enfant de 3 à 12 ans : 84 AED (TVA incluse). Tarif senior non indiqué sur la page. Jardin des papillons : 52,50 AED, entrée séparée.",
+    "tarifs": [
+     {
+      "libelle": "Enfant de 3 à 12 ans",
+      "ageMin": 3,
+      "ageMax": 12,
+      "min": 84,
+      "max": 84
+     }
+    ],
+    "source": {
+     "lien": "https://dubaimiraclegarden.com/",
+     "libelle": "Site officiel du Dubai Miracle Garden",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "horaires": {
+    "nature": "ouverture",
+    "jours": {
+     "lundi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ],
+     "mardi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ],
+     "mercredi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ],
+     "jeudi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ],
+     "vendredi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ],
+     "samedi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ],
+     "dimanche": [
+      {
+       "ouvre": "09:00",
+       "ferme": "21:00"
+      }
+     ]
+    },
+    "fermetures": [],
+    "derniereEntree": "20:30",
+    "note": "« Daily from 9am to 9pm during Season 15 (8 October 2026 to 31 May 2027) ». Les horaires peuvent changer les jours fériés et les jours d'événement.",
+    "source": {
+     "lien": "https://dubaimiraclegarden.com/",
+     "libelle": "Site officiel du Dubai Miracle Garden",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "reservation": {
+    "necessaire": null,
+    "lien": "https://dubaimiraclegarden.com/",
+    "note": "Billets vendus en ligne, envoyés par WhatsApp sous forme de QR code d'entrée (selon le site). Le site lu ne dit pas si la réservation est obligatoire.",
+    "source": {
+     "lien": "https://dubaimiraclegarden.com/",
+     "libelle": "Site officiel du Dubai Miracle Garden",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "tenue": null,
+   "interieur": "exterieur",
+   "public": null,
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://dubaimiraclegarden.com/",
+   "verifieLe": "2026-11-12",
+   "notes": "La page lue ne donne ni la durée de visite ni l'accessibilité (fauteuil, poussette).",
+   "id": "dxb-miracle-garden",
+   "nom": "Dubai Miracle Garden"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "",
+   "adresse": "",
+   "gps": {
+    "lat": 25.0724939,
+    "lng": 55.3070253,
+    "source": {
+     "lien": "https://www.openstreetmap.org/node/11885120277",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "famille"
+   ],
+   "etiquettes": [
+    "soirée",
+    "spectacle",
+    "manèges",
+    "saison"
+   ],
+   "incontournable": null,
+   "description": "Parc de loisirs saisonnier, ouvert l'après-midi et le soir (saison 31, à partir du 14/10/2026 jusqu'à mai 2027 selon le site). Manèges, événements et attractions WonderPass vendus à part.",
+   "duree": null,
+   "prix": null,
+   "horaires": {
+    "nature": "ouverture",
+    "jours": {
+     "dimanche": [
+      {
+       "ouvre": "16:00",
+       "ferme": "24:00"
+      }
+     ],
+     "lundi": [
+      {
+       "ouvre": "16:00",
+       "ferme": "24:00"
+      }
+     ],
+     "mardi": [
+      {
+       "ouvre": "16:00",
+       "ferme": "24:00"
+      }
+     ],
+     "mercredi": [
+      {
+       "ouvre": "16:00",
+       "ferme": "24:00"
+      }
+     ],
+     "jeudi": [
+      {
+       "ouvre": "16:00",
+       "ferme": "01:00"
+      }
+     ],
+     "vendredi": [
+      {
+       "ouvre": "16:00",
+       "ferme": "01:00"
+      }
+     ],
+     "samedi": [
+      {
+       "ouvre": "16:00",
+       "ferme": "01:00"
+      }
+     ]
+    },
+    "fermetures": [],
+    "derniereEntree": "",
+    "note": "Dimanche à mercredi : 16:00–24:00 ; jeudi à samedi : 16:00–01:00. Le mardi est réservé aux dames et aux familles (sauf jours fériés officiels). Les horaires des spectacles peuvent changer sans préavis (selon le site).",
+    "source": {
+     "lien": "https://www.globalvillage.ae/en",
+     "libelle": "Site officiel de Global Village",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "reservation": {
+    "necessaire": null,
+    "lien": "https://www.globalvillage.ae/en",
+    "note": "Billets vendus en ligne (« Buy Tickets »). Le site lu ne dit pas si acheter à l'avance est obligatoire.",
+    "source": {
+     "lien": "https://www.globalvillage.ae/en",
+     "libelle": "Site officiel de Global Village",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "tenue": null,
+   "interieur": "",
+   "public": {
+    "texte": "Entrée gratuite pour les moins de 3 ans, les 65 ans et plus, et les personnes en situation de handicap (un accompagnateur gratuit, pièce d'identité exigée). Le mardi est réservé aux dames et aux familles.",
+    "source": {
+     "lien": "https://www.globalvillage.ae/en",
+     "libelle": "Site officiel de Global Village",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.globalvillage.ae/en",
+   "verifieLe": "2026-11-12",
+   "notes": "Prix : le site affiche « Any Day 30,00 » (tous les jours, jours fériés compris) et « Weekday 25,00 » (du lundi au jeudi hors jours fériés), TVA 5 % incluse, mais n'écrit pas la devise à côté des montants (une bannière du site utilise « AED »). Le prix reste donc « à vérifier » : confirme la devise sur le site puis saisis-le dans « Ma version de la fiche ». Les manèges, événements et WonderPass se paient en plus.",
+   "id": "dxb-global-village",
+   "nom": "Global Village"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Al Warqa",
+   "adresse": "Street 51, Al Warqa 4",
+   "gps": {
+    "lat": 25.1793246,
+    "lng": 55.4515731,
+    "source": {
+     "lien": "https://www.openstreetmap.org/way/551627055",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "nature",
+    "famille"
+   ],
+   "etiquettes": [
+    "animaux",
+    "safari",
+    "parc",
+    "spectacle"
+   ],
+   "incontournable": null,
+   "description": "Parc animalier. Saison 8 ouverte depuis le 12/10/2026 (données du site valables jusqu'au 31/05/2027). Navettes climatisées entre les zones. Les présentations d'animaux durent environ 30 minutes.",
+   "duree": null,
+   "prix": {
+    "min": 50,
+    "max": 117,
+    "devise": "AED",
+    "note": "« Safari Park Pass » : à partir de 50 AED. « Safari Bundle » (avec un parcours safari) : 117 AED. La page ne détaille pas adulte, enfant et senior. Gratuit pour les moins de 3 ans et les personnes en situation de handicap.",
+    "tarifs": [
+     {
+      "libelle": "Moins de 3 ans (gratuit)",
+      "ageMin": 0,
+      "ageMax": 2,
+      "min": 0,
+      "max": 0
+     }
+    ],
+    "source": {
+     "lien": "https://dubaisafari.ae/",
+     "libelle": "Site officiel du Dubai Safari Park",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "horaires": {
+    "nature": "ouverture",
+    "jours": {
+     "lundi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ],
+     "mardi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ],
+     "mercredi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ],
+     "jeudi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ],
+     "vendredi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ],
+     "samedi": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ],
+     "dimanche": [
+      {
+       "ouvre": "09:00",
+       "ferme": "18:00"
+      }
+     ]
+    },
+    "fermetures": [],
+    "derniereEntree": "17:00",
+    "note": "« Open daily from 9:00 AM to 6:00 PM » ; dernière entrée 17:00.",
+    "source": {
+     "lien": "https://dubaisafari.ae/",
+     "libelle": "Site officiel du Dubai Safari Park",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "reservation": {
+    "necessaire": null,
+    "lien": "https://dubaisafari.ae/",
+    "note": "Le site invite à réserver le billet en ligne avant d'ajouter un parcours safari ou une rencontre avec un animal ; les rencontres peuvent aussi se réserver au comptoir selon les disponibilités. Réservation obligatoire : non indiquée.",
+    "source": {
+     "lien": "https://dubaisafari.ae/",
+     "libelle": "Site officiel du Dubai Safari Park",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "tenue": null,
+   "interieur": "mixte",
+   "public": {
+    "texte": "Fauteuils roulants et poussettes disponibles, casiers et salles de prière ; navettes climatisées entre les zones. Gratuit pour les moins de 3 ans. Ateliers du samedi pour les 6 à 12 ans (selon le site).",
+    "source": {
+     "lien": "https://dubaisafari.ae/",
+     "libelle": "Site officiel du Dubai Safari Park",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://dubaisafari.ae/",
+   "verifieLe": "2026-11-12",
+   "notes": "Classement extérieur/intérieur déduit de la description du site (safari en plein désert, volière à parcourir à pied). La durée d'une visite n'est pas indiquée.",
+   "id": "dxb-safari-park",
+   "nom": "Dubai Safari Park"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "",
+   "adresse": "",
+   "gps": {
+    "lat": 25.235456,
+    "lng": 55.3003671,
+    "source": {
+     "lien": "https://www.openstreetmap.org/way/386649647",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "spots",
+    "culture"
+   ],
+   "etiquettes": [
+    "panorama",
+    "photo",
+    "jardin"
+   ],
+   "incontournable": null,
+   "description": "Structure en forme de cadre avec un pont panoramique à 150 mètres de hauteur, atteint par un ascenseur à façade vitrée. Un jardin entoure le monument (selon le site officiel).",
+   "duree": null,
+   "prix": {
+    "min": 50,
+    "max": 50,
+    "devise": "AED",
+    "note": "Adulte : 50 AED ; enfant de 3 à 12 ans : 20 AED ; gratuit pour les moins de 3 ans, ainsi que pour les personnes en situation de handicap et deux accompagnateurs. Tarif senior non indiqué. La page lue affiche une dernière modification au 01/05/2021 : à confirmer avant d'y aller.",
+    "tarifs": [
+     {
+      "libelle": "Enfant de 3 à 12 ans",
+      "ageMin": 3,
+      "ageMax": 12,
+      "min": 20,
+      "max": 20
+     },
+     {
+      "libelle": "Moins de 3 ans (gratuit)",
+      "ageMin": 0,
+      "ageMax": 2,
+      "min": 0,
+      "max": 0
+     }
+    ],
+    "source": {
+     "lien": "https://www.dubaiframe.ae/en/plan-your-visit",
+     "libelle": "Site officiel du Dubai Frame (page « Plan your visit », dernière modification affichée : 01/05/2021)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "horaires": {
+    "nature": "ouverture",
+    "jours": {
+     "lundi": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ],
+     "mardi": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ],
+     "mercredi": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ],
+     "jeudi": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ],
+     "vendredi": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ],
+     "samedi": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ],
+     "dimanche": [
+      {
+       "ouvre": "08:00",
+       "ferme": "21:00"
+      }
+     ]
+    },
+    "fermetures": [],
+    "derniereEntree": "",
+    "note": "« Opening hours from 8:00 am till 09:00 pm », toute l'année, week-ends et jours fériés compris ; les horaires peuvent varier pendant le ramadan et les jours fériés. Page datée du 01/05/2021 : à confirmer.",
+    "source": {
+     "lien": "https://www.dubaiframe.ae/en/plan-your-visit",
+     "libelle": "Site officiel du Dubai Frame (page « Plan your visit », dernière modification affichée : 01/05/2021)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "reservation": {
+    "necessaire": null,
+    "lien": "https://ticketingsales.dubaiframe.ae",
+    "note": "Billetterie en ligne. Le site ne dit pas si la réservation est obligatoire. Pour les personnes en situation de handicap, le billet de l'accompagnateur se retire au guichet.",
+    "source": {
+     "lien": "https://www.dubaiframe.ae/en/plan-your-visit",
+     "libelle": "Site officiel du Dubai Frame (page « Plan your visit », dernière modification affichée : 01/05/2021)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "tenue": {
+    "texte": "Tenue respectueuse demandée (« Respectful clothing must be considered »).",
+    "source": {
+     "lien": "https://www.dubaiframe.ae/en/plan-your-visit",
+     "libelle": "Site officiel du Dubai Frame (page « Plan your visit », dernière modification affichée : 01/05/2021)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "interieur": "",
+   "public": {
+    "texte": "Les enfants de moins de 12 ans doivent être accompagnés d'un adulte pendant toute la visite. Gratuit pour les personnes en situation de handicap et deux accompagnateurs.",
+    "source": {
+     "lien": "https://www.dubaiframe.ae/en/plan-your-visit",
+     "libelle": "Site officiel du Dubai Frame (page « Plan your visit », dernière modification affichée : 01/05/2021)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.dubaiframe.ae/en/",
+   "verifieLe": "2026-11-12",
+   "notes": "La durée d'une visite, l'accessibilité (fauteuil, poussette) et la distinction intérieur/extérieur ne figurent pas sur la page lue.",
+   "id": "dxb-dubai-frame",
+   "nom": "Dubai Frame"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Expo City Dubai",
+   "adresse": "2020 Boulevard",
+   "gps": {
+    "lat": 24.9634934,
+    "lng": 55.1460846,
+    "source": {
+     "lien": "https://www.openstreetmap.org/node/8882647591",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "famille"
+   ],
+   "etiquettes": [
+    "parc",
+    "aires de jeux",
+    "attractions"
+   ],
+   "incontournable": null,
+   "description": "Site de l'ancienne Expo, avec des attractions (Terra, Vision Dubai), la place Al Wasl (indiquée « Free » sur la liste du site) et deux aires de jeux pour enfants : Rashid's Adventures Playground et Taqa Island.",
+   "duree": null,
+   "prix": null,
+   "horaires": null,
+   "reservation": null,
+   "tenue": null,
+   "interieur": "",
+   "public": {
+    "texte": "Aires de jeux pour enfants : Rashid's Adventures Playground (Wadi Avenue) et Taqa Island (Sustainability District). Petits taxis-buggies jaunes pour les courtes distances dans le site.",
+    "source": {
+     "lien": "https://www.expocitydubai.com/en/plan-your-visit/",
+     "libelle": "Site officiel d'Expo City Dubai (« Plan your visit »)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "attention": [],
+   "acces": [
+    {
+     "modes": [
+      "metro",
+      "voiture"
+     ],
+     "texte": "Selon le site, Expo City Dubai est « accessible via Dubai Metro » (la station n'est pas indiquée sur la page lue) ; accès routier par les grands axes ; quatre zones de parking pour environ 9 500 places.",
+     "source": {
+      "lien": "https://www.expocitydubai.com/en/plan-your-visit/",
+      "libelle": "Site officiel d'Expo City Dubai (« Plan your visit »)",
+      "consulteLe": "2026-11-12",
+      "officielle": true
+     }
+    }
+   ],
+   "lienOfficiel": "https://www.expocitydubai.com/en/",
+   "verifieLe": "2026-11-12",
+   "notes": "Horaires, prix et réservation ne figurent pas sur les pages lues (la liste affiche « $$$ » pour Terra et « 75 » sans devise pour Vision Dubai) : à vérifier sur le site officiel. Un billet combiné Terra + Vision est mentionné sans prix.",
+   "id": "dxb-expo-city",
+   "nom": "Expo City Dubai"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Downtown Dubai",
+   "adresse": "",
+   "gps": {
+    "lat": 25.1970336,
+    "lng": 55.2741329,
+    "source": {
+     "lien": "https://www.openstreetmap.org/way/446646206",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "spots"
+   ],
+   "etiquettes": [
+    "panorama",
+    "photo",
+    "tour"
+   ],
+   "incontournable": null,
+   "description": "Plus haute tour du monde selon Visit Dubai. Billets « At The Top » par niveau : SILVER, GOLD et PLATINUM, avec ou sans heures creuses.",
+   "duree": {
+    "minMin": 90,
+    "maxMin": 120,
+    "estimee": false,
+    "base": "",
+    "source": {
+     "lien": "https://experiences.visitdubai.com/at-the-top-burj-khalifa-get-your-tickets",
+     "libelle": "Visit Dubai (office du tourisme de Dubaï) : billets « At The Top, Burj Khalifa » (la page affiche « Site last updated 11/17/2021 »)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "prix": {
+    "min": 159,
+    "max": 399,
+    "devise": "AED",
+    "note": "Prix « à partir de » : SILVER 159 AED (1 h 30), GOLD (admission générale) 399 AED (2 h), PLATINUM 769 AED. Avec options (souvenir, café, repas, fast track, aquarium…) : de 204 à 332 AED pour SILVER. Pas de tarif par âge sur la page lue. La page affiche « Site last updated 11/17/2021 » : à confirmer avant d'acheter.",
+    "source": {
+     "lien": "https://experiences.visitdubai.com/at-the-top-burj-khalifa-get-your-tickets",
+     "libelle": "Visit Dubai (office du tourisme de Dubaï) : billets « At The Top, Burj Khalifa » (la page affiche « Site last updated 11/17/2021 »)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "horaires": null,
+   "reservation": {
+    "necessaire": null,
+    "lien": "https://experiences.visitdubai.com/at-the-top-burj-khalifa-get-your-tickets",
+    "note": "Billets vendus en ligne (« Book now »). Obligation de réserver : non indiquée sur la page lue.",
+    "source": {
+     "lien": "https://experiences.visitdubai.com/at-the-top-burj-khalifa-get-your-tickets",
+     "libelle": "Visit Dubai (office du tourisme de Dubaï) : billets « At The Top, Burj Khalifa » (la page affiche « Site last updated 11/17/2021 »)",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "tenue": null,
+   "interieur": "",
+   "public": null,
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.burjkhalifa.ae/",
+   "verifieLe": "2026-11-12",
+   "notes": "Le site officiel de la tour a refusé l'accès (erreur 403) : les horaires, l'accessibilité et les âges ne sont pas lus. À vérifier.",
+   "id": "dxb-burj-khalifa",
+   "nom": "Burj Khalifa : At The Top"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Downtown Dubai",
+   "adresse": "",
+   "gps": {
+    "lat": 25.1977146,
+    "lng": 55.2788456,
+    "source": {
+     "lien": "https://www.openstreetmap.org/node/2246355036",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "famille"
+   ],
+   "etiquettes": [
+    "aquarium",
+    "animaux",
+    "intérieur"
+   ],
+   "incontournable": null,
+   "description": "Aquarium et zoo sous-marin à l'intérieur du Dubai Mall (Visit Dubai : « Make underwater discoveries at Dubai Mall »).",
+   "duree": null,
+   "prix": null,
+   "horaires": null,
+   "reservation": null,
+   "tenue": null,
+   "interieur": "interieur",
+   "public": null,
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.thedubaiaquarium.com/",
+   "verifieLe": "2026-11-12",
+   "notes": "Le site officiel a refusé l'accès (erreur 403) et la page de Visit Dubai ne donne ni prix ni horaires. Des revendeurs affichent des prix et des horaires qui se contredisent : aucun n'est retenu. À vérifier sur le site officiel.",
+   "id": "dxb-aquarium",
+   "nom": "Dubai Aquarium & Underwater Zoo"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Downtown Dubai",
+   "adresse": "",
+   "gps": {
+    "lat": 25.1951223,
+    "lng": 55.2751696,
+    "source": {
+     "lien": "https://www.openstreetmap.org/relation/15670582",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "spots",
+    "promenades"
+   ],
+   "etiquettes": [
+    "fontaines",
+    "spectacle",
+    "promenade",
+    "abra"
+   ],
+   "incontournable": null,
+   "description": "Fontaines dansantes au pied de la Burj Khalifa (Visit Dubai : « Marvel at the beauty of the dancing fountains »).",
+   "duree": null,
+   "prix": null,
+   "horaires": null,
+   "reservation": null,
+   "tenue": null,
+   "interieur": "exterieur",
+   "public": null,
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.visitdubai.com/en/places-to-visit/the-dubai-fountain",
+   "verifieLe": "2026-11-12",
+   "notes": "Visit Dubai propose deux billets payants : la promenade « Dubai Fountain Boardwalk » (30 min, à partir de 25 AED) et la balade en abra sur le lac Burj (30 min, à partir de 75 AED). Le prix et les horaires pour voir le spectacle depuis l'extérieur, ainsi que les heures des spectacles, ne figurent pas sur les pages lues : à vérifier.",
+   "id": "dxb-fountain",
+   "nom": "Dubai Fountain et lac Burj"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Sheikh Zayed Road",
+   "adresse": "Sheikh Zayed Road",
+   "gps": {
+    "lat": 25.2191545,
+    "lng": 55.2818746,
+    "source": {
+     "lien": "https://www.openstreetmap.org/way/1054289435",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "culture"
+   ],
+   "etiquettes": [
+    "musée",
+    "intérieur"
+   ],
+   "incontournable": null,
+   "description": "Le site officiel indique : « The Museum of the Future is temporarily closed as we prepare for our next chapter. »",
+   "duree": null,
+   "prix": null,
+   "horaires": {
+    "nature": "ouverture",
+    "jours": {},
+    "fermetures": [
+     {
+      "du": "2026-09-01",
+      "au": "2026-12-31",
+      "motif": "fermeture temporaire, réouverture annoncée en 2027"
+     }
+    ],
+    "derniereEntree": "",
+    "note": "Le site officiel annonce la fermeture temporaire sans date. La date de fermeture (01/09/2026) et la réouverture visée (1er trimestre 2027, sans date précise) viennent de la presse (Gulf News et Khaleej Times, sources secondaires).",
+    "source": {
+     "lien": "https://www.museumofthefuture.ae/en",
+     "libelle": "Site officiel du Museum of the Future",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "reservation": null,
+   "tenue": null,
+   "interieur": "interieur",
+   "public": null,
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.museumofthefuture.ae/en",
+   "verifieLe": "2026-11-12",
+   "notes": "Ne pas prévoir cette visite en décembre 2026. Les expositions actuelles ne reviendront pas sous leur forme précédente (presse).",
+   "id": "dxb-museum-future",
+   "nom": "Museum of the Future (fermé temporairement)"
+  },
+  {
+   "zone": "Dubaï",
+   "fuseau": "Asia/Dubai",
+   "quartier": "Dubai Parks and Resorts",
+   "adresse": "Factory Street, Dubai Parks and Resorts",
+   "gps": {
+    "lat": 24.9188167,
+    "lng": 55.0121902,
+    "source": {
+     "lien": "https://www.openstreetmap.org/way/508523722",
+     "libelle": "OpenStreetMap (recherche Nominatim)",
+     "consulteLe": "2026-11-12",
+     "officielle": false
+    }
+   },
+   "categories": [
+    "famille"
+   ],
+   "etiquettes": [
+    "parc d'attractions",
+    "parc aquatique",
+    "manèges"
+   ],
+   "incontournable": null,
+   "description": "Parc à thème (manèges et attractions en intérieur et en extérieur) et parc aquatique. Le site annonce pendant la période : fête nationale (27/11 au 06/12/2026) et saison festive à partir du 12/12.",
+   "duree": null,
+   "prix": {
+    "min": 295,
+    "max": 295,
+    "devise": "AED",
+    "note": "Prix de départ : « Tickets from AED 295 » (le site ne dit pas pour quel billet). Réserver à l'avance donne 10 % de réduction selon le site. Aucun détail adulte, enfant ou senior sur la page lue.",
+    "source": {
+     "lien": "https://www.legoland.com/dubai/",
+     "libelle": "Site officiel de LEGOLAND Dubai",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "horaires": null,
+   "reservation": {
+    "necessaire": null,
+    "lien": "https://www.legoland.com/dubai/",
+    "note": "« Book in advance & save 10% » : réserver à l'avance donne une réduction ; obligation non indiquée.",
+    "source": {
+     "lien": "https://www.legoland.com/dubai/",
+     "libelle": "Site officiel de LEGOLAND Dubai",
+     "consulteLe": "2026-11-12",
+     "officielle": true
+    }
+   },
+   "tenue": null,
+   "interieur": "mixte",
+   "public": null,
+   "attention": [],
+   "acces": [],
+   "lienOfficiel": "https://www.legoland.com/dubai/",
+   "verifieLe": "2026-11-12",
+   "notes": "Les horaires de la page lue ne valent que pour le jour de la consultation (parc à thème 11:00–19:00, parc aquatique 10:00–17:30) : ils ne sont pas retenus. Limites d'âge et de taille, accessibilité : pages liées non lues. À vérifier.",
+   "id": "dxb-legoland",
+   "nom": "LEGOLAND Dubai"
+  }
+ ]
+}

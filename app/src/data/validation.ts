@@ -6,12 +6,13 @@ import { A_EVITER, CONFORTS, HUMEURS, LISTES_TACHE, MOBILITES, MODES_TRAJET, PER
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
 import { lienSur } from '../lib/sejour.ts';
 import { lireLieux, lireSuivis } from '../lib/lieux.ts';
+import { lireFichesPratique } from '../lib/pratique.ts';
 
 export const FORMAT_FICHIER = 'on-fait-quoi';
 // Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan', 'lieuxPerso', 'suiviLieux', 'groupes'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan', 'lieuxPerso', 'suiviLieux', 'groupes', 'pratiquePerso'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -798,9 +799,18 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  // Fiches Pratique ajoutées par l'utilisateur : mêmes règles que la base publique (source obligatoire pour chaque fait)
+  if (brut.pratiquePerso !== undefined) {
+    if (!Array.isArray(brut.pratiquePerso)) {
+      erreurs.push('« pratiquePerso » doit être une liste.');
+    } else {
+      donnees.pratiquePerso = lireFichesPratique(brut.pratiquePerso, erreurs);
+    }
+  }
+
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.groupes && !donnees.creneaux && !donnees.joursPlan && !donnees.lieuxPerso && !donnees.suiviLieux) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni groupes, ni créneaux, ni lieux.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.groupes && !donnees.creneaux && !donnees.joursPlan && !donnees.lieuxPerso && !donnees.suiviLieux && !donnees.pratiquePerso) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni groupes, ni créneaux, ni lieux, ni fiches Pratique.'] };
   }
   return { ok: true, donnees, avertissements };
 }

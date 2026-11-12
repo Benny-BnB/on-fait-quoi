@@ -876,3 +876,24 @@ fieldset.groupe legend {
   color: var(--attention);
   font-weight: 700;
 }
+
+/* Étape 9 : prix pour un groupe, tarifs selon l'âge, rubrique Pratique */
+.prix-groupe {
+  display: grid;
+  gap: 2px;
+}
+
+.liste-simple {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 2px;
+}
+
+.carte-interne {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--bord);
+  border-radius: 12px;
+}

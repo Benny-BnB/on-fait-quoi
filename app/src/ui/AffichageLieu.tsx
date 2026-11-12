@@ -2,12 +2,14 @@
 // Règle d'affichage : une information sans source est « à vérifier » ; une source secondaire (guide, annuaire) est signalée.
 
 import type { ComponentChildren } from 'preact';
-import type { HorairesLieu, Lieu, SourceLieu } from '../data/types.ts';
+import type { HorairesLieu, Lieu, Personne, SourceLieu, TauxChange } from '../data/types.ts';
 import { JOURS_SEMAINE } from '../data/types.ts';
+import { libelleEuro } from '../lib/budget.ts';
 import { formatMontant } from '../lib/format.ts';
 import type { Ouverture } from '../lib/lieux.ts';
 import { jourSemaineDe } from '../lib/lieux.ts';
 import { lienSur } from '../lib/sejour.ts';
+import { totalGroupe } from '../lib/tarifs.ts';
 import { formatDateIso, formatDureeMin } from '../lib/temps.ts';
 
 export function LigneSource(props: { source: SourceLieu }) {
@@ -115,4 +117,37 @@ export function resumeSources(l: Lieu): string[] {
   const noms: string[] = [];
   for (const s of [l.horaires?.source, l.prix?.source, l.duree?.source]) if (s && !noms.includes(s.libelle)) noms.push(s.libelle);
   return noms;
+}
+
+// Prix pour un groupe : le tarif de l'âge de chacun quand la source en donne un, sinon le prix standard (avec la raison)
+export function PrixGroupe(props: { prix: NonNullable<Lieu['prix']>; personnes: Personne[]; taux: TauxChange[]; detail?: boolean }) {
+  const t = totalGroupe(props.prix, props.personnes);
+  if (t === null) return null;
+  const n = props.personnes.length;
+  const montant = t.min === 0 && t.max === 0 ? 'gratuit' : t.min === t.max ? formatMontant(t.min, t.devise) : `${formatMontant(t.min, t.devise)} à ${formatMontant(t.max, t.devise)}`;
+  const euroMin = libelleEuro(t.min, t.devise, props.taux);
+  const euroMax = libelleEuro(t.max, t.devise, props.taux);
+  const euro = euroMin ? ` (${euroMin}${euroMax && t.max !== t.min ? ` à ${euroMax}` : ''})` : '';
+  return (
+    <span class="prix-groupe">
+      <span>
+        Pour le groupe ({n} personne{n > 1 ? 's' : ''}) : {montant}
+        {euro}
+      </span>
+      {props.detail && (
+        <ul class="liste-simple">
+          {t.parPersonne.map((x) => (
+            <li key={x.prenom}>
+              {x.prenom} : {x.min === 0 && x.max === 0 ? 'gratuit' : x.min === x.max ? formatMontant(x.min, t.devise) : `${formatMontant(x.min, t.devise)} à ${formatMontant(x.max, t.devise)}`} ({x.libelle.toLowerCase()})
+            </li>
+          ))}
+        </ul>
+      )}
+      {t.precisions.map((x) => (
+        <span class="discret" key={x}>
+          {x}
+        </span>
+      ))}
+    </span>
+  );
 }

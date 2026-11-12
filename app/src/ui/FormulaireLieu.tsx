@@ -5,7 +5,7 @@ import { useState } from 'preact/hooks';
 import { nouvelId } from '../data/defauts.ts';
 import { estLieuPerso, tousLesLieux, trouverLieu } from '../data/lieux-publics.ts';
 import { enregistrerLieuPerso, useStore } from '../data/store.ts';
-import type { Categorie, Lieu } from '../data/types.ts';
+import type { Categorie, Lieu, TarifAge } from '../data/types.ts';
 import { CATEGORIES, LIBELLES_CATEGORIE } from '../data/types.ts';
 import { lireLieux } from '../lib/lieux.ts';
 import { analyserGps, formatGps, lienSur } from '../lib/sejour.ts';
@@ -31,10 +31,15 @@ type Saisie = {
   prixDevise: string;
   prixNote: string;
   prixSource: SaisieSource;
+  tarifs: SaisieTarif[];
   dureeMin: string;
   dureeMax: string;
   dureeSource: SaisieSource;
 };
+
+// Un tarif selon l'âge, saisi comme du texte (les nombres sont contrôlés à l'enregistrement)
+type SaisieTarif = { libelle: string; ageMin: string; ageMax: string; min: string; max: string };
+const tarifVide = (): SaisieTarif => ({ libelle: '', ageMin: '', ageMax: '', min: '', max: '' });
 
 const sourceVide = (): SaisieSource => ({ lien: '', libelle: '', officielle: false });
 const versSource = (s: Lieu['prix'] | Lieu['duree']): SaisieSource => (s ? { lien: s.source.lien, libelle: s.source.libelle, officielle: s.source.officielle } : sourceVide());
@@ -57,6 +62,7 @@ function versSaisie(l: Lieu | undefined, fuseauDefaut: string): Saisie {
     prixDevise: l?.prix?.devise ?? '',
     prixNote: l?.prix?.note ?? '',
     prixSource: versSource(l?.prix ?? null),
+    tarifs: (l?.prix?.tarifs ?? []).map((t) => ({ libelle: t.libelle, ageMin: t.ageMin === null ? '' : String(t.ageMin), ageMax: t.ageMax === null ? '' : String(t.ageMax), min: String(t.min), max: String(t.max) })),
     dureeMin: l?.duree ? String(l.duree.minMin) : '',
     dureeMax: l?.duree ? String(l.duree.maxMin) : '',
     dureeSource: versSource(l?.duree ?? null),
@@ -103,7 +109,26 @@ function construire(s: Saisie, initial: Lieu | undefined, id: string, aujourdhui
     else {
       exigerSource('Prix', s.prixSource);
       const min = pMin ?? pMax ?? 0;
-      prix = { min, max: pMax ?? min, devise: s.prixDevise.trim().toUpperCase(), note: s.prixNote.trim(), source: source(s.prixSource, initial?.prix?.source) };
+      const tarifs: TarifAge[] = [];
+      s.tarifs.forEach((t, i) => {
+        const vide = t.libelle.trim() === '' && t.ageMin.trim() === '' && t.ageMax.trim() === '' && t.min.trim() === '' && t.max.trim() === '';
+        if (vide) return;
+        const nom = `Tarif selon l'âge n°${i + 1}`;
+        const aMin = nombre(t.ageMin);
+        const aMax = nombre(t.ageMax);
+        const tMin = nombre(t.min);
+        const tMax = nombre(t.max);
+        if (aMin === undefined || aMax === undefined || tMin === undefined || tMax === undefined) {
+          erreurs.push(`${nom} : écris des nombres.`);
+          return;
+        }
+        if (t.libelle.trim() === '') erreurs.push(`${nom} : donne-lui un nom (par exemple « Enfant de 3 à 12 ans »).`);
+        if (aMin === null && aMax === null) erreurs.push(`${nom} : indique au moins un âge (minimum ou maximum).`);
+        if (tMin === null && tMax === null) erreurs.push(`${nom} : indique un prix (0 si c'est gratuit).`);
+        const prixMin = tMin ?? tMax ?? 0;
+        tarifs.push({ libelle: t.libelle.trim(), ageMin: aMin, ageMax: aMax, min: prixMin, max: tMax ?? prixMin });
+      });
+      prix = { min, max: pMax ?? min, devise: s.prixDevise.trim().toUpperCase(), note: s.prixNote.trim(), ...(tarifs.length > 0 ? { tarifs } : {}), source: source(s.prixSource, initial?.prix?.source) };
     }
   }
 
@@ -259,6 +284,42 @@ function Editeur(props: { initial: Lieu | undefined; id: string }) {
           <Champ etiquette="Précision (facultatif)" aide="Qui paie quoi : enfants, étrangers, tarif réduit…">
             <input type="text" value={saisie.prixNote} onInput={(e) => maj({ prixNote: e.currentTarget.value })} />
           </Champ>
+          <fieldset class="groupe">
+            <legend>Tarifs selon l'âge (facultatif)</legend>
+            <p class="champ-aide">Pour un prix enfant, senior ou gratuit pour les petits, lu dans la même source. L'app s'en sert pour le prix du groupe.</p>
+            {saisie.tarifs.map((t, i) => {
+              const changer = (partiel: Partial<SaisieTarif>) => maj({ tarifs: saisie.tarifs.map((x, j) => (j === i ? { ...x, ...partiel } : x)) });
+              return (
+                <div class="carte-interne" key={i}>
+                  <Champ etiquette="Nom du tarif">
+                    <input type="text" value={t.libelle} placeholder="Enfant de 3 à 12 ans" onInput={(e) => changer({ libelle: e.currentTarget.value })} />
+                  </Champ>
+                  <div class="rangee-champs">
+                    <Champ etiquette="Âge minimum (ans)">
+                      <input type="text" inputMode="numeric" value={t.ageMin} onInput={(e) => changer({ ageMin: e.currentTarget.value })} />
+                    </Champ>
+                    <Champ etiquette="Âge maximum (ans)">
+                      <input type="text" inputMode="numeric" value={t.ageMax} onInput={(e) => changer({ ageMax: e.currentTarget.value })} />
+                    </Champ>
+                  </div>
+                  <div class="rangee-champs">
+                    <Champ etiquette="Prix minimum">
+                      <input type="text" inputMode="decimal" value={t.min} onInput={(e) => changer({ min: e.currentTarget.value })} />
+                    </Champ>
+                    <Champ etiquette="Prix maximum">
+                      <input type="text" inputMode="decimal" value={t.max} onInput={(e) => changer({ max: e.currentTarget.value })} />
+                    </Champ>
+                  </div>
+                  <button type="button" class="bouton secondaire petit" onClick={() => maj({ tarifs: saisie.tarifs.filter((_, j) => j !== i) })}>
+                    Retirer ce tarif
+                  </button>
+                </div>
+              );
+            })}
+            <button type="button" class="bouton secondaire petit" onClick={() => maj({ tarifs: [...saisie.tarifs, tarifVide()] })}>
+              Ajouter un tarif selon l'âge
+            </button>
+          </fieldset>
           {sourceChamps('prixSource')}
         </fieldset>
 
