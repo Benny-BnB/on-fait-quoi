@@ -37,6 +37,8 @@ Ne jamais saisir dans l'app ni dans le dépôt : numéro de passeport, numéro d
 
 Les données de l'app sont dans le navigateur du téléphone, qui peut les effacer. Dans **Réglages > Mes données**, on peut importer un fichier de voyage (fichier ou texte collé), copier ses données ou les enregistrer dans un fichier : c'est la **sauvegarde**. Pour **restaurer**, on choisit le fichier au même endroit : l'app montre ce qu'elle va remplacer avant de le faire. L'app note la date de la dernière sauvegarde et rappelle d'en refaire une quand des changements n'ont pas été sauvegardés (une semaine après la dernière, ou dès qu'on est à moins de 14 jours du départ). Avant chaque import, une copie des données actuelles est gardée dans le téléphone ; « Annuler le dernier import » la remet, et « Supprimer toutes mes données » l'efface aussi. Conseil : enregistrer une sauvegarde dans Fichiers ou l'envoyer par AirDrop, puis en refaire une la veille du départ.
 
+**Vérifier qu'un fichier est bien dans le téléphone** : dans Réglages > Mes données, « Voir ce que contient mon téléphone » donne le nombre d'éléments de chaque section ; en choisissant un fichier de voyage (sans l'importer), l'app compare chacune de ses sections avec le téléphone et dit « identique » ou « différent » (fichier pas encore importé, donnée modifiée depuis, ou section remplacée par un autre fichier). « Annuler » ne modifie rien. Attention : importer à nouveau un fichier remplace les sections qu'il contient et efface les modifications faites depuis dans l'app.
+
 Le format du fichier d'import est décrit et contrôlé dans `app/src/data/validation.ts` : un fichier erroné est refusé avec un message clair et ne modifie rien.
 
 ## Pour développer

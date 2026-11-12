@@ -2,10 +2,12 @@ import { useState } from 'preact/hooks';
 import { annulerDernierImport, exporterJson, importerDonnees, noterSauvegarde, toutSupprimer, useStore } from '../data/store.ts';
 import type { Donnees } from '../data/types.ts';
 import { lireTexteImport } from '../data/validation.ts';
+import { comparerAvecTelephone, contenuDuTelephone } from '../lib/comparaison.ts';
 import { donneesVidesQ, etatSauvegarde } from '../lib/sauvegarde.ts';
 import { debutVoyage } from '../lib/taches.ts';
 import { aujourdhuiIso, formatDateHeureDansFuseau, fuseauTelephone } from '../lib/temps.ts';
 import { BoutonConfirme } from './commun.tsx';
+import { Ligne } from './EtatApp.tsx';
 import { dateDuJour, enregistrerFichier } from './fichier.ts';
 
 type Apercu = { donnees: Partial<Donnees>; avertissements: string[] };
@@ -47,6 +49,39 @@ function remplacees(d: Partial<Donnees>, actuel: Donnees): string {
   if (d.compteurs) parties.push(`compteurs (aujourd'hui ${actuel.compteurs.length})`);
   if (d.reglages) parties.push('réglages');
   return parties.join(', ');
+}
+
+// « Ai-je déjà importé ce fichier ? » : pour chaque section, le téléphone contient-il exactement la même chose ?
+function Comparaison(props: { fichier: Partial<Donnees>; telephone: Donnees }) {
+  const lignes = comparerAvecTelephone(props.fichier, props.telephone);
+  const differentes = lignes.filter((l) => !l.identique);
+  return (
+    <>
+      {differentes.length === 0 ? (
+        <p>
+          <strong>✓ Ce fichier est déjà entièrement dans ton téléphone.</strong> Tu n'as rien à faire : touche « Annuler ».
+        </p>
+      ) : (
+        <p>
+          <strong>
+            ! {differentes.length} section{differentes.length > 1 ? 's' : ''} sur {lignes.length} {differentes.length > 1 ? 'diffèrent' : 'diffère'} de ton téléphone.
+          </strong>{' '}
+          Soit ce fichier n'est pas encore importé, soit tu as modifié ces données depuis, soit un autre fichier les a remplacées (les personnes du fichier du planning sont remplacées par celles du fichier des profils).
+        </p>
+      )}
+      <ul class="lignes">
+        {lignes.map((l) => (
+          <Ligne
+            key={l.cle}
+            titre={l.libelle}
+            valeur={l.fichier === null ? (l.identique ? 'Identique' : 'Différent') : `${l.fichier} dans le fichier · ${l.telephone ?? 0} dans le téléphone : ${l.identique ? 'identique' : 'différent'}`}
+            niveau={l.identique ? 'ok' : 'attention'}
+          />
+        ))}
+      </ul>
+      <p class="discret">Pour seulement vérifier, touche « Annuler » : rien n'est modifié.</p>
+    </>
+  );
 }
 
 export function ImportExport() {
@@ -124,6 +159,18 @@ export function ImportExport() {
         )}
       </div>
 
+      <details class="contenu-telephone">
+        <summary>Voir ce que contient mon téléphone</summary>
+        <ul class="vol-lignes">
+          {contenuDuTelephone(donnees).map((c) => (
+            <li key={c.libelle}>
+              {c.libelle} : <strong>{c.nombre ?? 0}</strong>
+            </li>
+          ))}
+        </ul>
+        <p class="discret">Compare avec le nombre d'éléments de chaque fichier : touche « Choisir un fichier » plus bas, puis « Annuler » après la comparaison.</p>
+      </details>
+
       <h3>Importer un fichier de voyage</h3>
       <p class="discret">
         Pour restaurer une sauvegarde : choisis son fichier (ou colle son texte), vérifie ce que l'app va remplacer, puis « Importer ». Avant de remplacer quoi que ce soit, l'app garde une copie de tes données actuelles.
@@ -163,7 +210,8 @@ export function ImportExport() {
           <p>
             <strong>Fichier valide.</strong> Il contient : {resume(apercu.donnees)}.
           </p>
-          <p>Ces sections seront remplacées par celles du fichier : {remplacees(apercu.donnees, donnees)}. Le reste de tes données n'est pas touché.</p>
+          <Comparaison fichier={apercu.donnees} telephone={donnees} />
+          <p>Si tu importes, ces sections seront remplacées par celles du fichier : {remplacees(apercu.donnees, donnees)}. Le reste de tes données n'est pas touché.</p>
           {apercu.avertissements.length > 0 && (
             <ul>
               {apercu.avertissements.map((a) => (
