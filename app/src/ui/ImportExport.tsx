@@ -1,8 +1,12 @@
 import { useState } from 'preact/hooks';
-import { exporterJson, importerDonnees, toutSupprimer, useStore } from '../data/store.ts';
+import { annulerDernierImport, exporterJson, importerDonnees, noterSauvegarde, toutSupprimer, useStore } from '../data/store.ts';
 import type { Donnees } from '../data/types.ts';
 import { lireTexteImport } from '../data/validation.ts';
+import { donneesVidesQ, etatSauvegarde } from '../lib/sauvegarde.ts';
+import { debutVoyage } from '../lib/taches.ts';
+import { aujourdhuiIso, formatDateHeureDansFuseau, fuseauTelephone } from '../lib/temps.ts';
 import { BoutonConfirme } from './commun.tsx';
+import { dateDuJour, enregistrerFichier } from './fichier.ts';
 
 type Apercu = { donnees: Partial<Donnees>; avertissements: string[] };
 
@@ -45,37 +49,9 @@ function remplacees(d: Partial<Donnees>, actuel: Donnees): string {
   return parties.join(', ');
 }
 
-function dateDuJour(): string {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-}
-
-// Enregistre le fichier : feuille de partage de l'iPhone (Enregistrer dans Fichiers, AirDrop...)
-// ou téléchargement classique sur ordinateur.
-async function enregistrerFichier(json: string): Promise<'partage' | 'telecharge' | 'annule'> {
-  const nom = `on-fait-quoi-${dateDuJour()}.json`;
-  const fichier = new File([json], nom, { type: 'application/json' });
-  if (navigator.canShare && navigator.canShare({ files: [fichier] })) {
-    try {
-      await navigator.share({ files: [fichier], title: nom });
-      return 'partage';
-    } catch (e) {
-      if (e instanceof DOMException && e.name === 'AbortError') return 'annule';
-    }
-  }
-  const url = URL.createObjectURL(fichier);
-  const lien = document.createElement('a');
-  lien.href = url;
-  lien.download = nom;
-  document.body.append(lien);
-  lien.click();
-  lien.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 10000);
-  return 'telecharge';
-}
-
 export function ImportExport() {
-  const { donnees } = useStore();
+  const { donnees, meta, avantImport } = useStore();
+  const sauvegarde = etatSauvegarde(meta, donneesVidesQ(donnees), aujourdhuiIso(), debutVoyage(donnees));
   const [texte, definirTexte] = useState('');
   const [apercu, definirApercu] = useState<Apercu | null>(null);
   const [erreurs, definirErreurs] = useState<string[]>([]);
@@ -104,7 +80,7 @@ export function ImportExport() {
   async function importer() {
     if (!apercu) return;
     await importerDonnees(apercu.donnees);
-    definirMessage(`Import terminé : ${resume(apercu.donnees)}.`);
+    definirMessage(`Import terminé : ${resume(apercu.donnees)}. Si ce n'est pas ce que tu voulais, « Annuler le dernier import » remet tes données d'avant.`);
     definirApercu(null);
     definirTexte(''); // on ne laisse pas les données collées à l'écran
   }
@@ -112,6 +88,7 @@ export function ImportExport() {
   async function copier() {
     try {
       await navigator.clipboard.writeText(exporterJson(donnees));
+      await noterSauvegarde();
       definirMessage('Copié. Colle-le où tu veux le garder (Notes, un message à toi-même...).');
     } catch {
       definirMessage('La copie a échoué. Utilise plutôt « Enregistrer un fichier ».');
@@ -119,9 +96,15 @@ export function ImportExport() {
   }
 
   async function fichier() {
-    const resultat = await enregistrerFichier(exporterJson(donnees));
+    const resultat = await enregistrerFichier(`on-fait-quoi-${dateDuJour()}.json`, exporterJson(donnees), 'application/json');
+    if (resultat !== 'annule') await noterSauvegarde();
     if (resultat === 'partage') definirMessage('Fichier partagé.');
     if (resultat === 'telecharge') definirMessage('Fichier téléchargé.');
+  }
+
+  async function annuler() {
+    const fait = await annulerDernierImport();
+    definirMessage(fait ? "Dernier import annulé : tes données d'avant sont revenues." : "Impossible d'annuler : la copie d'avant l'import n'a pas été retrouvée.");
   }
 
   return (
@@ -131,7 +114,20 @@ export function ImportExport() {
         Elles sont enregistrées dans ce téléphone seulement. Le fichier d'export contient tout ton voyage : ne le publie nulle part.
       </p>
 
+      <div class={`message ${sauvegarde.niveau === 'urgent' || sauvegarde.niveau === 'rappel' ? 'attention' : 'info'}`} role="status" aria-label="État de la sauvegarde">
+        <strong>{sauvegarde.titre}</strong>
+        {sauvegarde.detail !== '' && <span>{sauvegarde.detail}</span>}
+        {meta.derniereSauvegarde !== '' && !Number.isNaN(new Date(meta.derniereSauvegarde).getTime()) && (
+          <span class="discret">
+            Heure exacte : {formatDateHeureDansFuseau(new Date(meta.derniereSauvegarde).getTime(), fuseauTelephone())}
+          </span>
+        )}
+      </div>
+
       <h3>Importer un fichier de voyage</h3>
+      <p class="discret">
+        Pour restaurer une sauvegarde : choisis son fichier (ou colle son texte), vérifie ce que l'app va remplacer, puis « Importer ». Avant de remplacer quoi que ce soit, l'app garde une copie de tes données actuelles.
+      </p>
       <label class="champ">
         <span class="champ-etiquette">Choisir un fichier</span>
         <input type="file" accept="application/json,.json" onChange={surFichier} />
@@ -200,6 +196,21 @@ export function ImportExport() {
         <div class="message ok" role="status">
           {message}
         </div>
+      )}
+
+      {avantImport !== '' && (
+        <>
+          <h3>Annuler le dernier import</h3>
+          <p class="discret">
+            Copie gardée le {formatDateHeureDansFuseau(new Date(avantImport).getTime(), fuseauTelephone())} (heure de ton téléphone), juste avant l'import. Elle est effacée par « Supprimer toutes mes données ».
+          </p>
+          <BoutonConfirme
+            libelle="Annuler le dernier import"
+            question="Remettre tes données comme elles étaient avant le dernier import ? Ce qui a été modifié depuis sera perdu."
+            oui="Oui, annuler l'import"
+            onConfirme={() => void annuler()}
+          />
+        </>
       )}
 
       <h3>Tout effacer</h3>

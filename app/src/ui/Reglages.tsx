@@ -105,11 +105,23 @@ export function Reglages() {
         </div>
       </section>
       <DelaisAeroport />
+      <section class="carte">
+        <h2>Partager et avant le départ</h2>
+        <p class="discret">Exporter le planning dans ton agenda (avec rappels), le partager par lien ou code à scanner, contrôler tout avant de partir.</p>
+        <div class="pile">
+          <a class="bouton secondaire" href="#/partage">
+            Partager et agenda (.ics)
+          </a>
+          <a class="bouton secondaire" href="#/controle">
+            Avant le départ
+          </a>
+        </div>
+      </section>
       <ImportExport />
       <Verification />
       <EtatApp />
       <p class="note">
-        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning (créneaux imposés et libres), les check-lists et les fiches de lieux avec « Quoi faire, quand ? » (base de Bangkok pour l'instant). Les profils, les groupes, le budget, le rythme et le taux de change sont dans cette version.
+        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning, les check-lists, les fiches de lieux avec « Quoi faire, quand ? » (Bangkok, Pattaya et Dubaï), la rubrique Pratique, les profils, les groupes, le budget, le rythme et le taux de change, ainsi que le partage, l'export d'agenda et le contrôle avant le départ.
       </p>
     </Page>
   );

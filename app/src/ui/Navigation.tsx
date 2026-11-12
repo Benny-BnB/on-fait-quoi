@@ -88,7 +88,8 @@ function ongletActif(route: Route): Onglet {
   if (route.nom === 'vols' || route.nom === 'vol' || route.nom === 'trajets' || route.nom === 'trajet') return 'transports';
   if (route.nom === 'etape' || route.nom === 'logement' || route.nom === 'pratique' || route.nom === 'pratique-fiche' || route.nom === 'pratique-form') return 'sejour';
   if (route.nom === 'jour' || route.nom === 'creneau' || route.nom === 'quoi-faire' || route.nom === 'lieu' || route.nom === 'lieu-form') return 'planning';
-  if (route.nom === 'a-completer') return 'accueil';
+  if (route.nom === 'a-completer' || route.nom === 'controle') return 'accueil';
+  if (route.nom === 'partage' || route.nom === 'recu') return 'planning';
   if (route.nom === 'personnes' || route.nom === 'groupes' || route.nom === 'taux' || route.nom === 'budget' || route.nom === 'rythme') return 'reglages';
   if (route.nom === 'taches' || route.nom === 'emporter' || route.nom === 'tache') return 'taches';
   if (route.nom === 'compteurs' || route.nom === 'compteur') return 'accueil'; // les compteurs se règlent depuis l'accueil

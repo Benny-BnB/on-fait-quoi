@@ -764,9 +764,9 @@
         "lien": "",
         "note": "Site officiel : « Sky Bar and all other bars welcome walk-in only. No reservations are required. »",
         "source": {
-          "lien": "https://lebua.com/sky-bar/",
+          "lien": "https://lebua.com/restaurants/sky/sky-bar-signature-cocktails/",
           "libelle": "Site officiel de lebua (Sky Bar)",
-          "consulteLe": "2026-11-11",
+          "consulteLe": "2026-11-12",
           "officielle": true
         }
       },
@@ -783,7 +783,7 @@
       "public": null,
       "attention": [],
       "acces": [],
-      "lienOfficiel": "https://lebua.com/sky-bar/",
+      "lienOfficiel": "https://lebua.com/restaurants/sky/sky-bar-signature-cocktails/",
       "verifieLe": "2026-11-11",
       "notes": "Horaires, prix et règle d'âge : non indiqués par la page officielle lue (la carte des boissons est en PDF, non lue). Le guide « Rooftop Guide » précise que le restaurant Sirocco, lui, se réserve des semaines à l'avance. Cité dans « Best Rooftop Bars » (Lonely Planet, Pocket Bangkok, aperçu p. 15).",
       "id": "bkk-sky-bar-lebua",
@@ -899,9 +899,9 @@
       "public": null,
       "attention": [],
       "acces": [],
-      "lienOfficiel": "https://www.banyantree.com/thailand/bangkok/dining/vertigo-and-moon-bar",
+      "lienOfficiel": "https://www.banyantree.com/thailand/bangkok/dining/moon-bar",
       "verifieLe": "2026-11-11",
-      "notes": "La page officielle n'a pas pu être lue (accès refusé) : horaires, prix et règles de pluie restent à vérifier. Cité dans « Best Rooftop Bars » sous le nom « Moon Bar » (Lonely Planet, Pocket Bangkok, aperçu p. 15).",
+      "notes": "La page officielle n'a pas pu être lue (accès refusé) : horaires, prix et règles de pluie restent à vérifier. Cité dans « Best Rooftop Bars » sous le nom « Moon Bar » (Lonely Planet, Pocket Bangkok, aperçu p. 15). Contrôle du 12/11/2026 : l'ancienne adresse officielle ne répond plus (404). Le site de l'hôtel a maintenant une page Moon Bar et une page Vertigo (https://www.banyantree.com/thailand/bangkok/dining/vertigo), refusées aux robots. Un résultat de recherche limité à ce site annonce une fermeture pour rénovation avec réouverture le 2 décembre 2026 : non confirmé (pages non lues), à vérifier avant d'y aller.",
       "id": "bkk-vertigo-moon-bar",
       "nom": "Vertigo and Moon Bar"
     },

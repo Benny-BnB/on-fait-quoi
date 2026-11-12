@@ -4,6 +4,9 @@ import { demanderStockagePersistant } from './data/stockage.ts';
 import { ACompleter } from './ui/ACompleter.tsx';
 import { Accueil } from './ui/Accueil.tsx';
 import { Budget } from './ui/Budget.tsx';
+import { Controle } from './ui/Controle.tsx';
+import { Partage } from './ui/Partage.tsx';
+import { Recu } from './ui/Recu.tsx';
 import { Groupes } from './ui/Groupes.tsx';
 import { Rythme } from './ui/Rythme.tsx';
 import { TauxChange } from './ui/TauxChange.tsx';
@@ -130,6 +133,15 @@ export function App() {
         break;
       case 'rythme':
         page = <Rythme />;
+        break;
+      case 'partage':
+        page = <Partage />;
+        break;
+      case 'recu':
+        page = <Recu code={route.code} />;
+        break;
+      case 'controle':
+        page = <Controle />;
         break;
       case 'reglages':
         page = <Reglages />;

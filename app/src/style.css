@@ -897,3 +897,41 @@ fieldset.groupe legend {
   border: 1px solid var(--bord);
   border-radius: 12px;
 }
+
+/* ---------- Partage, agenda, planning reçu, contrôle avant le départ ---------- */
+.qr {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 8px auto;
+  border-radius: 8px;
+}
+
+.etapes-liste {
+  margin: 8px 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+}
+
+.jour-recu {
+  display: grid;
+  gap: 8px;
+}
+
+.evenement-recu {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 4px 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--bord);
+}
+
+.evenement-recu .heure {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.evenement-recu .discret {
+  grid-column: 2;
+}

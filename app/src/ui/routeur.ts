@@ -30,6 +30,9 @@ export type Route =
   | { nom: 'taux' }
   | { nom: 'budget' }
   | { nom: 'rythme' }
+  | { nom: 'partage' }
+  | { nom: 'recu'; code: string }
+  | { nom: 'controle' }
   | { nom: 'reglages' };
 
 function decoder(morceau: string): string {
@@ -78,6 +81,9 @@ export function lireRoute(hash: string): Route {
   if (a === 'taux') return { nom: 'taux' };
   if (a === 'budget') return { nom: 'budget' };
   if (a === 'rythme') return { nom: 'rythme' };
+  if (a === 'partage') return { nom: 'partage' };
+  if (a === 'recu') return b ? { nom: 'recu', code: b } : { nom: 'partage' };
+  if (a === 'controle') return { nom: 'controle' };
   if (a === 'reglages') return { nom: 'reglages' };
   return { nom: 'accueil' };
 }
@@ -133,3 +139,7 @@ export const lienPratique = (etapeId?: string): string => `#/pratique${etapeId ?
 export const lienFichePratique = (id: string): string => `#/pratique/fiche/${encodeURIComponent(id)}`;
 export const lienNouvelleFichePratique = (): string => '#/pratique/nouveau';
 export const lienModifierFichePratique = (id: string): string => `#/pratique/modifier/${encodeURIComponent(id)}`;
+
+// Partage et agenda (.ics), planning reçu par un lien, contrôle avant le départ
+export const lienPartage = (): string => '#/partage';
+export const lienControle = (): string => '#/controle';

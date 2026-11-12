@@ -47,6 +47,23 @@ export async function ecrirePrincipal(valeur: unknown): Promise<void> {
   await transaction('readwrite', (m) => m.put(valeur, CLE));
 }
 
+// Autres petites données gardées dans le même magasin : dates de sauvegarde, copie d'avant le dernier import.
+// « Tout supprimer » les efface aussi (effacerTout vide le magasin entier).
+export const CLE_META = 'meta';
+export const CLE_AVANT_IMPORT = 'avant-import';
+
+export function lireCle<T>(cle: string): Promise<T | undefined> {
+  return transaction<T | undefined>('readonly', (m) => m.get(cle));
+}
+
+export async function ecrireCle(cle: string, valeur: unknown): Promise<void> {
+  await transaction('readwrite', (m) => m.put(valeur, cle));
+}
+
+export async function supprimerCle(cle: string): Promise<void> {
+  await transaction('readwrite', (m) => m.delete(cle));
+}
+
 export async function effacerTout(): Promise<void> {
   await transaction('readwrite', (m) => m.clear());
 }

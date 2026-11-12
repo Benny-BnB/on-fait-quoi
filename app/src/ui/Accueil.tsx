@@ -1,6 +1,7 @@
 import { useMemo } from 'preact/hooks';
 import { tousLesLieux } from '../data/lieux-publics.ts';
 import { basculerCompteur, useStore } from '../data/store.ts';
+import { donneesVidesQ, etatSauvegarde } from '../lib/sauvegarde.ts';
 import { elementsACompleter } from '../lib/completer.ts';
 import { useMaintenant } from '../lib/horloge.ts';
 import { creneauxImposes, plageJours } from '../lib/planning.ts';
@@ -8,10 +9,10 @@ import { debutVoyage, progression } from '../lib/taches.ts';
 import { aujourdhuiIso, formatDateHeureDansFuseau, formatDateIso } from '../lib/temps.ts';
 import { CarteCompteur } from './CarteCompteur.tsx';
 import { Page } from './commun.tsx';
-import { lienACompleter, lienLieu, lienPratique, lienQuoiFaire } from './routeur.ts';
+import { lienACompleter, lienControle, lienLieu, lienPartage, lienPratique, lienQuoiFaire } from './routeur.ts';
 
 export function Accueil() {
-  const { donnees } = useStore();
+  const { donnees, meta } = useStore();
   const maintenant = useMaintenant();
   const visibles = donnees.compteurs.filter((c) => c.visible);
   const creneaux = useMemo(() => creneauxImposes(donnees), [donnees]);
@@ -25,6 +26,9 @@ export function Accueil() {
   const debut = debutVoyage(donnees);
   const aFaire = progression(donnees.taches.filter((t) => t.liste === 'reste-a-faire'), aujourdhui, debut);
   const valise = progression(donnees.taches.filter((t) => t.liste === 'a-emporter'), aujourdhui, debut);
+
+  // Rappel de sauvegarde : seulement quand il y a une raison de le montrer
+  const sauvegarde = etatSauvegarde(meta, donneesVidesQ(donnees), aujourdhui, debut);
 
   // Ce qui manque encore, et les envies à ne pas oublier (elles viennent du téléphone, jamais du dépôt public)
   const aCompleter = elementsACompleter(donnees, tousLesLieux(donnees), aujourdhui);
@@ -47,6 +51,16 @@ export function Accueil() {
               Ajouter un vol
             </a>
           </div>
+        </section>
+      )}
+
+      {(sauvegarde.niveau === 'rappel' || sauvegarde.niveau === 'urgent') && (
+        <section class="message attention" role="status" aria-label="Rappel de sauvegarde">
+          <strong>{sauvegarde.titre}</strong>
+          <span>{sauvegarde.detail}</span>
+          <a class="bouton secondaire" href="#/reglages">
+            Sauvegarder maintenant
+          </a>
         </section>
       )}
 
@@ -109,6 +123,19 @@ export function Accueil() {
         <a class="bouton secondaire" href={lienPratique()}>
           Ouvrir la rubrique Pratique
         </a>
+      </section>
+
+      <section class="carte">
+        <h2>Partager et avant le départ</h2>
+        <p class="discret">Fichier d'agenda avec rappels, lien ou code à scanner pour tes proches, et dernière vérification avant de partir.</p>
+        <div class="pile">
+          <a class="bouton secondaire" href={lienPartage()}>
+            Partager et agenda (.ics)
+          </a>
+          <a class="bouton secondaire" href={lienControle()}>
+            Avant le départ
+          </a>
+        </div>
       </section>
 
       {aCompleter.length > 0 && (

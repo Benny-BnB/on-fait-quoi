@@ -7,10 +7,12 @@
     "dev": "vite",
     "test": "node --test \"src/**/*.test.ts\"",
     "build": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "controle-liens": "node scripts/controle-liens.mjs"
   },
   "dependencies": {
-    "preact": "^11.2.0"
+    "preact": "^11.2.0",
+    "qrcode-generator": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

@@ -4,10 +4,10 @@ import { estInstallee, verifierHorsLigne, type EtatHorsLigne } from '../lib/hors
 import { formatDateHeure } from '../lib/format.ts';
 import { EVENEMENT_HORS_LIGNE_PRET } from './maj.ts';
 
-type Niveau = 'ok' | 'attention' | 'neutre';
+export type Niveau = 'ok' | 'attention' | 'neutre';
 
 // Une ligne d'état. Le sens est porté par le texte ET par un symbole, jamais par la couleur seule.
-function Ligne(props: { titre: string; valeur: string; niveau: Niveau; aide?: string }) {
+export function Ligne(props: { titre: string; valeur: string; niveau: Niveau; aide?: string }) {
   const symbole = props.niveau === 'ok' ? '✓' : props.niveau === 'attention' ? '!' : '·';
   return (
     <li class={`ligne ${props.niveau}`}>

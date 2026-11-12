@@ -8,17 +8,20 @@ import { echanger, promouvoirPlanB, suivrePlace } from '../lib/creneaux.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
 import { normaliserPersonne, normaliserReglages } from '../lib/profils.ts';
 import { compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
-import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
+import { CLE_AVANT_IMPORT, CLE_META, ecrireCle, ecrirePrincipal, effacerTout, lireCle, lirePrincipal, supprimerCle } from './stockage.ts';
+import { META_VIDE, donneesVidesQ, type MetaSauvegarde } from '../lib/sauvegarde.ts';
 import { FORMAT_FICHIER, VERSION_FORMAT } from './validation.ts';
 import { libelleVol } from '../lib/vols.ts';
 import { mettreAJourSuivi } from '../lib/lieux.ts';
 
-type Etat = { charge: boolean; donnees: Donnees; erreurStockage: string | null };
+// meta = dates de la dernière sauvegarde et de la dernière modification ; avantImport = date de la copie gardée avant le dernier import ('' = aucune)
+type Etat = { charge: boolean; donnees: Donnees; erreurStockage: string | null; meta: MetaSauvegarde; avantImport: string };
+type CopieAvantImport = { le: string; donnees: Donnees };
 
 const MESSAGE_ERREUR_STOCKAGE =
   "Impossible d'enregistrer sur ce téléphone. Tes changements restent à l'écran seulement : exporte tes données (Réglages) pour ne rien perdre.";
 
-let etat: Etat = { charge: false, donnees: donneesVides(), erreurStockage: null };
+let etat: Etat = { charge: false, donnees: donneesVides(), erreurStockage: null, meta: META_VIDE, avantImport: '' };
 const abonnes = new Set<() => void>();
 
 function definir(suite: Partial<Etat>): void {
@@ -66,6 +69,27 @@ export async function chargerDonnees(): Promise<void> {
     definir({ charge: true, donnees: normaliser(lu) });
   } catch {
     definir({ charge: true, erreurStockage: MESSAGE_ERREUR_STOCKAGE });
+    return;
+  }
+  // Les dates de sauvegarde sont secondaires : si on ne peut pas les lire, l'app marche quand même
+  try {
+    const meta = await lireCle<Partial<MetaSauvegarde>>(CLE_META);
+    const copie = await lireCle<CopieAvantImport>(CLE_AVANT_IMPORT);
+    definir({
+      meta: { derniereSauvegarde: typeof meta?.derniereSauvegarde === 'string' ? meta.derniereSauvegarde : '', derniereModification: typeof meta?.derniereModification === 'string' ? meta.derniereModification : '' },
+      avantImport: copie && typeof copie.le === 'string' ? copie.le : '',
+    });
+  } catch {
+    // rien à faire
+  }
+}
+
+async function ecrireMeta(meta: MetaSauvegarde): Promise<void> {
+  definir({ meta });
+  try {
+    await ecrireCle(CLE_META, meta);
+  } catch {
+    // le rappel de sauvegarde est secondaire : on ne signale pas d'erreur pour lui
   }
 }
 
@@ -78,6 +102,12 @@ async function modifier(transformation: (d: Donnees) => Donnees): Promise<void> 
   } catch {
     definir({ erreurStockage: MESSAGE_ERREUR_STOCKAGE });
   }
+  await ecrireMeta({ ...etat.meta, derniereModification: new Date().toISOString() });
+}
+
+// À appeler quand l'utilisateur vient d'exporter une sauvegarde (copie, fichier ou partage)
+export function noterSauvegarde(): Promise<void> {
+  return ecrireMeta({ ...etat.meta, derniereSauvegarde: new Date().toISOString() });
 }
 
 // ---------- Vols ----------
@@ -371,8 +401,19 @@ export function supprimerPratiquePerso(id: string): Promise<void> {
   return modifier((d) => ({ ...d, pratiquePerso: d.pratiquePerso.filter((f) => f.id !== id) }));
 }
 
-export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
-  return modifier((d) => {
+export async function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
+  // Avant de remplacer quoi que ce soit, on garde une copie de ce qu'il y a dans le téléphone :
+  // « Annuler le dernier import » la remet. (Rien à garder si le téléphone est vide.)
+  if (!donneesVidesQ(etat.donnees)) {
+    const copie: CopieAvantImport = { le: new Date().toISOString(), donnees: etat.donnees };
+    try {
+      await ecrireCle(CLE_AVANT_IMPORT, copie);
+      definir({ avantImport: copie.le });
+    } catch {
+      // pas de copie possible : l'import continue, mais « Annuler » ne sera pas proposé
+    }
+  }
+  await modifier((d) => {
     const vols = partiel.vols ?? d.vols;
     let compteurs = d.compteurs;
     if (partiel.compteurs) compteurs = partiel.compteurs;
@@ -405,10 +446,30 @@ export function exporterJson(d: Donnees): string {
   );
 }
 
+// Remet les données d'avant le dernier import (et oublie cette copie). Renvoie false s'il n'y avait pas de copie.
+export async function annulerDernierImport(): Promise<boolean> {
+  let copie: CopieAvantImport | undefined;
+  try {
+    copie = await lireCle<CopieAvantImport>(CLE_AVANT_IMPORT);
+  } catch {
+    return false;
+  }
+  if (!copie || typeof copie.donnees !== 'object' || copie.donnees === null) return false;
+  const avant = normaliser(copie.donnees);
+  await modifier(() => avant);
+  try {
+    await supprimerCle(CLE_AVANT_IMPORT);
+  } catch {
+    // sans importance
+  }
+  definir({ avantImport: '' });
+  return true;
+}
+
 export async function toutSupprimer(): Promise<void> {
   try {
     await effacerTout();
-    definir({ donnees: donneesVides(), erreurStockage: null });
+    definir({ donnees: donneesVides(), erreurStockage: null, meta: META_VIDE, avantImport: '' });
   } catch {
     definir({ erreurStockage: MESSAGE_ERREUR_STOCKAGE });
   }

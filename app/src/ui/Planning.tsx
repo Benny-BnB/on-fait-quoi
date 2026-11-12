@@ -8,7 +8,7 @@ import { jourSemaine } from '../lib/sejour.ts';
 import { aujourdhuiIso, formatDateIso } from '../lib/temps.ts';
 import { Page } from './commun.tsx';
 import { LigneImpose, LigneLibre, ResumeTotaux, montant } from './LignesPlanning.tsx';
-import { lienCreneau, lienJour, lienNouveauCreneau, lienQuoiFaire, lienSource } from './routeur.ts';
+import { lienCreneau, lienJour, lienNouveauCreneau, lienPartage, lienQuoiFaire, lienSource } from './routeur.ts';
 
 export function Planning() {
   const { donnees } = useStore();
@@ -67,6 +67,9 @@ export function Planning() {
 
       <a class="bouton secondaire" href={lienQuoiFaire()}>
         Quoi faire, quand ? Des idées de lieux
+      </a>
+      <a class="bouton secondaire" href={lienPartage()}>
+        Partager, agenda (.ics), code à scanner
       </a>
 
       {jours.length === 0 && (
