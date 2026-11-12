@@ -3,7 +3,8 @@ import { nouvelId } from '../data/defauts.ts';
 import { estLieuPerso, LIEUX_PUBLICS, trouverLieu } from '../data/lieux-publics.ts';
 import { enregistrerCreneau, modifierSuiviLieu, supprimerLieuPerso, useStore } from '../data/store.ts';
 import type { Lieu, Periode, SouhaitLieu } from '../data/types.ts';
-import { LIBELLES_CATEGORIE, LIBELLES_PERIODE, PERIODES } from '../data/types.ts';
+import { LIBELLES_CATEGORIE, LIBELLES_MODE, LIBELLES_PERIODE, PERIODES } from '../data/types.ts';
+import { libelleEuro } from '../lib/budget.ts';
 import { deviseDuJour } from '../lib/creneaux.ts';
 import { creneauDepuisLieu, faitsAVerifier, fraicheurLieu, lieuxDeLaZone, ouvertA, ouvertLe } from '../lib/lieux.ts';
 import { liensCartes, lienSur } from '../lib/sejour.ts';
@@ -125,6 +126,9 @@ export function FicheLieu(props: { id: string }) {
   const cartes = liensCartes({ nom: l.nom, adresse: l.adresse, gps: l.gps ? { lat: l.gps.lat, lng: l.gps.lng } : null });
   const lienOfficiel = lienSur(l.lienOfficiel);
   const reservation = l.reservation;
+  const tauxPrix = l.prix ? donnees.reglages.tauxChange.find((t) => t.devise === l.prix?.devise) : undefined;
+  const euro = l.prix ? libelleEuro(l.prix.min, l.prix.devise, donnees.reglages.tauxChange) : null;
+  const euroMax = l.prix ? libelleEuro(l.prix.max, l.prix.devise, donnees.reglages.tauxChange) : null;
   const lienReservation = reservation ? lienSur(reservation.lien) : null;
 
   return (
@@ -162,7 +166,13 @@ export function FicheLieu(props: { id: string }) {
         <h2>Les informations</h2>
         {l.incontournable && <Fait titre="Incontournable" valeur={l.incontournable.raison} source={l.incontournable.source} confirme etiquetteNonConfirme="" />}
         <Fait titre="Horaires" valeur={l.horaires ? <TableauHoraires h={l.horaires} /> : null} source={l.horaires?.source} etiquetteNonConfirme="À confirmer (source secondaire)" />
-        <Fait titre="Prix" valeur={l.prix ? libellePrix(l.prix) : null} note={l.prix?.note} source={l.prix?.source} etiquetteNonConfirme="À vérifier (source secondaire)" />
+        <Fait
+          titre="Prix"
+          valeur={l.prix ? `${libellePrix(l.prix)}${euro ? ` (${euro}${euroMax && l.prix.max !== l.prix.min ? ` à ${euroMax}` : ''})` : ''}` : null}
+          note={[l.prix?.note, euro && tauxPrix ? `Équivalent en euros d'après ton taux du ${formatDateIso(tauxPrix.date)} (${tauxPrix.source}).` : l.prix && l.prix.devise !== 'EUR' ? 'Équivalent en euros : saisis le taux de change dans les Réglages.' : ''].filter((x) => x && x !== '').join(' ') || undefined}
+          source={l.prix?.source}
+          etiquetteNonConfirme="À vérifier (source secondaire)"
+        />
         <Fait titre="Durée de la visite" valeur={l.duree ? libelleDuree(l.duree) : null} note={l.duree?.estimee ? `Estimée : ${l.duree.base}` : l.duree?.base || undefined} source={l.duree?.source} />
         <Fait
           titre="Réservation"
@@ -184,6 +194,12 @@ export function FicheLieu(props: { id: string }) {
           source={reservation?.source}
         />
         <Fait titre="Tenue" valeur={l.tenue ? l.tenue.texte : null} source={l.tenue?.source} />
+        {l.attention.map((a) => (
+          <Fait key={`${a.genre}:${a.texte}`} titre={a.genre === 'foule' ? 'Foule' : a.genre === 'chaleur' ? 'Chaleur' : 'Activité extrême'} valeur={a.texte} source={a.source} />
+        ))}
+        {l.acces.map((a) => (
+          <Fait key={`acces:${a.texte}`} titre={`Accès : ${a.modes.map((m) => LIBELLES_MODE[m].toLowerCase()).join(', ')}`} valeur={a.texte} source={a.source} />
+        ))}
         {l.public && <Fait titre="Pour qui" valeur={l.public.texte} source={l.public.source} />}
         <Fait titre="Adresse" valeur={l.adresse !== '' ? l.adresse : null} />
         <Fait titre="Emplacement GPS" valeur={l.gps ? `${l.gps.lat}, ${l.gps.lng}` : null} source={l.gps?.source} />

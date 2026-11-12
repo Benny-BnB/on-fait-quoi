@@ -6,7 +6,7 @@ import { faitsAVerifier } from './lieux.ts';
 import { etapesTriees, nuitsSansLogement } from './sejour.ts';
 import { dateValide, formatDateIso } from './temps.ts';
 
-export type GenreACompleter = 'vol' | 'trajet' | 'logement' | 'etape' | 'creneau' | 'lieu' | 'taches';
+export type GenreACompleter = 'vol' | 'trajet' | 'logement' | 'etape' | 'creneau' | 'lieu' | 'taches' | 'personnes' | 'groupes' | 'taux' | 'budget' | 'rythme';
 export type ElementACompleter = { cle: string; groupe: string; message: string; genre: GenreACompleter; id: string };
 
 export function elementsACompleter(d: Donnees, lieux: Lieu[], aujourdhui: string): ElementACompleter[] {
@@ -59,6 +59,20 @@ export function elementsACompleter(d: Donnees, lieux: Lieu[], aujourdhui: string
   // Check-lists : ce qui est en retard
   const enRetard = d.taches.filter((t) => !t.fait && dateValide(t.echeance) && t.echeance < aujourdhui).length;
   if (enRetard > 0) liste.push({ cle: 'taches-retard', groupe: 'Check-lists', message: `${enRetard} tâche${enRetard > 1 ? 's' : ''} en retard.`, genre: 'taches', id: '' });
+
+  // Profils, groupes et réglages : ce que l'app ne peut pas deviner, à saisir ensemble (taux de change, rythme, à éviter, budget)
+  const sansDetail = d.personnes.filter((p) => p.ageAns === null && p.tranche === '' && p.regimes.length === 0 && p.mobilite.length === 0 && p.confort.length === 0 && p.alimentation.trim() === '').length;
+  if (sansDetail > 0) liste.push({ cle: 'profils', groupe: 'Personnes et réglages', message: `${sansDetail} profil${sansDetail > 1 ? 's' : ''} sans âge ni contrainte : à compléter.`, genre: 'personnes', id: '' });
+  if (d.personnes.length > 1 && d.groupes.length === 0) liste.push({ cle: 'groupes', groupe: 'Personnes et réglages', message: 'Aucun groupe : à créer (« les amis », « tout le monde »…).', genre: 'groupes', id: '' });
+  const devises = [...new Set(d.etapes.map((e) => e.devise).filter((x) => /^[A-Z]{3}$/.test(x) && x !== 'EUR'))].sort();
+  for (const devise of devises) {
+    if (!d.reglages.tauxChange.some((t) => t.devise === devise)) liste.push({ cle: `taux:${devise}`, groupe: 'Personnes et réglages', message: `Taux de change ${devise} : à saisir avec sa date (ou à mettre à jour en ligne).`, genre: 'taux', id: devise });
+  }
+  const r = d.reglages.rythme;
+  if (r.activitesMax === null && r.heureLever === '' && r.pauses.length === 0 && d.reglages.aEviter.length === 0) {
+    liste.push({ cle: 'rythme', groupe: 'Personnes et réglages', message: 'Rythme du jour et « à éviter » : à régler.', genre: 'rythme', id: '' });
+  }
+  if (d.reglages.budget.length === 0) liste.push({ cle: 'budget', groupe: 'Personnes et réglages', message: 'Budget : aucun budget fixé.', genre: 'budget', id: '' });
 
   // Lieux de tes envies (ou liés à un créneau à venir) dont des informations restent « à vérifier »
   const interessants = new Set<string>();

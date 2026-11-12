@@ -23,6 +23,16 @@ export function lienACompleterElement(genre: GenreACompleter, id: string): strin
       return lienLieu(id);
     case 'taches':
       return '#/taches';
+    case 'personnes':
+      return '#/personnes';
+    case 'groupes':
+      return '#/groupes';
+    case 'taux':
+      return '#/taux';
+    case 'budget':
+      return '#/budget';
+    case 'rythme':
+      return '#/rythme';
   }
 }
 

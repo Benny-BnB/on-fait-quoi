@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { donneesVides } from '../data/defauts.ts';
+import { donneesVides, personneVide } from '../data/defauts.ts';
 import type { Creneau, Donnees, Etape, Lieu, Logement, Tache, Trajet, Vol } from '../data/types.ts';
 import { elementsACompleter } from './completer.ts';
 
@@ -9,7 +9,14 @@ const logement = (extra: Partial<Logement> = {}): Logement => ({
   id: 'l1', etapeId: 'e1', nom: 'Chez moi', statut: 'confirme', lien: '', adresse: '1 rue test', gps: null,
   arrivee: { date: '2026-12-16', heure: '15:00' }, depart: { date: '2026-12-20', heure: '11:00' }, reference: '', notes: '', ...extra,
 });
-const base = (): Donnees => ({ ...donneesVides(), etapes: [etape], logements: [logement()] });
+// Un voyage où tout est renseigné : taux de change, budget, rythme
+const reglagesComplets = () => ({
+  ...donneesVides().reglages,
+  tauxChange: [{ devise: 'THB', taux: 0.027, date: '2026-11-11', source: 'Source test', lien: '' }],
+  budget: [{ id: 'b1', perimetre: 'groupe' as const, libelle: '', pays: '', montant: 1000, devise: 'EUR' }],
+  rythme: { activitesMax: 3, heureLever: '', pauses: [] },
+});
+const base = (): Donnees => ({ ...donneesVides(), reglages: reglagesComplets(), etapes: [etape], logements: [logement()] });
 
 test('rien à compléter quand tout est renseigné', () => {
   assert.deepEqual(elementsACompleter(base(), [], '2026-11-11'), []);
@@ -49,4 +56,20 @@ test('lieux : seulement ceux de tes envies ou liés à un créneau, avec ce qui 
   assert.match(r[0].message, /horaires, prix, durée, réservation, emplacement GPS/);
   const fait = { ...d, suiviLieux: [{ lieuId: 'x', souhait: 'prioritaire' as const, favori: false, fait: true, note: '' }] };
   assert.equal(elementsACompleter(fait, [lieu], '2026-11-11').length, 0);
+});
+
+test('profils, groupes et réglages : ce que seul l\'utilisateur peut saisir', () => {
+  const vide: Donnees = { ...donneesVides(), etapes: [etape], logements: [logement()] };
+  const cles = (x: Donnees) => elementsACompleter(x, [], '2026-11-11').map((e) => e.cle);
+  // sans rien : taux de la devise du voyage, rythme et budget à régler
+  assert.deepEqual(cles(vide), ['taux:THB', 'rythme', 'budget']);
+  // deux personnes sans détail et sans groupe : profils et groupes à compléter
+  const deux: Donnees = { ...base(), personnes: [personneVide('a', 'Un'), personneVide('b', 'Deux')] };
+  assert.deepEqual(cles(deux), ['profils', 'groupes']);
+  assert.match(elementsACompleter(deux, [], '2026-11-11')[0].message, /^2 profils sans âge ni contrainte/);
+  // un profil renseigné et un groupe créé : plus rien
+  const complet: Donnees = { ...deux, personnes: [{ ...personneVide('a', 'Un'), ageAns: 40 }, { ...personneVide('b', 'Deux'), confort: ['chaud'] }], groupes: [{ id: 'g', nom: 'Tous', personneIds: ['a', 'b'] }] };
+  assert.deepEqual(cles(complet), []);
+  // un rythme réglé ou un « à éviter » choisi suffit pour le rythme
+  assert.ok(!cles({ ...vide, reglages: { ...vide.reglages, aEviter: ['foule'] } }).includes('rythme'));
 });

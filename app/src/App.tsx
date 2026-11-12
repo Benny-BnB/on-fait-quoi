@@ -3,6 +3,10 @@ import { chargerDonnees, useStore } from './data/store.ts';
 import { demanderStockagePersistant } from './data/stockage.ts';
 import { ACompleter } from './ui/ACompleter.tsx';
 import { Accueil } from './ui/Accueil.tsx';
+import { Budget } from './ui/Budget.tsx';
+import { Groupes } from './ui/Groupes.tsx';
+import { Rythme } from './ui/Rythme.tsx';
+import { TauxChange } from './ui/TauxChange.tsx';
 import { Page } from './ui/commun.tsx';
 import { Compteurs } from './ui/Compteurs.tsx';
 import { FormulaireCompteur } from './ui/FormulaireCompteur.tsx';
@@ -103,6 +107,18 @@ export function App() {
         break;
       case 'a-completer':
         page = <ACompleter />;
+        break;
+      case 'groupes':
+        page = <Groupes />;
+        break;
+      case 'taux':
+        page = <TauxChange />;
+        break;
+      case 'budget':
+        page = <Budget />;
+        break;
+      case 'rythme':
+        page = <Rythme />;
         break;
       case 'reglages':
         page = <Reglages />;

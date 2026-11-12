@@ -89,7 +89,7 @@ function ongletActif(route: Route): Onglet {
   if (route.nom === 'etape' || route.nom === 'logement') return 'sejour';
   if (route.nom === 'jour' || route.nom === 'creneau' || route.nom === 'quoi-faire' || route.nom === 'lieu' || route.nom === 'lieu-form') return 'planning';
   if (route.nom === 'a-completer') return 'accueil';
-  if (route.nom === 'personnes') return 'reglages';
+  if (route.nom === 'personnes' || route.nom === 'groupes' || route.nom === 'taux' || route.nom === 'budget' || route.nom === 'rythme') return 'reglages';
   if (route.nom === 'taches' || route.nom === 'emporter' || route.nom === 'tache') return 'taches';
   if (route.nom === 'compteurs' || route.nom === 'compteur') return 'accueil'; // les compteurs se règlent depuis l'accueil
   return route.nom;

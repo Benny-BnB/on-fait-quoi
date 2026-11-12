@@ -1,7 +1,8 @@
 import { enregistrerReglages, useStore } from '../data/store.ts';
 import { formatHeureSecondes, formatHeureUtcSecondes } from '../lib/format.ts';
 import { useMaintenant } from '../lib/horloge.ts';
-import { formatDureeMin, formatUtc, fuseauTelephone } from '../lib/temps.ts';
+import { formatDateIso, formatDureeMin, formatUtc, fuseauTelephone } from '../lib/temps.ts';
+import { LIBELLES_A_EVITER } from '../data/types.ts';
 import { instantDepart, prochainVol } from '../lib/vols.ts';
 import { Champ, Page } from './commun.tsx';
 import { EtatApp } from './EtatApp.tsx';
@@ -14,7 +15,7 @@ function DelaisAeroport() {
   function changer(cle: 'international' | 'interieur', champ: HTMLInputElement) {
     const n = Number.parseInt(champ.value, 10);
     if (Number.isFinite(n) && n >= 0 && n <= 1440) {
-      void enregistrerReglages({ delaiAeroportMin: { ...delais, [cle]: n } });
+      void enregistrerReglages({ ...donnees.reglages, delaiAeroportMin: { ...delais, [cle]: n } });
     } else {
       champ.value = String(delais[cle]); // valeur refusée : on remet l'ancienne
     }
@@ -60,21 +61,55 @@ function Verification() {
 }
 
 export function Reglages() {
+  const { donnees } = useStore();
   return (
     <Page titre="Réglages">
       <section class="carte">
-        <h2>Personnes du voyage</h2>
-        <p class="discret">Elles servent à choisir qui participe à chaque créneau du planning.</p>
-        <a class="bouton secondaire" href="#/personnes">
-          Gérer les personnes
-        </a>
+        <h2>Personnes et groupes</h2>
+        <p class="discret">
+          {donnees.personnes.length} personne{donnees.personnes.length > 1 ? 's' : ''}, {donnees.groupes.length} groupe{donnees.groupes.length > 1 ? 's' : ''}. Âge, alimentation, mobilité, confort et présence servent à signaler ce qui ne convient pas, et à choisir qui participe à chaque créneau.
+        </p>
+        <div class="pile">
+          <a class="bouton secondaire" href="#/personnes">
+            Gérer les personnes
+          </a>
+          <a class="bouton secondaire" href="#/groupes">
+            Gérer les groupes
+          </a>
+        </div>
+      </section>
+      <section class="carte">
+        <h2>Argent, rythme et préférences</h2>
+        <ul class="vol-lignes">
+          <li>
+            Taux de change :{' '}
+            {donnees.reglages.tauxChange.length > 0 ? donnees.reglages.tauxChange.map((t) => `${t.devise} (${formatDateIso(t.date)})`).join(', ') : 'aucun saisi'}
+          </li>
+          <li>Budgets : {donnees.reglages.budget.length > 0 ? donnees.reglages.budget.length : 'aucun'}</li>
+          <li>
+            Rythme : {donnees.reglages.rythme.activitesMax !== null ? `${donnees.reglages.rythme.activitesMax} activités au plus par jour` : 'pas de limite'}
+            {donnees.reglages.rythme.heureLever !== '' ? `, lever à ${donnees.reglages.rythme.heureLever}` : ''}
+          </li>
+          <li>À éviter : {donnees.reglages.aEviter.length > 0 ? donnees.reglages.aEviter.map((a) => LIBELLES_A_EVITER[a].toLowerCase()).join(', ') : 'rien de particulier'}</li>
+        </ul>
+        <div class="pile">
+          <a class="bouton secondaire" href="#/taux">
+            Taux de change
+          </a>
+          <a class="bouton secondaire" href="#/budget">
+            Budget
+          </a>
+          <a class="bouton secondaire" href="#/rythme">
+            Rythme, à éviter, transports
+          </a>
+        </div>
       </section>
       <DelaisAeroport />
       <ImportExport />
       <Verification />
       <EtatApp />
       <p class="note">
-        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning (créneaux imposés et libres), les check-lists et les fiches de lieux avec « Quoi faire, quand ? » (base de Bangkok pour l'instant). Les profils détaillés, les groupes et le taux de change arrivent à l'étape suivante.
+        Cette version contient les vols, les compteurs, les étapes, les logements, les trajets, le planning (créneaux imposés et libres), les check-lists et les fiches de lieux avec « Quoi faire, quand ? » (base de Bangkok pour l'instant). Les profils, les groupes, le budget, le rythme et le taux de change sont dans cette version.
       </p>
     </Page>
   );

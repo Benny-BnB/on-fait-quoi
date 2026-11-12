@@ -1,10 +1,21 @@
-import type { Compteur, Donnees, Reglages, Vol } from './types.ts';
+import type { Compteur, Donnees, Personne, Reglages, Vol } from './types.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
 
 // Valeurs de départ, toutes modifiables dans l'app (Réglages)
 export const REGLAGES_PAR_DEFAUT: Reglages = {
   delaiAeroportMin: { international: 180, interieur: 120 },
+  tauxChange: [], // à saisir avec sa date : jamais deviné
+  budget: [],
+  rythme: { activitesMax: null, heureLever: '', pauses: [] },
+  aEviter: [],
+  trajetLongKm: 15, // valeur de départ proposée, à régler
+  transports: [], // tous
 };
+
+// Une personne sans aucune contrainte renseignée
+export function personneVide(id: string, prenom = ''): Personne {
+  return { id, prenom, notes: '', ageAns: null, tranche: '', alimentation: '', regimes: [], mobilite: [], confort: [], presence: [] };
+}
 
 export function compteurProchainVol(visible = true, delaiMin = 0): Compteur {
   return {
@@ -43,6 +54,7 @@ export function donneesVides(): Donnees {
     trajets: [],
     taches: [],
     personnes: [],
+    groupes: [],
     creneaux: [],
     joursPlan: [],
     lieuxPerso: [],

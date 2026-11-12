@@ -11,6 +11,7 @@ import type { CompteurResolu } from './vols.ts';
 import { instantArrivee, instantDepart, resoudre } from './vols.ts';
 
 import { HEURE_PERIODE } from './periodes.ts';
+import { idsPresentsLe } from './profils.ts';
 export { HEURE_PERIODE };
 
 // ---------- Fuseau d'un jour ----------
@@ -101,9 +102,9 @@ export function alternatifDe(d: Donnees, id: string): Creneau | undefined {
   return d.creneaux.find((c) => c.planBDe === id);
 }
 
+// Le réglage de ce jour s'il existe ; sinon les personnes dont la présence couvre le jour (tout le monde par défaut)
 export function idsParticipantsJour(d: Donnees, jour: string): string[] {
-  const j = d.joursPlan.find((x) => x.jour === jour);
-  return j ? j.participants : d.personnes.map((p) => p.id);
+  return idsPresentsLe(d, jour);
 }
 
 // Qui participe : ceux du créneau s'il en a, sinon ceux du jour (tout le monde par défaut)

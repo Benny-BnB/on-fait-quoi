@@ -2,11 +2,12 @@
 // dans le téléphone. Tous les écrans passent par ici.
 
 import { useEffect, useState } from 'preact/hooks';
-import type { Compteur, Creneau, Donnees, Etape, Lieu, Logement, Personne, Reglages, SuiviLieu, Tache, Trajet, Vol } from './types.ts';
+import type { Compteur, Creneau, Donnees, Etape, Groupe, Lieu, Logement, Personne, Reglages, SuiviLieu, Tache, Trajet, Vol } from './types.ts';
 import { aujourdhuiIso } from '../lib/temps.ts';
 import { echanger, promouvoirPlanB, suivrePlace } from '../lib/creneaux.ts';
 import { ID_PROCHAIN_VOL } from './types.ts';
-import { REGLAGES_PAR_DEFAUT, compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
+import { normaliserPersonne, normaliserReglages } from '../lib/profils.ts';
+import { compteurPourVol, compteurProchainVol, donneesVides, idCompteurVol } from './defauts.ts';
 import { ecrirePrincipal, effacerTout, lirePrincipal } from './stockage.ts';
 import { FORMAT_FICHIER, VERSION_FORMAT } from './validation.ts';
 import { libelleVol } from '../lib/vols.ts';
@@ -38,28 +39,24 @@ export function useStore(): Etat {
 }
 
 // Remet les données lues dans un état complet, même si elles viennent d'une ancienne version
-function normaliser(brut: Partial<Donnees> | undefined): Donnees {
+export function normaliser(brut: Partial<Donnees> | undefined): Donnees {
   const vols = brut && Array.isArray(brut.vols) ? brut.vols : [];
   let compteurs = brut && Array.isArray(brut.compteurs) ? brut.compteurs : [];
   if (!compteurs.some((c) => c.id === ID_PROCHAIN_VOL)) compteurs = [compteurProchainVol(), ...compteurs];
-  const d = brut?.reglages?.delaiAeroportMin;
-  const reglages: Reglages = {
-    delaiAeroportMin: {
-      international: d?.international ?? REGLAGES_PAR_DEFAUT.delaiAeroportMin.international,
-      interieur: d?.interieur ?? REGLAGES_PAR_DEFAUT.delaiAeroportMin.interieur,
-    },
-  };
+  const reglages = normaliserReglages(brut?.reglages);
   const etapes = brut && Array.isArray(brut.etapes) ? brut.etapes : [];
   const logements = brut && Array.isArray(brut.logements) ? brut.logements : [];
   const trajets = brut && Array.isArray(brut.trajets) ? brut.trajets : [];
   const taches = brut && Array.isArray(brut.taches) ? brut.taches : [];
-  const personnes = brut && Array.isArray(brut.personnes) ? brut.personnes : [];
+  // Les personnes enregistrées avant l'étape 8 n'ont ni âge, ni contraintes, ni présence : on complète
+  const personnes = (brut && Array.isArray(brut.personnes) ? brut.personnes : []).map(normaliserPersonne);
+  const groupes = (brut && Array.isArray(brut.groupes) ? brut.groupes : []).map((g) => ({ ...g, personneIds: Array.isArray(g.personneIds) ? g.personneIds : [] }));
   // Les créneaux enregistrés avant l'étape 7 n'ont pas de fiche de lieu liée : on met "aucune"
   const creneaux = (brut && Array.isArray(brut.creneaux) ? brut.creneaux : []).map((c) => ({ ...c, lieuId: typeof c.lieuId === 'string' ? c.lieuId : '' }));
   const joursPlan = brut && Array.isArray(brut.joursPlan) ? brut.joursPlan : [];
-  const lieuxPerso = brut && Array.isArray(brut.lieuxPerso) ? brut.lieuxPerso : [];
+  const lieuxPerso = (brut && Array.isArray(brut.lieuxPerso) ? brut.lieuxPerso : []).map((l) => ({ ...l, attention: Array.isArray(l.attention) ? l.attention : [], acces: Array.isArray(l.acces) ? l.acces : [] }));
   const suiviLieux = brut && Array.isArray(brut.suiviLieux) ? brut.suiviLieux : [];
-  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, creneaux, joursPlan, lieuxPerso, suiviLieux };
+  return { vols, compteurs, reglages, etapes, logements, trajets, taches, personnes, groupes, creneaux, joursPlan, lieuxPerso, suiviLieux };
 }
 
 export async function chargerDonnees(): Promise<void> {
@@ -237,7 +234,21 @@ export function supprimerPersonne(id: string): Promise<void> {
     personnes: d.personnes.filter((p) => p.id !== id),
     creneaux: d.creneaux.map((c) => (c.participants.includes(id) ? { ...c, participants: c.participants.filter((x) => x !== id) } : c)),
     joursPlan: d.joursPlan.map((j) => ({ ...j, participants: j.participants.filter((x) => x !== id) })),
+    groupes: d.groupes.map((g) => ({ ...g, personneIds: g.personneIds.filter((x) => x !== id) })),
   }));
+}
+
+// ---------- Groupes ----------
+
+export function enregistrerGroupe(groupe: Groupe): Promise<void> {
+  return modifier((d) => ({
+    ...d,
+    groupes: d.groupes.some((g) => g.id === groupe.id) ? d.groupes.map((g) => (g.id === groupe.id ? groupe : g)) : [...d.groupes, groupe],
+  }));
+}
+
+export function supprimerGroupe(id: string): Promise<void> {
+  return modifier((d) => ({ ...d, groupes: d.groupes.filter((g) => g.id !== id) }));
 }
 
 // ---------- Créneaux du planning ----------
@@ -362,6 +373,7 @@ export function importerDonnees(partiel: Partial<Donnees>): Promise<void> {
       taches: partiel.taches ?? d.taches,
       personnes: partiel.personnes ?? d.personnes,
       creneaux: partiel.creneaux ?? d.creneaux,
+      groupes: partiel.groupes ?? d.groupes,
       joursPlan: partiel.joursPlan ?? d.joursPlan,
       lieuxPerso: partiel.lieuxPerso ?? d.lieuxPerso,
       suiviLieux: partiel.suiviLieux ?? d.suiviLieux,

@@ -242,8 +242,12 @@ test('catégories : « incontournables » = cité par un guide nommé', () => {
   assert.ok(aCategorie(lieu('bkk-yaowarat'), 'nourriture'));
 });
 
-test("les lieux d'une étape : « Bangkok (centre) » ramène les lieux de Bangkok ; une ville sans fiche, aucun", () => {
-  assert.equal(lieuxDeLaZone(base, 'Bangkok (centre)').length, base.length);
+test("les lieux d'une étape : « Bangkok (centre) » ramène les lieux de Bangkok, « Pattaya » ceux de Pattaya, une ville sans fiche aucun", () => {
+  const bangkok = base.filter((l) => l.zone === 'Bangkok');
+  const pattaya = base.filter((l) => l.zone === 'Pattaya');
+  assert.ok(bangkok.length === 13 && pattaya.length > 0);
+  assert.deepEqual(lieuxDeLaZone(base, 'Bangkok (centre)').map((l) => l.id), bangkok.map((l) => l.id));
+  assert.deepEqual(lieuxDeLaZone(base, 'Pattaya').map((l) => l.id), pattaya.map((l) => l.id));
   assert.equal(lieuxDeLaZone(base, 'Ville sans fiche').length, 0);
   assert.equal(lieuxDeLaZone(base, '').length, base.length);
 });

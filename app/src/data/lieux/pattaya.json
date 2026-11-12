@@ -1,0 +1,710 @@
+{
+  "format": "on-fait-quoi-lieux",
+  "version": 1,
+  "lieux": [
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Naklua (nord de Pattaya)",
+      "adresse": "206/2 Moo 5, Pattaya-Naklua Road, Banglamung, Chonburi 20150",
+      "gps": {
+        "lat": 12.972777,
+        "lng": 100.8891503,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/223698118",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "musée",
+        "temple en bois",
+        "spectacle"
+      ],
+      "incontournable": null,
+      "description": "Musée-temple en bois sculpté. Le site officiel propose une visite de jour et une visite de nuit.",
+      "duree": {
+        "minMin": 120,
+        "maxMin": 120,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sanctuary-of-truth/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 500,
+        "max": 500,
+        "devise": "THB",
+        "note": "Adulte : 500 THB, enfant : 250 THB. Visite de nuit : environ 700 THB (adulte) et 350 THB (enfant). La page officielle renvoie vers une billetterie en ligne sans afficher les prix dans son texte.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sanctuary-of-truth/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            },
+            {
+              "ouvre": "18:20",
+              "ferme": "20:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Site officiel : « Open daily 8:00 AM – 6:00 PM & 6:20 - 8:30 PM » (visite de jour, puis visite de nuit). Dernière entrée non indiquée.",
+        "source": {
+          "lien": "https://www.sanctuaryoftruthmuseum.com/",
+          "libelle": "Site officiel du Sanctuary of Truth",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "reservation": {
+        "necessaire": null,
+        "lien": "https://www.sanctuaryoftruthmuseum.com/",
+        "note": "Le site officiel propose l'achat de billets en ligne (« Buy Ticket »). Il ne dit pas si une réservation est obligatoire.",
+        "source": {
+          "lien": "https://www.sanctuaryoftruthmuseum.com/",
+          "libelle": "Site officiel du Sanctuary of Truth",
+          "consulteLe": "2026-11-11",
+          "officielle": true
+        }
+      },
+      "tenue": {
+        "texte": "Épaules et genoux couverts. Des sarongs sont disponibles à l'entrée (prêt gratuit, ou dépôt d'environ 200 à 300 THB).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sanctuary-of-truth/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": {
+        "texte": "Escaliers en bois, plateformes irrégulières et poutres basses dans certains couloirs. Les personnes à mobilité réduite doivent vérifier le circuit du rez-de-chaussée avec le personnel à l'arrivée.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/sanctuary-of-truth/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "chaleur",
+          "texte": "il peut faire chaud vers midi : prévoir de l'eau",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/sanctuary-of-truth/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [],
+      "lienOfficiel": "https://www.sanctuaryoftruthmuseum.com/",
+      "verifieLe": "2026-11-11",
+      "notes": "Le guide situe le site à environ 5 km au nord du centre de Pattaya et précise que les spectacles culturels sont inclus dans l'entrée. Visite guidée obligatoire ou non : non indiqué (à vérifier).",
+      "id": "pat-sanctuary-of-truth",
+      "nom": "Sanctuary of Truth"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Na Chom Thian (Sattahip, au sud de Pattaya)",
+      "adresse": "34 Na Chom Thian, Sattahip District, Chon Buri 20250",
+      "gps": {
+        "lat": 12.7646849,
+        "lng": 100.9361187,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/318679723",
+          "libelle": "OpenStreetMap (Nong Nooch Botanical Garden)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nature",
+        "famille"
+      ],
+      "etiquettes": [
+        "jardin botanique",
+        "spectacles",
+        "éléphants"
+      ],
+      "incontournable": null,
+      "description": "Grand jardin tropical avec spectacles (spectacle culturel thaïlandais, spectacle d'éléphants).",
+      "duree": {
+        "minMin": 180,
+        "maxMin": 240,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/nong-nooch-tropical-garden/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 500,
+        "max": 600,
+        "devise": "THB",
+        "note": "Jardin seul, adulte étranger, à l'entrée. Avec les spectacles : environ 800 à 1 000 THB ; forfaits avec buffet : 1 200 à 1 600 THB (d'après un guide).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/nong-nooch-tropical-garden/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « Daily 08:00-18:00 » (horaires synchronisés le 01/11/2026 selon la page). Spectacle culturel et spectacle d'éléphants à 10:30, 11:30, 13:30 et 15:30. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/nong-nooch-tropical-garden/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Enfants de moins de 90 cm : entrée gratuite. De 90 à 140 cm : tarif réduit (300 à 400 THB, jardin seul).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/nong-nooch-tropical-garden/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "chaleur",
+          "texte": "peu d'ombre entre 11:00 et 14:00 (jardin français et zones ouvertes)",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/nong-nooch-tropical-garden/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        },
+        {
+          "genre": "chaleur",
+          "texte": "selon l'endroit où le songthaew vous dépose, il peut rester 2 à 3 km de marche jusqu'à l'entrée, peu agréable par 35 °C",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/nong-nooch-tropical-garden/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [],
+      "lienOfficiel": "https://www.nongnoochpattaya.com/",
+      "verifieLe": "2026-11-11",
+      "notes": "La page officielle lue (nongnoochpattaya.com) ne donne ni les horaires ni les prix d'entrée du jardin : tout vient d'un guide, à confirmer. Le jardin est au sud de Pattaya, loin du centre.",
+      "id": "pat-nong-nooch",
+      "nom": "Nong Nooch Tropical Garden"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Nong Prue",
+      "adresse": "451/304 Moo 12, Nong Prue, Banglamung, Chonburi 20150",
+      "gps": {
+        "lat": 12.8685719,
+        "lng": 100.9065161,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/962535135",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches"
+      ],
+      "etiquettes": [
+        "marché",
+        "bateau"
+      ],
+      "incontournable": null,
+      "description": "Marché construit pour recréer les quatre régions de la Thaïlande : le guide précise que ce n'est pas un marché flottant historique.",
+      "duree": {
+        "minMin": 120,
+        "maxMin": 180,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/pattaya-floating-market/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 200,
+        "max": 200,
+        "devise": "THB",
+        "note": "Environ 200 THB pour un adulte étranger ; gratuit pour les Thaïlandais sur présentation de leur carte d'identité. Forfaits avec promenade en bateau et spectacles : à partir d'environ 250 THB (d'après un guide).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/pattaya-floating-market/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "09:00",
+              "ferme": "20:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « Daily, 09:00–20:00 » (page mise à jour en juillet 2026). Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/pattaya-floating-market/",
+          "libelle": "Thai Holiday Guide (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.pattayafloatingmarket.com/",
+      "verifieLe": "2026-11-11",
+      "notes": "Le site officiel a refusé l'accès lors de la vérification (403) : horaires et prix restent à confirmer.",
+      "id": "pat-floating-market",
+      "nom": "Pattaya Floating Market"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pratumnak Hill (Pattaya Sud)",
+      "adresse": "Pratumnak Hill, South Pattaya",
+      "gps": {
+        "lat": 12.9140721,
+        "lng": 100.8686871,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/322626265",
+          "libelle": "OpenStreetMap (Big Buddha)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "temple",
+        "bouddha",
+        "point de vue"
+      ],
+      "incontournable": null,
+      "description": "Temple et grand Bouddha doré sur la colline de Pratumnak.",
+      "duree": {
+        "minMin": 30,
+        "maxMin": 45,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/big-buddha-temple-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre ; dons bienvenus (20 à 100 THB), non obligatoires (d'après un guide).",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/big-buddha-temple-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "horaires": null,
+      "reservation": null,
+      "tenue": {
+        "texte": "Tenue décente : épaules et genoux couverts.",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/big-buddha-temple-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "interieur": "",
+      "public": {
+        "texte": "Légère montée d'escaliers nécessaire.",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/big-buddha-temple-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Horaires non retenus : un guide donne « 6:00 AM – 6:00 PM daily (shrine areas) » avec des terrains accessibles plus tard, mais les sources divergent (de 06:00-18:00 à 07:00-22:00). À vérifier sur place.",
+      "id": "pat-big-buddha",
+      "nom": "Big Buddha (Wat Phra Yai)"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Île au large de Pattaya (ponton de Tawaen)",
+      "adresse": "",
+      "gps": {
+        "lat": 12.92742,
+        "lng": 100.7749652,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/587327617",
+          "libelle": "OpenStreetMap (ponton de la plage de Tawaen)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "nature"
+      ],
+      "etiquettes": [
+        "île",
+        "plage",
+        "snorkeling"
+      ],
+      "incontournable": null,
+      "description": "Île avec plusieurs plages : Tawaen est la plus fréquentée, Thong Lang et Nual sont plus calmes avec des récifs, Tien convient pour paresser, Samae est la plus calme (d'après le guide).",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "Ferry public depuis le ponton de Bali Hai (Pattaya Sud), environ 45 minutes, 30 THB par personne l'aller. Départs de Pattaya : 07:00, 10:00, 12:00, 14:00, 15:30, 17:00, 18:30 ; retours de Koh Larn de 06:30 à 18:00. D'autres guides donnent des horaires et un tarif différents (jusqu'à 40 THB) et précisent qu'ils varient selon la saison : à confirmer au ponton. Bateau rapide : environ 15 minutes, environ 3 000 THB le bateau.",
+          "source": {
+            "lien": "https://www.lovethailand.org/travel/en/58-Chon-Buri/2464-Koh-Larn.html",
+            "libelle": "lovethailand.org (guide, éditeur non indiqué)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Pas d'horaire d'ouverture ni de prix d'entrée retenus : la page lue indique « 24 heures », ce qui n'est pas un horaire exploitable. Activités et prix indicatifs du guide : snorkeling 300 à 600 THB, sports nautiques 400 à 1 000 THB, location de scooter 250 à 300 THB par jour (à vérifier).",
+      "id": "pat-koh-larn",
+      "nom": "Koh Larn (île de Corail)"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pattaya Sud (entre Beach Road et le ponton de Bali Hai)",
+      "adresse": "Walking Street, Pattaya Sai Nueng Road, Pattaya Sud",
+      "gps": {
+        "lat": 12.9274168,
+        "lng": 100.8746456,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/1207751537",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nocturne",
+        "nourriture"
+      ],
+      "etiquettes": [
+        "bars",
+        "clubs",
+        "restaurants de fruits de mer",
+        "rue piétonne"
+      ],
+      "incontournable": null,
+      "description": "Rue piétonne de 0,7 km : boîtes de nuit, bars à musique live, rooftops, restaurants de fruits de mer et stands de street food.",
+      "duree": {
+        "minMin": 180,
+        "maxMin": 240,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/walking-street-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "prix": null,
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "19:00",
+              "ferme": "03:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « 7:00 PM - 3:00 AM daily », pointe de 22:00 à 02:00 ; certains établissements restent ouverts jusqu'à 4 ou 5 h. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/walking-street-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Surtout une vie nocturne pour adultes : aucun âge minimum n'est indiqué par la source, qui ne la décrit pas comme adaptée aux familles.",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/pattaya/walking-street-pattaya",
+          "libelle": "Pickyourtrail (guide)",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "le vendredi et le samedi sont les plus chargés ; pointe de 22:00 à 02:00 ; vols à la tire dans les endroits bondés",
+          "source": {
+            "lien": "https://pickyourtrail.com/attractions/pattaya/walking-street-pattaya",
+            "libelle": "Pickyourtrail (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-11",
+      "notes": "Entrée de la rue : non indiquée. Entrée en boîte : 200 à 800 THB, souvent avec une consommation ; spectacles de cabaret : 600 à 1 200 THB (guide). Vérifier les prix des boissons avant de commander.",
+      "id": "pat-walking-street",
+      "nom": "Walking Street"
+    }
+  ]
+}

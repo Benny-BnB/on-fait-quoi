@@ -23,6 +23,10 @@ export type Route =
   | { nom: 'lieu'; id: string }
   | { nom: 'lieu-form'; id: string }
   | { nom: 'a-completer' }
+  | { nom: 'groupes' }
+  | { nom: 'taux' }
+  | { nom: 'budget' }
+  | { nom: 'rythme' }
   | { nom: 'reglages' };
 
 function decoder(morceau: string): string {
@@ -61,6 +65,10 @@ export function lireRoute(hash: string): Route {
     if (b === 'modifier' && c) return { nom: 'lieu-form', id: c };
   }
   if (a === 'a-completer') return { nom: 'a-completer' };
+  if (a === 'groupes') return { nom: 'groupes' };
+  if (a === 'taux') return { nom: 'taux' };
+  if (a === 'budget') return { nom: 'budget' };
+  if (a === 'rythme') return { nom: 'rythme' };
   if (a === 'reglages') return { nom: 'reglages' };
   return { nom: 'accueil' };
 }

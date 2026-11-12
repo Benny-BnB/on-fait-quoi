@@ -1,8 +1,8 @@
 // Contrôle d'un fichier d'import avant de toucher aux données : un fichier erroné
 // est refusé avec un message clair, il n'abîme jamais les données déjà enregistrées.
 
-import type { Aeroport, Compteur, CibleCompteur, Coordonnees, Creneau, Donnees, Etape, JourPlan, Logement, MomentLogement, Personne, Tache, Trajet, Vol } from './types.ts';
-import { HUMEURS, LISTES_TACHE, MODES_TRAJET, PERIODES, PORTEES, STATUTS_CRENEAU, STATUTS_LOGEMENT, STATUTS_VOL, TYPES_EVENEMENT } from './types.ts';
+import type { Aeroport, BudgetLigne, Compteur, CibleCompteur, Coordonnees, Creneau, Donnees, Etape, Groupe, JourPlan, Logement, ModeTrajet, MomentLogement, Personne, PlagePresence, Reglages, TauxChange, Tache, Trajet, Vol } from './types.ts';
+import { A_EVITER, CONFORTS, HUMEURS, LISTES_TACHE, MOBILITES, MODES_TRAJET, PERIMETRES_BUDGET, PERIODES, PORTEES, REGIMES, STATUTS_CRENEAU, STATUTS_LOGEMENT, STATUTS_VOL, TRANCHES_AGE, TYPES_EVENEMENT } from './types.ts';
 import { dateValide, fuseauValide, heureValide, instantLocal } from '../lib/temps.ts';
 import { lienSur } from '../lib/sejour.ts';
 import { lireLieux, lireSuivis } from '../lib/lieux.ts';
@@ -11,7 +11,7 @@ export const FORMAT_FICHIER = 'on-fait-quoi';
 // Les sections ajoutées plus tard sont facultatives : un ancien fichier reste valide, la version ne change pas
 export const VERSION_FORMAT = 1;
 
-const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan', 'lieuxPerso', 'suiviLieux'];
+const CLES_CONNUES = ['format', 'version', 'exporteLe', 'vols', 'compteurs', 'reglages', 'etapes', 'logements', 'trajets', 'taches', 'personnes', 'creneaux', 'joursPlan', 'lieuxPerso', 'suiviLieux', 'groupes'];
 
 export type ResultatImport =
   | { ok: true; donnees: Partial<Donnees>; avertissements: string[] }
@@ -407,6 +407,20 @@ function lireTache(brut: unknown, index: number, erreurs: string[], ids: Set<str
   };
 }
 
+function lireListeFermee<T extends string>(brut: unknown, permis: readonly T[], qui: string, champ: string, erreurs: string[]): T[] {
+  if (brut === undefined) return [];
+  if (!Array.isArray(brut)) {
+    erreurs.push(`${qui} : « ${champ} » doit être une liste.`);
+    return [];
+  }
+  const resultat: T[] = [];
+  for (const v of brut) {
+    if (permis.some((p) => p === v)) resultat.push(v as T);
+    else erreurs.push(`${qui} : « ${champ} » : valeur inconnue « ${String(v)} » (${permis.join(', ')}).`);
+  }
+  return resultat;
+}
+
 function lirePersonne(brut: unknown, index: number, erreurs: string[], ids: Set<string>): Personne | null {
   const nom = `Personne n°${index + 1}`;
   if (!estObjet(brut)) {
@@ -414,19 +428,60 @@ function lirePersonne(brut: unknown, index: number, erreurs: string[], ids: Set<
     return null;
   }
   const prenom = texte(brut, 'prenom');
+  const qui = prenom ? `${nom} (${prenom})` : nom;
   const avant = erreurs.length;
   if (!prenom) erreurs.push(`${nom} : prénom manquant.`);
   const id = texte(brut, 'id') || `personne-import-${index + 1}`;
-  if (ids.has(id)) erreurs.push(`${nom} (${prenom}) : identifiant « ${id} » utilisé deux fois.`);
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
   ids.add(id);
+
+  let ageAns: number | null = null;
+  if (brut.ageAns !== undefined && brut.ageAns !== null) {
+    if (typeof brut.ageAns !== 'number' || !Number.isFinite(brut.ageAns) || brut.ageAns < 0 || brut.ageAns > 130) erreurs.push(`${qui} : âge invalide (un nombre d'années entre 0 et 130).`);
+    else ageAns = brut.ageAns;
+  }
+  const tranche = brut.tranche ?? '';
+  if (tranche !== '' && !TRANCHES_AGE.some((t) => t === tranche)) erreurs.push(`${qui} : tranche d'âge invalide « ${String(tranche)} » (${TRANCHES_AGE.join(', ')}).`);
+  const regimes = lireListeFermee(brut.regimes, REGIMES, qui, 'regimes', erreurs);
+  const mobilite = lireListeFermee(brut.mobilite, MOBILITES, qui, 'mobilite', erreurs);
+  const confort = lireListeFermee(brut.confort, CONFORTS, qui, 'confort', erreurs);
+  const presence: PlagePresence[] = [];
+  if (brut.presence !== undefined) {
+    if (!Array.isArray(brut.presence)) erreurs.push(`${qui} : « presence » doit être une liste de périodes.`);
+    else {
+      for (const x of brut.presence) {
+        if (!estObjet(x) || !dateValide(texte(x, 'du')) || !dateValide(texte(x, 'au')) || texte(x, 'au') < texte(x, 'du')) {
+          erreurs.push(`${qui} : période de présence invalide (du, au en AAAA-MM-JJ, « au » après « du »).`);
+        } else presence.push({ du: texte(x, 'du'), au: texte(x, 'au') });
+      }
+    }
+  }
   if (erreurs.length > avant) return null;
-  return { id, prenom, notes: texte(brut, 'notes') };
+  return { id, prenom, notes: texte(brut, 'notes'), ageAns, tranche: tranche as Personne['tranche'], alimentation: texte(brut, 'alimentation'), regimes, mobilite, confort, presence };
 }
 
-function lireListeIds(brut: unknown, qui: string, erreurs: string[], idsPersonnes: Set<string> | null): string[] {
+function lireGroupe(brut: unknown, index: number, erreurs: string[], ids: Set<string>, idsPersonnes: Set<string> | null): Groupe | null {
+  const nom = `Groupe n°${index + 1}`;
+  if (!estObjet(brut)) {
+    erreurs.push(`${nom} : ce n'est pas un groupe valide.`);
+    return null;
+  }
+  const titre = texte(brut, 'nom');
+  const qui = titre ? `${nom} (${titre})` : nom;
+  const avant = erreurs.length;
+  if (!titre) erreurs.push(`${nom} : nom manquant.`);
+  const id = texte(brut, 'id') || `groupe-import-${index + 1}`;
+  if (ids.has(id)) erreurs.push(`${qui} : identifiant « ${id} » utilisé deux fois.`);
+  ids.add(id);
+  const personneIds = lireListeIds(brut.personneIds, qui, erreurs, idsPersonnes, 'personneIds');
+  if (erreurs.length > avant) return null;
+  return { id, nom: titre, personneIds };
+}
+
+function lireListeIds(brut: unknown, qui: string, erreurs: string[], idsPersonnes: Set<string> | null, champ = 'participants'): string[] {
   if (brut === undefined) return [];
   if (!Array.isArray(brut) || brut.some((x) => typeof x !== 'string')) {
-    erreurs.push(`${qui} : « participants » doit être une liste d'identifiants de personnes.`);
+    erreurs.push(`${qui} : « ${champ} » doit être une liste d'identifiants de personnes.`);
     return [];
   }
   const ids = brut as string[];
@@ -515,6 +570,78 @@ function lireJourPlan(brut: unknown, index: number, erreurs: string[], idsPerson
   return erreurs.length > avant ? null : { jour, participants };
 }
 
+function lireReglages(brut: unknown, erreurs: string[]): Reglages | null {
+  const avant = erreurs.length;
+  const valide = (x: unknown): x is number => typeof x === 'number' && Number.isFinite(x) && x >= 0 && x <= 1440;
+  const d = estObjet(brut) && estObjet(brut.delaiAeroportMin) ? brut.delaiAeroportMin : null;
+  if (!d || !valide(d.international) || !valide(d.interieur)) {
+    erreurs.push("« reglages » : délais d'aéroport invalides (nombres de minutes entre 0 et 1 440 attendus).");
+    return null;
+  }
+  const r = brut as Objet;
+
+  const tauxChange: TauxChange[] = [];
+  if (r.tauxChange !== undefined) {
+    if (!Array.isArray(r.tauxChange)) erreurs.push('« reglages » : « tauxChange » doit être une liste.');
+    else {
+      for (const t of r.tauxChange) {
+        const devise = estObjet(t) ? texte(t, 'devise').toUpperCase() : '';
+        if (!estObjet(t) || !/^[A-Z]{3}$/.test(devise) || typeof t.taux !== 'number' || !(t.taux > 0) || t.taux > 1e6 || !dateValide(texte(t, 'date'))) {
+          erreurs.push('« reglages » : taux de change invalide (devise de 3 lettres, taux positif, date AAAA-MM-JJ).');
+        } else if (texte(t, 'lien') !== '' && lienSur(texte(t, 'lien')) === null) {
+          erreurs.push(`« reglages » : taux ${devise} : le lien de la source doit commencer par https://.`);
+        } else tauxChange.push({ devise, taux: t.taux, date: texte(t, 'date'), source: texte(t, 'source'), lien: texte(t, 'lien') });
+      }
+    }
+  }
+
+  const budget: BudgetLigne[] = [];
+  if (r.budget !== undefined) {
+    if (!Array.isArray(r.budget)) erreurs.push('« reglages » : « budget » doit être une liste.');
+    else {
+      r.budget.forEach((b, i) => {
+        const devise = estObjet(b) ? texte(b, 'devise').toUpperCase() : '';
+        if (!estObjet(b) || !PERIMETRES_BUDGET.some((p) => p === b.perimetre) || typeof b.montant !== 'number' || !(b.montant >= 0) || !/^[A-Z]{3}$/.test(devise)) {
+          erreurs.push(`« reglages » : budget n°${i + 1} invalide (périmètre ${PERIMETRES_BUDGET.join(', ')}, montant, devise de 3 lettres).`);
+        } else budget.push({ id: texte(b, 'id') || `budget-import-${i + 1}`, perimetre: b.perimetre as BudgetLigne['perimetre'], libelle: texte(b, 'libelle'), pays: texte(b, 'pays'), montant: b.montant, devise });
+      });
+    }
+  }
+
+  let rythme: Reglages['rythme'] = { activitesMax: null, heureLever: '', pauses: [] };
+  if (r.rythme !== undefined) {
+    const y = r.rythme;
+    if (!estObjet(y)) erreurs.push('« reglages » : « rythme » invalide.');
+    else {
+      const max = y.activitesMax ?? null;
+      if (max !== null && (typeof max !== 'number' || !Number.isInteger(max) || max < 0 || max > 50)) erreurs.push('« reglages » : nombre d\'activités par jour invalide (entier entre 0 et 50).');
+      const lever = texte(y, 'heureLever');
+      if (lever !== '' && !heureValide(lever)) erreurs.push('« reglages » : heure de lever invalide (HH:MM).');
+      const pauses: Reglages['rythme']['pauses'] = [];
+      if (y.pauses !== undefined) {
+        if (!Array.isArray(y.pauses)) erreurs.push('« reglages » : « pauses » doit être une liste.');
+        else {
+          for (const p of y.pauses) {
+            if (!estObjet(p) || !heureValide(texte(p, 'debut')) || !heureValide(texte(p, 'fin')) || texte(p, 'fin') <= texte(p, 'debut')) erreurs.push('« reglages » : pause invalide (début et fin en HH:MM, fin après le début).');
+            else pauses.push({ libelle: texte(p, 'libelle'), debut: texte(p, 'debut'), fin: texte(p, 'fin') });
+          }
+        }
+      }
+      rythme = { activitesMax: typeof max === 'number' ? max : null, heureLever: lever, pauses };
+    }
+  }
+
+  const aEviter = lireListeFermee(r.aEviter, A_EVITER, '« reglages »', 'aEviter', erreurs);
+  const transports = lireListeFermee(r.transports, MODES_TRAJET, '« reglages »', 'transports', erreurs) as ModeTrajet[];
+  let trajetLongKm = 15;
+  if (r.trajetLongKm !== undefined) {
+    if (typeof r.trajetLongKm !== 'number' || !(r.trajetLongKm > 0) || r.trajetLongKm > 2000) erreurs.push('« reglages » : seuil de long trajet invalide (kilomètres, entre 0 et 2 000).');
+    else trajetLongKm = r.trajetLongKm;
+  }
+  if (erreurs.length > avant) return null;
+  return { delaiAeroportMin: { international: d.international, interieur: d.interieur }, tauxChange, budget, rythme, aEviter, trajetLongKm, transports };
+}
+
 export function validerImport(brut: unknown): ResultatImport {
   if (!estObjet(brut)) return { ok: false, erreurs: ['Le fichier ne contient pas de données reconnaissables.'] };
   if (brut.format !== FORMAT_FICHIER) {
@@ -555,14 +682,8 @@ export function validerImport(brut: unknown): ResultatImport {
   }
 
   if (brut.reglages !== undefined) {
-    const r = brut.reglages;
-    const d = estObjet(r) && estObjet(r.delaiAeroportMin) ? r.delaiAeroportMin : null;
-    const valide = (x: unknown): x is number => typeof x === 'number' && Number.isFinite(x) && x >= 0 && x <= 1440;
-    if (!d || !valide(d.international) || !valide(d.interieur)) {
-      erreurs.push('« reglages » : délais d\'aéroport invalides (nombres de minutes entre 0 et 1 440 attendus).');
-    } else {
-      donnees.reglages = { delaiAeroportMin: { international: d.international, interieur: d.interieur } };
-    }
+    const r = lireReglages(brut.reglages, erreurs);
+    if (r) donnees.reglages = r;
   }
 
   let idsEtapes: Set<string> | null = null;
@@ -622,6 +743,17 @@ export function validerImport(brut: unknown): ResultatImport {
     }
   }
 
+  if (brut.groupes !== undefined) {
+    if (!Array.isArray(brut.groupes)) {
+      erreurs.push('« groupes » doit être une liste.');
+    } else {
+      const ids = new Set<string>();
+      const idsPourVerif = idsPersonnes ?? (donnees.personnes ? new Set(donnees.personnes.map((p) => p.id)) : null);
+      const groupes = brut.groupes.map((g, i) => lireGroupe(g, i, erreurs, ids, idsPourVerif));
+      donnees.groupes = groupes.filter((g): g is Groupe => g !== null);
+    }
+  }
+
   if (brut.creneaux !== undefined) {
     if (!Array.isArray(brut.creneaux)) {
       erreurs.push('« creneaux » doit être une liste.');
@@ -667,8 +799,8 @@ export function validerImport(brut: unknown): ResultatImport {
   }
 
   if (erreurs.length > 0) return { ok: false, erreurs };
-  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.creneaux && !donnees.joursPlan && !donnees.lieuxPerso && !donnees.suiviLieux) {
-    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni créneaux, ni lieux.'] };
+  if (!donnees.vols && !donnees.compteurs && !donnees.reglages && !donnees.etapes && !donnees.logements && !donnees.trajets && !donnees.taches && !donnees.personnes && !donnees.groupes && !donnees.creneaux && !donnees.joursPlan && !donnees.lieuxPerso && !donnees.suiviLieux) {
+    return { ok: false, erreurs: ['Le fichier ne contient ni vols, ni compteurs, ni réglages, ni étapes, ni logements, ni trajets, ni tâches, ni personnes, ni groupes, ni créneaux, ni lieux.'] };
   }
   return { ok: true, donnees, avertissements };
 }

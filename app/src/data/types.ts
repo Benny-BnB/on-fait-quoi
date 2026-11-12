@@ -57,9 +57,40 @@ export type Compteur = {
   delaiMin: number; // minutes AVANT la cible (0 = à l'heure exacte)
 };
 
+// Taux de change : 1 unité de la devise = "taux" euros. Toujours daté et sourcé (jamais deviné).
+export type TauxChange = { devise: string; taux: number; date: string; source: string; lien: string };
+
+// Un budget fixé par l'utilisateur : par jour et par personne, pour un pays, ou pour le groupe entier
+export const PERIMETRES_BUDGET = ['jour-personne', 'pays', 'groupe'] as const;
+export type PerimetreBudget = (typeof PERIMETRES_BUDGET)[number];
+export type BudgetLigne = { id: string; perimetre: PerimetreBudget; libelle: string; pays: string; montant: number; devise: string };
+
+// Ce qu'on peut vouloir éviter un jour donné
+export const A_EVITER = ['foule', 'longs-trajets', 'chaleur', 'extreme'] as const;
+export type AEviter = (typeof A_EVITER)[number];
+export const LIBELLES_A_EVITER: Record<AEviter, string> = {
+  foule: 'La foule',
+  'longs-trajets': 'Les longs trajets',
+  chaleur: 'La chaleur',
+  extreme: 'Les activités extrêmes',
+};
+
+export type PauseRythme = { libelle: string; debut: string; fin: string }; // HH:MM
+export type Rythme = {
+  activitesMax: number | null; // nombre d'activités souhaité par jour, null = pas de limite
+  heureLever: string; // HH:MM, '' = pas réglée
+  pauses: PauseRythme[];
+};
+
 export type Reglages = {
   // Délai conseillé d'arrivée à l'aéroport avant le décollage, en minutes
   delaiAeroportMin: { international: number; interieur: number };
+  tauxChange: TauxChange[];
+  budget: BudgetLigne[];
+  rythme: Rythme;
+  aEviter: AEviter[]; // réglage de base, modifiable le jour même dans « Quoi faire, quand ? »
+  trajetLongKm: number; // au-delà de cette distance à vol d'oiseau depuis le logement, un lieu compte comme « long trajet »
+  transports: ModeTrajet[]; // modes acceptés ; [] = tous
 };
 
 // Une étape du voyage (une ville ou une région où l'on séjourne)
@@ -163,12 +194,54 @@ export type Tache = {
   lien: string; // lien utile (http ou https), vide si aucun
 };
 
-// Une personne du voyage (le détail : âge, alimentation, mobilité… viendra à l'étape 8)
+export const REGIMES = ['vegetarien', 'vegan', 'halal', 'sans-gluten', 'sans-lactose', 'allergie'] as const;
+export type Regime = (typeof REGIMES)[number];
+export const LIBELLES_REGIME: Record<Regime, string> = {
+  vegetarien: 'Végétarien',
+  vegan: 'Végan',
+  halal: 'Halal',
+  'sans-gluten': 'Sans gluten',
+  'sans-lactose': 'Sans lactose',
+  allergie: 'Allergie',
+};
+
+export const MOBILITES = ['marche-limitee', 'debout-limite', 'poussette', 'fauteuil', 'escaliers'] as const;
+export type Mobilite = (typeof MOBILITES)[number];
+export const LIBELLES_MOBILITE: Record<Mobilite, string> = {
+  'marche-limitee': 'Marche longue limitée',
+  'debout-limite': 'Station debout limitée',
+  poussette: 'Poussette',
+  fauteuil: 'Fauteuil',
+  escaliers: 'Escaliers difficiles',
+};
+
+export const CONFORTS = ['froid', 'chaud'] as const;
+export type Confort = (typeof CONFORTS)[number];
+export const LIBELLES_CONFORT: Record<Confort, string> = { froid: 'Sensible au froid', chaud: 'Sensible à la chaleur' };
+
+export const TRANCHES_AGE = ['enfant', 'adulte', 'senior'] as const;
+export type TrancheAge = (typeof TRANCHES_AGE)[number];
+export const LIBELLES_TRANCHE_AGE: Record<TrancheAge, string> = { enfant: 'Enfant', adulte: 'Adulte', senior: 'Senior' };
+
+// Période de présence : du jour "du" au jour "au" inclus (AAAA-MM-JJ)
+export type PlagePresence = { du: string; au: string };
+
+// Une personne du voyage
 export type Personne = {
   id: string;
   prenom: string; // le prénom, ou un libellé comme « Ami »
   notes: string;
+  ageAns: number | null; // âge en années, si connu
+  tranche: TrancheAge | ''; // utilisée quand l'âge exact n'est pas connu
+  alimentation: string; // texte libre : allergies précises, aversions…
+  regimes: Regime[];
+  mobilite: Mobilite[];
+  confort: Confort[];
+  presence: PlagePresence[]; // [] = présente tout le voyage ; sinon seulement pendant ces périodes
 };
+
+// Un groupe de personnes (« les amis », « tout le monde »…)
+export type Groupe = { id: string; nom: string; personneIds: string[] };
 
 export const PERIODES = ['matin', 'midi', 'apres-midi', 'soir', 'nuit'] as const;
 export type Periode = (typeof PERIODES)[number];
@@ -245,6 +318,11 @@ export const LIBELLES_CATEGORIE: Record<Categorie, string> = {
   famille: 'En famille et événements',
 };
 
+// Mise en garde sourcée sur un lieu, utilisée pour « À éviter ce jour » (foule, chaleur, activité extrême)
+export type AttentionLieu = { genre: 'foule' | 'chaleur' | 'extreme'; texte: string; source: SourceLieu };
+// Comment y aller, quand une source le dit
+export type AccesLieu = { modes: ModeTrajet[]; texte: string; source: SourceLieu };
+
 // D'où vient une information. Sans source, l'information n'existe pas : elle est « à vérifier ».
 export type SourceLieu = {
   lien: string; // https://…
@@ -288,6 +366,8 @@ export type Lieu = {
   tenue: { texte: string; source: SourceLieu } | null;
   interieur: '' | 'interieur' | 'exterieur' | 'mixte';
   public: { texte: string; source: SourceLieu } | null; // enfants, seniors, accessibilité, alimentation
+  attention: AttentionLieu[]; // [] = aucune mise en garde sourcée (ce n'est pas une garantie)
+  acces: AccesLieu[]; // [] = accès non renseigné
   lienOfficiel: string;
   verifieLe: string; // AAAA-MM-JJ : dernière vérification de la fiche, '' si jamais
   notes: string;
@@ -333,6 +413,7 @@ export type Donnees = {
   trajets: Trajet[];
   taches: Tache[];
   personnes: Personne[];
+  groupes: Groupe[];
   creneaux: Creneau[];
   joursPlan: JourPlan[];
   lieuxPerso: Lieu[]; // lieux ajoutés par l'utilisateur (souhaits) : jamais publiés

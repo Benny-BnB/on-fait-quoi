@@ -115,6 +115,22 @@
       },
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau",
+            "a-pied"
+          ],
+          "texte": "Le guide indique l'arrivée en bateau au ponton de Tha Chang, puis une marche le long du grand mur blanc.",
+          "source": {
+            "lien": "https://bangkokforvisitors.com/ratanakosin/grand-palace/",
+            "libelle": "Bangkok for Visitors (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
       "lienOfficiel": "https://www.royalgrandpalace.th/en/home",
       "verifieLe": "2026-11-11",
       "notes": "Durée de visite, réservation en ligne et tenue : non indiquées par le site officiel (à vérifier). Un guide parle de « la majeure partie d'une journée ».",
@@ -179,6 +195,8 @@
       },
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "https://www.watpho.com/en",
       "verifieLe": "2026-11-11",
       "notes": "Horaires non retenus : le site officiel n'indique pas les horaires habituels et les guides divergent (fermeture à 18:30 ou à 19:30). À vérifier avant d'y aller.",
@@ -309,6 +327,8 @@
       },
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Le site officiel du tourisme thaïlandais n'a pas pu être consulté (accès refusé) : prix et horaires restent à confirmer.",
@@ -346,6 +366,8 @@
       "tenue": null,
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "https://www.supannigaeatingroom.com/",
       "verifieLe": "2026-11-11",
       "notes": "Adresse, horaires, prix et emplacement GPS de la succursale Tha Tien : non indiqués sur la page lue (page de contact et menu PDF non lus). À vérifier sur le site officiel.",
@@ -451,6 +473,8 @@
       "tenue": null,
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Téléphone indiqué par l'annuaire : +6622215651. Site officiel non trouvé ; prix, durée et tenue : à vérifier.",
@@ -546,6 +570,32 @@
       "tenue": null,
       "interieur": "exterieur",
       "public": null,
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "foule maximale entre 19:00 et 23:00, et files d'attente les plus longues devant les boutiques célèbres à partir de 19:00",
+          "source": {
+            "lien": "https://www.lovethailand.org/travel/en/17-Bangkok/833-China-Town.html",
+            "libelle": "lovethailand.org (guide, éditeur non indiqué)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [
+        {
+          "modes": [
+            "metro"
+          ],
+          "texte": "Station de métro Wat Mangkon (BL29) à proximité ; le guide recommande le métro car les routes sont embouteillées en début de soirée.",
+          "source": {
+            "lien": "https://www.lovethailand.org/travel/en/17-Bangkok/833-China-Town.html",
+            "libelle": "lovethailand.org (guide, éditeur non indiqué)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Station de métro la plus proche indiquée : Wat Mangkon (BL29). Le guide recommande le métro car les routes sont embouteillées en début de soirée. Prix et durée : à vérifier.",
@@ -662,6 +712,19 @@
       "tenue": null,
       "interieur": "exterieur",
       "public": null,
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "la foule culmine vers 22:00 et dure jusqu'à environ 02:00 (le plus animé : 20:00-01:00)",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/khao-san-road/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Mises en garde du guide : pickpockets après 21:00, bruit jusqu'à 02:00 (déconseillé pour dormir), certains menus affichent des prix plus élevés en anglais qu'en thaï.",
@@ -718,6 +781,8 @@
       },
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "https://lebua.com/sky-bar/",
       "verifieLe": "2026-11-11",
       "notes": "Horaires, prix et règle d'âge : non indiqués par la page officielle lue (la carte des boissons est en PDF, non lue). Le guide « Rooftop Guide » précise que le restaurant Sirocco, lui, se réserve des semaines à l'avance. Cité dans « Best Rooftop Bars » (Lonely Planet, Pocket Bangkok, aperçu p. 15).",
@@ -774,6 +839,8 @@
       },
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Horaires non retenus : les guides s'accordent sur une ouverture à 17:00 mais divergent sur la fermeture (00:00, 01:00 ou 02:00). Téléphone indiqué par Time Out : 02-797-0000. Prix et site officiel : à vérifier.",
@@ -830,6 +897,8 @@
       },
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "https://www.banyantree.com/thailand/bangkok/dining/vertigo-and-moon-bar",
       "verifieLe": "2026-11-11",
       "notes": "La page officielle n'a pas pu être lue (accès refusé) : horaires, prix et règles de pluie restent à vérifier. Cité dans « Best Rooftop Bars » sous le nom « Moon Bar » (Lonely Planet, Pocket Bangkok, aperçu p. 15).",
@@ -919,6 +988,8 @@
       "tenue": null,
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "https://www.asiatiquethailand.com/",
       "verifieLe": "2026-11-11",
       "notes": "Prix, navette fluviale gratuite et fermetures éventuelles : non indiqués sur la page lue (à vérifier).",
@@ -1020,6 +1091,42 @@
       "tenue": null,
       "interieur": "",
       "public": null,
+      "attention": [
+        {
+          "genre": "chaleur",
+          "texte": "la chaleur est la vraie limite : peu de brise à l'intérieur, et de midi à 14:00 c'est le moment le plus dur",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/chatuchak-weekend-market/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        },
+        {
+          "genre": "foule",
+          "texte": "la foule bloque les allées vers midi ; le guide conseille d'arriver tôt",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/chatuchak-weekend-market/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [
+        {
+          "modes": [
+            "metro"
+          ],
+          "texte": "MRT Kamphaeng Phet (sortie 2), MRT Chatuchak Park (sortie 1), BTS Mo Chit (sortie 1, environ 400 m) ; le guide recommande le train car la circulation est dense le week-end.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/chatuchak-weekend-market/",
+            "libelle": "Thai Holiday Guide (guide)",
+            "consulteLe": "2026-11-11",
+            "officielle": false
+          }
+        }
+      ],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Mises en garde du guide : chaleur (midi à 14:00 le plus dur), foule dans les allées vers midi, petits vendeurs payables en espèces seulement. Métro : MRT Kamphaeng Phet (sortie 2), MRT Chatuchak Park (sortie 1), BTS Mo Chit (sortie 1, environ 400 m).",
@@ -1142,6 +1249,8 @@
       "tenue": null,
       "interieur": "",
       "public": null,
+      "attention": [],
+      "acces": [],
       "lienOfficiel": "",
       "verifieLe": "2026-11-11",
       "notes": "Le site officiel n'a pas pu être consulté (certificat invalide lors de la vérification) : prix, horaires et tenue restent à confirmer.",

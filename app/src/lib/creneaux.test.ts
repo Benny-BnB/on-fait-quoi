@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Compteur, Creneau, Donnees, Etape, Personne, Trajet, Vol } from '../data/types.ts';
-import { REGLAGES_PAR_DEFAUT } from '../data/defauts.ts';
+import { REGLAGES_PAR_DEFAUT, personneVide } from '../data/defauts.ts';
 import { creneauxImposes } from './planning.ts';
 import {
   alertesCreneaux,
@@ -53,7 +53,7 @@ function creneau(id: string, extra: Partial<Creneau> = {}): Creneau {
 }
 
 function donnees(partiel: Partial<Donnees> = {}): Donnees {
-  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], personnes: [], creneaux: [], joursPlan: [], lieuxPerso: [], suiviLieux: [], ...partiel };
+  return { vols: [], compteurs: [], reglages: REGLAGES_PAR_DEFAUT, etapes: [], logements: [], trajets: [], taches: [], personnes: [], creneaux: [], joursPlan: [], groupes: [], lieuxPerso: [], suiviLieux: [], ...partiel };
 }
 
 // Vol fictif : Bruxelles 10:00 -> Bruxelles 12:00 le 10/03/2027 (mars : UTC+1), international (3 h d'avance : limite 07:00)
@@ -131,9 +131,9 @@ test('libellé d\'horaire', () => {
   assert.equal(libelleHoraire(creneau('e')), 'Heure à définir');
 });
 
-const p1: Personne = { id: 'p1', prenom: 'Un', notes: '' };
-const p2: Personne = { id: 'p2', prenom: 'Deux', notes: '' };
-const p3: Personne = { id: 'p3', prenom: 'Trois', notes: '' };
+const p1: Personne = personneVide('p1', 'Un');
+const p2: Personne = personneVide('p2', 'Deux');
+const p3: Personne = personneVide('p3', 'Trois');
 
 test('participants : ceux du créneau, sinon ceux du jour, sinon tout le monde', () => {
   const d = donnees({ personnes: [p1, p2, p3], joursPlan: [{ jour: JOUR, participants: ['p1', 'p2'] }] });

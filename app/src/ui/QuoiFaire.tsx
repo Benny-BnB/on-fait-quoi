@@ -2,13 +2,17 @@ import { useMemo, useState } from 'preact/hooks';
 import { nouvelId } from '../data/defauts.ts';
 import { ERREURS_BASE_LIEUX, tousLesLieux } from '../data/lieux-publics.ts';
 import { enregistrerCreneau, useStore } from '../data/store.ts';
-import type { Categorie, Periode } from '../data/types.ts';
-import { CATEGORIES, LIBELLES_CATEGORIE, LIBELLES_PERIODE, PERIODES } from '../data/types.ts';
-import { alternatifDe, creerAlternative, deviseDuJour, periodeEffective } from '../lib/creneaux.ts';
+import type { AEviter, Categorie, ModeTrajet, Periode, TauxChange } from '../data/types.ts';
+import { A_EVITER, CATEGORIES, LIBELLES_A_EVITER, LIBELLES_CATEGORIE, LIBELLES_MODE, LIBELLES_PERIODE, MODES_TRAJET, PERIODES } from '../data/types.ts';
+import { libelleEuro } from '../lib/budget.ts';
+import { alternatifDe, creerAlternative, deviseDuJour, participantsEffectifs, periodeEffective } from '../lib/creneaux.ts';
+import { groupeComplet, idsPresentsLe, personnesDe } from '../lib/profils.ts';
+import { activitesDuJour } from '../lib/rythme.ts';
 import type { Demande, Proposition, Tri } from '../lib/lieux.ts';
 import { creneauDepuisLieu, demandeVide, fenetresVols, filtrerLieux, formatDistance, heureDeLaDemande, lieuxDeLaZone, pointDeDepart } from '../lib/lieux.ts';
 import { dateValide, formatDateIso, heureValide } from '../lib/temps.ts';
 import { BadgeOuverture, libelleDuree, libellePrix, resumeSources } from './AffichageLieu.tsx';
+import { ChoixListe } from './ChoixListe.tsx';
 import { Champ, Page } from './commun.tsx';
 import { aller, lienJour, lienLieu, lienNouveauLieu } from './routeur.ts';
 
@@ -27,7 +31,7 @@ const nombreOuNull = (t: string): number | null => {
   return Number.isFinite(n) && n >= 0 ? n : null;
 };
 
-function CartePropositon(props: { p: Proposition; action: string; actionActive: boolean; onAction: () => void; surprise?: boolean }) {
+function CartePropositon(props: { p: Proposition; taux: TauxChange[]; action: string; actionActive: boolean; onAction: () => void; surprise?: boolean }) {
   const { p } = props;
   const l = p.lieu;
   const sources = resumeSources(l);
@@ -49,6 +53,7 @@ function CartePropositon(props: { p: Proposition; action: string; actionActive: 
         {!l.duree && <span class="attention-texte">à vérifier</span>}
         {' · '}
         {l.prix ? libellePrix(l.prix) : 'Prix : '}
+        {l.prix && libelleEuro(l.prix.min, l.prix.devise, props.taux) && ` (${libelleEuro(l.prix.min, l.prix.devise, props.taux)}${l.prix.max !== l.prix.min ? ` à ${libelleEuro(l.prix.max, l.prix.devise, props.taux)}` : ''})`}
         {!l.prix && <span class="attention-texte">à vérifier</span>}
         {l.prix && !l.prix.source.officielle && <span class="attention-texte"> (à vérifier)</span>}
       </span>
@@ -62,6 +67,12 @@ function CartePropositon(props: { p: Proposition; action: string; actionActive: 
       {p.avertissements.map((a) => (
         <span class="attention-texte" key={a}>
           {a}
+        </span>
+      ))}
+      {p.signalements.map((x) => (
+        <span class={x.fort ? 'attention-texte' : 'discret'} key={x.cle}>
+          {x.fort ? '⚠ ' : 'ℹ '}
+          {x.texte}
         </span>
       ))}
       {sources.length > 0 && <span class="source">Sources : {sources.join(' · ')}</span>}
@@ -102,6 +113,10 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
   const [vue, definirVue] = useState<'tous' | 'envies' | 'favoris'>('tous');
   const [cacherFaits, definirCacherFaits] = useState(false);
   const [surprise, definirSurprise] = useState<string | null>(null);
+  const [quiChoisi, definirQui] = useState<string[] | null>(null); // null = les personnes présentes ce jour-là
+  const [aEviter, definirAEviter] = useState<AEviter[]>(donnees.reglages.aEviter);
+  const [transports, definirTransports] = useState<ModeTrajet[]>(donnees.reglages.transports);
+  const [masquer, definirMasquer] = useState(false);
   const maj = (partiel: Partial<Demande>) => {
     definirSurprise(null);
     definirDemande((d) => ({ ...d, ...partiel }));
@@ -111,14 +126,21 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
   const depart = jourOk ? pointDeDepart(donnees, demande.jour) : null;
   const vols = useMemo(() => fenetresVols(donnees), [donnees.vols, donnees.trajets, donnees.reglages]);
 
+  // Qui : par défaut, les personnes présentes ce jour-là (aucune sans jour) ; en « Autre idée », les participants du créneau
+  const idsParDefaut = principal ? participantsEffectifs(principal, donnees).map((p) => p.id) : jourOk ? idsPresentsLe(donnees, demande.jour) : [];
+  const idsQui = quiChoisi ?? idsParDefaut;
+  const personnesQui = useMemo(() => personnesDe(donnees, [], idsQui), [donnees.personnes, idsQui.join('|')]);
+  const reglages = donnees.reglages;
+  const complet = { ...demande, budgetMax: nombreOuNull(budgetTxt), dureeMax: nombreOuNull(dureeTxt), depuis: depart?.point ?? null, personnes: personnesQui, aEviter, transports, trajetLongKm: reglages.trajetLongKm, masquerContraintes: masquer };
+
   const toutes = useMemo(
-    () => filtrerLieux(lieux, { ...demande, budgetMax: nombreOuNull(budgetTxt), dureeMax: nombreOuNull(dureeTxt), depuis: depart?.point ?? null }, donnees.suiviLieux, vols),
-    [lieux, demande, budgetTxt, dureeTxt, depart, donnees.suiviLieux, vols],
+    () => filtrerLieux(lieux, complet, donnees.suiviLieux, vols),
+    [lieux, demande, budgetTxt, dureeTxt, depart, donnees.suiviLieux, vols, personnesQui, aEviter, transports, reglages.trajetLongKm, masquer],
   );
   // Combien de lieux sont masqués parce qu'ils empêcheraient d'attraper un vol (pour le dire clairement)
   const filtreVols = jourOk && heureDeLaDemande(demande) !== '' && vols.length > 0;
   const masquesVol = useMemo(
-    () => (filtreVols ? filtrerLieux(lieux, { ...demande, budgetMax: nombreOuNull(budgetTxt), dureeMax: nombreOuNull(dureeTxt), depuis: null }, donnees.suiviLieux, []).length - toutes.length : 0),
+    () => (filtreVols ? filtrerLieux(lieux, { ...complet, depuis: null }, donnees.suiviLieux, []).length - toutes.length : 0),
     [filtreVols, lieux, demande, budgetTxt, dureeTxt, donnees.suiviLieux, toutes],
   );
   const propositions = toutes.filter((p) => (vue === 'envies' ? p.souhait !== '' : vue === 'favoris' ? p.favori : true)).filter((p) => !(cacherFaits && p.fait));
@@ -220,6 +242,64 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
           </>
         )}
 
+        <fieldset class="groupe">
+          <legend>Qui ?</legend>
+          {donnees.personnes.length === 0 ? (
+            <p class="discret">
+              Aucune personne enregistrée : <a href="#/personnes">ajoute les personnes du voyage</a> pour voir ce qui convient à chacun.
+            </p>
+          ) : (
+            <>
+              {donnees.groupes.length > 0 && (
+                <div class="chips" role="group" aria-label="Groupes">
+                  {donnees.groupes.map((g) => {
+                    const choisi = groupeComplet(g, idsQui);
+                    return (
+                      <label key={g.id} class={`chip${choisi ? ' choisi' : ''}`}>
+                        <input
+                          type="checkbox"
+                          checked={choisi}
+                          onChange={() => {
+                            definirSurprise(null);
+                            definirQui(choisi ? idsQui.filter((id) => !g.personneIds.includes(id)) : [...new Set([...idsQui, ...g.personneIds])]);
+                          }}
+                        />
+                        <span>{g.nom}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              )}
+              <div class="chips" role="group" aria-label="Personnes">
+                {donnees.personnes.map((p) => {
+                  const choisi = idsQui.includes(p.id);
+                  return (
+                    <label key={p.id} class={`chip${choisi ? ' choisi' : ''}`}>
+                      <input
+                        type="checkbox"
+                        checked={choisi}
+                        onChange={() => {
+                          definirSurprise(null);
+                          definirQui(choisi ? idsQui.filter((id) => id !== p.id) : [...idsQui, p.id]);
+                        }}
+                      />
+                      <span>{p.prenom}</span>
+                    </label>
+                  );
+                })}
+              </div>
+              <p class="champ-aide">
+                {quiChoisi === null ? (jourOk || principal ? 'Par défaut : les personnes présentes ce jour-là.' : 'Choisis un jour, ou les personnes concernées, pour voir leurs contraintes.') : 'Choix manuel.'}{' '}
+                {quiChoisi !== null && (
+                  <button type="button" class="bouton secondaire petit" onClick={() => definirQui(null)}>
+                    Revenir au choix automatique
+                  </button>
+                )}
+              </p>
+            </>
+          )}
+        </fieldset>
+
         <Champ etiquette="Mots-clés" aide="Sans accent ni majuscule : « vue wat arun », « marché », « rooftop »…">
           <input type="search" value={demande.mots} autocomplete="off" onInput={(e) => maj({ mots: e.currentTarget.value })} />
         </Champ>
@@ -255,6 +335,20 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
           </Champ>
         </div>
 
+        <fieldset class="groupe">
+          <legend>À éviter ce jour</legend>
+          <ChoixListe options={A_EVITER} libelles={LIBELLES_A_EVITER} valeur={aEviter} onChange={(v) => { definirSurprise(null); definirAEviter(v); }} legende="À éviter ce jour" />
+          <p class="champ-aide">Réglage de base dans <a href="#/rythme">Rythme et préférences</a>. Seuls les lieux dont une source en parle sont signalés.</p>
+        </fieldset>
+        <fieldset class="groupe">
+          <legend>Transport</legend>
+          <ChoixListe options={MODES_TRAJET} libelles={LIBELLES_MODE} valeur={transports} onChange={(v) => { definirSurprise(null); definirTransports(v); }} legende="Transports acceptés" />
+          <p class="champ-aide">Sans choix, tous. Seuls les lieux dont une source donne l'accès sont concernés.</p>
+        </fieldset>
+        <label class="interrupteur">
+          <input type="checkbox" checked={masquer} onChange={(e) => { definirSurprise(null); definirMasquer(e.currentTarget.checked); }} />
+          <span>Masquer les lieux qui contredisent clairement une contrainte (sinon : signalés avec la raison)</span>
+        </label>
         <label class="interrupteur">
           <input type="checkbox" checked={demande.seulementOuverts} onChange={(e) => maj({ seulementOuverts: e.currentTarget.checked })} />
           <span>Seulement ce qui est ouvert à ce moment (« à vérifier » est gardé)</span>
@@ -297,6 +391,12 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
             </button>
           )}
         </div>
+        {jourOk && !principal && (
+          <p class="discret">
+            Ce jour : {activitesDuJour(donnees, demande.jour)} activité{activitesDuJour(donnees, demande.jour) > 1 ? 's' : ''} déjà prévue{activitesDuJour(donnees, demande.jour) > 1 ? 's' : ''}
+            {reglages.rythme.activitesMax !== null ? ` sur ${reglages.rythme.activitesMax} souhaitée${reglages.rythme.activitesMax > 1 ? 's' : ''} (rythme réglé).` : '. Aucune limite réglée.'}
+          </p>
+        )}
         {depart ? (
           <p class="discret">Distances calculées depuis « {depart.nom} », à vol d'oiseau.</p>
         ) : (
@@ -316,7 +416,7 @@ export function QuoiFaire(props: { jour?: string; periode?: string; planbDe?: st
           </section>
         )}
         {affichees.map((p) => (
-          <CartePropositon key={p.lieu.id} p={p} action={actionLibelle} actionActive={actionActive} surprise={tirage !== undefined} onAction={() => void choisir(p)} />
+          <CartePropositon key={p.lieu.id} p={p} taux={reglages.tauxChange} action={actionLibelle} actionActive={actionActive} surprise={tirage !== undefined} onAction={() => void choisir(p)} />
         ))}
       </section>
 

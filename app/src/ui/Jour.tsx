@@ -5,11 +5,11 @@ import { basculerCreneauFait, definirParticipantsJour, enregistrerCreneau, useSt
 import type { Creneau, Periode } from '../data/types.ts';
 import { LIBELLES_PERIODE } from '../data/types.ts';
 import type { ElementJour } from '../lib/creneaux.ts';
-import { alertesCreneaux, deviseDuJour, elementsDuJour, estPrincipal, HEURE_PERIODE, idsParticipantsJour, periodeEffective, totauxJour, zoneDuJour } from '../lib/creneaux.ts';
+import { deviseDuJour, elementsDuJour, estPrincipal, HEURE_PERIODE, idsParticipantsJour, periodeEffective, totauxJour, zoneDuJour } from '../lib/creneaux.ts';
 import { useMaintenant } from '../lib/horloge.ts';
 import type { Alerte } from '../lib/planning.ts';
-import { alertesPlanning, creneauxImposes, etapesDuJour } from '../lib/planning.ts';
-import { alertesLieux } from '../lib/lieux.ts';
+import { creneauxImposes, etapesDuJour } from '../lib/planning.ts';
+import { toutesLesAlertes } from '../lib/alertes.ts';
 import { ajouterJours, jourSemaine } from '../lib/sejour.ts';
 import { aujourdhuiIso, dateValide, formatDateHeureDansFuseau, formatDateIso, fuseauTelephone, instantLocal } from '../lib/temps.ts';
 import { ChoixParticipants } from './ChoixParticipants.tsx';
@@ -91,7 +91,7 @@ export function Jour(props: { jour: string }) {
   const [ouvert, definirOuvert] = useState<Periode | null>(null);
   const jour = props.jour;
   const imposes = useMemo(() => creneauxImposes(donnees), [donnees]);
-  const alertes = useMemo<Alerte[]>(() => [...alertesPlanning(donnees), ...alertesCreneaux(donnees), ...alertesLieux(donnees, tousLesLieux(donnees))], [donnees]);
+  const alertes = useMemo<Alerte[]>(() => toutesLesAlertes(donnees, tousLesLieux(donnees)), [donnees]);
 
   if (!dateValide(jour)) {
     return (

@@ -1,9 +1,12 @@
 // Fiches de lieux : validation stricte, recherche, ouverture, distance, filtres.
 // Règle du cahier : une information sans source n'existe pas, elle est « à vérifier ».
 
-import type { Categorie, Creneau, Donnees, HorairesLieu, JourSemaine, Lieu, PlageHoraire, Periode, SouhaitLieu, SourceLieu, SuiviLieu } from '../data/types.ts';
-import { CATEGORIES, JOURS_SEMAINE, LIBELLES_CATEGORIE } from '../data/types.ts';
+import type { AccesLieu, AEviter, AttentionLieu, Categorie, ModeTrajet, Personne, Creneau, Donnees, HorairesLieu, JourSemaine, Lieu, PlageHoraire, Periode, SouhaitLieu, SourceLieu, SuiviLieu } from '../data/types.ts';
+import { CATEGORIES, JOURS_SEMAINE, LIBELLES_CATEGORIE, MODES_TRAJET } from '../data/types.ts';
 import { HEURE_PERIODE } from './periodes.ts';
+import { accesLieu, aEviterLieu, contraintesLieu } from './contraintes.ts';
+import type { Signalement } from './contraintes.ts';
+import { normaliserTexte } from './texte.ts';
 import type { Alerte } from './planning.ts';
 import { calculerTrajet, etapesDuJour } from './planning.ts';
 import { instantArrivee, instantDepart } from './vols.ts';
@@ -215,6 +218,36 @@ function lireLieu(brut: unknown, index: number, erreurs: string[], ids: Set<stri
     }
   }
 
+  const attention: AttentionLieu[] = [];
+  if (brut.attention !== undefined) {
+    if (!Array.isArray(brut.attention)) erreurs.push(`${qui} : « attention » doit être une liste.`);
+    else {
+      for (const a of brut.attention) {
+        if (!estObjet(a) || !['foule', 'chaleur', 'extreme'].includes(a.genre as string) || !texte(a, 'texte')) {
+          erreurs.push(`${qui} : mise en garde invalide (genre foule, chaleur ou extreme, et un texte).`);
+          continue;
+        }
+        const s = lireSource(a.source, `${qui} (mise en garde)`, erreurs);
+        if (s) attention.push({ genre: a.genre as AttentionLieu['genre'], texte: texte(a, 'texte'), source: s });
+      }
+    }
+  }
+  const acces: AccesLieu[] = [];
+  if (brut.acces !== undefined) {
+    if (!Array.isArray(brut.acces)) erreurs.push(`${qui} : « acces » doit être une liste.`);
+    else {
+      for (const a of brut.acces) {
+        const modes = estObjet(a) && Array.isArray(a.modes) ? a.modes : [];
+        if (!estObjet(a) || modes.length === 0 || !modes.every((m) => MODES_TRAJET.some((x) => x === m)) || !texte(a, 'texte')) {
+          erreurs.push(`${qui} : accès invalide (au moins un mode de transport connu, et un texte).`);
+          continue;
+        }
+        const s = lireSource(a.source, `${qui} (accès)`, erreurs);
+        if (s) acces.push({ modes: modes as AccesLieu['modes'], texte: texte(a, 'texte'), source: s });
+      }
+    }
+  }
+
   const interieur = brut.interieur ?? '';
   if (!['', 'interieur', 'exterieur', 'mixte'].includes(interieur as string)) erreurs.push(`${qui} : « interieur » doit valoir interieur, exterieur, mixte ou être vide.`);
   const lienOfficiel = texte(brut, 'lienOfficiel');
@@ -242,6 +275,8 @@ function lireLieu(brut: unknown, index: number, erreurs: string[], ids: Set<stri
     tenue,
     interieur: interieur as Lieu['interieur'],
     public: publicLieu,
+    attention,
+    acces,
     lienOfficiel,
     verifieLe,
     notes: texte(brut, 'notes'),
@@ -307,9 +342,7 @@ export function fusionnerLieux(publics: Lieu[], perso: Lieu[]): Lieu[] {
 
 // ---------- Texte et recherche ----------
 
-export function normaliserTexte(s: string): string {
-  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-}
+export { normaliserTexte };
 
 function mots(s: string): string[] {
   return normaliserTexte(s).split(/[^a-z0-9]+/).filter(Boolean);
@@ -450,6 +483,12 @@ export type Demande = {
   seulementOuverts: boolean;
   depuis: Point | null; // le logement, pour calculer les distances
   tri: Tri;
+  // « Qui » : les personnes concernées (leurs contraintes sont signalées) et ce qu'on veut éviter ce jour
+  personnes: Personne[];
+  aEviter: AEviter[];
+  transports: ModeTrajet[]; // modes acceptés, [] = tous
+  trajetLongKm: number;
+  masquerContraintes: boolean; // masquer aussi les lieux qui contredisent clairement une contrainte (sinon : signalés seulement)
 };
 
 // Période pendant laquelle on n'est pas libre à cause d'un de mes vols : du départ vers l'aéroport jusqu'à l'atterrissage
@@ -460,12 +499,13 @@ export type Proposition = {
   ouvert: Ouverture;
   distanceKm: number | null;
   avertissements: string[];
+  signalements: Signalement[]; // contraintes du groupe, « à éviter », accès : avec la raison
   souhait: SouhaitLieu;
   favori: boolean;
   fait: boolean;
 };
 
-export const demandeVide = (): Demande => ({ zone: '', jour: '', debut: '', periode: '', categories: [], budgetMax: null, dureeMax: null, mots: '', seulementOuverts: false, depuis: null, tri: 'pertinence' });
+export const demandeVide = (): Demande => ({ zone: '', jour: '', debut: '', periode: '', categories: [], budgetMax: null, dureeMax: null, mots: '', seulementOuverts: false, depuis: null, tri: 'pertinence', personnes: [], aEviter: [], transports: [], trajetLongKm: 15, masquerContraintes: false });
 
 export function heureDeLaDemande(d: Demande): string {
   if (d.debut !== '' && heureValide(d.debut)) return d.debut;
@@ -504,11 +544,19 @@ export function filtrerLieux(lieux: Lieu[], d: Demande, suivis: SuiviLieu[], vol
     const suivi = suivis.find((s) => s.lieuId === lieu.id);
     const avertissements: string[] = [];
     if (ouvert.etat === 'non') avertissements.push(`Fermé à ce moment : ${ouvert.detail}`);
+    const km = d.depuis !== null && lieu.gps !== null ? distanceKm(d.depuis, lieu.gps) : null;
+    const signalements = [
+      ...contraintesLieu(lieu, d.personnes),
+      ...aEviterLieu(lieu, { aEviter: d.aEviter, distanceKm: km, trajetLongKm: d.trajetLongKm }),
+      ...accesLieu(lieu, d.transports),
+    ];
+    if (d.masquerContraintes && signalements.some((x) => x.fort)) continue;
     resultat.push({
       lieu,
       ouvert,
-      distanceKm: d.depuis !== null && lieu.gps !== null ? distanceKm(d.depuis, lieu.gps) : null,
+      distanceKm: km,
       avertissements,
+      signalements,
       souhait: suivi?.souhait ?? '',
       favori: suivi?.favori ?? false,
       fait: suivi?.fait ?? false,
