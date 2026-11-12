@@ -131,17 +131,17 @@ test('Dubaï : Global Village ferme à 01:00 du jeudi au samedi et à minuit les
 
 // ---------- Base de Krabi et Railay (étape 10) ----------
 
-test("Krabi et Railay : 9 fiches, Railay à part ; aucune source officielle lue (pages du tourisme thaïlandais refusées), donc rien n'est présenté comme vérifié", () => {
+test("Krabi et Railay : 11 fiches, Railay à part ; aucune source officielle lue (pages du tourisme thaïlandais refusées), donc rien n'est présenté comme vérifié", () => {
   const krabi = base.filter((l) => l.id.startsWith('krb-'));
-  assert.equal(krabi.length, 9);
+  assert.equal(krabi.length, 11);
   assert.deepEqual(krabi.filter((l) => l.zone === 'Railay').map((l) => l.id), ['krb-railay-beach', 'krb-phra-nang-beach', 'krb-railay-lagoon-viewpoint']);
-  assert.equal(krabi.filter((l) => l.zone === 'Krabi').length, 6);
+  assert.equal(krabi.filter((l) => l.zone === 'Krabi').length, 8);
   for (const l of krabi) {
     assert.equal(l.lienOfficiel, '', `${l.nom} : aucun site officiel lu`);
     for (const s of [l.duree?.source, l.prix?.source, l.horaires?.source, l.public?.source, l.tenue?.source]) if (s) assert.equal(s.officielle, false, `${l.nom} : source secondaire`);
   }
   // « Krabi (étape) » ne ramène pas les lieux de Railay, et inversement
-  assert.equal(lieuxDeLaZone(base, 'Krabi').length, 6);
+  assert.equal(lieuxDeLaZone(base, 'Krabi').length, 8);
   assert.equal(lieuxDeLaZone(base, 'Railay Beach').length, 3);
 });
 
@@ -183,6 +183,53 @@ test("Railay : accès en bateau seulement, dit dans la fiche ; ce que la source 
   const coquillages = lieu('krb-shell-cemetery');
   assert.equal(coquillages.prix, null);
   assert.match(coquillages.horaires?.note ?? '', /prix non retenu/);
+});
+
+// ---------- Les plages de chaque séjour (étape 10, suite) ----------
+
+test("chaque séjour au bord de la mer a plusieurs plages dans la base : Pattaya, Krabi et Railay", () => {
+  const plages = (zone: string): string[] => base.filter((l) => l.zone === zone && aCategorie(l, 'plages')).map((l) => l.id);
+  assert.deepEqual(plages('Pattaya'), ['pat-koh-larn', 'pat-pattaya-beach', 'pat-jomtien-beach', 'pat-cozy-beach', 'pat-wong-amat-beach']);
+  assert.deepEqual(plages('Krabi'), ['krb-hong-islands', 'krb-ao-nam-mao', 'krb-ao-nang-beach']);
+  assert.deepEqual(plages('Railay'), ['krb-railay-beach', 'krb-phra-nang-beach']);
+  assert.deepEqual(plages('Bangkok'), []); // Bangkok n'a pas de plage
+  // aucune plage n'est présentée comme vérifiée : toutes viennent d'un guide
+  for (const id of ['pat-pattaya-beach', 'pat-jomtien-beach', 'pat-cozy-beach', 'pat-wong-amat-beach', 'krb-ao-nang-beach']) {
+    const l = lieu(id);
+    assert.equal(l.lienOfficiel, '');
+    for (const s of [l.prix?.source, l.horaires?.source, l.public?.source]) if (s) assert.equal(s.officielle, false, id);
+  }
+});
+
+test("Pattaya Beach : entrée libre, ouverte 24 h, location de chaises ; Cozy Beach : la grille de l'escalier ferme à 20:00 ; Jomtien : plage sans grille fermée", () => {
+  const pb = lieu('pat-pattaya-beach');
+  assert.equal(pb.prix?.min, 0);
+  assert.match(pb.prix?.note ?? '', /chaise de plage 50 THB, lit de plage 100 THB/);
+  assert.equal(ouvertA(pb, '2027-03-10', '03:00').etat, 'oui');
+  assert.ok(pb.attention.some((a) => a.genre === 'foule'));
+  const cozy = lieu('pat-cozy-beach');
+  assert.equal(ouvertA(cozy, '2027-03-10', '10:00').etat, 'oui');
+  assert.equal(ouvertA(cozy, '2027-03-10', '21:00').etat, 'non');
+  assert.match(cozy.public?.texte ?? '', /escalier raide/);
+  // Jomtien : « 08:00-18:00 » = nettoyage et vendeurs, donc jamais « fermé » la nuit
+  const jt = lieu('pat-jomtien-beach');
+  assert.equal(jt.horaires?.nature, 'animation');
+  assert.notEqual(ouvertA(jt, '2027-03-10', '21:00').etat, 'non');
+  assert.ok(lieu('pat-jomtien-beach').categories.includes('famille'));
+});
+
+test("Wong Amat et Ao Nang : prix lus chez un guide ; Phra Nang : entrée libre, 10 THB pour les toilettes, affluence de 11:00 à 15:00 ; marché de nuit : animé, pas « fermé »", () => {
+  assert.match(lieu('pat-wong-amat-beach').prix?.note ?? '', /150 à 250 THB par jour/);
+  assert.equal(lieu('krb-ao-nang-beach').prix, null);
+  const pn = lieu('krb-phra-nang-beach');
+  assert.equal(pn.prix?.min, 0);
+  assert.match(pn.prix?.note ?? '', /10 THB pour les toilettes/);
+  assert.ok(pn.attention.some((a) => a.genre === 'foule' && /11:00 à 15:00/.test(a.texte)));
+  assert.ok(pn.acces.length === 2 && pn.acces[1].modes.includes('a-pied'));
+  const nm = lieu('krb-ao-nang-night-market');
+  assert.equal(nm.horaires?.nature, 'animation');
+  assert.notEqual(ouvertA(nm, '2027-03-10', '12:00').etat, 'non');
+  assert.match(nm.prix?.note ?? '', /espèces/);
 });
 
 test('les tarifs par âge de Dubaï viennent de la page : enfant de 3 à 12 ans, gratuit avant 3 ans', () => {

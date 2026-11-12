@@ -705,6 +705,461 @@
       "notes": "Entrée de la rue : non indiquée. Entrée en boîte : 200 à 800 THB, souvent avec une consommation ; spectacles de cabaret : 600 à 1 200 THB (guide). Vérifier les prix des boissons avant de commander.",
       "id": "pat-walking-street",
       "nom": "Walking Street"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Centre de Pattaya (Beach Road)",
+      "adresse": "",
+      "gps": {
+        "lat": 12.9395319,
+        "lng": 100.8835218,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/149698464",
+          "libelle": "OpenStreetMap (Pattaya Beach)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages"
+      ],
+      "etiquettes": [
+        "plage",
+        "promenade",
+        "sports nautiques"
+      ],
+      "incontournable": null,
+      "description": "Environ 4 km de sable en croissant sur le golfe de Thaïlande, bordé par Beach Road, de la zone des hôtels au nord jusqu'à Walking Street et au ponton de Bali Hai. Le guide la dit « correcte pour se rafraîchir », avec plus de trafic de bateaux et de sédiments qu'à Jomtien ou à Koh Larn, et ajoute que la qualité de l'eau s'est améliorée.",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre. À payer : chaise de plage 50 THB, lit de plage 100 THB (tarif de la ville d'après le guide) ; jet ski environ 800 à 2 500 THB et parachute ascensionnel environ 600 à 1 500 THB, prix non fixes : convenir de la durée et du prix avant de partir.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/pattaya-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : plage et promenade publiques, « open 24 hours », sans portail ni horaires fixes. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/pattaya-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "la plage la plus fréquentée de la côte ; les chaises et les vendeurs envahissent le sable plus tard dans la journée ; avant 08:00, c'est le moment le plus calme",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/pattaya-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [
+        {
+          "modes": [
+            "bus",
+            "taxi",
+            "bateau"
+          ],
+          "texte": "Depuis Bangkok, bus depuis Ekkamai environ toutes les 30 minutes, 2 à 2 h 30, à partir d'environ 130 THB. Sur place : taxi ou Grab ; des longtails partent de la plage vers Koh Larn et les îles voisines.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/pattaya-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Jet ski : le guide signale que des loueurs réclament parfois un supplément en prétendant des dégâts existants ; photographier l'engin avant la sortie et fixer le prix à l'avance. Le guide ne parle ni des courants ni des drapeaux de baignade. Aucun site officiel lu.",
+      "id": "pat-pattaya-beach",
+      "nom": "Pattaya Beach (Hat Pattaya)"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Jomtien (au sud de Pattaya)",
+      "adresse": "",
+      "gps": {
+        "lat": 12.8772661,
+        "lng": 100.8843719,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/1297672173",
+          "libelle": "OpenStreetMap (Jomtien Beach, centre de la plage)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "famille"
+      ],
+      "etiquettes": [
+        "plage",
+        "familles",
+        "planche à voile",
+        "kitesurf"
+      ],
+      "incontournable": null,
+      "description": "Plage plus calme que Pattaya Beach, au sud du centre, avec moins de rabatteurs de bars de plage et davantage de familles et de résidents de longue durée. Le guide cite la planche à voile, le kitesurf et le parachute ascensionnel, avec des loueurs et des moniteurs pour débutants. Brise de mer l'après-midi, la plus favorable de novembre à mars (environ 15 nœuds en moyenne).",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre. Chaises et parasols loués séparément à des vendeurs (prix non indiqués par la page).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/jomtien-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "18:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « 08:00-18:00 », heures de nettoyage de la plage et des vendeurs, pas une grille fermée. Les loueurs de sports nautiques et les sauveteurs suivent en général les heures de jour ; pas d'équipements attendus la nuit. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/jomtien-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bus",
+            "taxi"
+          ],
+          "texte": "Depuis le centre de Pattaya : songthaew (camion partagé) le long de Beach Road et de Thappraya Road, ou court trajet en taxi. Aucun tarif donné.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/jomtien-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Un projet public d'élargissement de la plage est en cours (phase 2 au sud) : une partie de la plage peut être clôturée selon le mois, d'après le guide. Baignade (qualité de l'eau, courants) non décrite par la page lue. Aucun site officiel lu.",
+      "id": "pat-jomtien-beach",
+      "nom": "Jomtien Beach (Hat Jomtien)"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pratumnak Hill (au sud du centre de Pattaya)",
+      "adresse": "",
+      "gps": {
+        "lat": 12.9210255,
+        "lng": 100.8587982,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/169474825",
+          "libelle": "OpenStreetMap (Cosy Beach)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "nature"
+      ],
+      "etiquettes": [
+        "plage",
+        "petite baie",
+        "ombre"
+      ],
+      "incontournable": null,
+      "description": "Petite baie abritée avec beaucoup d'ombre grâce aux arbres de la plage, atteinte par un escalier.",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre (d'après un guide). Location de transats sur place ; prix non indiqués.",
+        "source": {
+          "lien": "https://thailandmagazine.com/pattaya/beaches/cozy-beach/",
+          "libelle": "Thailand Magazine (guide, page sans date)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "06:00",
+              "ferme": "20:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : la grille de l'escalier ferme à 20:00 et rouvre à 06:00 ; on ne peut pas rester sur la plage le soir. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://thailandmagazine.com/pattaya/beaches/cozy-beach/",
+          "libelle": "Thailand Magazine (guide, page sans date)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Accès par un escalier raide aux marches de pierre irrégulières : le guide le déconseille en cas de difficulté à marcher. L'entrée de l'escalier est à côté du restaurant The Forest by The Sky.",
+        "source": {
+          "lien": "https://thailandmagazine.com/pattaya/beaches/cozy-beach/",
+          "libelle": "Thailand Magazine (guide, page sans date)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "peut être bondée en haute saison (décembre à février) ; en marchant vers le sud, la plage de Kasetsin est en général plus calme",
+          "source": {
+            "lien": "https://thailandmagazine.com/pattaya/beaches/cozy-beach/",
+            "libelle": "Thailand Magazine (guide, page sans date)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Équipements d'après le guide : transats, endroits pour poser une serviette, vendeurs de satay, de fruits et de boissons fraîches. La page lue ne décrit pas la baignade (zones rocheuses éventuelles) ni les prix des transats : à vérifier sur place. Aucun site officiel lu.",
+      "id": "pat-cozy-beach",
+      "nom": "Cozy Beach (Kasetsin)"
+    },
+    {
+      "zone": "Pattaya",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Naklua (nord de Pattaya)",
+      "adresse": "",
+      "gps": {
+        "lat": 12.9625962,
+        "lng": 100.8844864,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/183413169",
+          "libelle": "OpenStreetMap (Wong Amat Beach)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages"
+      ],
+      "etiquettes": [
+        "plage",
+        "sauveteurs",
+        "eau peu profonde"
+      ],
+      "incontournable": null,
+      "description": "Plage de 1,2 km à Naklua, à 2 ou 3 km du centre (environ 10 minutes en voiture). Le guide décrit des eaux peu profondes avec des sauveteurs, « relativement plus propres » qu'à Pattaya Beach.",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre. Chaises et parasols : 150 à 250 THB par jour. Sports nautiques : jet ski 1 000 à 1 500 THB par 15 minutes, parachute ascensionnel 1 800 à 2 500 THB, paddle 300 à 500 THB par heure (guide, à confirmer).",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/wong-amat-beach-pattaya",
+          "libelle": "Pickyourtrail (guide, mis à jour le 16/02/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Toilettes, parking et restaurants sur place (d'après le guide).",
+        "source": {
+          "lien": "https://pickyourtrail.com/attractions/wong-amat-beach-pattaya",
+          "libelle": "Pickyourtrail (guide, mis à jour le 16/02/2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bus",
+            "taxi",
+            "scooter",
+            "voiture"
+          ],
+          "texte": "Depuis Pattaya : songthaew 10 à 15 minutes (10 à 20 THB), taxi ou Grab environ 10 minutes (100 à 200 THB), location de scooter 200 à 300 THB par jour, voiture privée avec parking.",
+          "source": {
+            "lien": "https://pickyourtrail.com/attractions/wong-amat-beach-pattaya",
+            "libelle": "Pickyourtrail (guide, mis à jour le 16/02/2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Saison selon le guide : novembre à février = meilleur temps (25 à 30 °C) ; mars à mai = chaud et sec (32 à 35 °C) ; juin à octobre = pluie occasionnelle. La page ne parle pas des courants : vérifier sur place avant de se baigner. Horaires non indiqués. Aucun site officiel lu.",
+      "id": "pat-wong-amat-beach",
+      "nom": "Wong Amat Beach (Naklua)"
     }
   ]
 }

@@ -91,15 +91,45 @@
         "escalade"
       ],
       "incontournable": null,
-      "description": "Plage à courte distance à pied de Railay, avec le sanctuaire de la grotte de la Princesse (Princess Cave) et des parois d'escalade qui s'élèvent du sable.",
+      "description": "Plage à courte distance à pied de Railay, avec le sanctuaire de la grotte de la Princesse (Princess Cave) à son extrémité est et des parois d'escalade qui s'élèvent du sable. Le guide dit que la plage au-delà de la grotte se prête à la baignade, avec une eau calme et claire. Des pêcheurs déposent dans le sanctuaire des offrandes en bois sculpté pour demander une traversée sans danger ; les bateliers s'y arrêtent par respect.",
       "duree": null,
-      "prix": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre pour la plage et le sanctuaire de la grotte ; seul paiement signalé : 10 THB pour les toilettes publiques.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/phranang-cave-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
       "horaires": null,
       "reservation": null,
       "tenue": null,
       "interieur": "exterieur",
-      "public": null,
-      "attention": [],
+      "public": {
+        "texte": "Chaussures d'eau recommandées sur les parties rocheuses près de la grotte. Ni eau douce ni boutique d'ombre sur la plage : les stands les plus proches sont dans le village de Railay.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/phranang-cave-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "la plus fréquentée de 11:00 à 15:00 environ, quand arrivent les bateaux d'excursion d'Ao Nang et de Phi Phi ; les bateaux de 08:00 depuis Ao Nang sont bien moins chargés, pour la même traversée et le même prix",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/phranang-cave-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
       "acces": [
         {
           "modes": [
@@ -112,11 +142,24 @@
             "consulteLe": "2026-11-12",
             "officielle": false
           }
+        },
+        {
+          "modes": [
+            "bateau",
+            "a-pied"
+          ],
+          "texte": "Pas de route : longtail depuis Ao Nang (environ 15 minutes), ou chemin de jungle à pied depuis Railay Est ou Railay Ouest. Aucun tarif de bateau donné.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/phranang-cave-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juillet 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
         }
       ],
       "lienOfficiel": "",
       "verifieLe": "2026-11-12",
-      "notes": "La source lue ne donne ni droit d'entrée ni consigne de tenue pour le sanctuaire : à vérifier sur place. Source secondaire.",
+      "notes": "À marée basse, le sable s'étend largement devant la grotte ; à marée haute, la plage se rétrécit et le passage par les rochers de l'est vers le sanctuaire peut obliger à marcher dans l'eau : vérifier la marée ou demander au batelier (guide). La page ne donne pas d'horaires ni d'autre consigne de conduite. Source secondaire.",
       "id": "krb-phra-nang-beach",
       "nom": "Phra Nang Cave Beach (Tham Phra Nang)"
     },
@@ -778,6 +821,205 @@
       "notes": "Le guide dit que le marché a lieu les vendredi, samedi et dimanche soirs. Les heures ne sont pas indiquées : à vérifier. Source secondaire.",
       "id": "krb-town-walking-street",
       "nom": "Krabi Walking Street (marché du week-end)"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Ao Nang",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0310923,
+        "lng": 98.8218831,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/19738774",
+          "libelle": "OpenStreetMap (Ao Nang Beach)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages"
+      ],
+      "etiquettes": [
+        "plage",
+        "bateaux",
+        "falaises calcaires"
+      ],
+      "incontournable": null,
+      "description": "Principal pôle touristique de Krabi : plage, bateaux pour les îles et falaises calcaires en toile de fond. Le guide dit que la plage principale a des zones calmes pour se baigner quand le temps le permet, et qu'elle est bondée en haute saison. Nopparat Thara, plus au calme et à l'eau moins profonde, est citée comme alternative proche.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [
+        {
+          "genre": "foule",
+          "texte": "plage bondée en haute saison",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/visit/ao-nang/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "acces": [
+        {
+          "modes": [
+            "bateau",
+            "taxi"
+          ],
+          "texte": "Longtail de 15 minutes depuis le ponton d'Ao Nang vers Railay (aucun tarif donné). Depuis l'aéroport de Krabi : environ 30 minutes en taxi, ou 40 minutes en taxi ou minivan partagé selon une autre mention de la même page.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/visit/ao-nang/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Saison des pluies (mai à octobre) : excursions parfois annulées par mer agitée, averses l'après-midi (guide). Marée, courants et prix non décrits par la page lue. Aucun site officiel lu.",
+      "id": "krb-ao-nang-beach",
+      "nom": "Ao Nang Beach"
+    },
+    {
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Ao Nang (Beach Road)",
+      "adresse": "Ao Nang Beach Road, Ao Nang, Mueang Krabi District, Krabi 81180",
+      "gps": {
+        "lat": 8.043031,
+        "lng": 98.8120405,
+        "source": {
+          "lien": "https://www.openstreetmap.org/node/11405417869",
+          "libelle": "OpenStreetMap (Ao Nang Night Market)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches",
+        "nourriture"
+      ],
+      "etiquettes": [
+        "marché de nuit",
+        "fruits de mer",
+        "souvenirs"
+      ],
+      "incontournable": null,
+      "description": "Marché du complexe Ao Nang Landmark, près du 7-Eleven à l'extrémité nord de la rue, en face de la plage. Cuisine (fruits de mer grillés, pad thaï, riz gluant à la mangue, brochettes, jus de fruits) et souvenirs (t-shirts, lunettes, sacs de plage) ; ce n'est pas un marché d'artisanat.",
+      "duree": {
+        "minMin": 60,
+        "maxMin": 120,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/ao-nang-night-market/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 60,
+        "max": 150,
+        "devise": "THB",
+        "note": "Entrée libre. La plupart des plats : 60 à 150 THB (un peu plus cher que la norme des villes thaïlandaises, d'après le guide). Prévoir des espèces : la plupart des vendeurs n'acceptent pas les cartes.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/ao-nang-night-market/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "16:00",
+              "ferme": "23:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Guide : « Daily, ~16:00-23:00 (liveliest from 18:00) ». Stands ouverts vers 16:00, le marché se remplit après 18:00. Plus animé de novembre à mars, plus calme en saison des pluies. Source secondaire : à confirmer.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/attraction/ao-nang-night-market/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "a-pied",
+            "bus",
+            "taxi",
+            "bateau"
+          ],
+          "texte": "À pied depuis presque tous les hôtels de la rue d'Ao Nang. Depuis Krabi Town : songthaew de 20 à 30 minutes le long de la route de la plage, ou Grab. Depuis Railay : longtail jusqu'à la plage d'Ao Nang, puis marche.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/attraction/ao-nang-night-market/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-12",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-12",
+      "notes": "Arriver après 18:00, quand les stands sont installés et qu'il fait plus frais (conseil du guide). Aucun site officiel lu.",
+      "id": "krb-ao-nang-night-market",
+      "nom": "Marché de nuit d'Ao Nang"
     }
   ]
 }
