@@ -1256,6 +1256,4464 @@
       "notes": "Le site officiel n'a pas pu être consulté (certificat invalide lors de la vérification) : prix, horaires et tenue restent à confirmer.",
       "id": "bkk-jim-thompson-house",
       "nom": "Jim Thompson House"
+    },
+    {
+      "id": "bkk-pad-thai-fai-ta-lu",
+      "nom": "Pad Thai Fai Ta Lu (Dinso Road)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phra Nakhon (Wat Bowon Niwet)",
+      "adresse": "115/5 Dinso Rd, Wat Bowon Niwet, Phra Nakhon, Bangkok 10200, Thaïlande",
+      "gps": {
+        "lat": 13.7578915,
+        "lng": 100.5022115,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Pad+Thai+Fai+Ta+Lu+(Dinso+Rd)/@13.7578915,100.5022115,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29914a4c82e27:0xf3554702ca8ce524!8m2!3d13.7578915!4d100.5022115!16s%2Fg%2F11gcfswpy5",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "pad thaï",
+        "nouilles",
+        "restaurant"
+      ],
+      "incontournable": null,
+      "description": "Restaurant de nouilles spécialisé dans le pad thaï, près de la Balançoire géante (Dinso Road), dans le vieux Bangkok.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Pad+Thai+Fai+Ta+Lu+(Dinso+Rd)/@13.7578915,100.5022115,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29914a4c82e27:0xf3554702ca8ce524!8m2!3d13.7578915!4d100.5022115!16s%2Fg%2F11gcfswpy5",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/padthaifaitalu",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-aunglo-by-yangrak",
+      "nom": "Aunglo by Yangrak",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Bang Rak (Suriya Wong)",
+      "adresse": "174/4-6 Decho Rd, Suriya Wong, Bang Rak, Bangkok 10500, Thaïlande",
+      "gps": {
+        "lat": 13.7256473,
+        "lng": 100.5255777,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Aunglo+by+Yangrak/@13.7256473,100.5255777,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2996980abb9c9:0xd5e69d934fcf4dac!8m2!3d13.7256473!4d100.5255777!16s%2Fg%2F11pbc5sbvt",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "asiatique"
+      ],
+      "incontournable": null,
+      "description": "Restaurant asiatique de Decho Road, dans le quartier de Bang Rak.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "14:30"
+            },
+            {
+              "ouvre": "17:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": "ferme",
+          "mercredi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "14:30"
+            },
+            {
+              "ouvre": "17:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "14:30"
+            },
+            {
+              "ouvre": "17:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "14:30"
+            },
+            {
+              "ouvre": "17:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "14:30"
+            },
+            {
+              "ouvre": "17:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:30",
+              "ferme": "14:30"
+            },
+            {
+              "ouvre": "17:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année. Heures de la cuisine selon la même fiche : vendredi 11:30–14:00, 17:00–21:00 ; samedi 11:30–14:00, 17:00–21:00 ; dimanche 11:30–14:00, 17:00–21:00 ; lundi 11:30–14:00, 17:00–21:00 ; mardi fermé ; mercredi 11:30–14:00, 17:00–21:00 ; jeudi 11:30–14:00, 17:00–21:00.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Aunglo+by+Yangrak/@13.7256473,100.5255777,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2996980abb9c9:0xd5e69d934fcf4dac!8m2!3d13.7256473!4d100.5255777!16s%2Fg%2F11pbc5sbvt",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://instagram.com/aunglo.by.yangrak",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-songviet-song-wat",
+      "nom": "SongViet at SongWat",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong (Chakkrawat)",
+      "adresse": "819 Song Wat Rd, Chakkrawat, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7389389,
+        "lng": 100.5061257,
+        "source": {
+          "lien": "https://www.google.com/maps/place/SongViet+at+SongWat+%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A7%E0%B8%B5%E0%B8%A2%E0%B8%94+%E0%B9%81%E0%B8%AD%E0%B8%97+%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%A7%E0%B8%B2%E0%B8%94/@13.7389389,100.5061257,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2990041113f79:0x6c37814628f32a6c!8m2!3d13.7389389!4d100.5061257!16s%2Fg%2F11wv20jrp6",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "vietnamien",
+        "song wat"
+      ],
+      "incontournable": null,
+      "description": "Restaurant vietnamien sur Song Wat Road, rue du bord de fleuve de Chinatown.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/SongViet+at+SongWat+%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A7%E0%B8%B5%E0%B8%A2%E0%B8%94+%E0%B9%81%E0%B8%AD%E0%B8%97+%E0%B8%97%E0%B8%A3%E0%B8%87%E0%B8%A7%E0%B8%B2%E0%B8%94/@13.7389389,100.5061257,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2990041113f79:0x6c37814628f32a6c!8m2!3d13.7389389!4d100.5061257!16s%2Fg%2F11wv20jrp6",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.instagram.com/songvietatsongwat",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-siam-paragon",
+      "nom": "Siam Paragon",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan",
+      "adresse": "991 Rama I Rd, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7461302,
+        "lng": 100.5347792,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Siam+Paragon/@13.7461302,100.5347792,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29ecde3aee521:0x9f43939a2caf2963!8m2!3d13.7461302!4d100.5347792!16zL20vMDltbWho",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches"
+      ],
+      "etiquettes": [
+        "centre commercial",
+        "shopping",
+        "climatisé"
+      ],
+      "incontournable": null,
+      "description": "Grand centre commercial de Rama I Road, au cœur de Siam.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Siam+Paragon/@13.7461302,100.5347792,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29ecde3aee521:0x9f43939a2caf2963!8m2!3d13.7461302!4d100.5347792!16zL20vMDltbWho",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.siamparagon.co.th/",
+      "verifieLe": "2026-11-13",
+      "notes": "Horaires des boutiques et des restaurants non lus : à vérifier. Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-central-park",
+      "nom": "Central Park Bangkok",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Bang Rak (Si Lom)",
+      "adresse": "946 Rama IV Rd, Si Lom, Bang Rak, Bangkok 10500, Thaïlande",
+      "gps": {
+        "lat": 13.7285269,
+        "lng": 100.5371419,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Central+Park+Bangkok/@13.7285269,100.5371419,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f212b834e0d:0xeb79e9b8ba2aa03c!8m2!3d13.7285269!4d100.5371419!16s%2Fg%2F11xdtpphwg",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches"
+      ],
+      "etiquettes": [
+        "centre commercial",
+        "shopping",
+        "climatisé"
+      ],
+      "incontournable": null,
+      "description": "Centre commercial de Rama IV Road, dans le quartier de Silom (près du parc Lumphini).",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Central+Park+Bangkok/@13.7285269,100.5371419,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f212b834e0d:0xeb79e9b8ba2aa03c!8m2!3d13.7285269!4d100.5371419!16s%2Fg%2F11xdtpphwg",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.centralparkbangkok.com/",
+      "verifieLe": "2026-11-13",
+      "notes": "Horaires des boutiques et des restaurants non lus : à vérifier. Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-hattaleela-massage",
+      "nom": "Hattaleela Thai Massage",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "40 Phadung Dao Rd, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7405286,
+        "lng": 100.5107521,
+        "source": {
+          "lien": "https://www.google.com/maps/place/%E6%B3%B0%E6%BB%BF%E8%B6%B3+Hattaleela+Thai+Massage/@13.7405286,100.5107521,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29921657e0b5d:0xe392356f6f4859ee!8m2!3d13.7405286!4d100.5107521!16s%2Fg%2F11g8wvhcf6",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "bien-etre"
+      ],
+      "etiquettes": [
+        "massage thaï",
+        "spa"
+      ],
+      "incontournable": null,
+      "description": "Salon de massage thaïlandais.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/%E6%B3%B0%E6%BB%BF%E8%B6%B3+Hattaleela+Thai+Massage/@13.7405286,100.5107521,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29921657e0b5d:0xe392356f6f4859ee!8m2!3d13.7405286!4d100.5107521!16s%2Fg%2F11g8wvhcf6",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-after-the-rain",
+      "nom": "After the Rain Coffee & Gallery",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Sam Phran District (Song Khanong)",
+      "adresse": "45, 8, Song Khanong, Sam Phran District, Nakhon Pathom 73210, Thaïlande",
+      "gps": {
+        "lat": 13.7831058,
+        "lng": 100.2691837,
+        "source": {
+          "lien": "https://www.google.com/maps/place/After+the+Rain+Coffee+%26+Gallery/@13.7831058,100.2691837,17z/data=!3m1!4b1!4m6!3m5!1s0x30e294af09282409:0xf506495f7a028621!8m2!3d13.7831058!4d100.2691837!16s%2Fg%2F11bv2lhy1m",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture",
+        "spots"
+      ],
+      "etiquettes": [
+        "café",
+        "galerie",
+        "hors de Bangkok"
+      ],
+      "incontournable": null,
+      "description": "Café avec galerie, situé dans le district de Sam Phran (province de Nakhon Pathom), à l'ouest de Bangkok.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": "ferme",
+          "mardi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "18:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "18:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "18:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "18:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "18:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:30",
+              "ferme": "18:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/After+the+Rain+Coffee+%26+Gallery/@13.7831058,100.2691837,17z/data=!3m1!4b1!4m6!3m5!1s0x30e294af09282409:0xf506495f7a028621!8m2!3d13.7831058!4d100.2691837!16s%2Fg%2F11bv2lhy1m",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://facebook.com/aftertherainshop/",
+      "verifieLe": "2026-11-13",
+      "notes": "Hors de Bangkok même : prévoir un trajet de plusieurs dizaines de minutes (distance à vol d'oiseau affichée dans l'app). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-baan-suan-sathon",
+      "nom": "Baan Suan Sathon",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Sathon (Thung Maha Mek)",
+      "adresse": "60 Chuea Phloeng 2 Alley, Thung Maha Mek, Sathon, Bangkok 10120, Thaïlande",
+      "gps": {
+        "lat": 13.7194762,
+        "lng": 100.5512034,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Baan+Suan+Sathon/@13.7194762,100.5512034,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f1598c22235:0x9cadbec666c4c9d4!8m2!3d13.7194762!4d100.5512034!16s%2Fg%2F11j2y6l696",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "thaï"
+      ],
+      "incontournable": null,
+      "description": "Restaurant thaï dans une ruelle de Sathon (Chuea Phloeng 2).",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "23:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "23:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "23:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "23:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "23:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:30",
+              "ferme": "23:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:30",
+              "ferme": "23:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Baan+Suan+Sathon/@13.7194762,100.5512034,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f1598c22235:0x9cadbec666c4c9d4!8m2!3d13.7194762!4d100.5512034!16s%2Fg%2F11j2y6l696",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/profile.php?id=100063890090273",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-be-perfect-head-spa",
+      "nom": "Be perfect beauty studio (head spa)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Watthana (Khlong Tan Nuea)",
+      "adresse": "12/9 Sukhumvit 33 Alley, Khlong Tan Nuea, Watthana, Bangkok 10110, Thaïlande",
+      "gps": {
+        "lat": 13.734093,
+        "lng": 100.5681053,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Be+perfect+beauty+studio+(+head+spa+)/@13.734093,100.5681053,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29faf7c833317:0xe73571dc2e054545!8m2!3d13.734093!4d100.5681053!16s%2Fg%2F11xzt9j7mh",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "bien-etre"
+      ],
+      "etiquettes": [
+        "head spa",
+        "beauté"
+      ],
+      "incontournable": null,
+      "description": "Institut de beauté proposant un « head spa », dans la ruelle de Sukhumvit 33.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Be+perfect+beauty+studio+(+head+spa+)/@13.734093,100.5681053,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29faf7c833317:0xe73571dc2e054545!8m2!3d13.734093!4d100.5681053!16s%2Fg%2F11xzt9j7mh",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-sound-spa-thong-lo",
+      "nom": "Sound Spa & Massage by Lucca X HBS",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Watthana (Khlong Tan Nuea)",
+      "adresse": "5th Floor, 125/26 Thong Lo, Khlong Tan Nuea, Watthana, Bangkok 10110, Thaïlande",
+      "gps": {
+        "lat": 13.7303348,
+        "lng": 100.5811362,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Sound+Spa+%26+Massage+by+Lucca+X+HBS/@13.7303348,100.5811362,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29fa3f5c9cf61:0x7093a11f7b69bf7b!8m2!3d13.7303348!4d100.5811362!16s%2Fg%2F11yyv5jpty",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "bien-etre"
+      ],
+      "etiquettes": [
+        "massage",
+        "spa",
+        "thong lo"
+      ],
+      "incontournable": null,
+      "description": "Institut de massages au 5e étage d'un immeuble de Thong Lo.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "17:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Sound+Spa+%26+Massage+by+Lucca+X+HBS/@13.7303348,100.5811362,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29fa3f5c9cf61:0x7093a11f7b69bf7b!8m2!3d13.7303348!4d100.5811362!16s%2Fg%2F11yyv5jpty",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.instagram.com/lucca.studio.bkk",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-le-cafe-louis-vuitton",
+      "nom": "LV The Place Bangkok – Le Café Louis Vuitton",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Lumphini)",
+      "adresse": "Second Floor, Gaysorn Amarin Building, Unit GF-S01-B, 2F-S01-B Ground Floor, 496-502 Phloen Chit Rd, Lumphini, Pathum Wan, 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7439676,
+        "lng": 100.5413037,
+        "source": {
+          "lien": "https://www.google.com/maps/place/LV+The+Place+Bangkok+-+Le+Caf%C3%A9+Louis+Vuitton/@13.7439676,100.5413037,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f1c424aaf4b:0x1d6aa4a1ebfaa958!8m2!3d13.7439676!4d100.5413037!16s%2Fg%2F11vqs30tvt",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "café",
+        "luxe"
+      ],
+      "incontournable": null,
+      "description": "Café de la boutique Louis Vuitton « The Place » à Bangkok.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/LV+The+Place+Bangkok+-+Le+Caf%C3%A9+Louis+Vuitton/@13.7439676,100.5413037,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f1c424aaf4b:0x1d6aa4a1ebfaa958!8m2!3d13.7439676!4d100.5413037!16s%2Fg%2F11vqs30tvt",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://th.louisvuitton.com/tha-th/magazine/articles/lv-the-place-bangkok",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-bella-beauty-vibes",
+      "nom": "Bella Beauty Vibes (sur rendez-vous)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Watthana (Khlong Tan Nuea)",
+      "adresse": "39 Boulevard Building, Tower A, 2nd Floor, 41 Soi Phrom Chit, Khlong Tan Nuea, Watthana, Bangkok 10110, Thaïlande",
+      "gps": {
+        "lat": 13.737629,
+        "lng": 100.569752,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Bella+Beauty+Vibes+(BOOKING+ONLY)/@13.737629,100.569752,17z/data=!3m1!4b1!4m6!3m5!1s0x87ae1e9fa5b744c5:0xdeefe47cfb958bf2!8m2!3d13.737629!4d100.569752!16s%2Fg%2F11y2mlj78l",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "bien-etre"
+      ],
+      "etiquettes": [
+        "beauté",
+        "sur réservation"
+      ],
+      "incontournable": null,
+      "description": "Institut de beauté. Le nom de la fiche Google Maps porte la mention « BOOKING ONLY » (réservation seulement).",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Bella+Beauty+Vibes+(BOOKING+ONLY)/@13.737629,100.569752,17z/data=!3m1!4b1!4m6!3m5!1s0x87ae1e9fa5b744c5:0xdeefe47cfb958bf2!8m2!3d13.737629!4d100.569752!16s%2Fg%2F11y2mlj78l",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": {
+        "necessaire": true,
+        "lien": "",
+        "note": "Le nom de la fiche Google Maps porte la mention « BOOKING ONLY » : réserver avant de venir.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Bella+Beauty+Vibes+(BOOKING+ONLY)/@13.737629,100.569752,17z/data=!3m1!4b1!4m6!3m5!1s0x87ae1e9fa5b744c5:0xdeefe47cfb958bf2!8m2!3d13.737629!4d100.569752!16s%2Fg%2F11y2mlj78l",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://bellabeautyvibes.my.canva.site/",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-phed-mark",
+      "nom": "Phed Mark",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Khlong Toei (Phra Khanong)",
+      "adresse": "300 Sukhumvit Rd, Phra Khanong, Khlong Toei, Bangkok 10110, Thaïlande",
+      "gps": {
+        "lat": 13.7202176,
+        "lng": 100.5838945,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Phed+Mark/@13.7264977,100.5801288,16z/data=!4m10!1m2!2m1!1sPhed+Mark+Restaurant+Bangkok!3m6!1s0x30e29f4fd8465ed7:0xa0cb0b9d6b462219!8m2!3d13.7202176!4d100.5838945!15sChxQaGVkIE1hcmsgUmVzdGF1cmFudCBCYW5na29rWh4iHHBoZWQgbWFyayByZXN0YXVyYW50IGJhbmdrb2uSAQ90aGFpX3Jlc3RhdXJhbnSaAURDaTlEUVVsUlFVTnZaRU5vZEhsalJqbHZUMnhLZVdKVmNHeFZia1paV1c1V2RVMUVSa0pqVjAxM1RsWmtXVTB4UlJBQuABAPoBBAgAEEo!16s%2Fg%2F11h_6x6gcl",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "thaï"
+      ],
+      "incontournable": null,
+      "description": "Restaurant thaï.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Phed+Mark/@13.7264977,100.5801288,16z/data=!4m10!1m2!2m1!1sPhed+Mark+Restaurant+Bangkok!3m6!1s0x30e29f4fd8465ed7:0xa0cb0b9d6b462219!8m2!3d13.7202176!4d100.5838945!15sChxQaGVkIE1hcmsgUmVzdGF1cmFudCBCYW5na29rWh4iHHBoZWQgbWFyayByZXN0YXVyYW50IGJhbmdrb2uSAQ90aGFpX3Jlc3RhdXJhbnSaAURDaTlEUVVsUlFVTnZaRU5vZEhsalJqbHZUMnhLZVdKVmNHeFZia1paV1c1V2RVMUVSa0pqVjAxM1RsWmtXVTB4UlJBQuABAPoBBAgAEEo!16s%2Fg%2F11h_6x6gcl",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.instagram.com/phedmarkbkk/",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-song-wat-road",
+      "nom": "Song Wat Road",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong (Chinatown)",
+      "adresse": "",
+      "gps": {
+        "lat": 13.7373132,
+        "lng": 100.5089791,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Song+Wat+Rd,+Khet+Samphanthawong,+Krung+Thep+Maha+Nakhon+10100,+Tha%C3%AFlande/@13.7373132,100.5089791,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2991f897014f3:0xde918560c62a2364!8m2!3d13.7373132!4d100.5089791!16s%2Fg%2F11gh2pxs66",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "promenades",
+        "nourriture"
+      ],
+      "etiquettes": [
+        "rue",
+        "chinatown",
+        "bord de fleuve"
+      ],
+      "incontournable": null,
+      "description": "Rue de Chinatown qui longe le fleuve Chao Phraya ; plusieurs restaurants des listes reçues s'y trouvent.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Épingle de rue : aucune adresse ni aucun horaire propre. Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-tribe-sky-beach-club",
+      "nom": "TRIBE Sky Beach Club",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Khlong Toei (Khlong Tan)",
+      "adresse": "628 Sukhumvit Rd, Khlong Tan, Khlong Toei, Bangkok 10110, Thaïlande",
+      "gps": {
+        "lat": 13.73199,
+        "lng": 100.5666814,
+        "source": {
+          "lien": "https://www.google.com/maps/place/TRIBE+Sky+Beach+Club/@13.73199,100.5666814,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29fc117db4933:0x3d589ee5d8524dab!8m2!3d13.73199!4d100.5666814!16s%2Fg%2F11vlwjlfn_",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nocturne"
+      ],
+      "etiquettes": [
+        "beach club",
+        "rooftop",
+        "sukhumvit"
+      ],
+      "incontournable": null,
+      "description": "Beach club sur Sukhumvit Road (quartier de Khlong Toei).",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "01:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/TRIBE+Sky+Beach+Club/@13.73199,100.5666814,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29fc117db4933:0x3d589ee5d8524dab!8m2!3d13.73199!4d100.5666814!16s%2Fg%2F11vlwjlfn_",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://tribeskybeachclub.com/",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-gu-long-bao",
+      "nom": "Gu Long Bao (Song Wat Road)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "983 Song Wat Rd, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7379623,
+        "lng": 100.5079789,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Gu+Long+Bao/@13.7441041,100.2617442,11z/data=!4m9!1m2!11m1!2shPllBDNdMEpGxAldN7w18QJ0I1Q_lw!3m5!1s0x30e2990029af42d7:0x164885832949ac26!8m2!3d13.7379623!4d100.5079789!16s%2Fg%2F11v_07st5l",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "à emporter",
+        "song wat",
+        "chinatown"
+      ],
+      "incontournable": null,
+      "description": "Point de vente de plats à emporter sur Song Wat Road.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "19:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Gu+Long+Bao/@13.7441041,100.2617442,11z/data=!4m9!1m2!11m1!2shPllBDNdMEpGxAldN7w18QJ0I1Q_lw!3m5!1s0x30e2990029af42d7:0x164885832949ac26!8m2!3d13.7379623!4d100.5079789!16s%2Fg%2F11v_07st5l",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-shinkanzen-sushi",
+      "nom": "Shinkanzen Sushi (Century The Movie Plaza)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Ratchathewi (Thanon Phaya Thai)",
+      "adresse": "31 Phaya Thai Rd, Thanon Phaya Thai, Ratchathewi, Bangkok 10400, Thaïlande",
+      "gps": {
+        "lat": 13.7618418,
+        "lng": 100.5367979,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Shinkanzen+Sushi+%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%88%E0%B8%B9%E0%B8%A3%E0%B8%B5%E0%B9%88+%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%B9%E0%B8%9F%E0%B8%A7%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B9%88%E0%B8%B2/@13.7618418,100.5367979,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f4db58fe225:0x70c1c424b3b4d661!8m2!3d13.7618418!4d100.5367979!16s%2Fg%2F11sytgdvb1",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "sushi",
+        "restaurant"
+      ],
+      "incontournable": null,
+      "description": "Restaurant de sushis dans le centre commercial Century The Movie Plaza.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:30",
+              "ferme": "21:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Shinkanzen+Sushi+%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%88%E0%B8%B9%E0%B8%A3%E0%B8%B5%E0%B9%88+%E0%B9%80%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B8%A1%E0%B8%B9%E0%B8%9F%E0%B8%A7%E0%B8%B5%E0%B9%88%E0%B8%9E%E0%B8%A5%E0%B8%B2%E0%B8%8B%E0%B9%88%E0%B8%B2/@13.7618418,100.5367979,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f4db58fe225:0x70c1c424b3b4d661!8m2!3d13.7618418!4d100.5367979!16s%2Fg%2F11sytgdvb1",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/shinkanzensushi/",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-sookdal-korean-bbq",
+      "nom": "Sookdal Premium Korean BBQ",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "92/1-3 94 Rama I Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7472069,
+        "lng": 100.5240678,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Sookdal+Premium+Korean+BBQ+-+Bangkok/@13.7472069,100.5240678,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299f538e2c98d:0xcff88300bec47d70!8m2!3d13.7472069!4d100.5240678!16s%2Fg%2F11h7kvn7x3",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "barbecue coréen",
+        "restaurant"
+      ],
+      "incontournable": null,
+      "description": "Restaurant de barbecue coréen sur Rama I Road, quartier de Wang Mai.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "21:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Sookdal+Premium+Korean+BBQ+-+Bangkok/@13.7472069,100.5240678,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299f538e2c98d:0xcff88300bec47d70!8m2!3d13.7472069!4d100.5240678!16s%2Fg%2F11h7kvn7x3",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/sookdal.bangkok",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-tuang-dim-sum",
+      "nom": "Tuang Dim Sum",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Bang Kho Laem (Wat Phraya Krai)",
+      "adresse": "2329 Soi Charoen Krung 89, Wat Phraya Krai, Bang Kho Laem, Bangkok 10120, Thaïlande",
+      "gps": {
+        "lat": 13.7050706,
+        "lng": 100.5059022,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Tuang+Dim+Sum/@13.7050706,100.5059022,17z/data=!3m1!4b1!4m6!3m5!1s0x30e298be6737151f:0xa726306b0a12eb16!8m2!3d13.7050706!4d100.5059022!16s%2Fg%2F1pycf93wm",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "dim sum",
+        "restaurant"
+      ],
+      "incontournable": null,
+      "description": "Restaurant de dim sum.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": "ferme",
+          "mardi": [
+            {
+              "ouvre": "07:00",
+              "ferme": "15:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "07:00",
+              "ferme": "15:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "07:00",
+              "ferme": "15:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "07:00",
+              "ferme": "15:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "07:00",
+              "ferme": "15:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "07:00",
+              "ferme": "15:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Tuang+Dim+Sum/@13.7050706,100.5059022,17z/data=!3m1!4b1!4m6!3m5!1s0x30e298be6737151f:0xa726306b0a12eb16!8m2!3d13.7050706!4d100.5059022!16s%2Fg%2F1pycf93wm",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/pages/%E0%B8%95%E0%B8%A7%E0%B8%87-%E0%B8%95%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%8B%E0%B8%B3-%E0%B9%82%E0%B8%94%E0%B8%A2-%E0%B9%80%E0%B8%8A%E0%B8%9F%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%94%E0%B8%B2%E0%B8%A7-%E0%B8%A2%E0%B8%B4%E0%B8%9B-%E0%B8%A2%E0%B8%B8%E0%B8%99-%E0%B9%80%E0%B8%84%E0%B8%A2%E0%B8%B5%E0%B8%A2%E0%B8%87-%E0%B8%88%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B9%81%E0%B8%8A%E0%B8%87%E0%B8%81%E0%B8%A3%E0%B8%B5%E0%B8%A5%E0%B8%B2/165550766935781",
+      "verifieLe": "2026-11-13",
+      "notes": "Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-jins-clam",
+      "nom": "Jin's Clam (Soi Texas)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "42 Phadung Dao Rd, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7406509,
+        "lng": 100.5105412,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Jin%E2%80%99s+Clam+%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%88%E0%B8%B4%E0%B8%99%E0%B8%AB%E0%B8%AD%E0%B8%A2%E0%B9%81%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%A5%E0%B8%A7%E0%B8%81+%E0%B8%8B%E0%B8%AD%E0%B8%A2%E0%B9%80%E0%B8%97%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B8%B1%E0%B8%AA/@13.740543,100.5107454,17z/data=!4m10!1m2!2m1!1z4Lib4LmJ4Liy4LiI4Li04LiZ4Lir4Lit4Lii4LmB4LiE4Lij4LiH4Lil4Lin4LiBIOC4i-C4reC4ouC5gOC4l-C5h-C4geC4i-C4seC4qiBCYW5na29r!3m6!1s0x30e299216f215b3f:0x41c1ab723474d382!8m2!3d13.7406509!4d100.5105412!15sClfguJvguYnguLLguIjguLTguJnguKvguK3guKLguYHguITguKPguIfguKXguKfguIEg4LiL4Lit4Lii4LmA4LiX4LmH4LiB4LiL4Lix4LiqIEJhbmdrb2taYiJg4Lib4LmJ4LiyIOC4iOC4tCDguJkg4Lir4Lit4LiiIOC5geC4hOC4o-C4hyDguKXguKfguIEg4LiL4Lit4LiiIOC5gOC4l-C5hyDguIEg4LiL4LixIOC4qiBiYW5na29rkgESc2VhZm9vZF9yZXN0YXVyYW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU5tTW05MmQxQjNFQUXgAQD6AQQIABAp!16s%2Fg%2F11fzf4tqn0",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "fruits de mer",
+        "coques",
+        "chinatown",
+        "soi texas"
+      ],
+      "incontournable": null,
+      "description": "Restaurant de fruits de mer, spécialité de coques fraîches ébouillantées (« blood cockles »).",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": "ferme",
+          "mardi": [
+            {
+              "ouvre": "18:30",
+              "ferme": "00:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "18:30",
+              "ferme": "00:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "18:30",
+              "ferme": "00:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "18:30",
+              "ferme": "00:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "18:30",
+              "ferme": "00:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "18:30",
+              "ferme": "00:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Jin%E2%80%99s+Clam+%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%88%E0%B8%B4%E0%B8%99%E0%B8%AB%E0%B8%AD%E0%B8%A2%E0%B9%81%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%A5%E0%B8%A7%E0%B8%81+%E0%B8%8B%E0%B8%AD%E0%B8%A2%E0%B9%80%E0%B8%97%E0%B9%87%E0%B8%81%E0%B8%8B%E0%B8%B1%E0%B8%AA/@13.740543,100.5107454,17z/data=!4m10!1m2!2m1!1z4Lib4LmJ4Liy4LiI4Li04LiZ4Lir4Lit4Lii4LmB4LiE4Lij4LiH4Lil4Lin4LiBIOC4i-C4reC4ouC5gOC4l-C5h-C4geC4i-C4seC4qiBCYW5na29r!3m6!1s0x30e299216f215b3f:0x41c1ab723474d382!8m2!3d13.7406509!4d100.5105412!15sClfguJvguYnguLLguIjguLTguJnguKvguK3guKLguYHguITguKPguIfguKXguKfguIEg4LiL4Lit4Lii4LmA4LiX4LmH4LiB4LiL4Lix4LiqIEJhbmdrb2taYiJg4Lib4LmJ4LiyIOC4iOC4tCDguJkg4Lir4Lit4LiiIOC5geC4hOC4o-C4hyDguKXguKfguIEg4LiL4Lit4LiiIOC5gOC4l-C5hyDguIEg4LiL4LixIOC4qiBiYW5na29rkgESc2VhZm9vZF9yZXN0YXVyYW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU5tTW05MmQxQjNFQUXgAQD6AQQIABAp!16s%2Fg%2F11fzf4tqn0",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps « China town » publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-nai-ek-roll-noodle",
+      "nom": "Nai Ek Roll Noodle",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "442 ซอย 9, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7401053,
+        "lng": 100.5099369,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Nai+Ek+Roll+Noodle/@13.7401053,100.5099369,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992175e2fda9:0x694279ae73a6b2da!8m2!3d13.7401053!4d100.5099369!16s%2Fg%2F1tj6r85r",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "nouilles",
+        "chinatown",
+        "soupe"
+      ],
+      "incontournable": null,
+      "description": "Soupe de nouilles de riz roulées, relevée de poivre, avec du porc croustillant.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "07:30",
+              "ferme": "00:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Nai+Ek+Roll+Noodle/@13.7401053,100.5099369,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992175e2fda9:0x694279ae73a6b2da!8m2!3d13.7401053!4d100.5099369!16s%2Fg%2F1tj6r85r",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps « China town » publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-laoteng",
+      "nom": "Laoteng",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "2, Floor, 438 Yaowarat Rd, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7402038,
+        "lng": 100.5099084,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Laoteng/@13.7402038,100.5099084,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299638cd04d27:0x6bbb36246cbe4575!8m2!3d13.7402038!4d100.5099084!16s%2Fg%2F11hdsr9qcg",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "dim sum",
+        "chinatown",
+        "restaurant chinois"
+      ],
+      "incontournable": null,
+      "description": "Restaurant chinois de Yaowarat Road : dim sum et ambiance nostalgique de style hongkongais.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Laoteng/@13.7402038,100.5099084,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299638cd04d27:0x6bbb36246cbe4575!8m2!3d13.7402038!4d100.5099084!16s%2Fg%2F11hdsr9qcg",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps « China town » publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-tanbo-chicken-rice",
+      "nom": "Tanbo Chicken Rice (Phaya Thai)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phaya Thai (Samsen Nai)",
+      "adresse": "351 Vibhavadi Rangsit Rd, Samsen Nai, Phaya Thai, Bangkok 10400, Thaïlande",
+      "gps": {
+        "lat": 13.7901457,
+        "lng": 100.5611169,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Tanbo+chicken+rice/@13.7630928,100.5149148,14z/data=!4m9!1m2!11m1!2snNOx10BYTmOT3eFbjWNLWg!3m5!1s0x30e29d0afe0d5f15:0x5a73a4887cb0bcbc!8m2!3d13.7901457!4d100.5611169!16s%2Fg%2F11w375hm76",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "riz au poulet",
+        "phaya thai"
+      ],
+      "incontournable": null,
+      "description": "Riz au poulet hainanais avec une sauce d'accompagnement.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "09:00",
+              "ferme": "21:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Tanbo+chicken+rice/@13.7630928,100.5149148,14z/data=!4m9!1m2!11m1!2snNOx10BYTmOT3eFbjWNLWg!3m5!1s0x30e29d0afe0d5f15:0x5a73a4887cb0bcbc!8m2!3d13.7901457!4d100.5611169!16s%2Fg%2F11w375hm76",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/profile.php?id=61566004978080",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps « China town » publiée par un service de réservation (source secondaire). Attention : l'adresse de la fiche Google Maps est à Phaya Thai (Vibhavadi Rangsit Road, au nord du centre), pas à Chinatown. Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-je-ben-pad-ngi-ngao",
+      "nom": "Je Ben Pad Ngi Ngao",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "PGP7+P5J, Yaowarat 1, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7368498,
+        "lng": 100.5128811,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Je+Ben+Pad+Ngi+Ngao/@13.7368498,100.5128811,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992735ab1985:0xd3c827481977f704!8m2!3d13.7368498!4d100.5128811!16s%2Fg%2F11bycjgjft",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "sautés",
+        "hawker",
+        "chinatown"
+      ],
+      "incontournable": null,
+      "description": "Centre de « hawkers » (stands de cuisine de rue) réputé pour ses plats sautés.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": "ferme",
+          "mardi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "16:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "16:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "16:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "16:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "16:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "09:00",
+              "ferme": "16:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Je+Ben+Pad+Ngi+Ngao/@13.7368498,100.5128811,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992735ab1985:0xd3c827481977f704!8m2!3d13.7368498!4d100.5128811!16s%2Fg%2F11bycjgjft",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps « China town » publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-naam-1608",
+      "nom": "NAAM 1608",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "1608 Song Wat Rd, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7360369,
+        "lng": 100.5099487,
+        "source": {
+          "lien": "https://www.google.com/maps/place/NAAM+1608/@13.7360369,100.5099487,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299f6e5600c43:0xadf805595dbb1!8m2!3d13.7360369!4d100.5099487!16s%2Fg%2F11hzmn8v9_",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "thaï",
+        "chinatown"
+      ],
+      "incontournable": null,
+      "description": "Restaurant thaï : cuisine « comfort food » aux saveurs marquées.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": "ferme",
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/NAAM+1608/@13.7360369,100.5099487,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299f6e5600c43:0xadf805595dbb1!8m2!3d13.7360369!4d100.5099487!16s%2Fg%2F11hzmn8v9_",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/naam1608",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps « China town » publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-louisvanich",
+      "nom": "Louisvanich",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Rong Mueang)",
+      "adresse": "1642 Banthat Thong Rd, Rong Mueang, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7408397,
+        "lng": 100.5223927,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Louisvanich/@13.7408397,100.5223927,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29936f1d91e5f:0x6c8c42804b568865!8m2!3d13.7408397!4d100.5223927!16s%2Fg%2F11k536qgsk",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "thaï",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Restaurant thaï proposant divers plats thaïlandais.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "12:00",
+              "ferme": "23:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Louisvanich/@13.7408397,100.5223927,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29936f1d91e5f:0x6c8c42804b568865!8m2!3d13.7408397!4d100.5223927!16s%2Fg%2F11k536qgsk",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-here-duan-banthat-thong",
+      "nom": "Here Duan (Banthat Thong)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan",
+      "adresse": "1982,1984 Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7372013,
+        "lng": 100.5217804,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Here+Duan+(Banthat+Thong)/@13.7372013,100.5217804,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f92e7dd15e5:0x748f1d2f6a2f186!8m2!3d13.7372013!4d100.5217804!16s%2Fg%2F11vqhqlyt2",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "restaurant",
+        "thaï",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Restaurant thaï aux saveurs marquées.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:00",
+              "ferme": "23:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Here+Duan+(Banthat+Thong)/@13.7372013,100.5217804,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29f92e7dd15e5:0x748f1d2f6a2f186!8m2!3d13.7372013!4d100.5217804!16s%2Fg%2F11vqhqlyt2",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/profile.php?id=61557757027438",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-rot-nuan",
+      "nom": "รสนวล (Rot Nuan)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "รสนวล บรรทัดทอง โครงการสวนหลวงสแควร์, Soi Chulalongkorn 5, Khwaeng Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7433835,
+        "lng": 100.5244283,
+        "source": {
+          "lien": "https://www.google.com/maps/place/%E0%B8%A3%E0%B8%AA%E0%B8%99%E0%B8%A7%E0%B8%A5/@13.7433835,100.5244283,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29900347e6489:0xd4360fd0874c5805!8m2!3d13.7433835!4d100.5244283!16s%2Fg%2F11y67jk7jb",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "dessert",
+        "flan de coco",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Spécialiste du flan de noix de coco soyeux.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "17:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/%E0%B8%A3%E0%B8%AA%E0%B8%99%E0%B8%A7%E0%B8%A5/@13.7433835,100.5244283,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29900347e6489:0xd4360fd0874c5805!8m2!3d13.7433835!4d100.5244283!16s%2Fg%2F11y67jk7jb",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-miyuki-ice-cream",
+      "nom": "Miyuki Ice Cream",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "1640 Banthat Thong Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7408754,
+        "lng": 100.5223989,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Miyuki+Ice+Cream/@13.7408754,100.5223989,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992069c5508f:0xf0c5557221948cdd!8m2!3d13.7408754!4d100.5223989!16s%2Fg%2F11y24lw0rl",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "glace",
+        "dessert",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Glacier : glaces maison.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "15:00",
+              "ferme": "23:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Miyuki+Ice+Cream/@13.7408754,100.5223989,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992069c5508f:0xf0c5557221948cdd!8m2!3d13.7408754!4d100.5223989!16s%2Fg%2F11y24lw0rl",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/miyukibangkok",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-june-pang",
+      "nom": "June Pang",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "1529 1531 Banthat Thong Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7409451,
+        "lng": 100.522717,
+        "source": {
+          "lien": "https://www.google.com/maps/place/June+Pang/@13.7409451,100.522717,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29959368e6e63:0xdde292177c6d87d6!8m2!3d13.7409451!4d100.522717!16s%2Fg%2F11v3pcyvv9",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "toast",
+        "shokupan",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Toasts de shokupan (pain de mie japonais moelleux) avec différentes garnitures à tartiner.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/June+Pang/@13.7409451,100.522717,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29959368e6e63:0xdde292177c6d87d6!8m2!3d13.7409451!4d100.522717!16s%2Fg%2F11v3pcyvv9",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://instagram.com/junepang.bkk",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-mont-nomsod-rama-1",
+      "nom": "Mont Nom Sod (Rama 1, Banthat Thong)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "96 98 Rama I Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7471916,
+        "lng": 100.5241937,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Mont+Nomsod+Rama+1+Branch+(Banthat+Thong)/@13.7471916,100.5241937,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2999e85ece0a9:0xc73852b0fccf0592!8m2!3d13.7471916!4d100.5241937!16s%2Fg%2F11fvzvh60b",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "toast",
+        "dessert",
+        "lait",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Dessert-café connu pour son pain grillé beurré et ses boissons lactées riches.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "12:00",
+              "ferme": "21:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Mont+Nomsod+Rama+1+Branch+(Banthat+Thong)/@13.7471916,100.5241937,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2999e85ece0a9:0xc73852b0fccf0592!8m2!3d13.7471916!4d100.5241937!16s%2Fg%2F11fvzvh60b",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.montnomsod.com/",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-jae-wan",
+      "nom": "Jae Wan",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Rong Muang)",
+      "adresse": "1700 Banthat Thong Rd, Khwaeng Rong Muang, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7396492,
+        "lng": 100.5222225,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Jae+Wan/@13.7396492,100.5222225,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299293ebc3217:0xdb2ef36a28b04a9e!8m2!3d13.7396492!4d100.5222225!16s%2Fg%2F1ydxc43jr",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "dessert",
+        "glace pilée",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Boutique de desserts : glaces pilées traditionnelles thaï-chinoises.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "13:45",
+              "ferme": "23:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "13:45",
+              "ferme": "23:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "13:45",
+              "ferme": "23:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "13:45",
+              "ferme": "23:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "13:45",
+              "ferme": "23:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "13:45",
+              "ferme": "23:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "13:30",
+              "ferme": "23:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Jae+Wan/@13.7396492,100.5222225,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299293ebc3217:0xdb2ef36a28b04a9e!8m2!3d13.7396492!4d100.5222225!16s%2Fg%2F1ydxc43jr",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-cqk-mala-hotpot",
+      "nom": "CQK Mala Hotpot (Samyan, Banthat Thong)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Rong Mueang)",
+      "adresse": "1818 Banthat Thong Rd, Rong Mueang, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7384565,
+        "lng": 100.5219632,
+        "source": {
+          "lien": "https://www.google.com/maps/place/CQK+Mala+Hotpot+(Samyan+-+Banthat+Thong)/@13.7384565,100.5219632,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29919879032d5:0xc09a37baf29e03d3!8m2!3d13.7384565!4d100.5219632!16s%2Fg%2F11v3ns9l76",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "fondue chinoise",
+        "épicé",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Fondue chinoise (hot pot) épicée de style sichuanais.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "11:30",
+              "ferme": "03:30"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/CQK+Mala+Hotpot+(Samyan+-+Banthat+Thong)/@13.7384565,100.5219632,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29919879032d5:0xc09a37baf29e03d3!8m2!3d13.7384565!4d100.5219632!16s%2Fg%2F11v3ns9l76",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Le lien de réservation en ligne affiché par Google Maps ne répond plus (erreur 404) : non retenu. Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-elvis-suki",
+      "nom": "Elvis Suki",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "เอลวิสสุกี้ 1456 Banthat Thong Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7425256,
+        "lng": 100.5227095,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Elvis+Suki/@13.7425256,100.5227095,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299a56d9d3945:0xb64523179523dd29!8m2!3d13.7425256!4d100.5227095!16s%2Fg%2F11lgfmj492",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "suki",
+        "restaurant",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Restaurant de suki (sukiyaki à la thaïe).",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "15:30",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année. Heures de la cuisine selon la même fiche : vendredi 15:30–23:30 ; samedi 15:30–23:30 ; dimanche 15:30–23:30 ; lundi 15:30–23:30 ; mardi 15:30–23:30 ; mercredi 15:30–23:30 ; jeudi 15:30–23:30.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Elvis+Suki/@13.7425256,100.5227095,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299a56d9d3945:0xb64523179523dd29!8m2!3d13.7425256!4d100.5227095!16s%2Fg%2F11lgfmj492",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.elvissuki.com/",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-jeh-o-chula",
+      "nom": "Jeh O Chula",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Rong Mueang)",
+      "adresse": "113 Charat Mueang Alley, Rong Mueang, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7424996,
+        "lng": 100.5225179,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Jeh+O+Chula/@13.7424996,100.5225179,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992eeb145315:0xd37af0e1dfbbcd7c!8m2!3d13.7424996!4d100.5225179!16s%2Fg%2F11cmn7xncs",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "riz",
+        "porc croustillant",
+        "nuit",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Restaurant thaï populaire pour sa bouillie de riz de minuit et ses plats de porc croustillant.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "16:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Jeh+O+Chula/@13.7424996,100.5225179,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992eeb145315:0xd37af0e1dfbbcd7c!8m2!3d13.7424996!4d100.5225179!16s%2Fg%2F11cmn7xncs",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/RanCeXow/",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-pork-satay-nai-song",
+      "nom": "Pork Satay Nai Song",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "991 8 Banthat Thong Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7428238,
+        "lng": 100.5230283,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Pork+Satay+Nai+Song/@13.7428238,100.5230283,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992a1859ce83:0x23cdd98df8d61bb!8m2!3d13.7428238!4d100.5230283!16s%2Fg%2F1thszlk0",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "satay",
+        "porc",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Spécialiste du satay de porc grillé avec sauce cacahuète.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "09:30",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Pork+Satay+Nai+Song/@13.7428238,100.5230283,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2992a1859ce83:0x23cdd98df8d61bb!8m2!3d13.7428238!4d100.5230283!16s%2Fg%2F1thszlk0",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-nueng-nom-nua",
+      "nom": "Nueng Nom Nua",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan",
+      "adresse": "1471 Banthat Thong Rd, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7422279,
+        "lng": 100.5229319,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Nueng+Nom+Nua/@13.7422279,100.5229319,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29919fb50ec5b:0x50e81351f10c270d!8m2!3d13.7422279!4d100.5229319!16s%2Fg%2F11txv9j5md",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "toast",
+        "boissons",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Café-toasts : différents types de toasts et de boissons.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "16:00",
+              "ferme": "01:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Nueng+Nom+Nua/@13.7422279,100.5229319,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29919fb50ec5b:0x50e81351f10c270d!8m2!3d13.7422279!4d100.5229319!16s%2Fg%2F11txv9j5md",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/nueng.nom.nua/",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-mun-thae",
+      "nom": "Mun Thae",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pathum Wan (Wang Mai)",
+      "adresse": "306 Banthat Thong Rd, Wang Mai, Pathum Wan, Bangkok 10330, Thaïlande",
+      "gps": {
+        "lat": 13.7429493,
+        "lng": 100.5232618,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Mun+Thae/@13.7411639,100.5231032,17z/data=!4m10!1m2!2m1!1zTXVuIFRoYWUg4Lih4Lix4LiZ4LmA4LiXIEJhbmdrb2sgQmFudGhhdCBUaG9uZw!3m6!1s0x30e2990002c36d5b:0x7055cf0f690b184b!8m2!3d13.7429493!4d100.5232618!15sCi5NdW4gVGhhZSDguKHguLHguJnguYDguJcgQmFuZ2tvayBCYW50aGF0IFRob25nWjEiL211biB0aGFlIOC4oeC4seC4mSDguYDguJcgYmFuZ2tvayBiYW50aGF0IHRob25nkgEMZGVzc2VydF9zaG9wmgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5UVU5SYm1WSFQyZG5SUkFC4AEA-gEECAAQLQ!16s%2Fg%2F11ld02m3wd",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "dessert",
+        "patate douce",
+        "banthat thong"
+      ],
+      "incontournable": null,
+      "description": "Boutique de desserts : patates douces frites.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "16:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Mun+Thae/@13.7411639,100.5231032,17z/data=!4m10!1m2!2m1!1zTXVuIFRoYWUg4Lih4Lix4LiZ4LmA4LiXIEJhbmdrb2sgQmFudGhhdCBUaG9uZw!3m6!1s0x30e2990002c36d5b:0x7055cf0f690b184b!8m2!3d13.7429493!4d100.5232618!15sCi5NdW4gVGhhZSDguKHguLHguJnguYDguJcgQmFuZ2tvayBCYW50aGF0IFRob25nWjEiL211biB0aGFlIOC4oeC4seC4mSDguYDguJcgYmFuZ2tvayBiYW50aGF0IHRob25nkgEMZGVzc2VydF9zaG9wmgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5UVU5SYm1WSFQyZG5SUkFC4AEA-gEECAAQLQ!16s%2Fg%2F11ld02m3wd",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.facebook.com/profile.php?id=61552739153035",
+      "verifieLe": "2026-11-13",
+      "notes": "Description d'après une liste Google Maps sur la rue Banthat Thong publiée par un service de réservation (source secondaire). Prix à vérifier : aucune source de prix lue. Fiche créée d'après la fiche Google Maps du lieu (source secondaire)."
+    },
+    {
+      "id": "bkk-vijit-chao-phraya-2026",
+      "nom": "Vijit Chao Phraya 2026 (festival de lumières sur le fleuve)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Rives du Chao Phraya, du pont Rama VIII au pont Rama III",
+      "adresse": "",
+      "gps": {
+        "lat": 13.7438976,
+        "lng": 100.4885137,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/23481741",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "famille",
+        "spots"
+      ],
+      "etiquettes": [
+        "festival",
+        "lumières",
+        "drones",
+        "feux d'artifice",
+        "gratuit",
+        "fleuve",
+        "soir"
+      ],
+      "incontournable": null,
+      "description": "Festival de lumières organisé par l'Office du tourisme de Thaïlande (TAT) le long du Chao Phraya, du 13 novembre au 13 décembre 2026 : projections, spectacles son et lumière sur 19 sites entre les ponts Rama VIII et Rama III, spectacle de drones à Wat Arun et feux d'artifice certains soirs. Entrée libre.",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre pendant toute la durée de l'événement. Croisières touristiques, dîners-croisières et bateaux locaux : payants, à réserver auprès d'opérateurs agréés (hors organisation de la TAT).",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "18:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [
+          {
+            "du": "2026-01-01",
+            "au": "2026-11-12",
+            "motif": "avant le début du festival (13/11/2026)"
+          },
+          {
+            "du": "2026-12-14",
+            "au": "2027-12-31",
+            "motif": "après la fin du festival (13/12/2026)"
+          }
+        ],
+        "derniereEntree": "",
+        "note": "Lumières tous les soirs de 18:00 à 22:00 (TAT). Sur plusieurs sites (pont Rama VIII, pont du Mémorial, pont Krung Thep, Wat Kalayanamit, The Langham, Soi Lhong 1919, église presbytérienne, Institut naval), le son et lumière compte 6 séances de 5 minutes par soir, à 19:00, 19:30, 20:00, 20:30, 21:00 et 21:30. ICONSIAM : fontaines multimédia à 18:30, 19:00, 19:30, 20:00, 20:30 et 21:00. Les horaires de certains sites ne sont pas précisés par la TAT.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "reservation": {
+        "necessaire": false,
+        "lien": "",
+        "note": "Entrée libre ; seules les croisières se réservent, auprès des opérateurs.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau",
+            "metro",
+            "a-pied",
+            "vtc"
+          ],
+          "texte": "Pas de point d'entrée unique : les sites sont répartis sur les deux rives. Un guide conseille le BTS ou le MRT, puis une courte marche, un tuk-tuk ou un VTC jusqu'au quai le plus proche, ou les bateaux du Chao Phraya Express et des bateaux touristiques. Aucune station précise n'est donnée.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/events/vijit-chao-phraya/",
+            "libelle": "Thai Holiday Guide (guide, page « reviewed 2 November 2026 »)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+      "verifieLe": "2026-11-13",
+      "notes": "Sites annoncés par la TAT : musée de la Banque de Thaïlande, pont Rama VIII, musée Siriraj Bimuksthan, université Thammasat (Tha Prachan), Institut naval royal et pont de liaison de l'auditorium de la Marine, parc Nagaraphirom, Wat Arun, fort Wichai Prasit, Wat Kalayanamit, pont du Mémorial, pont Phra Pok Klao, bâtiment abandonné Soi Lhong 1919, ICONSIAM, The Langham, Asiatique, église presbytérienne, pont Krung Thep, pont Rama III, plus une barge lumineuse « Vessel of Joy & Smiles » du 13 au 15 novembre seulement. Feux d'artifice : pont Rama VIII à 19:30 les 13 et 15 novembre puis à 20:45 les 20 et 27 novembre et les 4 et 11 décembre ; pont Rama III à 21:20 les 13 et 15 novembre puis à 20:45 les 20 et 27 novembre et les 4 et 11 décembre ; pont du Mémorial voir sa fiche. Les sources divergent sur certaines dates de spectacles (une autre page de la TAT et la presse ne donnent pas exactement les mêmes soirs) : vérifier le programme du jour sur la page Facebook « Vijit Chao Phraya 2026 » avant de bâtir une soirée sur un spectacle précis. Édition 2026 uniquement."
+    },
+    {
+      "id": "bkk-vijit-drones-wat-arun",
+      "nom": "Spectacle de 800 drones à Wat Arun (Vijit Chao Phraya 2026)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Wat Arun (Bangkok Yai)",
+      "adresse": "",
+      "gps": {
+        "lat": 13.7438976,
+        "lng": 100.4885137,
+        "source": {
+          "lien": "https://www.openstreetmap.org/way/23481741",
+          "libelle": "OpenStreetMap",
+          "consulteLe": "2026-11-11",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "famille",
+        "spots"
+      ],
+      "etiquettes": [
+        "drones",
+        "spectacle",
+        "lumières",
+        "gratuit",
+        "wat arun",
+        "soir"
+      ],
+      "incontournable": null,
+      "description": "« Radiance of Dawn » : spectacle lumineux de 800 drones à Wat Arun, à 19:50, les soirs annoncés par la TAT : 13, 15, 18, 20, 25 et 27 novembre, puis 2, 4, 9 et 11 décembre 2026.",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre pendant toute la durée du festival (TAT). Le lieu d'observation n'est pas précisé par la source.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "19:50",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [
+          {
+            "du": "2026-01-01",
+            "au": "2026-11-12",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-11-14",
+            "au": "2026-11-14",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-11-16",
+            "au": "2026-11-17",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-11-19",
+            "au": "2026-11-19",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-11-21",
+            "au": "2026-11-24",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-11-26",
+            "au": "2026-11-26",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-11-28",
+            "au": "2026-12-01",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-12-03",
+            "au": "2026-12-03",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-12-05",
+            "au": "2026-12-08",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-12-10",
+            "au": "2026-12-10",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          },
+          {
+            "du": "2026-12-12",
+            "au": "2027-12-31",
+            "motif": "pas de spectacle de drones ce soir-là (édition 2026 : 13, 15, 18, 20, 25, 27/11 et 2, 4, 9, 11/12)"
+          }
+        ],
+        "derniereEntree": "",
+        "note": "Un spectacle par soir de séance, à 19:50 (TAT). La durée n'est pas indiquée : l'heure de fin affichée est celle du festival (22:00). Une autre page de la TAT, non lisible d'ici (accès refusé), donnerait le 12 novembre au lieu du 15 : vérifier la date avant de s'y fier.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "reservation": {
+        "necessaire": false,
+        "lien": "",
+        "note": "Entrée libre.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+      "verifieLe": "2026-11-13",
+      "notes": "Voir la fiche du festival pour l'ensemble du programme. Wat Arun elle-même est décrite dans sa propre fiche. Édition 2026 uniquement."
+    },
+    {
+      "id": "bkk-vijit-pont-du-memorial",
+      "nom": "Pont du Mémorial : lumières et feux d'artifice (Vijit Chao Phraya 2026)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Pont Phra Phutthayotfa (Memorial Bridge)",
+      "adresse": "",
+      "gps": {
+        "lat": 13.7392842,
+        "lng": 100.4975962,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Pont+Phuttha+Yodfa,+Chulalok+le+Grand/@13.7392842,100.4975962,17z/data=!3m1!4b1!4m6!3m5!1s0x30e29984d314c511:0x78cec59cd059237f!8m2!3d13.7392842!4d100.4975962!16s%2Fm%2F02x06z9",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "famille",
+        "spots"
+      ],
+      "etiquettes": [
+        "feux d'artifice",
+        "lumières",
+        "gratuit",
+        "pont du mémorial",
+        "soir"
+      ],
+      "incontournable": null,
+      "description": "Au pont Phra Phutthayotfa (pont du Mémorial) : spectacle son et lumière « Hanuman Awakening the River of Light » (6 séances de 5 minutes chaque soir) et feux d'artifice à 20:45 les 13, 14, 15, 21, 22, 28 et 29 novembre, puis les 5, 6, 12 et 13 décembre 2026.",
+      "duree": null,
+      "prix": {
+        "min": 0,
+        "max": 0,
+        "devise": "THB",
+        "note": "Entrée libre pendant toute la durée du festival (TAT).",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "19:00",
+              "ferme": "21:35"
+            }
+          ]
+        },
+        "fermetures": [
+          {
+            "du": "2026-01-01",
+            "au": "2026-11-12",
+            "motif": "avant le début du festival (13/11/2026)"
+          },
+          {
+            "du": "2026-12-14",
+            "au": "2027-12-31",
+            "motif": "après la fin du festival (13/12/2026)"
+          }
+        ],
+        "derniereEntree": "",
+        "note": "Son et lumière chaque soir à 19:00, 19:30, 20:00, 20:30, 21:00 et 21:30 (5 minutes chacune : la dernière finit vers 21:35). Feux d'artifice à 20:45 les soirs listés dans la description (TAT). Les sites d'information divergent sur ces soirs : vérifier le programme avant de s'y fier.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "reservation": {
+        "necessaire": false,
+        "lien": "",
+        "note": "Entrée libre.",
+        "source": {
+          "lien": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+          "libelle": "TAT Newsroom (Office du tourisme de Thaïlande), communiqué du 13/11/2026",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "Le quai « Memorial Bridge » (Saphan Phut) est desservi par le bateau express Chao Phraya Express ; le marché aux fleurs de Pak Khlong Talat est juste à côté (guide).",
+          "source": {
+            "lien": "https://bangkokforvisitors.com/shopping/markets/pak-klong-talat/",
+            "libelle": "Bangkok for Visitors (guide)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "https://www.tatnews.org/2026/11/vijit-chao-phraya-2026-brings-a-month-long-spectacle-of-light-and-imagination-to-bangkoks-riverfront/",
+      "verifieLe": "2026-11-13",
+      "notes": "Voir la fiche du festival pour l'ensemble du programme. Édition 2026 uniquement."
+    },
+    {
+      "id": "bkk-iconsiam",
+      "nom": "ICONSIAM",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Khlong San (Khlong Ton Sai)",
+      "adresse": "299 Charoen Nakhon Rd, Khlong Ton Sai, Khlong San, Bangkok 10600, Thaïlande",
+      "gps": {
+        "lat": 13.7268131,
+        "lng": 100.5103667,
+        "source": {
+          "lien": "https://www.google.com/maps/place/ICONSIAM/@13.7268131,100.5103667,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299cd81f01815:0x1660bd86761a92f4!8m2!3d13.7268131!4d100.5103667!16s%2Fg%2F11gr60lh1v",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches",
+        "famille"
+      ],
+      "etiquettes": [
+        "centre commercial",
+        "bord de fleuve",
+        "illuminations",
+        "fontaines"
+      ],
+      "incontournable": null,
+      "description": "Centre commercial au bord du Chao Phraya, site du festival Vijit Chao Phraya : « The ICONIC Multimedia Water Features Show » (fontaines multimédia) et, selon le site officiel, « ICONSIAM Bangkok Illumination 2026 » du 1er novembre au 25 décembre 2026.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "10:00",
+              "ferme": "22:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/ICONSIAM/@13.7268131,100.5103667,17z/data=!3m1!4b1!4m6!3m5!1s0x30e299cd81f01815:0x1660bd86761a92f4!8m2!3d13.7268131!4d100.5103667!16s%2Fg%2F11gr60lh1v",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.iconsiam.com/en",
+      "verifieLe": "2026-11-13",
+      "notes": "Pendant le festival (13/11 au 13/12/2026), la TAT annonce 6 représentations des fontaines par soir : 18:30, 19:00, 19:30, 20:00, 20:30 et 21:00. Le site officiel affiche le spectacle des fontaines pour la période du 25/12/2022 au 31/12/2026, sans horaire de séance. Prix à vérifier : aucune source de prix lue."
+    },
+    {
+      "id": "bkk-pak-khlong-talat",
+      "nom": "Pak Khlong Talat (marché aux fleurs)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phra Nakhon (Wang Burapha Phirom)",
+      "adresse": "สน พระราชวัง ปาก คลองตลาด - วัดกัลยาณมิตร, Khwaeng Wang Burapha Phirom, Phra Nakhon, Bangkok 10200, Thaïlande",
+      "gps": {
+        "lat": 13.7416831,
+        "lng": 100.4963788,
+        "source": {
+          "lien": "https://www.google.com/maps/place/March%C3%A9+aux+fleurs+Pak+Khlong+Talat/@13.7416831,100.4963788,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2991c9e26e52f:0x72829d36513e06bb!8m2!3d13.7416831!4d100.4963788!16s%2Fm%2F03ns7tt",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "marches",
+        "spots"
+      ],
+      "etiquettes": [
+        "marché",
+        "fleurs",
+        "bord de fleuve",
+        "pont du mémorial"
+      ],
+      "incontournable": null,
+      "description": "Grand marché de fleurs fraîches de Bangkok, près du pont du Mémorial ; on y trouve aussi beaucoup de sucreries thaïlandaises.",
+      "duree": null,
+      "prix": null,
+      "horaires": {
+        "nature": "animation",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "00:00",
+              "ferme": "24:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Le guide dit « ouvert 24 h sur 24, tous les jours », surtout animé tôt le matin ; vers midi il peut être assez désert, mais les étals de Chakphet Road restent fréquentés. Page sans date de mise à jour : à confirmer.",
+        "source": {
+          "lien": "https://bangkokforvisitors.com/shopping/markets/pak-klong-talat/",
+          "libelle": "Bangkok for Visitors (guide, sans date de mise à jour)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "Bateau express Chao Phraya Express jusqu'au quai Memorial Bridge (Saphan Phut) ; en sortant, tourner à gauche et longer la rivière à pied. Le marché est droit devant (on arrive par l'arrière, l'odeur peut être forte au début).",
+          "source": {
+            "lien": "https://bangkokforvisitors.com/shopping/markets/pak-klong-talat/",
+            "libelle": "Bangkok for Visitors (guide, sans date de mise à jour)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Le guide ne donne aucun droit d'entrée ni prix (à vérifier). Position et adresse : Google Maps (source secondaire)."
+    },
+    {
+      "id": "bkk-wat-traimit",
+      "nom": "Wat Traimit (temple du Bouddha d'or)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Samphanthawong",
+      "adresse": "661 ถ. เจริญกรุง Talat Noi, Samphanthawong, Bangkok 10100, Thaïlande",
+      "gps": {
+        "lat": 13.7377075,
+        "lng": 100.5134545,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Wat+Traimit+Witthayaram+Worawihan/@13.7377075,100.5134545,17z/data=!3m1!4b1!4m6!3m5!1s0x30e298d90522aa59:0xe2ffaa66d6175279!8m2!3d13.7377075!4d100.5134545!16s%2Fm%2F080c8kl",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "culture"
+      ],
+      "etiquettes": [
+        "temple",
+        "bouddha d'or",
+        "chinatown"
+      ],
+      "incontournable": null,
+      "description": "Temple à l'entrée de Chinatown, à très courte distance de la gare de Hualamphong, connu pour son Bouddha d'or.",
+      "duree": null,
+      "prix": {
+        "min": 40,
+        "max": 40,
+        "devise": "THB",
+        "note": "40 THB pour voir seulement le Bouddha d'or ; le musée coûte 100 THB de plus (140 THB au total) d'après un guide. Aucun tarif distinct pour les étrangers n'est indiqué.",
+        "source": {
+          "lien": "https://bangkokforvisitors.com/chinatown/wat-traimit/",
+          "libelle": "Bangkok for Visitors (guide, sans date de mise à jour)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mardi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "08:00",
+              "ferme": "17:00"
+            }
+          ]
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Horaires affichés par Google Maps le 13/11/2026 (renseignés par l'établissement ou ses clients) : à confirmer, surtout les jours fériés et les fêtes de fin d'année.",
+        "source": {
+          "lien": "https://www.google.com/maps/place/Wat+Traimit+Witthayaram+Worawihan/@13.7377075,100.5134545,17z/data=!3m1!4b1!4m6!3m5!1s0x30e298d90522aa59:0xe2ffaa66d6175279!8m2!3d13.7377075!4d100.5134545!16s%2Fm%2F080c8kl",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "reservation": null,
+      "tenue": null,
+      "interieur": "mixte",
+      "public": null,
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "metro",
+            "a-pied"
+          ],
+          "texte": "Station de métro (MRT) de Hualamphong, à une marche facile ; le temple est près du rond-point Odeon.",
+          "source": {
+            "lien": "https://bangkokforvisitors.com/chinatown/wat-traimit/",
+            "libelle": "Bangkok for Visitors (guide, sans date de mise à jour)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Le guide et Google Maps donnent les mêmes heures (08:00–17:00 tous les jours) ; le guide précise que le musée est fermé le lundi. Tenue : non indiquée par le guide (à vérifier)."
+    },
+    {
+      "id": "bkk-thip-samai",
+      "nom": "Thip Samai (pad thaï, Mahachai Road)",
+      "zone": "Bangkok",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Phra Nakhon (Samran Rat)",
+      "adresse": "313, 315 Maha Chai Rd, Samran Rat, Phra Nakhon, Bangkok 10200, Thaïlande",
+      "gps": {
+        "lat": 13.7527976,
+        "lng": 100.504823,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Thipsamai/@13.7527976,100.504823,17z/data=!3m1!4b1!4m6!3m5!1s0x30e2991678584ec5:0x698c069655046fbe!8m2!3d13.7527976!4d100.504823!16s%2Fg%2F1tksf77l",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "nourriture"
+      ],
+      "etiquettes": [
+        "pad thaï",
+        "restaurant",
+        "vieux bangkok"
+      ],
+      "incontournable": null,
+      "description": "Restaurant historique de pad thaï (siège de Pratoopee, Mahachai Road) ; plats phares : pad thaï à l'huile de crevette et à l'œuf, « Superb Pad Thai » enveloppé d'une omelette, menus végétariens.",
+      "duree": null,
+      "prix": {
+        "min": 60,
+        "max": 100,
+        "devise": "THB",
+        "note": "D'après le site officiel, les plats phares se situent entre 60 et 100 baht ; pas de tarif par plat. Pour les prix exacts, contacter le restaurant.",
+        "source": {
+          "lien": "https://www.thipsamai.com/",
+          "libelle": "Site officiel de Thipsamai Pad Thai",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "horaires": {
+        "nature": "ouverture",
+        "jours": {
+          "lundi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mercredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "24:00"
+            }
+          ],
+          "jeudi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "24:00"
+            }
+          ],
+          "vendredi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "24:00"
+            }
+          ],
+          "samedi": [
+            {
+              "ouvre": "09:00",
+              "ferme": "24:00"
+            }
+          ],
+          "dimanche": [
+            {
+              "ouvre": "09:00",
+              "ferme": "24:00"
+            }
+          ],
+          "mardi": "ferme"
+        },
+        "fermetures": [],
+        "derniereEntree": "",
+        "note": "Site officiel (siège de Pratoopee) : « tous les jours de 09:00 à minuit, fermé le mardi ». Google Maps affiche les mêmes heures le 13/11/2026.",
+        "source": {
+          "lien": "https://www.thipsamai.com/",
+          "libelle": "Site officiel de Thipsamai Pad Thai",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "reservation": {
+        "necessaire": null,
+        "lien": "",
+        "note": "Le site officiel ne mentionne ni réservation ni file d'attente ; contact : +66 2226 6666, Facebook ou LINE @thipsamai.",
+        "source": {
+          "lien": "https://www.thipsamai.com/",
+          "libelle": "Site officiel de Thipsamai Pad Thai",
+          "consulteLe": "2026-11-13",
+          "officielle": true
+        }
+      },
+      "tenue": null,
+      "interieur": "interieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "https://www.thipsamai.com/",
+      "verifieLe": "2026-11-13",
+      "notes": "Le site liste aussi des succursales (ICONSIAM 10:00–22:00, Siam Paragon rez-de-chaussée 10:00–22:00) ; cette fiche décrit le siège. Position et adresse : Google Maps (source secondaire)."
     }
   ]
 }

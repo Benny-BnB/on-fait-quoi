@@ -68,7 +68,7 @@ test('chaque fait de la base a un lien https, une date de consultation et un sta
       assert.match(s.consulteLe, /^\d{4}-\d{2}-\d{2}$/);
       assert.equal(typeof s.officielle, 'boolean');
     }
-    assert.match(l.verifieLe, /^2026-11-1[12]$/, `${l.nom} : date de vérification`);
+    assert.match(l.verifieLe, /^2026-11-1[123]$/, `${l.nom} : date de vérification`);
   }
 });
 
@@ -83,7 +83,8 @@ test("la base publique ne contient aucun souhait ni note personnelle (le dépôt
 
 test("un prix de source secondaire n'est jamais présenté comme confirmé : seuls les prix officiels sont marqués vérifiés", () => {
   const officiels = base.filter((l) => l.prix?.source.officielle).map((l) => l.id);
-  assert.deepEqual(officiels, ['bkk-grand-palace', 'dxb-miracle-garden', 'dxb-safari-park', 'dxb-dubai-frame', 'dxb-burj-khalifa', 'dxb-legoland']);
+  // Grand Palace (site officiel), festival et spectacles (communiqué de l'Office du tourisme de Thaïlande), Thip Samai (site officiel), puis Dubaï
+  assert.deepEqual(officiels, ['bkk-grand-palace', 'bkk-vijit-chao-phraya-2026', 'bkk-vijit-drones-wat-arun', 'bkk-vijit-pont-du-memorial', 'bkk-thip-samai', 'dxb-miracle-garden', 'dxb-safari-park', 'dxb-dubai-frame', 'dxb-burj-khalifa', 'dxb-legoland']);
   // un guide, un blog ou un revendeur n'est jamais déclaré officiel
   for (const l of base) if (l.prix?.source.officielle) assert.ok(!/guide|blog|revendeur/i.test(l.prix.source.libelle), `${l.nom} : source du prix`);
 });
@@ -131,18 +132,18 @@ test('Dubaï : Global Village ferme à 01:00 du jeudi au samedi et à minuit les
 
 // ---------- Base de Krabi et Railay (étape 10) ----------
 
-test("Krabi et Railay : 11 fiches, Railay à part ; aucune source officielle lue (pages du tourisme thaïlandais refusées), donc rien n'est présenté comme vérifié", () => {
+test("Krabi et Railay : 15 fiches, Railay à part ; aucune source officielle lue (pages du tourisme thaïlandais refusées), donc rien n'est présenté comme vérifié", () => {
   const krabi = base.filter((l) => l.id.startsWith('krb-'));
-  assert.equal(krabi.length, 11);
-  assert.deepEqual(krabi.filter((l) => l.zone === 'Railay').map((l) => l.id), ['krb-railay-beach', 'krb-phra-nang-beach', 'krb-railay-lagoon-viewpoint']);
-  assert.equal(krabi.filter((l) => l.zone === 'Krabi').length, 8);
+  assert.equal(krabi.length, 15);
+  assert.deepEqual(krabi.filter((l) => l.zone === 'Railay').map((l) => l.id), ['krb-railay-beach', 'krb-phra-nang-beach', 'krb-railay-lagoon-viewpoint', 'krb-kayak-railay-phra-nang', 'krb-tonsai-beach']);
+  assert.equal(krabi.filter((l) => l.zone === 'Krabi').length, 10);
   for (const l of krabi) {
     assert.equal(l.lienOfficiel, '', `${l.nom} : aucun site officiel lu`);
     for (const s of [l.duree?.source, l.prix?.source, l.horaires?.source, l.public?.source, l.tenue?.source]) if (s) assert.equal(s.officielle, false, `${l.nom} : source secondaire`);
   }
   // « Krabi (étape) » ne ramène pas les lieux de Railay, et inversement
-  assert.equal(lieuxDeLaZone(base, 'Krabi').length, 8);
-  assert.equal(lieuxDeLaZone(base, 'Railay Beach').length, 3);
+  assert.equal(lieuxDeLaZone(base, 'Krabi').length, 10);
+  assert.equal(lieuxDeLaZone(base, 'Railay Beach').length, 5);
 });
 
 test("Tiger Cave Temple : entrée gratuite, 06:00-18:00, chaleur signalée ; on n'y monte pas à midi sans le savoir", () => {
@@ -190,8 +191,8 @@ test("Railay : accès en bateau seulement, dit dans la fiche ; ce que la source 
 test("chaque séjour au bord de la mer a plusieurs plages dans la base : Pattaya, Krabi et Railay", () => {
   const plages = (zone: string): string[] => base.filter((l) => l.zone === zone && aCategorie(l, 'plages')).map((l) => l.id);
   assert.deepEqual(plages('Pattaya'), ['pat-koh-larn', 'pat-pattaya-beach', 'pat-jomtien-beach', 'pat-cozy-beach', 'pat-wong-amat-beach']);
-  assert.deepEqual(plages('Krabi'), ['krb-hong-islands', 'krb-ao-nam-mao', 'krb-ao-nang-beach']);
-  assert.deepEqual(plages('Railay'), ['krb-railay-beach', 'krb-phra-nang-beach']);
+  assert.deepEqual(plages('Krabi'), ['krb-hong-islands', 'krb-ao-nam-mao', 'krb-ao-nang-beach', 'krb-quatre-iles']);
+  assert.deepEqual(plages('Railay'), ['krb-railay-beach', 'krb-phra-nang-beach', 'krb-tonsai-beach']);
   assert.deepEqual(plages('Bangkok'), []); // Bangkok n'a pas de plage
   // aucune plage n'est présentée comme vérifiée : toutes viennent d'un guide
   for (const id of ['pat-pattaya-beach', 'pat-jomtien-beach', 'pat-cozy-beach', 'pat-wong-amat-beach', 'krb-ao-nang-beach']) {
@@ -225,11 +226,86 @@ test("Wong Amat et Ao Nang : prix lus chez un guide ; Phra Nang : entrée libre,
   assert.equal(pn.prix?.min, 0);
   assert.match(pn.prix?.note ?? '', /10 THB pour les toilettes/);
   assert.ok(pn.attention.some((a) => a.genre === 'foule' && /11:00 à 15:00/.test(a.texte)));
-  assert.ok(pn.acces.length === 2 && pn.acces[1].modes.includes('a-pied'));
+  assert.ok(pn.acces.length === 3 && pn.acces[1].modes.includes('a-pied'));
+  assert.match(pn.acces[2].texte, /kayak depuis Railay Ouest/i);
   const nm = lieu('krb-ao-nang-night-market');
   assert.equal(nm.horaires?.nature, 'animation');
   assert.notEqual(ouvertA(nm, '2027-03-10', '12:00').etat, 'non');
   assert.match(nm.prix?.note ?? '', /espèces/);
+});
+
+// ---------- Ajouts du 13/11/2026 : festival de lumières, listes de lieux, kayak ----------
+
+test('festival Vijit Chao Phraya 2026 : gratuit, 18:00-22:00, seulement du 13/11 au 13/12/2026 (communiqué officiel de la TAT)', () => {
+  const f = lieu('bkk-vijit-chao-phraya-2026');
+  assert.equal(f.prix?.min, 0);
+  assert.equal(f.prix?.source.officielle, true);
+  assert.equal(f.horaires?.nature, 'animation');
+  assert.equal(ouvertA(f, '2026-11-12', '19:00').etat, 'non');
+  assert.match(ouvertA(f, '2026-11-12', '19:00').detail, /avant le début du festival/);
+  for (const jour of ['2026-11-13', '2026-11-30', '2026-12-13']) assert.equal(ouvertA(f, jour, '19:00').etat, 'oui', jour);
+  assert.equal(ouvertA(f, '2026-12-14', '19:00').etat, 'non');
+  assert.equal(ouvertA(f, '2027-11-20', '19:00').etat, 'non', "l'édition de l'année suivante n'est pas annoncée");
+});
+
+test('spectacle de drones à Wat Arun : seulement les 10 soirs annoncés par la TAT, à 19:50', () => {
+  const d = lieu('bkk-vijit-drones-wat-arun');
+  const soirs = ['2026-11-13', '2026-11-15', '2026-11-18', '2026-11-20', '2026-11-25', '2026-11-27', '2026-12-02', '2026-12-04', '2026-12-09', '2026-12-11'];
+  let ouverts = 0;
+  for (let i = 0; i < 31; i++) {
+    const jour = new Date(Date.UTC(2026, 10, 13 + i)).toISOString().slice(0, 10);
+    if (ouvertA(d, jour, '20:00').etat === 'oui') {
+      ouverts++;
+      assert.ok(soirs.includes(jour), `${jour} n'est pas un soir annoncé`);
+    } else {
+      assert.ok(!soirs.includes(jour), `${jour} devrait être un soir de spectacle`);
+    }
+  }
+  assert.equal(ouverts, 10);
+  assert.match(d.description, /19:50/);
+  assert.match(d.horaires?.note ?? '', /12 novembre au lieu du 15/);
+});
+
+test("pont du Mémorial : son et lumière chaque soir du festival, feux d'artifice à 20:45 les soirs annoncés", () => {
+  const p = lieu('bkk-vijit-pont-du-memorial');
+  assert.equal(ouvertA(p, '2026-11-14', '20:00').etat, 'oui');
+  assert.equal(ouvertA(p, '2026-12-14', '20:00').etat, 'non');
+  assert.match(p.description, /20:45 les 13, 14, 15, 21, 22, 28 et 29 novembre, puis les 5, 6, 12 et 13 décembre/);
+});
+
+test("une source Google Maps reste secondaire et ne fournit jamais un prix ; les restaurants des listes n'ont aucun prix inventé", () => {
+  const issus = base.filter((l) => [l.gps?.source, l.horaires?.source].some((s) => s && /^Google Maps/.test(s.libelle)));
+  assert.ok(issus.length >= 40, `${issus.length} fiches issues de Google Maps`);
+  for (const l of issus) {
+    for (const s of [l.gps?.source, l.horaires?.source]) if (s && /^Google Maps/.test(s.libelle)) assert.equal(s.officielle, false, l.nom);
+    if (l.prix) assert.ok(!/^Google Maps/.test(l.prix.source.libelle), `${l.nom} : un prix ne vient jamais de Google Maps`);
+  }
+  const aunglo = lieu('bkk-aunglo-by-yangrak');
+  assert.equal(aunglo.prix, null);
+  assert.ok(faitsAVerifier(aunglo).includes('prix'));
+  // le restaurant dont l'adresse est au nord du centre le dit, au lieu de passer pour un restaurant de Chinatown
+  assert.match(lieu('bkk-tanbo-chicken-rice').notes, /Phaya Thai/);
+  assert.equal(lieu('bkk-bella-beauty-vibes').reservation?.necessaire, true);
+});
+
+test('Thip Samai : prix et horaires lus sur le site officiel, fermé le mardi', () => {
+  const t = lieu('bkk-thip-samai');
+  assert.equal(t.prix?.min, 60);
+  assert.equal(t.prix?.max, 100);
+  assert.equal(t.horaires?.source.officielle, true);
+  assert.equal(jourSemaineDe('2026-12-01'), 'mardi');
+  assert.equal(ouvertLe(t, '2026-12-01').etat, 'non');
+  assert.equal(ouvertA(t, '2026-12-02', '23:00').etat, 'oui');
+});
+
+test('kayak à Railay : tarifs divergents entre guides (dits, pas tranchés), 10 à 30 minutes de pagaie jusqu\'à Phra Nang, aucun horaire inventé', () => {
+  const k = lieu('krb-kayak-railay-phra-nang');
+  assert.equal(k.prix?.devise, 'THB');
+  assert.match(k.prix?.note ?? '', /divergent/);
+  assert.equal(k.prix?.source.officielle, false);
+  assert.equal(k.duree?.minMin, 10);
+  assert.equal(k.duree?.maxMin, 30);
+  assert.equal(k.horaires, null);
 });
 
 test('les tarifs par âge de Dubaï viennent de la page : enfant de 3 à 12 ans, gratuit avant 3 ans', () => {
@@ -400,7 +476,7 @@ test('catégories : « incontournables » = cité par un guide nommé', () => {
 test("les lieux d'une étape : « Bangkok (centre) » ramène les lieux de Bangkok, « Pattaya » ceux de Pattaya, une ville sans fiche aucun", () => {
   const bangkok = base.filter((l) => l.zone === 'Bangkok');
   const pattaya = base.filter((l) => l.zone === 'Pattaya');
-  assert.ok(bangkok.length === 13 && pattaya.length > 0);
+  assert.ok(bangkok.length === 58 && pattaya.length > 0);
   assert.deepEqual(lieuxDeLaZone(base, 'Bangkok (centre)').map((l) => l.id), bangkok.map((l) => l.id));
   assert.deepEqual(lieuxDeLaZone(base, 'Pattaya').map((l) => l.id), pattaya.map((l) => l.id));
   assert.equal(lieuxDeLaZone(base, 'Ville sans fiche').length, 0);
@@ -537,9 +613,13 @@ test("jamais de proposition qui empêche d'attraper un vol", () => {
 test('tri par distance depuis le logement : le plus proche d\'abord, les lieux sans GPS à la fin', () => {
   const depuis = lieu('bkk-wat-pho').gps!;
   const r = filtrerLieux(base, { ...demandeVide(), depuis, tri: 'distance' }, [], []);
-  assert.deepEqual(r.slice(0, 4).map((p) => p.lieu.id), ['bkk-wat-pho', 'bkk-view-arun', 'bkk-grand-palace', 'bkk-wat-arun']);
-  assert.equal(r[r.length - 1].distanceKm, null);
-  assert.equal(r[r.length - 1].lieu.id, 'bkk-supanniga-tha-tien');
+  assert.deepEqual(r.slice(0, 3).map((p) => p.lieu.id), ['bkk-wat-pho', 'bkk-view-arun', 'bkk-grand-palace']);
+  // Wat Arun et les fiches du festival rattachées à Wat Arun partagent la même position : elles se suivent
+  assert.ok(r.slice(3, 6).some((p) => p.lieu.id === 'bkk-wat-arun'));
+  // les fiches sans position (Supanniga Tha Tien, le tour des 4 îles…) sont toutes à la fin
+  const sansPosition = r.filter((p) => p.distanceKm === null);
+  assert.ok(sansPosition.length >= 2 && sansPosition.some((p) => p.lieu.id === 'bkk-supanniga-tha-tien'));
+  assert.ok(r.slice(r.length - sansPosition.length).every((p) => p.distanceKm === null));
 });
 
 test('tri par prix : le moins cher d\'abord, prix inconnu à la fin', () => {

@@ -155,11 +155,23 @@
             "consulteLe": "2026-11-12",
             "officielle": false
           }
+        },
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "En kayak depuis Railay Ouest : louer un kayak sur la plage et contourner le promontoire (10 à 30 minutes de pagaie selon les guides). Un kiosque loue aussi des kayaks sur la plage de Phra Nang. Prix de location : voir la fiche « Kayak à Railay Ouest ».",
+          "source": {
+            "lien": "https://www.weseektravel.com/phra-nang-beach/",
+            "libelle": "We Seek Travel (guide, page mise à jour le 08/09/2026)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
         }
       ],
       "lienOfficiel": "",
-      "verifieLe": "2026-11-12",
-      "notes": "À marée basse, le sable s'étend largement devant la grotte ; à marée haute, la plage se rétrécit et le passage par les rochers de l'est vers le sanctuaire peut obliger à marcher dans l'eau : vérifier la marée ou demander au batelier (guide). La page ne donne pas d'horaires ni d'autre consigne de conduite. Source secondaire.",
+      "verifieLe": "2026-11-13",
+      "notes": "À marée basse, le sable s'étend largement devant la grotte ; à marée haute, la plage se rétrécit et le passage par les rochers de l'est vers le sanctuaire peut obliger à marcher dans l'eau : vérifier la marée ou demander au batelier (guide). La page ne donne pas d'horaires ni d'autre consigne de conduite. Source secondaire. Un guide (We Seek Travel, 08/09/2026) dit la plage presque vide jusqu'à environ 10:00 et très fréquentée à partir de 11:00, et conseille la marée basse (le sable s'élargit et Hidden Beach devient accessible sans se mouiller).",
       "id": "krb-phra-nang-beach",
       "nom": "Phra Nang Cave Beach (Tham Phra Nang)"
     },
@@ -1020,6 +1032,273 @@
       "notes": "Arriver après 18:00, quand les stands sont installés et qu'il fait plus frais (conseil du guide). Aucun site officiel lu.",
       "id": "krb-ao-nang-night-market",
       "nom": "Marché de nuit d'Ao Nang"
+    },
+    {
+      "id": "krb-kayak-railay-phra-nang",
+      "nom": "Kayak à Railay Ouest : balade vers Phra Nang",
+      "zone": "Railay",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Railay Ouest (presqu'île de Railay)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0114135,
+        "lng": 98.8365261,
+        "source": {
+          "lien": "https://www.openstreetmap.org/relation/19741813",
+          "libelle": "OpenStreetMap (baie de Railay Ouest)",
+          "consulteLe": "2026-11-12",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "sport",
+        "nature"
+      ],
+      "etiquettes": [
+        "kayak",
+        "location",
+        "plage",
+        "phra nang"
+      ],
+      "incontournable": null,
+      "description": "Location de kayaks sur la plage de Railay Ouest ; on peut contourner le promontoire en pagayant jusqu'à la plage de Phra Nang. Un kiosque loue aussi des kayaks, des paddles et du matériel de snorkeling sur la plage de Phra Nang même.",
+      "duree": {
+        "minMin": 10,
+        "maxMin": 30,
+        "estimee": false,
+        "base": "",
+        "source": {
+          "lien": "https://www.weseektravel.com/phra-nang-beach/",
+          "libelle": "We Seek Travel (guide, page mise à jour le 08/09/2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "prix": {
+        "min": 200,
+        "max": 400,
+        "devise": "THB",
+        "note": "Par heure et par kayak. Le guide Thai Holiday Guide cite 200 à 400 THB/heure à Ao Nang et Railay ; We Seek Travel cite 200 à 300 THB/heure au kiosque de Phra Nang. D'autres guides donnent 100 à 150 THB/heure (Railay Ouest) ou 150 THB (simple) et 250 THB (double) à Tonsai : les prix divergent, négocier et confirmer sur place.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/things-to-do-in-krabi/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour le 10 juillet 2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "horaires": null,
+      "reservation": {
+        "necessaire": false,
+        "lien": "",
+        "note": "Location sur la plage, sans réservation signalée par les guides (non confirmé).",
+        "source": {
+          "lien": "https://www.weseektravel.com/phra-nang-beach/",
+          "libelle": "We Seek Travel (guide, page mise à jour le 08/09/2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Un opérateur d'Ao Nang précise que le parcours plus long implique de la pagaie en pleine eau et ne doit être tenté qu'après avis du personnel (source : résultats de recherche d'une page d'opérateur, non lue en entier). Vérifier la mer et la marée avant de partir.",
+        "source": {
+          "lien": "https://www.tripkolic.com/en/activities/TO5196318010-grace-kayaking-ao-nang-self-guided-sea-kayak-rental-to-railay-and-phra-nang",
+          "libelle": "Tripkolic (page d'un opérateur d'Ao Nang, extrait de recherche)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau"
+          ],
+          "texte": "Depuis Railay Ouest : louer un kayak et contourner le promontoire (10 à 30 minutes de pagaie selon les guides). À pied, Phra Nang est à environ 10 minutes depuis Railay Est, plus 5 minutes depuis Railay Ouest.",
+          "source": {
+            "lien": "https://www.weseektravel.com/phra-nang-beach/",
+            "libelle": "We Seek Travel (guide, page mise à jour le 08/09/2026)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Les guides s'accordent sur la durée courte mais pas sur les tarifs. La mer est plus calme de novembre à avril (Thai Holiday Guide). Aucun horaire de location lu : à vérifier sur place. Source secondaire."
+    },
+    {
+      "id": "krb-tonsai-beach",
+      "nom": "Tonsai Beach",
+      "zone": "Railay",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Railay (presqu'île de Railay)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.0180546,
+        "lng": 98.8322457,
+        "source": {
+          "lien": "https://www.google.com/maps/place/Tonsai+Beach/@8.0180544,98.8322457,15z/data=!3m1!4b1!4m6!3m5!1s0x3051c01f698dc337:0x37acb482b953a2e9!8m2!3d8.0180546!4d98.8322457!16s%2Fg%2F11hc_vmb94",
+          "libelle": "Google Maps (fiche du lieu)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "plages",
+        "sport"
+      ],
+      "etiquettes": [
+        "plage",
+        "escalade",
+        "deep water solo",
+        "routards"
+      ],
+      "incontournable": null,
+      "description": "Une des quatre plages de la presqu'île de Railay, fréquentée par les routards et les grimpeurs ; le guide la cite pour le « deep water solo » (escalade au-dessus de la mer). On rejoint les quatre plages à pied par des sentiers de jungle et des passages sur la plage.",
+      "duree": null,
+      "prix": null,
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": {
+        "texte": "Chemins de rochers et de jungle entre les plages : chaussures adaptées recommandées.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "attention": [],
+      "acces": [
+        {
+          "modes": [
+            "bateau",
+            "a-pied"
+          ],
+          "texte": "Presqu'île sans route : longtail depuis Ao Nang (10 à 15 minutes selon les guides), puis marche entre les plages ; la plus longue marche entre deux plages prend 15 à 20 minutes.",
+          "source": {
+            "lien": "https://www.thaiholidayguide.com/visit/railay-beach/",
+            "libelle": "Thai Holiday Guide (guide, page mise à jour en juin 2026)",
+            "consulteLe": "2026-11-13",
+            "officielle": false
+          }
+        }
+      ],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Aucun prix, horaire ni durée donné par les guides lus pour la plage elle-même (à vérifier). Position : Google Maps (source secondaire)."
+    },
+    {
+      "id": "krb-quatre-iles",
+      "nom": "Tour des 4 îles (Poda, Chicken, Tup, Phra Nang)",
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Au départ d'Ao Nang et de Railay",
+      "adresse": "",
+      "gps": null,
+      "categories": [
+        "plages",
+        "nature"
+      ],
+      "etiquettes": [
+        "excursion",
+        "snorkeling",
+        "îles",
+        "bateau",
+        "banc de sable"
+      ],
+      "incontournable": null,
+      "description": "Excursion en bateau : Koh Poda (sable blanc), Chicken Island (Koh Kai), Tup (banc de sable visible à marée basse) et la plage de Phra Nang. Une variante de coucher de soleil, semi-privée (12 personnes maximum), se termine par une baignade parmi du plancton bioluminescent.",
+      "duree": null,
+      "prix": {
+        "min": 800,
+        "max": 1200,
+        "devise": "THB",
+        "note": "Longtail : 800 à 1 200 THB ; speedboat : 1 500 à 2 000 THB (Thai Holiday Guide). Des plateformes de réservation affichent des offres plus basses (de 699 à 1 099 THB selon les offres lues) et un guide parle de 800 THB tout compris : fourchette large, à confirmer auprès de l'opérateur.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/things-to-do-in-krabi/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour le 10 juillet 2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "horaires": null,
+      "reservation": {
+        "necessaire": null,
+        "lien": "",
+        "note": "À réserver auprès d'un opérateur ; selon une page lue, le point de rendez-vous exact est confirmé après la réservation selon la météo et la mer (source secondaire).",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/things-to-do-in-krabi/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour le 10 juillet 2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Meilleur moment : marée basse, pour voir le banc de sable de Tup (guide). Durée et inclusions (repas, droits de parc, transferts) non indiquées par le guide : à demander à l'opérateur. Source secondaire."
+    },
+    {
+      "id": "krb-thalane-kayak",
+      "nom": "Baie de Thalane (kayak dans les mangroves)",
+      "zone": "Krabi",
+      "fuseau": "Asia/Bangkok",
+      "quartier": "Baie de Thalane (au nord-ouest de Krabi Town)",
+      "adresse": "",
+      "gps": {
+        "lat": 8.1432057,
+        "lng": 98.7467078,
+        "source": {
+          "lien": "https://www.openstreetmap.org/node/7045730785",
+          "libelle": "OpenStreetMap (Ao Thalane Kayaking)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "categories": [
+        "sport",
+        "nature"
+      ],
+      "etiquettes": [
+        "kayak",
+        "mangrove",
+        "excursion",
+        "grottes"
+      ],
+      "incontournable": null,
+      "description": "Baie bordée de falaises calcaires, citée par le guide comme site de kayak, avec Tha Pom Klong Song Nam : canaux de mangroves, grottes marines et lagons.",
+      "duree": null,
+      "prix": {
+        "min": 800,
+        "max": 1500,
+        "devise": "THB",
+        "note": "Tours guidés d'une demi-journée : 800 à 1 500 THB (Thai Holiday Guide). Location libre à Ao Nang et Railay : 200 à 400 THB/heure.",
+        "source": {
+          "lien": "https://www.thaiholidayguide.com/things-to-do-in-krabi/",
+          "libelle": "Thai Holiday Guide (guide, page mise à jour le 10 juillet 2026)",
+          "consulteLe": "2026-11-13",
+          "officielle": false
+        }
+      },
+      "horaires": null,
+      "reservation": null,
+      "tenue": null,
+      "interieur": "exterieur",
+      "public": null,
+      "attention": [],
+      "acces": [],
+      "lienOfficiel": "",
+      "verifieLe": "2026-11-13",
+      "notes": "Le guide ne donne ni horaires ni droit d'entrée pour la baie. Le sentier sur pilotis de Tha Pom Klong Song Nam, site voisin, coûte 50 THB, ouvert de 08:00 à 17:00 d'après un autre guide (non confirmé). Source secondaire."
     }
   ]
 }
